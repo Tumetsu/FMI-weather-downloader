@@ -13,6 +13,8 @@ class FMI_request():
     apikey = "4d7bcd64-01af-4dbb-8a43-404e97b8c2cd"
     headers =  {"Content-type": "text/xml"}
     connection = None
+    dailyRequestMaxInHours = 8928
+
 
     xmlns = {"xmlns" : "http://www.opengis.net/ows/1.1"}
 
@@ -29,7 +31,7 @@ class FMI_request():
             data = response.read()
             return etree.XML(data)
         else:
-            print(response.read())
+            print(response.getheader("Content-Type"))
             self._getErrorReason(response)
             raise RequestException(self._getErrorReason(response), response.status)
 
@@ -37,11 +39,25 @@ class FMI_request():
         if response.getheader("Content-Type") == "text/html":
             raise RequestException("Error in html", response.status, html=response.read())
 
-        elif response.getheader("Content-Type") == "text/xml":
-            print("asdasd")
-            print(response.read())
+        elif response.getheader("Content-Type") == "text/xml; charset=UTF8":
             xml = etree.XML(response.read())
             raise RequestException(xml.find(".//xmlns:ExceptionText", namespaces=self.xmlns).text, response.status)
+
+    def buildWeatherDailyParameters(self, place, starttime, endtime):
+
+        timeDiff = endtime - starttime
+        timeDiffInHours = timeDiff.days*24
+
+        if timeDiffInHours > self.dailyRequestMaxInHours:
+            print("LIIAN PITKÄ AIKAVÄLI. TEE USEAMPANA KYSELYNÄ")
+
+
+        return {   "request" : "getFeature",
+                   "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
+                   "place" : place,
+                   "starttime" : "1984-02-18T00:00Z",
+                   "endtime" : "1994-01-17T00:00Z"
+        }
 
 
 
@@ -64,8 +80,13 @@ class ParseXML:
         self.df_positionTime = self._parsePositions(xmlData)
         self.df_observations = self._parseMeasurementData(xmlData)
         self.df_observations = self._combineTimeWithObservation(self.df_observations, self.df_positionTime)
+
+
         #save
-        self.df_observations.to_csv("file.csv", sep=",", date_format="%d.%m.%Y", index=False)
+        self.df_observations = self.df_observations.applymap(str).replace(r'\.',',',regex=True)    #decimal dot to comma
+        print(self.df_observations)
+        self.df_observations.to_csv("file.csv", sep=";", date_format="%d.%m.%Y", index=False)
+
 
     def _parsePositions(self, xmlData,):
         positions = xmlData[0].find(".//gmlcov:positions", namespaces=self.gmlcov).text
@@ -114,20 +135,19 @@ class RequestException(Exception):
 
 
 
-
 if __name__ == '__main__':
 
     query = "/wfs?request=getFeature&storedquery_id=fmi::observations::" \
             "weather::daily::multipointcoverage&place=Lammi&timestep=1"
     FMIrequest = FMI_request()
 
-    try:
-        params = { "request" : "getFeature",
-                   "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
-                   "place" : "Lammi",
-                   "timestep" : 1
-        }
 
+
+
+    try:
+        #TODO: Tämän voisi ehkä muuttaa joksikin funktioksi tyyliin "getDaily", joka rakentaa parametrit ja tekee myös pyynnön
+        params = FMIrequest.buildWeatherDailyParameters("Lammi", datetime.datetime(1984, 1, 1),
+                                                        datetime.datetime(2015, 1, 1))
         dataInXml = FMIrequest.get(params)
         print(etree.tostring(dataInXml))
         parser = ParseXML()
