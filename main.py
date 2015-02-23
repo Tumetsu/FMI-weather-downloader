@@ -1,158 +1,22 @@
-import lxml
-import http.client
-import urllib.request
-from lxml import etree
-import pandas as pd
-from io import StringIO
+from fmiapi import FMIApi
 import datetime
-import urllib.parse
-
-class FMI_request():
-
-    url = "data.fmi.fi"
-    apikey = "4d7bcd64-01af-4dbb-8a43-404e97b8c2cd"
-    headers =  {"Content-type": "text/xml"}
-    connection = None
-    dailyRequestMaxInHours = 8928
-
-
-    xmlns = {"xmlns" : "http://www.opengis.net/ows/1.1"}
-
-
-    def __init__(self):
-        self.connection = http.client.HTTPConnection(self.url)
-
-    def get(self, params):
-        self.connection.request("GET", "/fmi-apikey/" + self.apikey + "/wfs?" + urllib.parse.urlencode(params),
-                                headers=self.headers)
-        response = self.connection.getresponse()
-        print(response.status)
-        if response.status == 200:
-            data = response.read()
-            return etree.XML(data)
-        else:
-            print(response.getheader("Content-Type"))
-            self._getErrorReason(response)
-            raise RequestException(self._getErrorReason(response), response.status)
-
-    def _getErrorReason(self, response):
-        if response.getheader("Content-Type") == "text/html":
-            raise RequestException("Error in html", response.status, html=response.read())
-
-        elif response.getheader("Content-Type") == "text/xml; charset=UTF8":
-            xml = etree.XML(response.read())
-            raise RequestException(xml.find(".//xmlns:ExceptionText", namespaces=self.xmlns).text, response.status)
-
-    def buildWeatherDailyParameters(self, place, starttime, endtime):
-
-        timeDiff = endtime - starttime
-        timeDiffInHours = timeDiff.days*24
-
-        if timeDiffInHours > self.dailyRequestMaxInHours:
-            print("LIIAN PITKÄ AIKAVÄLI. TEE USEAMPANA KYSELYNÄ")
-
-
-        return {   "request" : "getFeature",
-                   "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
-                   "place" : place,
-                   "starttime" : "1984-02-18T00:00Z",
-                   "endtime" : "1994-01-17T00:00Z"
-        }
-
-
-
-class ParseXML:
-    gmlcov = {"gmlcov" : "http://www.opengis.net/gmlcov/1.0"}
-    gml = {"gml" : "http://www.opengis.net/gml/3.2"}
-    swe = {"swe" : "http://www.opengis.net/swe/2.0"}
-
-    fieldNames = []
-    df_positionTime = None
-    df_observations = None
-
-    def parse(self, xmlData):
-        print(xmlData[0].tag)
-        locationName = xmlData[0].find(".//gml:name", namespaces=self.gml).text
-        print(locationName)
-        self._parseDataPoints(xmlData)
-
-    def _parseDataPoints(self, xmlData):
-        self.df_positionTime = self._parsePositions(xmlData)
-        self.df_observations = self._parseMeasurementData(xmlData)
-        self.df_observations = self._combineTimeWithObservation(self.df_observations, self.df_positionTime)
-
-
-        #save
-        self.df_observations = self.df_observations.applymap(str).replace(r'\.',',',regex=True)    #decimal dot to comma
-        print(self.df_observations)
-        self.df_observations.to_csv("file.csv", sep=";", date_format="%d.%m.%Y", index=False)
-
-
-    def _parsePositions(self, xmlData,):
-        positions = xmlData[0].find(".//gmlcov:positions", namespaces=self.gmlcov).text
-        return pd.read_csv(StringIO(positions), delim_whitespace=True, names=["lat", "long", "time"])
-
-    def _parseMeasurementData(self, xmlData):
-        #get field names available in file
-        fields = xmlData[0].findall(".//swe:field", namespaces=self.swe)
-        self.fieldNames = []
-        for f in fields:
-            self.fieldNames.append(f.get("name"))
-
-        #get actual meaurement data
-        observed = xmlData[0].find(".//gml:doubleOrNilReasonTupleList", namespaces=self.gml).text
-        df_observations = pd.read_csv(StringIO(observed), delim_whitespace=True, names=self.fieldNames)
-        return df_observations
-
-    def _combineTimeWithObservation(self, df_observations, df_positionTime):
-        df_observations["time"] = df_positionTime["time"]
-        df_observations["time"] = pd.to_datetime(df_observations["time"], unit="s")
-        self.fieldNames.insert(0, "time")
-        df_observations = self.df_observations[self.fieldNames]
-        return df_observations
-
-
-
-class RequestException(Exception):
-    message = "ERROR in "
-    errorCode = 0
-    html = ""
-
-    def __init__(self, text, errorCode, html = ""):
-        self.message = text
-        self.errorCode = errorCode
-        self.html = html
-        print(html)
-
-
-
-
-
-
-
-
-
-
-
+from fmixmlparser import FMIxmlParser, NoDataException
 
 if __name__ == '__main__':
-
-    query = "/wfs?request=getFeature&storedquery_id=fmi::observations::" \
-            "weather::daily::multipointcoverage&place=Lammi&timestep=1"
-    FMIrequest = FMI_request()
-
-
-
+    api = FMIApi()
+    api.auth("4d7bcd64-01af-4dbb-8a43-404e97b8c2cd")
+    results = api.get_daily_weather( {"request" : "getFeature",
+                   "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
+                   "place" : "Helsinki",
+                   "starttime" : datetime.datetime(2015, 1, 1),
+                   "endtime" : datetime.datetime(2015, 2, 23)
+        })
 
     try:
-        #TODO: Tämän voisi ehkä muuttaa joksikin funktioksi tyyliin "getDaily", joka rakentaa parametrit ja tekee myös pyynnön
-        params = FMIrequest.buildWeatherDailyParameters("Lammi", datetime.datetime(1984, 1, 1),
-                                                        datetime.datetime(2015, 1, 1))
-        dataInXml = FMIrequest.get(params)
-        print(etree.tostring(dataInXml))
-        parser = ParseXML()
-        parser.parse(dataInXml)
+        parser = FMIxmlParser()
+        alldata = parser.parse(results)
+        parser.saveToCsv(alldata, "weather.csv")
+    except NoDataException as e:
+        print("ERROR: Data saving failed. No data found. Does the service have data for requested timespan?")
 
-    except RequestException as e:
-        print(e.message)
 
