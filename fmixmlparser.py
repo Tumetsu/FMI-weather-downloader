@@ -35,11 +35,7 @@ class FMIxmlParser:
         return pd.concat(self.dataframes, ignore_index=True)
 
 
-    #TODO: MOVE THIS TO SOME OTHER CLASS
-    def saveToCsv(self, df, path):
-        #save
-        self.df_observations = df.applymap(str).replace(r'\.',',',regex=True)    #decimal dot to comma
-        df.to_csv(path, sep=";", date_format="%d.%m.%Y", index=False)
+
 
     def _parseDataPoints(self, xmlData):
         df_positionTime = self._parsePositions(xmlData)
