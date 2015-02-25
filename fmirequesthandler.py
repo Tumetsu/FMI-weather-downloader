@@ -1,7 +1,6 @@
 import math
 import datetime
 import copy
-from lxml import etree
 from fmirequest import FMIRequest
 class FMIRequestHandler():
 

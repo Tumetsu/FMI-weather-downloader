@@ -2,6 +2,7 @@ import pandas as pd
 from io import StringIO
 import lxml
 from lxml import etree
+from fmierrors import *
 
 class FMIxmlParser:
 
@@ -14,8 +15,16 @@ class FMIxmlParser:
     df_observations = None
     dataframes = []
 
+    def __init__(self):
+        print("PARSERI TEHTY")
+        self.fieldNames = []
+        self.df_positionTime = None
+        self.df_observations = None
+        self.dataframes = []
+
     def parse(self, xmlDataList):
         try:
+
             for item in xmlDataList:
 
                 locationName = item[0].find(".//gml:name", namespaces=self.gml).text
@@ -25,6 +34,7 @@ class FMIxmlParser:
                 print(df)
                 self.dataframes.append(df)
 
+            print (len(self.dataframes))
             totaldf = self._joinDataframes()
             return totaldf
         except (IndexError, ValueError) as e:
@@ -60,6 +70,7 @@ class FMIxmlParser:
         #get actual meaurement data
         observed = xmlData[0].find(".//gml:doubleOrNilReasonTupleList", namespaces=self.gml).text
         df_observations = pd.read_csv(StringIO(observed), delim_whitespace=True, names=self.fieldNames)
+        df_observations = df_observations.applymap(str).replace(r'\.',',',regex=True)    #decimal dot to comma
         return df_observations
 
     def _combineTimeWithObservation(self, df_observations, df_positionTime):
@@ -69,6 +80,9 @@ class FMIxmlParser:
         df_observations = df_observations[self.fieldNames]
         return df_observations
 
+    def clear(self):
+        self.dataframes = []
+        self.fieldNames = []
+        self.df_positionTime = None
+        self.df_observations = None
 
-class NoDataException(Exception):
-    message = "ERROR with data extraction. Does the server have data for this timespan?"

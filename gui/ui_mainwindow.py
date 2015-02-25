@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main_window.ui'
 #
-# Created: Tue Feb 24 15:09:35 2015
+# Created: Wed Feb 25 13:31:22 2015
 #      by: PyQt5 UI code generator 5.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(400, 214)
+        MainWindow.resize(417, 214)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -49,6 +49,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_2)
         self.startimeDateEdit = QtWidgets.QDateEdit(self.centralwidget)
+        self.startimeDateEdit.setStyleSheet("")
         self.startimeDateEdit.setObjectName("startimeDateEdit")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.startimeDateEdit)
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
@@ -67,25 +68,27 @@ class Ui_MainWindow(object):
         self.verticalLayout.addItem(spacerItem)
         self.verticalLayout_2.addLayout(self.verticalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 400, 21))
-        self.menubar.setObjectName("menubar")
-        self.menuOptions = QtWidgets.QMenu(self.menubar)
-        self.menuOptions.setObjectName("menuOptions")
-        self.menuAbout = QtWidgets.QMenu(self.menubar)
-        self.menuAbout.setObjectName("menuAbout")
-        self.menuQuit = QtWidgets.QMenu(self.menubar)
-        self.menuQuit.setObjectName("menuQuit")
-        MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 417, 21))
+        self.menubar.setObjectName("menubar")
+        self.menuOptions = QtWidgets.QMenu(self.menubar)
+        self.menuOptions.setObjectName("menuOptions")
+        MainWindow.setMenuBar(self.menubar)
         self.actionSet_api_key = QtWidgets.QAction(MainWindow)
         self.actionSet_api_key.setObjectName("actionSet_api_key")
+        self.actionQuit = QtWidgets.QAction(MainWindow)
+        self.actionQuit.setObjectName("actionQuit")
+        self.actionAbout = QtWidgets.QAction(MainWindow)
+        self.actionAbout.setObjectName("actionAbout")
+        self.actionExit = QtWidgets.QAction(MainWindow)
+        self.actionExit.setObjectName("actionExit")
         self.menuOptions.addAction(self.actionSet_api_key)
+        self.menuOptions.addAction(self.actionAbout)
+        self.menuOptions.addAction(self.actionExit)
         self.menubar.addAction(self.menuOptions.menuAction())
-        self.menubar.addAction(self.menuAbout.menuAction())
-        self.menubar.addAction(self.menuQuit.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -99,8 +102,9 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Start date:"))
         self.label_3.setText(_translate("MainWindow", "End date:"))
         self.pushButton.setText(_translate("MainWindow", "Download"))
-        self.menuOptions.setTitle(_translate("MainWindow", "Settings"))
-        self.menuAbout.setTitle(_translate("MainWindow", "About"))
-        self.menuQuit.setTitle(_translate("MainWindow", "Quit"))
+        self.menuOptions.setTitle(_translate("MainWindow", "File"))
         self.actionSet_api_key.setText(_translate("MainWindow", "Set api-key"))
+        self.actionQuit.setText(_translate("MainWindow", "Quit"))
+        self.actionAbout.setText(_translate("MainWindow", "About"))
+        self.actionExit.setText(_translate("MainWindow", "Exit"))
 
