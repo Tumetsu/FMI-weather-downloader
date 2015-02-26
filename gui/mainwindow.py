@@ -1,8 +1,8 @@
-from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QDir
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QFileDialog, QInputDialog, QMessageBox
-from PyQt5.QtCore import pyqtSlot, QEvent, QSettings
+from PyQt5.QtCore import pyqtSlot, QEvent, QSettings, QStandardPaths
 
-from PyQt5.QtGui import QStatusTipEvent
+from PyQt5.QtGui import QStatusTipEvent, QDesktopServices
 from gui.ui_mainwindow import Ui_MainWindow
 from fmiapi import FMIApi
 import datetime
@@ -108,8 +108,13 @@ class Mainwindow(QMainWindow):
 
 
     def _saveData(self, dataframe):
+        paths = QStandardPaths.standardLocations(0)
+        if len(paths) > 0:
+            path = paths[0]
+        else:
+            path = ""
         filename = QFileDialog.getSaveFileName(self, "Save weather data as csv",
-                                               "", "Comma separated values CSV (*.csv);;All files (*)")
+                                               path +"/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
         if filename[0] != "":
             self._saveToCsv(dataframe, filename[0])
 
@@ -143,33 +148,36 @@ class Mainwindow(QMainWindow):
     @pyqtSlot(int)
     def _download(self):
         try:
-            results = self.api.get_daily_weather({"request" : "getFeature",
-                       "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
-                       "fmisid": self.currentSelectedModel["FMISID"],
-                       "starttime" : self._getDateTimeFromUI(self.ui.startimeDateEdit),
-                       "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateEdit)
-            })
+            try:
+                results = self.api.get_daily_weather({"request" : "getFeature",
+                           "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
+                           "fmisid": self.currentSelectedModel["FMISID"],
+                           "starttime" : self._getDateTimeFromUI(self.ui.startimeDateEdit),
+                           "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateEdit)
+                })
 
-            parser = FMIxmlParser()
-            dataframe = parser.parse(results)
-            parser = None
-            self._saveData(dataframe)
-            dataframe = None
-        except (RequestException, NoDataException) as e:
-            if e.errorCode == 400:
-                #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
-                self._showErrorAlerts("Couldn't find the specified station from FMI-service.\nEither there is a problem "
-                                      "on FMI's service, or if this error-message is shown on every station this program likely needs "
-                                      "update. Check File->About for contact information.")
-            if e.errorCode == 404:
-                #apikey on luultavastu väärä
-                self._showErrorAlerts("Couldn't complete request.\nHave you set your API-key? FMI requires registering on their page before "
-                                      "this program can be used. Check more information on File->Set api-key menu.")
+                parser = FMIxmlParser()
+                dataframe = parser.parse(results)
+                parser = None
+                self._saveData(dataframe)
+                dataframe = None
+            except (RequestException, NoDataException) as e:
+                if e.errorCode == 400:
+                    #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
+                    self._showErrorAlerts("Couldn't find the specified station from FMI-service.\nEither there is a problem "
+                                          "on FMI's service, or if this error-message is shown on every station this program likely needs "
+                                          "update. Check File->About for contact information.")
+                if e.errorCode == 404:
+                    #apikey on luultavastu väärä
+                    self._showErrorAlerts("Couldn't complete request.\nHave you set your API-key? FMI requires registering on their page before "
+                                          "this program can be used. Check more information on File->Set api-key menu.")
 
-            if e.errorCode == "NODATA":
-                #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                 self._showErrorAlerts("Couldn't find data on specified time interval.\nMost likely FMI doesn't have data on this timespan.\nTry longer "
-                                       "timespan, for example one year to see if you can find data.")
+                if e.errorCode == "NODATA":
+                    #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
+                     self._showErrorAlerts("Couldn't find data on specified time interval.\nMost likely FMI doesn't have data on this timespan.\nTry longer "
+                                           "timespan, for example one year to see if you can find data.")
+        except Exception as e:
+             self._showErrorAlerts("Unknown error: " + str(e))
 
 
 
