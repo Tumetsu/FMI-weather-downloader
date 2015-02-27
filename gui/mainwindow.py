@@ -9,7 +9,7 @@ import datetime
 from fmixmlparser import FMIxmlParser
 import sys
 from fmierrors import *
-
+from downloadProgress import *
 
 class Mainwindow(QMainWindow):
 
@@ -17,7 +17,7 @@ class Mainwindow(QMainWindow):
     entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
     currentSelectedModel = None
     apiKey = ""
-    SET_APIKEY_MESSAGE = "Tunnisteavainta ei ole määritetty. Aseta se valikossa File->Aseta tunnisteavain"
+    SET_APIKEY_MESSAGE = "Tunnisteavainta ei ole määritetty. Aseta se valikossa Tiedosto->Aseta tunnisteavain"
     settings = None
 
     def __init__(self, parent=None):
@@ -169,7 +169,6 @@ class Mainwindow(QMainWindow):
 
     def _saveToCsv(self, df, path):
         #save
-        print(df)
         df.to_csv(path, sep=";", date_format="%d.%m.%Y %H:%M", index=False)
 
     def _getDateTimeFromUI(self, dateEdit):
@@ -225,29 +224,31 @@ class Mainwindow(QMainWindow):
 
     @pyqtSlot(int)
     def _download_daily(self):
+
+        params = {"request" : "getFeature",
+                   "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
+                   "fmisid": self.currentSelectedModel["FMISID"],
+                   "starttime" : self._getDateTimeFromUI(self.ui.startimeDateEdit),
+                   "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateEdit),
+                   "daily" : True
+        }
+
+        download = DownloadProgress(self)
+        download.finishedSignal.connect(self._download_daily_finished)
+        download.beginDownload(params)
+
+
+
+    @pyqtSlot(list)
+    def _download_realtime_finished(self, results):
         try:
             try:
-                results = self.api.get_daily_weather({"request" : "getFeature",
-                           "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
-                           "fmisid": self.currentSelectedModel["FMISID"],
-                           "starttime" : self._getDateTimeFromUI(self.ui.startimeDateEdit),
-                           "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateEdit)
-                })
-
                 parser = FMIxmlParser()
                 dataframe = parser.parse(results)
                 parser = None
                 self._saveData(dataframe)
                 dataframe = None
-            except (RequestException, NoDataException) as e:
-                if e.errorCode == 400:
-                    #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
-                    self._showErrorAlerts("Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
-                                          "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta File->Tietoa valikosta.\n\nVirheen kuvaus:\n" + str(e))
-                if e.errorCode == 404:
-                    #apikey on luultavastu väärä
-                    self._showErrorAlerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen? Ilmatieteenlaitos vaatii rekisteröitymistä palveluun "
-                                          "ennen sen käyttöä. Katso lisätietoa valikosta File->Aseta tunnisteavain.")
+            except (NoDataException) as e:
 
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
@@ -256,40 +257,39 @@ class Mainwindow(QMainWindow):
         except Exception as e:
              self._showErrorAlerts("Tuntematon virhe: " + str(e))
 
+    @pyqtSlot(list)
+    def _download_daily_finished(self, results):
+        try:
+            try:
+                parser = FMIxmlParser()
+                dataframe = parser.parse(results)
+                parser = None
+                self._saveData(dataframe)
+                dataframe = None
+            except (NoDataException) as e:
 
+                if e.errorCode == "NODATA":
+                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
+                     self._showErrorAlerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
+                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
+        except Exception as e:
+             self._showErrorAlerts("Tuntematon virhe: " + str(e))
 
     @pyqtSlot(int)
     def _download_realtime(self):
-        try:
-            try:
-                results = self.api.get_realtime_weather({"request" : "getFeature",
+
+        params = {"request" : "getFeature",
                            "storedquery_id" : "fmi::observations::weather::multipointcoverage",
                            "fmisid": self.currentSelectedModel["FMISID"],
                            "starttime" : self._getDateTimeFromUI(self.ui.startimeDateTimeEdit_2),
-                           "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateTimeEdit_2)
-                })
+                           "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateTimeEdit_2),
+                           "daily" : False
+                }
 
-                parser = FMIxmlParser()
-                dataframe = parser.parse(results)
-                parser = None
-                self._saveData(dataframe)
-                dataframe = None
-            except (RequestException, NoDataException) as e:
-                if e.errorCode == 400:
-                    #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
-                    self._showErrorAlerts("Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
-                                          "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta File->Tietoa valikosta.\n\nVirheen kuvaus:\n" + str(e))
-                if e.errorCode == 404:
-                    #apikey on luultavasti väärä
-                    self._showErrorAlerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen? Ilmatieteenlaitos vaatii rekisteröitymistä palveluun "
-                                          "ennen sen käyttöä. Katso lisätietoa valikosta File->Aseta tunnisteavain.")
+        download = DownloadProgress(self)
+        download.finishedSignal.connect(self._download_realtime_finished)
+        download.beginDownload(params)
 
-                if e.errorCode == "NODATA":
-                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._showErrorAlerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
-                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
-        except Exception as e:
-             self._showErrorAlerts("Tuntematon virhe: " + str(e))
 
 
 

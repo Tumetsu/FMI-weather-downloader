@@ -16,7 +16,6 @@ class FMIxmlParser:
     dataframes = []
 
     def __init__(self):
-        print("PARSERI TEHTY")
         self.fieldNames = []
         self.df_positionTime = None
         self.df_observations = None
@@ -27,13 +26,11 @@ class FMIxmlParser:
             for item in xmlDataList:
 
                 locationName = item[0].find(".//gml:name", namespaces=self.gml).text
-                print(locationName)
+
                 df = self._parseDataPoints(item)
                 df = df[:-2]
-                print(df)
                 self.dataframes.append(df)
 
-            print (len(self.dataframes))
             totaldf = self._joinDataframes()
             return totaldf
         except (IndexError, ValueError) as e:
