@@ -9,12 +9,20 @@ class FMIRequestHandler():
     def __init__(self, api_key):
         self.api_key = api_key
         self.FMI_request = FMIRequest(self.api_key)
+        self.callbackFunction = None
 
-    def request(self, params, max_range):
+    def request(self, params, max_range, callbackFunction=None):
         requests = self._prepare_requests(params, max_range)
         responses = []
+        count = 0
+        all = len(requests)
+
         for r in requests:
             responses.append(self._do_request(r))
+            count += 1
+
+            if callbackFunction is not None:
+                callbackFunction(count, all)
 
         return responses
 

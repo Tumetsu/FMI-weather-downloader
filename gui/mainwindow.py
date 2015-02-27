@@ -17,7 +17,7 @@ class Mainwindow(QMainWindow):
     entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
     currentSelectedModel = None
     apiKey = ""
-    SET_APIKEY_MESSAGE = "API-key not provided. Set it on Settings -> Set api-key"
+    SET_APIKEY_MESSAGE = "Tunnisteavainta ei ole määritetty. Aseta se valikossa File->Aseta tunnisteavain"
     settings = None
 
     def __init__(self, parent=None):
@@ -31,13 +31,20 @@ class Mainwindow(QMainWindow):
         stations = self.api.getStationsList()
         for s in stations:
             self.ui.stationComboBox.addItem(s["Name"])
+            self.ui.stationComboBox_2.addItem(s["Name"])
 
         self.ui.stationComboBox.currentIndexChanged.connect(self._selectPlace)
+        self.ui.stationComboBox_2.currentIndexChanged.connect(self._selectPlace)
         self.ui.stationComboBox.setCurrentIndex(self.api.getIndexOfPlace("Hämeenlinna Lammi Pappila"))
-        self.ui.pushButton.clicked.connect(self._download)
+        self.ui.stationComboBox_2.setCurrentIndex(self.api.getIndexOfPlace("Hämeenlinna Lammi Pappila"))
+        self.ui.pushButton.clicked.connect(self._download_daily)
+        self.ui.pushButton_2.clicked.connect(self._download_realtime)
 
-        self.ui.endtime_dateEdit.dateChanged.connect(self._dateEdited)
-        self.ui.startimeDateEdit.dateChanged.connect(self._dateEdited)
+        self.ui.endtime_dateEdit.dateChanged.connect(self._dateEditedDaily)
+        self.ui.startimeDateEdit.dateChanged.connect(self._dateEditedDaily)
+
+        self.ui.endtime_dateTimeEdit_2.dateChanged.connect(self._dateEditedRealTime)
+        self.ui.startimeDateTimeEdit_2.dateChanged.connect(self._dateEditedRealTime)
 
         #statusbar
         self.statusBar().setStyleSheet("color: red;")
@@ -63,13 +70,13 @@ class Mainwindow(QMainWindow):
     @pyqtSlot()
     def _about(self):
         msgbox = QMessageBox()
-        msgbox.information(self, "About", "A quick weather data download client.\nIf it stops working check updates in following url or contact me.\n\nTuomas Salmi, 2015\nhttps://github.com/Tumetsu?tab=repositories\nsalmi.tuomas@gmail.com")
+        msgbox.information(self, "Tietoa", "Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.\nJos ohjelma lakkaa toimimasta, voit ottaa yhteyttä\n\nTuomas Salmi, 2015\nhttps://github.com/Tumetsu?tab=repositories\nsalmi.tuomas@gmail.com")
         msgbox.show()
 
     @pyqtSlot()
     def _set_apikey(self):
-        key = QInputDialog.getText(self, "Set API-key", "To use FMI weather service, you need to register and receive the API-key.\nGo to http://ilmatieteenlaitos.fi/avoin-data for more instructions.\n"
-                                         "When you have the key, copy it below:", text=self.apiKey)
+        key = QInputDialog.getText(self, "Aseta tunnisteavain", "Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.\nMene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.\n\n"
+                                         "Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:", text=self.apiKey)
         if key[1]:
             self.apiKey = key[0]
             self.api.auth(self.apiKey)
@@ -77,11 +84,54 @@ class Mainwindow(QMainWindow):
 
 
 
+
+
     @pyqtSlot(int)
     def _selectPlace(self,placeIndex):
+        self.ui.stationComboBox_2.setCurrentIndex(placeIndex)
+        self.ui.stationComboBox.setCurrentIndex(placeIndex)
         self.currentSelectedModel = self.api.getStationsList()[placeIndex]
         self.ui.data_availableLabel.setText(self.currentSelectedModel["Since"])
 
+        self._setDailyFieldLimits(placeIndex)
+        self._setRealTimeFieldLimits(placeIndex)
+
+
+
+
+    def _setRealTimeFieldLimits(self, placeIndex):
+        #realtime values are available only after 2010.
+        minYear = int(self.currentSelectedModel["Since"])
+        if  minYear > 2010:
+            self.ui.data_availableLabel_2.setText(str(minYear))
+        else:
+            minYear = 2010
+            self.ui.data_availableLabel_2.setText("1.1.2010")
+
+        self.ui.startimeDateTimeEdit_2.clearMinimumDate()
+        minDate = QDate(minYear, 1, 1)
+        self.ui.startimeDateTimeEdit_2.setMinimumDate(minDate)
+
+        self.ui.startimeDateTimeEdit_2.clearMaximumDate()
+        maxDate = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+        self.ui.startimeDateTimeEdit_2.setMaximumDate(maxDate)
+
+        self.ui.endtime_dateTimeEdit_2.clearMinimumDate()
+        minDate = QDate(minYear, 1, 1)
+        self.ui.endtime_dateTimeEdit_2.setMinimumDate(minDate)
+
+        self.ui.endtime_dateTimeEdit_2.clearMaximumDate()
+        maxDate = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+        self.ui.endtime_dateTimeEdit_2.setMaximumDate(maxDate)
+
+        newDate = QDate(self.ui.startimeDateTimeEdit_2.date().year(), self.ui.startimeDateTimeEdit_2.date().month(), self.ui.startimeDateTimeEdit_2.date().day() +1)
+        self.ui.endtime_dateTimeEdit_2.setDate(newDate)
+
+        if self.ui.startimeDateTimeEdit_2.date() < self.ui.startimeDateTimeEdit_2.minimumDate():
+            self.ui.startimeDateTimeEdit_2.setDate(self.ui.startimeDateTimeEdit_2.minimumDate())
+
+    def _setDailyFieldLimits(self, placeIndex):
+        #DAILY TAB
         self.ui.startimeDateEdit.clearMinimumDate()
         minDate = QDate(int(self.currentSelectedModel["Since"]), 1, 1)
         self.ui.startimeDateEdit.setMinimumDate(minDate)
@@ -101,7 +151,6 @@ class Mainwindow(QMainWindow):
         newDate = QDate(self.ui.startimeDateEdit.date().year(), self.ui.startimeDateEdit.date().month(), self.ui.startimeDateEdit.date().day() +1)
         self.ui.endtime_dateEdit.setDate(newDate)
 
-
         if self.ui.startimeDateEdit.date() < self.ui.startimeDateEdit.minimumDate():
             self.ui.startimeDateEdit.setDate(self.ui.startimeDateEdit.minimumDate())
 
@@ -113,7 +162,7 @@ class Mainwindow(QMainWindow):
             path = paths[0]
         else:
             path = ""
-        filename = QFileDialog.getSaveFileName(self, "Save weather data as csv",
+        filename = QFileDialog.getSaveFileName(self, "Tallenna säädata csv-muodossa:",
                                                path +"/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
         if filename[0] != "":
             self._saveToCsv(dataframe, filename[0])
@@ -121,32 +170,61 @@ class Mainwindow(QMainWindow):
     def _saveToCsv(self, df, path):
         #save
         print(df)
-        df.to_csv(path, sep=";", date_format="%d.%m.%Y", index=False)
+        df.to_csv(path, sep=";", date_format="%d.%m.%Y %H:%M", index=False)
 
     def _getDateTimeFromUI(self, dateEdit):
         return QDateTime(dateEdit.date()).toPyDateTime()
 
     @pyqtSlot()
-    def _dateEdited(self):
+    def _dateEditedDaily(self):
 
-        if self.ui.endtime_dateEdit.date() <= self.ui.startimeDateEdit.date():
-            self.ui.endtime_dateEdit.setStyleSheet("background-color: red;")
-            self.ui.pushButton.setEnabled(False)
-        else:
-            self.ui.endtime_dateEdit.setStyleSheet("background-color: white;")
-            self.ui.pushButton.setEnabled(True)
 
-        if self.ui.startimeDateEdit.date() >= self.ui.endtime_dateEdit.date():
-            self.ui.startimeDateEdit.setStyleSheet("background-color: red;")
+        if self.ui.startimeDateEdit.date() == self.ui.endtime_dateEdit.date():
+            self.ui.startimeDateEdit.setStyleSheet("background-color: #FC9DB7;")
+            self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
+            self.statusBar().showMessage("Aloitus ja lopetuspäivämäärät eivät saa olla samoja", 5000)
             self.ui.pushButton.setEnabled(False)
         else:
             self.ui.startimeDateEdit.setStyleSheet("background-color: white;")
+            self.ui.endtime_dateEdit.setStyleSheet("background-color: white;")
             self.ui.pushButton.setEnabled(True)
 
+            if self.ui.endtime_dateEdit.date() < self.ui.startimeDateEdit.date():
+                self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
+                self.statusBar().showMessage("Lopetus päivämäärä ei saa edeltää aloitus päivämäärää", 5000)
+                self.ui.pushButton.setEnabled(False)
+            else:
+                self.ui.endtime_dateEdit.setStyleSheet("background-color: white;")
+                self.statusBar().showMessage("", 50)
+                self.ui.pushButton.setEnabled(True)
 
+
+
+
+    @pyqtSlot()
+    def _dateEditedRealTime(self):
+        #realtimetab
+        if self.ui.startimeDateTimeEdit_2.date() == self.ui.endtime_dateTimeEdit_2.date():
+            self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
+            self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
+            self.statusBar().showMessage("Aloitus ja lopetuspäivämäärät eivät saa olla samoja", 5000)
+            self.ui.pushButton_2.setEnabled(False)
+        else:
+            self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: white;")
+            self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: white;")
+            self.ui.pushButton_2.setEnabled(True)
+
+            if self.ui.endtime_dateTimeEdit_2.date() < self.ui.startimeDateTimeEdit_2.date():
+                self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
+                self.statusBar().showMessage("Lopetus päivämäärä ei saa edeltää aloitus päivämäärää", 5000)
+                self.ui.pushButton_2.setEnabled(False)
+            else:
+                self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: white;")
+                self.statusBar().showMessage("", 50)
+                self.ui.pushButton_2.setEnabled(True)
 
     @pyqtSlot(int)
-    def _download(self):
+    def _download_daily(self):
         try:
             try:
                 results = self.api.get_daily_weather({"request" : "getFeature",
@@ -164,20 +242,54 @@ class Mainwindow(QMainWindow):
             except (RequestException, NoDataException) as e:
                 if e.errorCode == 400:
                     #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
-                    self._showErrorAlerts("Couldn't find the specified station from FMI-service.\nEither there is a problem "
-                                          "on FMI's service, or if this error-message is shown on every station this program likely needs "
-                                          "update. Check File->About for contact information.")
+                    self._showErrorAlerts("Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
+                                          "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta File->Tietoa valikosta.\n\nVirheen kuvaus:\n" + str(e))
                 if e.errorCode == 404:
                     #apikey on luultavastu väärä
-                    self._showErrorAlerts("Couldn't complete request.\nHave you set your API-key? FMI requires registering on their page before "
-                                          "this program can be used. Check more information on File->Set api-key menu.")
+                    self._showErrorAlerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen? Ilmatieteenlaitos vaatii rekisteröitymistä palveluun "
+                                          "ennen sen käyttöä. Katso lisätietoa valikosta File->Aseta tunnisteavain.")
 
                 if e.errorCode == "NODATA":
-                    #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._showErrorAlerts("Couldn't find data on specified time interval.\nMost likely FMI doesn't have data on this timespan.\nTry longer "
-                                           "timespan, for example one year to see if you can find data.")
+                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
+                     self._showErrorAlerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
+                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
         except Exception as e:
-             self._showErrorAlerts("Unknown error: " + str(e))
+             self._showErrorAlerts("Tuntematon virhe: " + str(e))
+
+
+
+    @pyqtSlot(int)
+    def _download_realtime(self):
+        try:
+            try:
+                results = self.api.get_realtime_weather({"request" : "getFeature",
+                           "storedquery_id" : "fmi::observations::weather::multipointcoverage",
+                           "fmisid": self.currentSelectedModel["FMISID"],
+                           "starttime" : self._getDateTimeFromUI(self.ui.startimeDateTimeEdit_2),
+                           "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateTimeEdit_2)
+                })
+
+                parser = FMIxmlParser()
+                dataframe = parser.parse(results)
+                parser = None
+                self._saveData(dataframe)
+                dataframe = None
+            except (RequestException, NoDataException) as e:
+                if e.errorCode == 400:
+                    #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
+                    self._showErrorAlerts("Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
+                                          "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta File->Tietoa valikosta.\n\nVirheen kuvaus:\n" + str(e))
+                if e.errorCode == 404:
+                    #apikey on luultavasti väärä
+                    self._showErrorAlerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen? Ilmatieteenlaitos vaatii rekisteröitymistä palveluun "
+                                          "ennen sen käyttöä. Katso lisätietoa valikosta File->Aseta tunnisteavain.")
+
+                if e.errorCode == "NODATA":
+                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
+                     self._showErrorAlerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
+                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
+        except Exception as e:
+             self._showErrorAlerts("Tuntematon virhe: " + str(e))
 
 
 

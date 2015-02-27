@@ -8,9 +8,17 @@ class RequestException(Exception):
         self.message = text
         self.errorCode = errorCode
         self.html = html
-        print(html)
+
+    def __str__(self):
+        if self.html != "":
+            return self.html
+        else:
+            return self.message
 
 
 class NoDataException(Exception):
-    message = "ERROR with data extraction. Does the server have data for this timespan?"
+    message = "ERROR in data-retrieving. Does the server have data for this timespan?"
     errorCode = "NODATA"
+
+    def __str__(self):
+        return self.message

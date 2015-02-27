@@ -24,7 +24,6 @@ class FMIxmlParser:
 
     def parse(self, xmlDataList):
         try:
-
             for item in xmlDataList:
 
                 locationName = item[0].find(".//gml:name", namespaces=self.gml).text
