@@ -7,9 +7,9 @@ class FMIRequestHandler():
 
 
     def __init__(self, api_key):
-        self.api_key = api_key
-        self.FMI_request = FMIRequest(self.api_key)
-        self.callbackFunction = None
+        self._api_key = api_key
+        self._FMI_request = FMIRequest(self._api_key)
+        self._callbackFunction = None
 
     def request(self, params, max_range, callbackFunction=None):
         requests = self._prepare_requests(params, max_range)
@@ -38,7 +38,7 @@ class FMIRequestHandler():
 
 
     def _do_request(self, request):
-        return self.FMI_request.get(request)
+        return self._FMI_request.get(request)
 
 
     def _how_many_requests_needed(self, start_time, end_time, max_range):
@@ -63,11 +63,6 @@ class FMIRequestHandler():
             new_request_params["endtime"] = new_end_date.strftime("%Y-%m-%dT00:00:00Z")
             requests.append(new_request_params)
         return requests
-
-
-
-
-
 
 
     def _do_parallel_request(self):

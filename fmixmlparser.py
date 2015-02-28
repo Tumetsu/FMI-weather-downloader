@@ -6,79 +6,72 @@ from fmierrors import *
 
 class FMIxmlParser:
 
-    gmlcov = {"gmlcov" : "http://www.opengis.net/gmlcov/1.0"}
-    gml = {"gml" : "http://www.opengis.net/gml/3.2"}
-    swe = {"swe" : "http://www.opengis.net/swe/2.0"}
+    _GMLCOV = {"gmlcov" : "http://www.opengis.net/gmlcov/1.0"}
+    _GML = {"gml" : "http://www.opengis.net/gml/3.2"}
+    _SWE = {"swe" : "http://www.opengis.net/swe/2.0"}
 
-    fieldNames = []
-    df_positionTime = None
-    df_observations = None
-    dataframes = []
+    _field_names = []
+    _dataframes = []
 
     def __init__(self):
-        self.fieldNames = []
-        self.df_positionTime = None
-        self.df_observations = None
-        self.dataframes = []
+        self._field_names = []
+        self._dataframes = []
 
-    def parse(self, xmlDataList):
+    def parse(self, xml_data_list):
         try:
-            for item in xmlDataList:
-
-                locationName = item[0].find(".//gml:name", namespaces=self.gml).text
-
-                df = self._parseDataPoints(item)
+            for item in xml_data_list:
+                #locationName = item[0].find(".//_GML:name", namespaces=self._GML).text
+                df = self._parse_datapoints(item)
                 df = df[:-2]
-                self.dataframes.append(df)
+                self._dataframes.append(df)
 
-            totaldf = self._joinDataframes()
+            totaldf = self._join_dataframes()
+            totaldf = self._clean_na_values(totaldf)
             return totaldf
         except (IndexError, ValueError) as e:
             raise NoDataException()
 
+    def _join_dataframes(self):
+        return pd.concat(self._dataframes, ignore_index=True)
 
-    def _joinDataframes(self):
-        return pd.concat(self.dataframes, ignore_index=True)
-
-
-
-
-    def _parseDataPoints(self, xmlData):
-        df_positionTime = self._parsePositions(xmlData)
-        df_observations = self._parseMeasurementData(xmlData)
-        df_observations = self._combineTimeWithObservation(df_observations, df_positionTime)
+    def _parse_datapoints(self, xmlData):
+        df_positionTime = self._parse_positions(xmlData)
+        df_observations = self._parse_measurementdata(xmlData)
+        df_observations = self._combine_time_and_observation(df_observations, df_positionTime)
         return df_observations
 
-
-
-
-    def _parsePositions(self, xmlData,):
-        positions = xmlData[0].find(".//gmlcov:positions", namespaces=self.gmlcov).text
+    def _parse_positions(self, xmlData,):
+        positions = xmlData[0].find(".//gmlcov:positions", namespaces=self._GMLCOV).text
         return pd.read_csv(StringIO(positions), delim_whitespace=True, names=["lat", "long", "time"])
 
-    def _parseMeasurementData(self, xmlData):
+    def _parse_measurementdata(self, xmlData):
         #get field names available in file
-        fields = xmlData[0].findall(".//swe:field", namespaces=self.swe)
-        self.fieldNames = []
+        fields = xmlData[0].findall(".//swe:field", namespaces=self._SWE)
+        self._field_names = []
         for f in fields:
-            self.fieldNames.append(f.get("name"))
+            self._field_names.append(f.get("name"))
 
         #get actual meaurement data
-        observed = xmlData[0].find(".//gml:doubleOrNilReasonTupleList", namespaces=self.gml).text
-        df_observations = pd.read_csv(StringIO(observed), delim_whitespace=True, names=self.fieldNames)
+        observed = xmlData[0].find(".//gml:doubleOrNilReasonTupleList", namespaces=self._GML).text
+        df_observations = pd.read_csv(StringIO(observed), delim_whitespace=True, names=self._field_names)
         df_observations = df_observations.applymap(str).replace(r'\.',',',regex=True)    #decimal dot to comma
+
         return df_observations
 
-    def _combineTimeWithObservation(self, df_observations, df_positionTime):
+    def _combine_time_and_observation(self, df_observations, df_positionTime):
         df_observations["time"] = df_positionTime["time"]
         df_observations["time"] = pd.to_datetime(df_observations["time"], unit="s")
-        self.fieldNames.insert(0, "time")
-        df_observations = df_observations[self.fieldNames]
+        self._field_names.insert(0, "time")
+        df_observations = df_observations[self._field_names]
         return df_observations
 
+    def _clean_na_values(self, df):
+        df = df.replace('nan', pd.np.nan)
+        df = df.dropna(axis=1, how='all')
+        df = df.replace(pd.np.nan, "")
+        return df
+
     def clear(self):
-        self.dataframes = []
-        self.fieldNames = []
-        self.df_positionTime = None
-        self.df_observations = None
+        self._dataframes = []
+        self._field_names = []
 

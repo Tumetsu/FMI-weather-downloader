@@ -22,8 +22,9 @@ class DownloadProgress(QObject):
         self.threadExceptionSignal.connect(self._loadingFailed)
         self.threadResultsSignal.connect(self._processFinished)
         self.requestParams = ""
+        self.request_function = None
 
-    def beginDownload(self, requestparams):
+    def beginDownload(self, requestparams, request_function):
         self.progressDialog = QProgressDialog(self.parent)
         self.progressDialog.setCancelButton(None)
         self.progressDialog.setLabelText("Ladataan säädataa...")
@@ -31,18 +32,13 @@ class DownloadProgress(QObject):
         self.progressDialog.setValue(0)
         self.thread.run = self._runProcess
         self.requestParams = requestparams
+        self.request_function = request_function
         self.thread.start()
 
 
     def _runProcess(self):
         try:
-            #TODO: REQUESTI TÄHÄN
-            #processData.ProcessData(self._processUpdateCallback)
-            if self.requestParams["daily"] == True:
-                results = self.parent.api.get_daily_weather(self.requestParams, self._processUpdateCallback)
-            else:
-                results = self.parent.api.get_realtime_weather(self.requestParams, self._processUpdateCallback)
-
+            results = self.request_function(self.requestParams, self._processUpdateCallback)
             self.threadResultsSignal.emit(results)
         except Exception as e:
             self.threadExceptionSignal.emit(e)
@@ -63,19 +59,19 @@ class DownloadProgress(QObject):
             except (RequestException, NoDataException) as e:
                 if e.errorCode == 400:
                     #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
-                    self.parent._showErrorAlerts("Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
+                    self.parent._show_error_alerts("Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
                                           "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta File->Tietoa valikosta.\n\nVirheen kuvaus:\n" + str(e))
                 if e.errorCode == 404:
                     #apikey on luultavasti väärä
-                    self.parent._showErrorAlerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen? Ilmatieteenlaitos vaatii rekisteröitymistä palveluun "
+                    self.parent._show_error_alerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen? Ilmatieteenlaitos vaatii rekisteröitymistä palveluun "
                                           "ennen sen käyttöä. Katso lisätietoa valikosta File->Aseta tunnisteavain.")
 
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self.parent._showErrorAlerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
+                     self.parent._show_error_alerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
                                            "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
         except Exception as e:
-             self.parent._showErrorAlerts("Tuntematon virhe: " + str(e))
+             self.parent._show_error_alerts("Tuntematon virhe: " + str(e))
 
 
 

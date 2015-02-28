@@ -13,55 +13,63 @@ from downloadProgress import *
 
 class Mainwindow(QMainWindow):
 
-    api = None
+    _api = None
     entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
     currentSelectedModel = None
-    apiKey = ""
-    SET_APIKEY_MESSAGE = "Tunnisteavainta ei ole määritetty. Aseta se valikossa Tiedosto->Aseta tunnisteavain"
-    settings = None
+    _apiKey = ""
+    _SET_APIKEY_MESSAGE = "Tunnisteavainta ei ole määritetty. Aseta se valikossa Tiedosto->Aseta tunnisteavain"
+    _settings = None
 
     def __init__(self, parent=None):
         super(Mainwindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self._set_up_api()
+        self._set_up_ui()
+        self._load_qsettings()
 
-        self.api = FMIApi()
-        self.api.auth(self.apiKey)
+    def _load_qsettings(self):
+        self._settings = QSettings("_api", "_api")
+        storedApikey = self._settings.value("apikey")
+        if storedApikey is not None:
+            self._apiKey = storedApikey
+            self._api.auth(self._apiKey)
+
+        if self._apiKey == "":
+            self.statusBar().showMessage(self._SET_APIKEY_MESSAGE, 0)
+
+    def _set_up_api(self):
+        self._api = FMIApi()
+        self._api.auth(self._apiKey)
+
+    def _set_up_ui(self):
         self.ui.stationComboBox.clear()
-        stations = self.api.getStationsList()
+        stations = self._api.get_stations()
+
         for s in stations:
             self.ui.stationComboBox.addItem(s["Name"])
             self.ui.stationComboBox_2.addItem(s["Name"])
 
-        self.ui.stationComboBox.currentIndexChanged.connect(self._selectPlace)
-        self.ui.stationComboBox_2.currentIndexChanged.connect(self._selectPlace)
-        self.ui.stationComboBox.setCurrentIndex(self.api.getIndexOfPlace("Hämeenlinna Lammi Pappila"))
-        self.ui.stationComboBox_2.setCurrentIndex(self.api.getIndexOfPlace("Hämeenlinna Lammi Pappila"))
+        self.ui.stationComboBox.currentIndexChanged.connect(self._select_place_from_combobox)
+        self.ui.stationComboBox_2.currentIndexChanged.connect(self._select_place_from_combobox)
+        self.ui.stationComboBox.setCurrentIndex(self._api.get_index_of_station("Hämeenlinna Lammi Pappila"))
+        self.ui.stationComboBox_2.setCurrentIndex(self._api.get_index_of_station("Hämeenlinna Lammi Pappila"))
         self.ui.pushButton.clicked.connect(self._download_daily)
         self.ui.pushButton_2.clicked.connect(self._download_realtime)
 
-        self.ui.endtime_dateEdit.dateChanged.connect(self._dateEditedDaily)
-        self.ui.startimeDateEdit.dateChanged.connect(self._dateEditedDaily)
+        self.ui.endtime_dateEdit.dateChanged.connect(self._daily_date_edited)
+        self.ui.startimeDateEdit.dateChanged.connect(self._daily_date_edited)
 
-        self.ui.endtime_dateTimeEdit_2.dateChanged.connect(self._dateEditedRealTime)
-        self.ui.startimeDateTimeEdit_2.dateChanged.connect(self._dateEditedRealTime)
+        self.ui.endtime_dateTimeEdit_2.dateChanged.connect(self._realtime_date_edited)
+        self.ui.startimeDateTimeEdit_2.dateChanged.connect(self._realtime_date_edited)
 
         #statusbar
         self.statusBar().setStyleSheet("color: red;")
 
+        #actions
         self.ui.actionSet_api_key.triggered.connect(self._set_apikey)
         self.ui.actionExit.triggered.connect(self._quit)
         self.ui.actionAbout.triggered.connect(self._about)
-
-
-        self.settings = QSettings("api", "api")
-        storedApikey = self.settings.value("apikey")
-        if storedApikey is not None:
-            self.apiKey = storedApikey
-            self.api.auth(self.apiKey)
-
-        if self.apiKey == "":
-            self.statusBar().showMessage(self.SET_APIKEY_MESSAGE, 0)
 
     @pyqtSlot()
     def _quit(self):
@@ -76,30 +84,23 @@ class Mainwindow(QMainWindow):
     @pyqtSlot()
     def _set_apikey(self):
         key = QInputDialog.getText(self, "Aseta tunnisteavain", "Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.\nMene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.\n\n"
-                                         "Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:", text=self.apiKey)
+                                         "Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:", text=self._apiKey)
         if key[1]:
-            self.apiKey = key[0]
-            self.api.auth(self.apiKey)
-            self.settings.setValue("apikey", self.apiKey)
-
-
-
-
+            self._apiKey = key[0]
+            self._api.auth(self._apiKey)
+            self._settings.setValue("apikey", self._apiKey)
 
     @pyqtSlot(int)
-    def _selectPlace(self,placeIndex):
+    def _select_place_from_combobox(self,placeIndex):
         self.ui.stationComboBox_2.setCurrentIndex(placeIndex)
         self.ui.stationComboBox.setCurrentIndex(placeIndex)
-        self.currentSelectedModel = self.api.getStationsList()[placeIndex]
+        self.currentSelectedModel = self._api.get_stations()[placeIndex]
         self.ui.data_availableLabel.setText(self.currentSelectedModel["Since"])
 
-        self._setDailyFieldLimits(placeIndex)
-        self._setRealTimeFieldLimits(placeIndex)
+        self._set_daily_fieldLimits(placeIndex)
+        self._set_realtime_fieldLimits(placeIndex)
 
-
-
-
-    def _setRealTimeFieldLimits(self, placeIndex):
+    def _set_realtime_fieldLimits(self, placeIndex):
         #realtime values are available only after 2010.
         minYear = int(self.currentSelectedModel["Since"])
         if  minYear > 2010:
@@ -130,7 +131,7 @@ class Mainwindow(QMainWindow):
         if self.ui.startimeDateTimeEdit_2.date() < self.ui.startimeDateTimeEdit_2.minimumDate():
             self.ui.startimeDateTimeEdit_2.setDate(self.ui.startimeDateTimeEdit_2.minimumDate())
 
-    def _setDailyFieldLimits(self, placeIndex):
+    def _set_daily_fieldLimits(self, placeIndex):
         #DAILY TAB
         self.ui.startimeDateEdit.clearMinimumDate()
         minDate = QDate(int(self.currentSelectedModel["Since"]), 1, 1)
@@ -154,9 +155,7 @@ class Mainwindow(QMainWindow):
         if self.ui.startimeDateEdit.date() < self.ui.startimeDateEdit.minimumDate():
             self.ui.startimeDateEdit.setDate(self.ui.startimeDateEdit.minimumDate())
 
-
-
-    def _saveData(self, dataframe):
+    def _choose_place_to_save_data(self, dataframe):
         paths = QStandardPaths.standardLocations(0)
         if len(paths) > 0:
             path = paths[0]
@@ -165,19 +164,16 @@ class Mainwindow(QMainWindow):
         filename = QFileDialog.getSaveFileName(self, "Tallenna säädata csv-muodossa:",
                                                path +"/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
         if filename[0] != "":
-            self._saveToCsv(dataframe, filename[0])
+            self._save_to_csv(dataframe, filename[0])
 
-    def _saveToCsv(self, df, path):
-        #save
+    def _save_to_csv(self, df, path):
         df.to_csv(path, sep=";", date_format="%d.%m.%Y %H:%M", index=False)
 
-    def _getDateTimeFromUI(self, dateEdit):
+    def _get_dateTime_from_UI(self, dateEdit):
         return QDateTime(dateEdit.date()).toPyDateTime()
 
     @pyqtSlot()
-    def _dateEditedDaily(self):
-
-
+    def _daily_date_edited(self):
         if self.ui.startimeDateEdit.date() == self.ui.endtime_dateEdit.date():
             self.ui.startimeDateEdit.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
@@ -197,11 +193,8 @@ class Mainwindow(QMainWindow):
                 self.statusBar().showMessage("", 50)
                 self.ui.pushButton.setEnabled(True)
 
-
-
-
     @pyqtSlot()
-    def _dateEditedRealTime(self):
+    def _realtime_date_edited(self):
         #realtimetab
         if self.ui.startimeDateTimeEdit_2.date() == self.ui.endtime_dateTimeEdit_2.date():
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
@@ -224,18 +217,15 @@ class Mainwindow(QMainWindow):
 
     @pyqtSlot(int)
     def _download_daily(self):
-
-        params = {"request" : "getFeature",
+        params = { "request" : "getFeature",
                    "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
                    "fmisid": self.currentSelectedModel["FMISID"],
-                   "starttime" : self._getDateTimeFromUI(self.ui.startimeDateEdit),
-                   "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateEdit),
-                   "daily" : True
+                   "starttime" : self._get_dateTime_from_UI(self.ui.startimeDateEdit),
+                   "endtime" : self._get_dateTime_from_UI(self.ui.endtime_dateEdit)
         }
-
         download = DownloadProgress(self)
         download.finishedSignal.connect(self._download_daily_finished)
-        download.beginDownload(params)
+        download.beginDownload(params, self._api.get_realtime_weather)
 
 
 
@@ -246,16 +236,16 @@ class Mainwindow(QMainWindow):
                 parser = FMIxmlParser()
                 dataframe = parser.parse(results)
                 parser = None
-                self._saveData(dataframe)
+                self._choose_place_to_save_data(dataframe)
                 dataframe = None
             except (NoDataException) as e:
 
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._showErrorAlerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
+                     self._show_error_alerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
                                            "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
         except Exception as e:
-             self._showErrorAlerts("Tuntematon virhe: " + str(e))
+            self._show_error_alerts("Tuntematon virhe: " + str(e))
 
     @pyqtSlot(list)
     def _download_daily_finished(self, results):
@@ -264,16 +254,16 @@ class Mainwindow(QMainWindow):
                 parser = FMIxmlParser()
                 dataframe = parser.parse(results)
                 parser = None
-                self._saveData(dataframe)
+                self._choose_place_to_save_data(dataframe)
                 dataframe = None
             except (NoDataException) as e:
-
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._showErrorAlerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
+                     self._show_error_alerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
                                            "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
         except Exception as e:
-             self._showErrorAlerts("Tuntematon virhe: " + str(e))
+             raise e
+             #self._show_error_alerts("Tuntematon virhe: " + str(e))
 
     @pyqtSlot(int)
     def _download_realtime(self):
@@ -281,20 +271,15 @@ class Mainwindow(QMainWindow):
         params = {"request" : "getFeature",
                            "storedquery_id" : "fmi::observations::weather::multipointcoverage",
                            "fmisid": self.currentSelectedModel["FMISID"],
-                           "starttime" : self._getDateTimeFromUI(self.ui.startimeDateTimeEdit_2),
-                           "endtime" : self._getDateTimeFromUI(self.ui.endtime_dateTimeEdit_2),
-                           "daily" : False
+                           "starttime" : self._get_dateTime_from_UI(self.ui.startimeDateTimeEdit_2),
+                           "endtime" : self._get_dateTime_from_UI(self.ui.endtime_dateTimeEdit_2),
                 }
 
         download = DownloadProgress(self)
         download.finishedSignal.connect(self._download_realtime_finished)
-        download.beginDownload(params)
+        download.beginDownload(params, self._api.get_realtime_weather)
 
-
-
-
-
-    def _showErrorAlerts(self, message):
+    def _show_error_alerts(self, message):
         msgbox = QMessageBox()
         msgbox.information(self, "ERROR", message)
         msgbox.show()

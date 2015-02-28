@@ -5,7 +5,7 @@ from fmixmlparser import FMIxmlParser, NoDataException
 
 if __name__ == '__main__':
     api = FMIApi()
-    api._loadStationMetadata()
+    api._load_station_metadata()
 
     api.auth("4d7bcd64-01af-4dbb-8a43-404e97b8c2cd")
     results = api.get_daily_weather( {"request" : "getFeature",
