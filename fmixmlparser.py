@@ -24,6 +24,7 @@ class FMIxmlParser:
                 df = self._parse_datapoints(item)
                 df = df[:-2]
                 self._dataframes.append(df)
+                #TODO: CALLBACK KERTOMAAN ETENEMISESTÄ?
 
             totaldf = self._join_dataframes()
             totaldf = self._clean_na_values(totaldf)

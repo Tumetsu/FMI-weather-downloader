@@ -167,7 +167,7 @@ class Mainwindow(QMainWindow):
             self._save_to_csv(dataframe, filename[0])
 
     def _save_to_csv(self, df, path):
-        df.to_csv(path, sep=";", date_format="%d.%m.%Y %H:%M", index=False)
+        df.to_csv(path, sep=";", date_format="%d.%m.%Y %H:%M", index=False, chunksize=10)
 
     def _get_dateTime_from_UI(self, dateEdit):
         return QDateTime(dateEdit.date()).toPyDateTime()
