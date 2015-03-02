@@ -7,6 +7,7 @@ setup(windows=[{"script":"start.py",
 
       options={
           "py2exe":{
-              "includes":["sip", "lxml._elementpath", "lxml.etree", "pandas", "PyQt5.QtCore"]
+              "includes":["sip", "lxml._elementpath", "lxml.etree", "pandas", "PyQt5.QtCore"],
+              "excludes":["_ssl","doctest", "pdb", "regex"]
           }
       })

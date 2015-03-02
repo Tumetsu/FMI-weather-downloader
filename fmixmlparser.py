@@ -20,7 +20,7 @@ class FMIxmlParser:
     def parse(self, xml_data_list):
         try:
             for item in xml_data_list:
-                #locationName = item[0].find(".//_GML:name", namespaces=self._GML).text
+                locationName = item[0].find(".//gml:name", namespaces=self._GML).text
                 df = self._parse_datapoints(item)
                 df = df[:-2]
                 self._dataframes.append(df)
@@ -28,6 +28,7 @@ class FMIxmlParser:
 
             totaldf = self._join_dataframes()
             totaldf = self._clean_na_values(totaldf)
+            totaldf["place"] = locationName
             return totaldf
         except (IndexError, ValueError) as e:
             raise NoDataException()

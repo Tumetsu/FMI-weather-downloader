@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main_window.ui'
 #
-# Created: Fri Feb 27 13:36:06 2015
+# Created: Mon Mar  2 09:28:10 2015
 #      by: PyQt5 UI code generator 5.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -40,7 +40,7 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
         self.stationComboBox = QtWidgets.QComboBox(self.dailytab)
-        self.stationComboBox.setEditable(False)
+        self.stationComboBox.setEditable(True)
         self.stationComboBox.setMaxVisibleItems(20)
         self.stationComboBox.setObjectName("stationComboBox")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.stationComboBox)
@@ -93,7 +93,7 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName("label_7")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_7)
         self.stationComboBox_2 = QtWidgets.QComboBox(self.realtimetab)
-        self.stationComboBox_2.setEditable(False)
+        self.stationComboBox_2.setEditable(True)
         self.stationComboBox_2.setMaxVisibleItems(20)
         self.stationComboBox_2.setObjectName("stationComboBox_2")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.stationComboBox_2)

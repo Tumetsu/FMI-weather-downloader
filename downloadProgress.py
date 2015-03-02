@@ -60,11 +60,11 @@ class DownloadProgress(QObject):
                 if e.errorCode == 400:
                     #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
                     self.parent._show_error_alerts("Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
-                                          "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta File->Tietoa valikosta.\n\nVirheen kuvaus:\n" + str(e))
+                                          "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta Tiedosto->Tietoa valikosta.\n\nVirheen kuvaus:\n" + str(e))
                 if e.errorCode == 404:
                     #apikey on luultavasti väärä
-                    self.parent._show_error_alerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen? Ilmatieteenlaitos vaatii rekisteröitymistä palveluun "
-                                          "ennen sen käyttöä. Katso lisätietoa valikosta File->Aseta tunnisteavain.")
+                    self.parent._show_error_alerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen?\n\nIlmatieteenlaitos vaatii rekisteröitymistä palveluun "
+                                          "ennen sen käyttöä. Katso lisätietoa valikosta Tiedosto->Aseta tunnisteavain.")
 
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?

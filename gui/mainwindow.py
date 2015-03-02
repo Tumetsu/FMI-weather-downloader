@@ -1,5 +1,5 @@
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QDir
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QFileDialog, QInputDialog, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
 from PyQt5.QtCore import pyqtSlot, QEvent, QSettings, QStandardPaths
 
 from PyQt5.QtGui import QStatusTipEvent, QDesktopServices
@@ -45,10 +45,17 @@ class Mainwindow(QMainWindow):
     def _set_up_ui(self):
         self.ui.stationComboBox.clear()
         stations = self._api.get_stations()
-
+        completer_strings = []
         for s in stations:
             self.ui.stationComboBox.addItem(s["Name"])
             self.ui.stationComboBox_2.addItem(s["Name"])
+            completer_strings.append(s["Name"])
+        self.comboboxCompleter = QCompleter(completer_strings, self)
+        self.comboboxCompleter.setCompletionMode(0)
+        self.ui.stationComboBox.setCompleter(self.comboboxCompleter)
+        self.ui.stationComboBox_2.setCompleter(self.comboboxCompleter)
+
+
 
         self.ui.stationComboBox.currentIndexChanged.connect(self._select_place_from_combobox)
         self.ui.stationComboBox_2.currentIndexChanged.connect(self._select_place_from_combobox)
@@ -86,7 +93,7 @@ class Mainwindow(QMainWindow):
         key = QInputDialog.getText(self, "Aseta tunnisteavain", "Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.\nMene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.\n\n"
                                          "Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:", text=self._apiKey)
         if key[1]:
-            self._apiKey = key[0]
+            self._apiKey = key[0].strip()
             self._api.auth(self._apiKey)
             self._settings.setValue("apikey", self._apiKey)
 
@@ -99,6 +106,7 @@ class Mainwindow(QMainWindow):
 
         self._set_daily_fieldLimits(placeIndex)
         self._set_realtime_fieldLimits(placeIndex)
+
 
     def _set_realtime_fieldLimits(self, placeIndex):
         #realtime values are available only after 2010.
