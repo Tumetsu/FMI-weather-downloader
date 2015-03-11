@@ -29,6 +29,7 @@ class FMIRequestHandler():
 
     def _prepare_requests(self, params, max_range):
         required_requests = self._how_many_requests_needed(params["starttime"], params["endtime"], max_range)
+        print(required_requests)
         if required_requests == 1:
             return [params]
         else:

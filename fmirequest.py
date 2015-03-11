@@ -29,9 +29,11 @@ class FMIRequest():
 
     def _get_error_reason(self, response):
         if response.getheader("Content-Type") == "text/html":
+            print("raise")
             raise RequestException("Error in html", response.status, html=response.read())
 
         elif response.getheader("Content-Type") == "text/xml; charset=UTF8":
             xml = etree.XML(response.read())
             raise RequestException(xml.find(".//xmlns:ExceptionText", namespaces=self._XMLNS_NAMESPACE).text, response.status)
 
+        print("sdasd")

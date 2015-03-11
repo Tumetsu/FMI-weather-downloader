@@ -8,7 +8,6 @@ from fmiapi import FMIApi
 import datetime
 from fmixmlparser import FMIxmlParser
 import sys
-from fmierrors import *
 from downloadProgress import *
 
 class Mainwindow(QMainWindow):
@@ -231,9 +230,10 @@ class Mainwindow(QMainWindow):
                    "starttime" : self._get_dateTime_from_UI(self.ui.startimeDateEdit),
                    "endtime" : self._get_dateTime_from_UI(self.ui.endtime_dateEdit)
         }
+
         download = DownloadProgress(self)
         download.finishedSignal.connect(self._download_daily_finished)
-        download.beginDownload(params, self._api.get_realtime_weather)
+        download.beginDownload(params, self._api.get_daily_weather)
 
 
 
@@ -269,6 +269,7 @@ class Mainwindow(QMainWindow):
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
                      self._show_error_alerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
                                            "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
+
         except Exception as e:
              raise e
              #self._show_error_alerts("Tuntematon virhe: " + str(e))

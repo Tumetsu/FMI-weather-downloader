@@ -55,6 +55,7 @@ class ProgressBarTask(QObject):
             results = self.request_function(self.requestParams, self._processUpdateCallback)
             self.threadResultsSignal.emit(results)
         except Exception as e:
+            print("virhe")
             self.threadExceptionSignal.emit(e)
 
 
@@ -67,11 +68,12 @@ class ProgressBarTask(QObject):
     def _loadingFailed(self, error):
         """POIKKEUSTEN KÄSITTELY UI-SÄIKEESSÄ"""
         self.progressDialog.cancel()
-
+        print ("joo")
         try:
             try:
                 raise error
             except (RequestException, NoDataException) as e:
+                print ("joo")
                 if e.errorCode == 400:
                     #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
                     self.parent._show_error_alerts("Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
@@ -80,6 +82,10 @@ class ProgressBarTask(QObject):
                     #apikey on luultavasti väärä
                     self.parent._show_error_alerts("Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen? Ilmatieteenlaitos vaatii rekisteröitymistä palveluun "
                                           "ennen sen käyttöä. Katso lisätietoa valikosta File->Aseta tunnisteavain.")
+
+                if e.errorCode == 429:
+                    #liikaa pyyntöjä
+                     self.parent._show_error_alerts("Teit liikaa datapyyntöjä palveluun. Odota 5-10min ja yritä sitten uudelleen.")
 
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
@@ -93,6 +99,7 @@ class ProgressBarTask(QObject):
 
     @pyqtSlot(list)
     def _processFinished(self, result):
+        print("valmis")
         self.result = result
         self.finishedSignal.emit(self.result)
 
