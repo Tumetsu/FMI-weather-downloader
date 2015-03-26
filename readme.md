@@ -1,12 +1,12 @@
-Ilmatieteenlaitoksen säädata lataaja
+Ilmatieteenlaitoksen säädatalataaja
 ==============================
 
 
-Tämä on yksinkertainen graafisen käyttöliittymän tarjoava sovellus ilmatieteenlaitoksen säädatan lataamiseen Exceliin soveltuvassa muodossa. Ohjelma kehitettiin alunperin Lammin Biologisen aseman tarpeisiin.
+Tämä on yksinkertainen graafisen käyttöliittymän tarjoava sovellus ilmatieteenlaitoksen säädatan lataamiseen Exceliin soveltuvassa muodossa. Ohjelma kehitettiin alunperin [Lammin Biologisen aseman](http://www.helsinki.fi/lammi/) tarpeisiin.
 
-Ohjelmalla voit ladata Ilmatieteenlaitoksen avoimen datan palvelusta eri sääasemien vuorokausi- ja reaaliaikakohtaista säädataa.
+Ohjelmalla voit ladata [Ilmatieteenlaitoksen avoimen datan palvelusta](https://ilmatieteenlaitos.fi/avoin-data) eri sääasemien vuorokausi- ja reaaliaikakohtaista säädataa.
 
-[Lataa asennettava ohjelma Windowsille tästä](http://example.com)
+[Lataa asennettava ohjelma Windowsille tästä](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/releases/tag/v0.9)
 
 ----------
 
