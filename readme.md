@@ -1,4 +1,4 @@
-Ilmatieteenlaitoksen säädatalataaja
+Ilmatieteenlaitoksen säädatan lataaja
 ==============================
 
 
@@ -8,8 +8,7 @@ Ohjelmalla voit ladata [Ilmatieteenlaitoksen avoimen datan palvelusta](https://i
 
 [Lataa asennettava ohjelma Windowsille tästä](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/releases/tag/v0.9)
 
-----------
-
+Huom! Sovelluksella ei ole mitään tekemistä itse Ilmatieteenlaitoksen kanssa. Se vain käyttää heidän tarjoamaansa dataa.
 
 Sovelluskehittäjille tiedoksi
 -------------
@@ -19,8 +18,6 @@ Tämä sovellus kehitettiin alunperin varsin nopeasti kasaan käyttäen Python 3
 Varsinainen API:n käsittely ja http-pyyntöjen käsittelykoodi on kuitenkin eroteltu "fmi"-etuliitteisiin tiedostoihin.
 
 Saatan tulevaisuudessa siistiä koodia hieman, mutta varsinainen jatkokehitys omalta osaltani on epätodennäköistä. Forkkaus on kuitenkin tervetullutta, sillä tutkijapiireissä tuntuu olevan kysyntää avoimelle datalle.
-
-----------
 
 
 Requirements
