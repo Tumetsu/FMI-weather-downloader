@@ -1,14 +1,13 @@
-from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QDir
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
-from PyQt5.QtCore import pyqtSlot, QEvent, QSettings, QStandardPaths
+import datetime
 
-from PyQt5.QtGui import QStatusTipEvent, QDesktopServices
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
+from PyQt5.QtCore import pyqtSlot, QSettings, QStandardPaths
 from gui.ui_mainwindow import Ui_MainWindow
 from fmiapi import FMIApi
-import datetime
 from fmixmlparser import FMIxmlParser
-import sys
-from downloadProgress import *
+from gui.downloadProgress import *
+
 
 class Mainwindow(QMainWindow):
 
@@ -53,8 +52,6 @@ class Mainwindow(QMainWindow):
         self.comboboxCompleter.setCompletionMode(0)
         self.ui.stationComboBox.setCompleter(self.comboboxCompleter)
         self.ui.stationComboBox_2.setCompleter(self.comboboxCompleter)
-
-
 
         self.ui.stationComboBox.currentIndexChanged.connect(self._select_place_from_combobox)
         self.ui.stationComboBox_2.currentIndexChanged.connect(self._select_place_from_combobox)
@@ -302,7 +299,6 @@ def start():
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
-
     start()
 
 
