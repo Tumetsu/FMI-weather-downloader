@@ -43,5 +43,5 @@ Tämän jälkeen syntyneeseen dist hakemistoon on vielä kopioitava "platforms" 
 
     C:\Python34\Lib\site-packages\PyQt5\plugins\platforms
 
-Dist hakemiston voi sitten pakata käteväksi asennettavaksi ohjelmaksi vaikkapa [InnoSetupilla](http://www.jrsoftware.org/isinfo.php), johon löytyy skripti juurihakemistosta.
+dist hakemiston voi sitten pakata käteväksi asennettavaksi ohjelmaksi vaikkapa [InnoSetupilla](http://www.jrsoftware.org/isinfo.php), johon löytyy malliskripti juurihakemistosta.
 
