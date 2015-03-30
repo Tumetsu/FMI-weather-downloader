@@ -1,5 +1,6 @@
-from fmirequesthandler import FMIRequestHandler
 import csv
+from fmiapi.fmirequesthandler import FMIRequestHandler
+
 
 class FMIApi():
 
@@ -25,6 +26,9 @@ class FMIApi():
                                              callbackFunction=callbackFunction)
 
     def _load_station_metadata(self):
+        """ FMI apparently didn't provide an API-endpoint to get list of all the stations. For now, we load the
+        required station information from CSV-file. Change to a api-endpoint if one becomes (or is already?) available.
+        """
         with open(self._PATH_TO_STATIONS_CSV, "r", encoding="utf8") as file:
             reader = csv.DictReader(file, ["Name", "FMISID", "LPNN", "WMO", "lat", "lon", "Altitude", "Group", "Since"],
                                     delimiter=";")
@@ -39,10 +43,6 @@ class FMIApi():
             if self._stations[i]["Name"] == placeName:
                 return i
         return -1
-
-
-
-
 
 class ApiKeyException(Exception):
     message = "Please provide a valid API-key. Instructions to get one available on: " \

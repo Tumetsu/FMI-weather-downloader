@@ -1,9 +1,13 @@
 import math
 import datetime
 import copy
-from fmirequest import FMIRequest
-class FMIRequestHandler():
+from fmiapi.fmirequest import FMIRequest
 
+
+class FMIRequestHandler():
+    """ This class takes a datarequest and splits it to multiple http-requests if required and
+    then does the request by using FMIRequest class.
+    """
 
 
     def __init__(self, api_key):

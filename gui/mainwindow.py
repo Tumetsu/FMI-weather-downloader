@@ -4,8 +4,8 @@ from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
 from PyQt5.QtCore import pyqtSlot, QSettings, QStandardPaths
 from gui.ui_mainwindow import Ui_MainWindow
-from fmiapi import FMIApi
-from fmixmlparser import FMIxmlParser
+from fmiapi.fmiapi import FMIApi
+from fmiapi.fmixmlparser import FMIxmlParser
 from gui.downloadProgress import *
 
 

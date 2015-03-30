@@ -1,11 +1,14 @@
-import pandas as pd
 from io import StringIO
-import lxml
-from lxml import etree
-from fmierrors import *
+
+import pandas as pd
+
+from fmiapi.fmierrors import *
+
 
 class FMIxmlParser:
-
+    """ Ad-hoc class to parse multipoint-coverage xml supplied from FMI-service and convert the multipoint-coverage
+    values to a single Pandas dataframe.
+    """
 
 
     def __init__(self):

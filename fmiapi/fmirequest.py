@@ -1,11 +1,11 @@
-from lxml import etree
 import http.client
 import urllib.request
-from fmierrors import *
+from lxml import etree
+from fmiapi.fmierrors import *
+
 
 class FMIRequest():
-
-
+    """ This class does the actual single http-request required """
 
     def __init__(self, api_key):
         self._url = "data.fmi.fi"

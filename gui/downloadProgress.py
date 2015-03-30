@@ -1,8 +1,8 @@
 from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal
 
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QFileDialog, QProgressDialog, QMessageBox
+from PyQt5.QtWidgets import QProgressDialog
 from PyQt5.QtCore import pyqtSlot, QObject
-from fmierrors import *
+from fmiapi.fmierrors import *
 
 class DownloadProgress(QObject):
 
