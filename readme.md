@@ -9,7 +9,12 @@ Ohjelmalla voit ladata [Ilmatieteenlaitoksen avoimen datan palvelusta](https://i
 
 ##[Lataa asennettava ohjelma Windowsille tästä](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/releases/tag/v0.9)
 
-Huom! Sovelluksella ei ole mitään tekemistä itse Ilmatieteenlaitoksen kanssa. Se vain käyttää heidän tarjoamaansa dataa.
+
+
+
+Aineisto
+---------
+Sovelluksen antama aineisto on suoraan ladattu Suomen Ilmatieteenlaitoksen palvelimilta. Sovelluksella ei ole virallista yhteyttä Ilmatieteenlaitokseen, vaan on yksityishenkilön tuottama tuote.
 [Lue Ilmatieteenlaitoksen avoimendatan lisenssi](http://ilmatieteenlaitos.fi/avoin-data-lisenssi)
 
 Sovelluskehittäjille tiedoksi
