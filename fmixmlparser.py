@@ -6,14 +6,12 @@ from fmierrors import *
 
 class FMIxmlParser:
 
-    _GMLCOV = {"gmlcov" : "http://www.opengis.net/gmlcov/1.0"}
-    _GML = {"gml" : "http://www.opengis.net/gml/3.2"}
-    _SWE = {"swe" : "http://www.opengis.net/swe/2.0"}
 
-    _field_names = []
-    _dataframes = []
 
     def __init__(self):
+        self._GMLCOV = {"gmlcov" : "http://www.opengis.net/gmlcov/1.0"}
+        self._GML = {"gml" : "http://www.opengis.net/gml/3.2"}
+        self._SWE = {"swe" : "http://www.opengis.net/swe/2.0"}
         self._field_names = []
         self._dataframes = []
 

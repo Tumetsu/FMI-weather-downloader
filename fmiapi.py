@@ -3,14 +3,13 @@ import csv
 
 class FMIApi():
 
-    _api_key = ""
-    _request_handler = None
-    _DAILY_REQUEST_MAX_RANGE_HOURS = 8928
-    _REALTIME_REQUEST_MAX_RANGE_HOURS = 168
-    _PATH_TO_STATIONS_CSV = "stations.csv"
-    _stations = []
-
     def __init__(self):
+        self._api_key = ""
+        self._request_handler = None
+        self._DAILY_REQUEST_MAX_RANGE_HOURS = 8928
+        self._REALTIME_REQUEST_MAX_RANGE_HOURS = 168
+        self._PATH_TO_STATIONS_CSV = "stations.csv"
+        self._stations = []
         self._load_station_metadata()
 
     def auth(self, api_key):

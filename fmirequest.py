@@ -5,12 +5,14 @@ from fmierrors import *
 
 class FMIRequest():
 
-    _url = "data.fmi.fi"
-    _headers =  {"Content-type": "text/xml"}
-    _connection = None
-    _XMLNS_NAMESPACE = {"xmlns" : "http://www.opengis.net/ows/1.1"}
+
 
     def __init__(self, api_key):
+        self._url = "data.fmi.fi"
+        self._headers =  {"Content-type": "text/xml"}
+        self._connection = None
+        self._XMLNS_NAMESPACE = {"xmlns" : "http://www.opengis.net/ows/1.1"}
+
         self._apikey = api_key
         self._connection = http.client.HTTPConnection(self._url)
 
