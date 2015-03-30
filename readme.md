@@ -1,6 +1,7 @@
 Ilmatieteenlaitoksen säädatan lataaja
 ==============================
 
+![screenshot](http://i.imgur.com/VI5a5fz.png)
 
 Tämä on yksinkertainen graafisen käyttöliittymän tarjoava sovellus ilmatieteenlaitoksen säädatan lataamiseen Exceliin soveltuvassa muodossa. Ohjelma kehitettiin alunperin [Lammin Biologisen aseman](http://www.helsinki.fi/lammi/) tarpeisiin.
 
