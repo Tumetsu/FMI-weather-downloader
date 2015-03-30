@@ -1,6 +1,7 @@
 import datetime
 
-from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QTranslator
+from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
 from PyQt5.QtCore import pyqtSlot, QSettings, QStandardPaths
 from gui.ui_mainwindow import Ui_MainWindow
@@ -11,15 +12,21 @@ from gui.downloadProgress import *
 
 class Mainwindow(QMainWindow):
 
-    _api = None
-    entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
-    currentSelectedModel = None
-    _apiKey = ""
-    _SET_APIKEY_MESSAGE = "Tunnisteavainta ei ole määritetty. Aseta se valikossa Tiedosto->Aseta tunnisteavain"
-    _settings = None
+    translator = QTranslator()
+    translator.load("en", "translations/mainwindow.qm")
 
     def __init__(self, parent=None):
         super(Mainwindow, self).__init__(parent)
+
+
+
+        self._api = None
+        self.entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
+        self.currentSelectedModel = None
+        self._apiKey = ""
+        self._SET_APIKEY_MESSAGE = self.translator.translate("setapikeymessage", "Tunnisteavainta ei ole maaritetty. Aseta se valikossa Tiedosto->Aseta tunnisteavain")
+        self._settings = None
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self._set_up_api()
@@ -55,8 +62,8 @@ class Mainwindow(QMainWindow):
 
         self.ui.stationComboBox.currentIndexChanged.connect(self._select_place_from_combobox)
         self.ui.stationComboBox_2.currentIndexChanged.connect(self._select_place_from_combobox)
-        self.ui.stationComboBox.setCurrentIndex(self._api.get_index_of_station("Hämeenlinna Lammi Pappila"))
-        self.ui.stationComboBox_2.setCurrentIndex(self._api.get_index_of_station("Hämeenlinna Lammi Pappila"))
+        self.ui.stationComboBox.setCurrentIndex(self._api.get_index_of_station("Hameenlinna Lammi Pappila"))
+        self.ui.stationComboBox_2.setCurrentIndex(self._api.get_index_of_station("Hameenlinna Lammi Pappila"))
         self.ui.pushButton.clicked.connect(self._download_daily)
         self.ui.pushButton_2.clicked.connect(self._download_realtime)
 
@@ -81,13 +88,13 @@ class Mainwindow(QMainWindow):
     @pyqtSlot()
     def _about(self):
         msgbox = QMessageBox()
-        msgbox.information(self, "Tietoa", "Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.\nJos ohjelma lakkaa toimimasta, voit ottaa yhteyttä\n\nTuomas Salmi, 2015\nhttps://github.com/Tumetsu?tab=repositories\nsalmi.tuomas@gmail.com")
+        msgbox.information(self, self.translator.translate("aboutheading","Tietoa"), self.translator.translate("about_description","Yksinkertainen sovellus ilmatieteenlaitoksen saahavaintodatan lataamiseen.\nJos ohjelma lakkaa toimimasta, voit ottaa yhteytta\n\nTuomas Salmi, 2015\nhttps://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja\nsalmi.tuomas@gmail.com"))
         msgbox.show()
 
     @pyqtSlot()
     def _set_apikey(self):
-        key = QInputDialog.getText(self, "Aseta tunnisteavain", "Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.\nMene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.\n\n"
-                                         "Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:", text=self._apiKey)
+        key = QInputDialog.getText(self, self.translator.translate("setapikeyheading","Aseta tunnisteavain"), self.translator.translate("setapikeyinstruction", "Kayttaaksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.\nMene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisatietoa avaimen hankkimisesta.\n\n"
+                                         "Kun olet rekisteroitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tahan:"), text=self._apiKey)
         if key[1]:
             self._apiKey = key[0].strip()
             self._api.auth(self._apiKey)
@@ -165,7 +172,7 @@ class Mainwindow(QMainWindow):
             path = paths[0]
         else:
             path = ""
-        filename = QFileDialog.getSaveFileName(self, "Tallenna säädata csv-muodossa:",
+        filename = QFileDialog.getSaveFileName(self, "Tallenna saadata csv-muodossa:",
                                                path +"/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
         if filename[0] != "":
             self._save_to_csv(dataframe, filename[0])
@@ -181,7 +188,7 @@ class Mainwindow(QMainWindow):
         if self.ui.startimeDateEdit.date() == self.ui.endtime_dateEdit.date():
             self.ui.startimeDateEdit.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage("Aloitus ja lopetuspäivämäärät eivät saa olla samoja", 5000)
+            self.statusBar().showMessage("Aloitus ja lopetuspaivamaarat eivat saa olla samoja", 5000)
             self.ui.pushButton.setEnabled(False)
         else:
             self.ui.startimeDateEdit.setStyleSheet("background-color: white;")
@@ -190,7 +197,7 @@ class Mainwindow(QMainWindow):
 
             if self.ui.endtime_dateEdit.date() < self.ui.startimeDateEdit.date():
                 self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage("Lopetus päivämäärä ei saa edeltää aloitus päivämäärää", 5000)
+                self.statusBar().showMessage("Lopetus paivamaara ei saa edeltaa aloitus paivamaaraa", 5000)
                 self.ui.pushButton.setEnabled(False)
             else:
                 self.ui.endtime_dateEdit.setStyleSheet("background-color: white;")
@@ -203,7 +210,7 @@ class Mainwindow(QMainWindow):
         if self.ui.startimeDateTimeEdit_2.date() == self.ui.endtime_dateTimeEdit_2.date():
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage("Aloitus ja lopetuspäivämäärät eivät saa olla samoja", 5000)
+            self.statusBar().showMessage("Aloitus ja lopetuspaivamaarat eivat saa olla samoja", 5000)
             self.ui.pushButton_2.setEnabled(False)
         else:
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: white;")
@@ -212,7 +219,7 @@ class Mainwindow(QMainWindow):
 
             if self.ui.endtime_dateTimeEdit_2.date() < self.ui.startimeDateTimeEdit_2.date():
                 self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage("Lopetus päivämäärä ei saa edeltää aloitus päivämäärää", 5000)
+                self.statusBar().showMessage("Lopetus paivamaara ei saa edeltaa aloitus paivamaaraa", 5000)
                 self.ui.pushButton_2.setEnabled(False)
             else:
                 self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: white;")
@@ -246,9 +253,9 @@ class Mainwindow(QMainWindow):
             except (NoDataException) as e:
 
                 if e.errorCode == "NODATA":
-                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._show_error_alerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
-                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
+                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa talta aikavalilta?
+                     self._show_error_alerts("Maaritettya ajanjaksoa ei loytynyt.\nTodennakoisesti ilmatieteenlaitoksella ei ole dataa talle ajanjaksolle.\nKokeile "
+                                           "pitempaa ajanjaksoa, esim. yhta vuotta tai myohaisempaa aloituspaivamaaraa.\n\nVirheen kuvaus:\n" + str(e))
         except Exception as e:
             self._show_error_alerts("Tuntematon virhe: " + str(e))
 
@@ -263,9 +270,9 @@ class Mainwindow(QMainWindow):
                 dataframe = None
             except (NoDataException) as e:
                 if e.errorCode == "NODATA":
-                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._show_error_alerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
-                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
+                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa talta aikavalilta?
+                     self._show_error_alerts("Maaritettya ajanjaksoa ei loytynyt.\nTodennakoisesti ilmatieteenlaitoksella ei ole dataa talle ajanjaksolle.\nKokeile "
+                                           "pitempaa ajanjaksoa, esim. yhta vuotta tai myohaisempaa aloituspaivamaaraa.\n\nVirheen kuvaus:\n" + str(e))
 
         except Exception as e:
              raise e
@@ -294,6 +301,8 @@ class Mainwindow(QMainWindow):
 def start():
     import sys
     app = QApplication(sys.argv)
+    app.installTranslator(Mainwindow.translator)
+
     downloader = Mainwindow()
     downloader.show()
     sys.exit(app.exec_())
