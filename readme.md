@@ -24,7 +24,7 @@ Tämä sovellus kehitettiin alunperin varsin nopeasti kasaan käyttäen Python 3
 
 Varsinainen API:n käsittely ja http-pyyntöjen käsittelykoodi on kuitenkin eroteltu "fmi"-etuliitteisiin tiedostoihin.
 
-Saatan tulevaisuudessa siistiä koodia hieman, mutta varsinainen jatkokehitys omalta osaltani on epätodennäköistä. Forkkaus on kuitenkin tervetullutta, sillä tutkijapiireissä tuntuu olevan kysyntää avoimelle datalle.
+Saatan tulevaisuudessa siistiä koodia hieman, mutta varsinainen jatkokehitys omalta osaltani on epätodennäköistä. Forkkaus on kuitenkin tervetullutta, sillä tutkijapiireissä tuntuu olevan kysyntää avoimelle datalle. Lisäksi uskoisin tämän kaltaisen palvelun olevan kätevämpää toimia verkkopalveluna. FMI:n apia käsittelevien skriptien pitäisi olla suoraan käyttökelpoisia esimerkiksi Django-pohjaiseen backendiin. 
 
 
 Requirements
