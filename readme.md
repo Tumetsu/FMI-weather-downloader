@@ -7,7 +7,7 @@ Tämä on yksinkertainen graafisen käyttöliittymän tarjoava sovellus ilmatiet
 
 Ohjelmalla voit ladata [Ilmatieteenlaitoksen avoimen datan palvelusta](https://ilmatieteenlaitos.fi/avoin-data) eri sääasemien vuorokausi- ja reaaliaikakohtaista säädataa.
 
-[Lataa asennettava ohjelma Windowsille tästä](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/releases/tag/v0.9)
+##[Lataa asennettava ohjelma Windowsille tästä](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/releases/tag/v0.9)
 
 Huom! Sovelluksella ei ole mitään tekemistä itse Ilmatieteenlaitoksen kanssa. Se vain käyttää heidän tarjoamaansa dataa.
 
