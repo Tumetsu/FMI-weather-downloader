@@ -8,23 +8,19 @@ from gui.ui_mainwindow import Ui_MainWindow
 from fmiapi.fmiapi import FMIApi
 from fmiapi.fmixmlparser import FMIxmlParser
 from gui.downloadProgress import *
+from gui.messages import Messages
 
 
 class Mainwindow(QMainWindow):
 
-    _START_END_DATE_WARNING = QCoreApplication.translate("startenddate_warning","Aloitus ja lopetuspäivämäärät eivät saa olla samoja")
-    _END_DATE_WARNING = QCoreApplication.translate("enddate_warning", "Lopetus päivämäärä ei saa edeltää aloitus päivämäärää")
-    _DATE_NOT_FOUND_ERROR = QCoreApplication.translate("datenotfound_error", "Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
-                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n")
-    _UNKNOWN_ERROR = QCoreApplication.translate("unknown_error", "Tuntematon virhe: ")
-
     def __init__(self, parent=None):
         super(Mainwindow, self).__init__(parent)
+        self.MESSAGES = Messages()
+
         self._api = None
         self.entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
         self.currentSelectedModel = None
         self._apiKey = ""
-        self._SET_APIKEY_MESSAGE = QCoreApplication.translate("setapikeymessage", "Tunnisteavainta ei ole maaritetty. Aseta se valikossa Tiedosto->Aseta tunnisteavain")
         self._settings = None
 
         self.ui = Ui_MainWindow()
@@ -41,7 +37,7 @@ class Mainwindow(QMainWindow):
             self._api.auth(self._apiKey)
 
         if self._apiKey == "":
-            self.statusBar().showMessage(self._SET_APIKEY_MESSAGE, 0)
+            self.statusBar().showMessage(self.MESSAGES.set_apikey_message(), 0)
 
     def _set_up_api(self):
         self._api = FMIApi()
@@ -88,13 +84,12 @@ class Mainwindow(QMainWindow):
     @pyqtSlot()
     def _about(self):
         msgbox = QMessageBox()
-        msgbox.information(self, QCoreApplication.translate("aboutheading", "Tietoa"), QCoreApplication.translate("about_description", "Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.\nJos ohjelma lakkaa toimimasta, voit ottaa yhteyttä\n\nTuomas Salmi, 2015\nhttps://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja\nsalmi.tuomas@gmail.com"))
+        msgbox.information(self, QCoreApplication.translate("aboutheading", "Tietoa"), self.MESSAGES.about_dialog())
         msgbox.show()
 
     @pyqtSlot()
     def _set_apikey(self):
-        key = QInputDialog.getText(self, QCoreApplication.translate("setapikeyheading", "Aseta tunnisteavain"), QCoreApplication.translate("setapikeyinstruction", "Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.\nMene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.\n\n"
-                                         "Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:"), text=self._apiKey)
+        key = QInputDialog.getText(self, QCoreApplication.translate("setapikeyheading", "Aseta tunnisteavain"), self.MESSAGES.set_apikey_dialog(), text=self._apiKey)
         if key[1]:
             self._apiKey = key[0].strip()
             self._api.auth(self._apiKey)
@@ -172,7 +167,7 @@ class Mainwindow(QMainWindow):
             path = paths[0]
         else:
             path = ""
-        filename = QFileDialog.getSaveFileName(self, QCoreApplication.translate("save_weather_data", "Tallenna säädata csv-muodossa:"),
+        filename = QFileDialog.getSaveFileName(self, self.MESSAGES.save_weatherdata_csv(),
                                                path +"/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
         if filename[0] != "":
             self._save_to_csv(dataframe, filename[0])
@@ -189,7 +184,7 @@ class Mainwindow(QMainWindow):
         if self.ui.startimeDateEdit.date() == self.ui.endtime_dateEdit.date():
             self.ui.startimeDateEdit.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage(self._START_END_DATE_WARNING, 5000)
+            self.statusBar().showMessage(self.MESSAGES.start_end_date_warning(), 5000)
             self.ui.pushButton.setEnabled(False)
         else:
             self.ui.startimeDateEdit.setStyleSheet("background-color: white;")
@@ -198,7 +193,7 @@ class Mainwindow(QMainWindow):
 
             if self.ui.endtime_dateEdit.date() < self.ui.startimeDateEdit.date():
                 self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage(self._END_DATE_WARNING, 5000)
+                self.statusBar().showMessage(self.MESSAGES.end_date_warning(), 5000)
                 self.ui.pushButton.setEnabled(False)
             else:
                 self.ui.endtime_dateEdit.setStyleSheet("background-color: white;")
@@ -211,7 +206,7 @@ class Mainwindow(QMainWindow):
         if self.ui.startimeDateTimeEdit_2.date() == self.ui.endtime_dateTimeEdit_2.date():
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage(self._START_END_DATE_WARNING, 5000)
+            self.statusBar().showMessage(self.MESSAGES.start_end_date_warning(), 5000)
             self.ui.pushButton_2.setEnabled(False)
         else:
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: white;")
@@ -220,7 +215,7 @@ class Mainwindow(QMainWindow):
 
             if self.ui.endtime_dateTimeEdit_2.date() < self.ui.startimeDateTimeEdit_2.date():
                 self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage(self._END_DATE_WARNING, 5000)
+                self.statusBar().showMessage(self.MESSAGES.end_date_warning(), 5000)
                 self.ui.pushButton_2.setEnabled(False)
             else:
                 self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: white;")
@@ -244,7 +239,6 @@ class Mainwindow(QMainWindow):
     @pyqtSlot(list)
     def _download_realtime_finished(self, results):
         try:
-            raise Exception()
             try:
                 parser = FMIxmlParser()
                 dataframe = parser.parse(results)
@@ -255,9 +249,9 @@ class Mainwindow(QMainWindow):
 
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._show_error_alerts(self._DATE_NOT_FOUND_ERROR + str(e))
+                     self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
         except Exception as e:
-            self._show_error_alerts(self._UNKNOWN_ERROR + str(e))
+            self._show_error_alerts(self.MESSAGES.unknown_error() + str(e))
 
     @pyqtSlot(list)
     def _download_daily_finished(self, results):
@@ -271,7 +265,7 @@ class Mainwindow(QMainWindow):
             except (NoDataException) as e:
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._show_error_alerts(self._DATE_NOT_FOUND_ERROR + str(e))
+                     self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
 
         except Exception as e:
              raise e

@@ -28,7 +28,7 @@ class DownloadProgress(QObject):
     def beginDownload(self, requestparams, request_function):
         self.progressDialog = QProgressDialog(self.parent)
         self.progressDialog.setCancelButton(None)
-        self.progressDialog.setLabelText(QCoreApplication.translate("downloading_weatherdata","Ladataan säädataa..."))
+        self.progressDialog.setLabelText(self.parent.MESSAGES.downloading_weatherdata())
         self.progressDialog.open()
         self.progressDialog.setValue(0)
         self.thread.run = self._runProcess
@@ -60,18 +60,16 @@ class DownloadProgress(QObject):
             except (RequestException, NoDataException) as e:
                 if e.errorCode == 400:
                     #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
-                    self.parent._show_error_alerts(QCoreApplication.translate("weatherstationnotfound_error", "Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
-                                          "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta Tiedosto->Tietoa valikosta.\n\nVirheen kuvaus:\n") + str(e))
+                    self.parent._show_error_alerts(self.parent.MESSAGES.weatherstation_error() + str(e))
                 if e.errorCode == 404:
                     #apikey on luultavasti väärä
-                    self.parent._show_error_alerts(QCoreApplication.translate("requestfailed_error", "Datapyyntö ei onnistunut.\nOletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen?\n\nIlmatieteenlaitos vaatii rekisteröitymistä palveluun "
-                                          "ennen sen käyttöä. Katso lisätietoa valikosta Tiedosto->Aseta tunnisteavain."))
+                    self.parent._show_error_alerts(self.parent.MESSAGES.request_failed_error())
 
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
                      self.parent._show_error_alerts(Mainwindow._DATE_NOT_FOUND_ERROR + str(e))
         except Exception as e:
-             self.parent._show_error_alerts(Mainwindow._UNKNOWN_ERROR + str(e))
+             self.parent._show_error_alerts(self.parent.MESSAGES.unknown_error() + str(e))
 
 
 
