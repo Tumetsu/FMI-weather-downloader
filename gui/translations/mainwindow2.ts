@@ -11,12 +11,7 @@ Jos ohjelma lakkaa toimimasta, voit ottaa yhteyttä
 Tuomas Salmi, 2015
 https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja
 salmi.tuomas@gmail.com</source>
-        <translation>A simple application to download data from Finnish Meteorological Institute&apos;s open data service. 
-In case there is problems, you can contact 
-
-Tuomas Salmi, 2015
-https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja
-salmi.tuomas@gmail.com</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -24,7 +19,7 @@ salmi.tuomas@gmail.com</translation>
     <message>
         <location filename="mainwindow.py" line="92"/>
         <source>Tietoa</source>
-        <translation>About</translation>
+        <translation type="unfinished">About</translation>
     </message>
 </context>
 <context>
@@ -37,11 +32,7 @@ Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloitusp�
 
 Virheen kuvaus:
 </source>
-        <translation>Specified date and time could not be found.
-Most likely FMI doesn&apos;t have data for this time-period.
-Please try longer time-span,for example one year or later beginning date.
-
-Error details:  </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -55,9 +46,9 @@ Error details:  </translation>
 <context>
     <name>enddate_warning</name>
     <message>
-        <location filename="mainwindow.py" line="185"/>
+        <location filename="mainwindow.py" line="16"/>
         <source>Lopetus päivämäärä ei saa edeltää aloitus päivämäärää</source>
-        <translation>Ending date is not allowed to predate the beginning date.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -68,18 +59,15 @@ Error details:  </translation>
 Oletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen?
 
 Ilmatieteenlaitos vaatii rekisteröitymistä palveluun ennen sen käyttöä. Katso lisätietoa valikosta Tiedosto-&gt;Aseta tunnisteavain.</source>
-        <translation>Datarequest failed.
-Have you set the required API-key or is it invalid?
-
-FMI requires users to register into their service before using it. More information in File-&gt;Set API-key.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>save_weather_data</name>
     <message>
-        <location filename="mainwindow.py" line="173"/>
+        <location filename="mainwindow.py" line="177"/>
         <source>Tallenna säädata csv-muodossa:</source>
-        <translation>Save weatherdata in csv-format:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -98,30 +86,23 @@ FMI requires users to register into their service before using it. More informat
 Mene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.
 
 Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:</source>
-        <translation>To use this application you&apos;ll need FMI&apos;s API-key. Go to the  http://ilmatieteenlaitos.fi/avoin-data to get more infromation about obtaining the API-key.
-
-After you have registered to the FMI&apos;s service, copy and paste the API-key into field below:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>setapikeymessage</name>
     <message>
         <location filename="mainwindow.py" line="28"/>
-        <source>Tunnisteavainta ei ole määritetty. Aseta se valikossa Tiedosto-&gt;Aseta tunnisteavain</source>
-        <translation>API-key is not defined. Set it in File-&gt;Set API-key</translation>
-    </message>
-    <message>
-        <location filename="mainwindow.py" line="28"/>
         <source>Tunnisteavainta ei ole maaritetty. Aseta se valikossa Tiedosto-&gt;Aseta tunnisteavain</source>
-        <translation>API-key is not defined. Set it in File-&gt;Set API-key</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>startenddate_warning</name>
     <message>
-        <location filename="mainwindow.py" line="184"/>
+        <location filename="mainwindow.py" line="15"/>
         <source>Aloitus ja lopetuspäivämäärät eivät saa olla samoja</source>
-        <translation>Beinning and ending dates can&apos;t be the same date</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -141,10 +122,7 @@ Ilmatieteenlaitoksen palvelussa on häiriö tai mikäli ongelma toistuu muillaki
 
 Virheen kuvaus:
 </source>
-        <translation>Weather station was not found.
-There might be a problem with FMI&apos;s service. If problem appears with other stations, software might require updating. You can check contact-details from File-&gt;About
-
-Error description: </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
