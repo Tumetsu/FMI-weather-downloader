@@ -27,6 +27,8 @@ At the moment the application supports
 Check the [Downloads page](downloads.html).
 Please check the [Quickstart page](quickstart/quickstart.html) before usage! It has important info of setting up process.
 
+## I have a feature request or bug report
+You can submit feature and bugfix requests via Github project page by [creating a new issue](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/issues). You most likely have to be registered into Github first. After that, press "New issue" button on top right on the page and write a description of the issue. Finally select proper "Label" for the issue from Labels menu from left and click "Submit new issue".
 
 ## Weatherdata license
 The data downloaded by this program is directly from FMI's server. User should follow the [license of the data described in FMI's service](http://ilmatieteenlaitos.fi/avoin-data-lisenssi). When using the data in your work, research etc. it is your responsibility to follow the guidelines and licenses of the FMI.
