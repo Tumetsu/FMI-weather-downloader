@@ -22,7 +22,7 @@ class Messages:
         return QCoreApplication.translate("setapikeymessage", "Tunnisteavainta ei ole maaritetty. Aseta se valikossa Tiedosto->Aseta tunnisteavain")
 
     def about_dialog(self):
-        return QCoreApplication.translate("about_description", "Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.\nJos ohjelma lakkaa toimimasta, voit ottaa yhteyttä\n\nTuomas Salmi, 2015\nhttps://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja\nsalmi.tuomas@gmail.com")
+        return QCoreApplication.translate("about_description", "Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.\nJos ohjelma lakkaa toimimasta, voit ottaa yhteyttä\n\nTuomas Salmi, 2015\nhttp://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja\nsalmi.tuomas@gmail.com")
 
     def set_apikey_dialog(self):
         return QCoreApplication.translate("setapikeyinstruction", "Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.\nMene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.\n\n"
