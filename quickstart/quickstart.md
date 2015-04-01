@@ -6,4 +6,4 @@ group: navigation
 ---
 {% include JB/setup %}
 
-[Finnish Quickstart/manual](quickstart/finnishguide.html)
+[Finnish quickstart & manual](finnishguide.html)
