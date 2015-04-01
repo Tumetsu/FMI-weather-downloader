@@ -16,6 +16,7 @@ OutputDir=userdocs:Inno Setup Examples Output
 [Files]
 Source: "*"; DestDir: "{app}"
 Source: "/platforms/*"; DestDir: "{app}\platforms"
+Source: "/translations/*"; DestDir: "{app}\platforms"
 ;Source: "MyProg.chm"; DestDir: "{app}"
 Source: "OHJEKIRJA.pdf"; DestDir: "{app}"; Flags: isreadme
 

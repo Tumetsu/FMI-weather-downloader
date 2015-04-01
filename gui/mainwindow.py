@@ -1,5 +1,4 @@
 import datetime
-
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QTranslator
 from PyQt5.QtCore import QCoreApplication, QEvent
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
@@ -346,9 +345,9 @@ def start():
     #translators have to be created before anything else. List of them are then passed to
     #the Mainwindow
     translator_en = QTranslator()
-    translator_en.load("gui/translations/mainwindow_en.qm")
+    translator_en.load("translations/mainwindow_en.qm")
     translator_fi = QTranslator()
-    translator_fi.load("gui/translations/mainwindow_fi.qm")
+    translator_fi.load("translations/mainwindow_fi.qm")
 
     app = QApplication(sys.argv)
     print(app.installTranslator(translator_en))
