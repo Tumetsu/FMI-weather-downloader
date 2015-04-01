@@ -15,10 +15,10 @@ Suomen Ilmatieteenlaitos tarjoaa säähavaintodataa eri Suomen asemiltaan ilmais
 Asennettuasi ohjelman, ennen sen käyttöönottoa sinun tarvitsee rekisteröityä Ilmatieteenlaitoksen avoimen datan palveluun:
 
  1. Avaa seuraava verkko-osoite internetselaimeesi: https://ilmatieteenlaitos.fi/avoin-data
- 2. Ilmatieteenlaitoksen sivuilla pitäisi olla tarjottuna keino rekisteröityä palveluun. Kuvassa 1. on kuva sivustosta 2.3.2015. Noudata sivun ohjeita ja luo itsellesi tunnus palveluun. ![screenshot](assets/images/fmi_guide1.png)
+ 2. Ilmatieteenlaitoksen sivuilla pitäisi olla tarjottuna keino rekisteröityä palveluun. Kuvassa 1. on kuva sivustosta 2.3.2015. Noudata sivun ohjeita ja luo itsellesi tunnus palveluun. ![screenshot](assets/images/fmi_guide1.png =539x461)
 Kuva 1: Ilmatieteenlaitoksen avoimen datan palvelu
- 3. Kirjaudu sisään käyttäjätilillesi Ilmatieteenlaitoksen palvelussa. Kirjauduttuasi palvelussa pitäisi näkyä ”Omat tiedot” sivu, jonka alareunassa on kohta ”tunnisteavain (fmi-apikey)” kts. Kuva 2. Kopioi (Ctrl+C) tunnisteavain. ![screenshot](http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja/assets/images/fmi_guide2.png)
- 4. Avaa nyt latausohjelma ja valitse Tiedosto > Aseta tunnisteavain kts. Kuva 3. Avautuneessa ikkunassa liitä kopioimasi tunnisteavain annettuun tekstikenttään ja klikkaa OK. ![screenshot](http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja/assets/images/fmi_guide3.png)
+ 3. Kirjaudu sisään käyttäjätilillesi Ilmatieteenlaitoksen palvelussa. Kirjauduttuasi palvelussa pitäisi näkyä ”Omat tiedot” sivu, jonka alareunassa on kohta ”tunnisteavain (fmi-apikey)” kts. Kuva 2. Kopioi (Ctrl+C) tunnisteavain. ![screenshot](assets/images/fmi_guide2.png =539x461)
+ 4. Avaa nyt latausohjelma ja valitse Tiedosto > Aseta tunnisteavain kts. Kuva 3. Avautuneessa ikkunassa liitä kopioimasi tunnisteavain annettuun tekstikenttään ja klikkaa OK. ![screenshot](assets/images/fmi_guide3.png =539x461)
  5. Ohjelma on nyt valmis käytettäväksi.
 
 
