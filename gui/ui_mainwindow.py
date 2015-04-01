@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main_window.ui'
 #
-# Created: Mon Mar  2 09:28:10 2015
+# Created: Wed Apr  1 09:53:48 2015
 #      by: PyQt5 UI code generator 5.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -142,7 +142,10 @@ class Ui_MainWindow(object):
         self.actionAbout.setObjectName("actionAbout")
         self.actionExit = QtWidgets.QAction(MainWindow)
         self.actionExit.setObjectName("actionExit")
+        self.actionAseta_kieli = QtWidgets.QAction(MainWindow)
+        self.actionAseta_kieli.setObjectName("actionAseta_kieli")
         self.menuOptions.addAction(self.actionSet_api_key)
+        self.menuOptions.addAction(self.actionAseta_kieli)
         self.menuOptions.addAction(self.actionAbout)
         self.menuOptions.addAction(self.actionExit)
         self.menubar.addAction(self.menuOptions.menuAction())
@@ -188,4 +191,5 @@ class Ui_MainWindow(object):
         self.actionAbout.setText(_translate("MainWindow", "Tietoa"))
         self.actionAbout.setToolTip(_translate("MainWindow", "Tietoa tästä sovelluksesta"))
         self.actionExit.setText(_translate("MainWindow", "Poistu"))
+        self.actionAseta_kieli.setText(_translate("MainWindow", "Aseta kieli"))
 

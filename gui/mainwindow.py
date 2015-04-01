@@ -1,7 +1,7 @@
 import datetime
 
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QTranslator
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtCore import QCoreApplication, QEvent
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
 from PyQt5.QtCore import pyqtSlot, QSettings, QStandardPaths
 from gui.ui_mainwindow import Ui_MainWindow
@@ -9,15 +9,18 @@ from fmiapi.fmiapi import FMIApi
 from fmiapi.fmixmlparser import FMIxmlParser
 from gui.downloadProgress import *
 from gui.messages import Messages
+from gui.languagedialog import LanguageDialog
 
 
 class Mainwindow(QMainWindow):
 
-    def __init__(self, parent=None):
+    _LANGUAGE_IDS = {"finnish" : "fi", "english" : "en"}
+    def __init__(self, app, translators, parent=None):
         super(Mainwindow, self).__init__(parent)
         self.MESSAGES = Messages()
 
         self._api = None
+        self._language = self._LANGUAGE_IDS["english"]
         self.entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
         self.currentSelectedModel = None
         self._apiKey = ""
@@ -27,10 +30,24 @@ class Mainwindow(QMainWindow):
         self.ui.setupUi(self)
         self._set_up_api()
         self._set_up_ui()
-        self._load_qsettings()
+        self._app = app
+        self._translators = translators
+        self._settings = QSettings("fmidownloader", "fmidownloader")
+
+
 
     def _load_qsettings(self):
-        self._settings = QSettings("_api", "_api")
+        self._load_lang_settings()
+        self._load_api_settings()
+
+
+    def show(self):
+        """ Override so that we can show possible settings dialogs right after startup """
+        super(Mainwindow, self).show()
+        self._load_qsettings()
+
+
+    def _load_api_settings(self):
         storedApikey = self._settings.value("apikey")
         if storedApikey is not None:
             self._apiKey = storedApikey
@@ -38,6 +55,33 @@ class Mainwindow(QMainWindow):
 
         if self._apiKey == "":
             self.statusBar().showMessage(self.MESSAGES.set_apikey_message(), 0)
+
+    def _load_lang_settings(self):
+        storedLang = self._settings.value("language")
+        if storedLang is not None:
+            self._set_language(storedLang)
+        else:
+            self._select_language()
+
+    def _select_language(self):
+        langDialog = LanguageDialog(self._LANGUAGE_IDS, self._language, self)
+        do_change = langDialog.exec_()
+
+        if do_change == 1:
+            self._settings.setValue("language", langDialog.getLanguage())
+            self._set_language(langDialog.getLanguage())
+
+
+    def _set_language(self, language):
+        """ Set the language of the UI """
+        self._language = language
+        self._app.installTranslator(self._translators[language])
+
+    def changeEvent(self, event):
+        if event.type() == QEvent.LanguageChange:
+            self.ui.retranslateUi(self)
+
+        super(Mainwindow, self).changeEvent(event)
 
     def _set_up_api(self):
         self._api = FMIApi()
@@ -76,6 +120,7 @@ class Mainwindow(QMainWindow):
         self.ui.actionSet_api_key.triggered.connect(self._set_apikey)
         self.ui.actionExit.triggered.connect(self._quit)
         self.ui.actionAbout.triggered.connect(self._about)
+        self.ui.actionAseta_kieli.triggered.connect(self._select_language)
 
     @pyqtSlot()
     def _quit(self):
@@ -293,12 +338,18 @@ class Mainwindow(QMainWindow):
 
 def start():
     import sys
-    translator = QTranslator()
-    translator.load("gui/translations/mainwindow.qm")
-    app = QApplication(sys.argv)
-    app.installTranslator(translator)
 
-    downloader = Mainwindow()
+    #translators have to be created before anything else. List of them are then passed to
+    #the Mainwindow
+    translator_en = QTranslator()
+    translator_en.load("gui/translations/mainwindow_en.qm")
+    translator_fi = QTranslator()
+    translator_fi.load("gui/translations/mainwindow_fi.qm")
+
+    app = QApplication(sys.argv)
+    print(app.installTranslator(translator_en))
+
+    downloader = Mainwindow(app, {"en": translator_en, "fi": translator_fi})
     downloader.show()
     sys.exit(app.exec_())
 

@@ -301,6 +301,7 @@
      <string>Tiedosto</string>
     </property>
     <addaction name="actionSet_api_key"/>
+    <addaction name="actionAseta_kieli"/>
     <addaction name="actionAbout"/>
     <addaction name="actionExit"/>
    </widget>
@@ -330,6 +331,11 @@
   <action name="actionExit">
    <property name="text">
     <string>Poistu</string>
+   </property>
+  </action>
+  <action name="actionAseta_kieli">
+   <property name="text">
+    <string>Aseta kieli</string>
    </property>
   </action>
  </widget>
