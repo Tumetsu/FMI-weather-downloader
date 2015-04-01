@@ -6,7 +6,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="156"/>
         <source>Säähavaintodatan lataaja</source>
-        <translation type="obsolete">Weather observation data downloader</translation>
+        <translation >Weather observation data downloader</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="178"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="172"/>
         <source>Valitse sääasema, jonka tiedot tahdot ladata</source>
-        <translation type="obsolete">Choose the weather station</translation>
+        <translation >Choose the weather station</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="182"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="174"/>
         <source>Vuosi josta lähtien dataa on saatavilla. Huomaa, että dataa ei välttämättä ole saatavilla vuoden alusta asti! </source>
-        <translation type="obsolete">The year where data is available. Please note that there is not necessarily data available from the beginning of the year!</translation>
+        <translation >The year where data is available. Please note that there is not necessarily data available from the beginning of the year!</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="171"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="178"/>
         <source>Aloituspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin lopetus päivämäärä.</source>
-        <translation type="obsolete">Start date for data you want to download. Cannot be the same as the ending date.</translation>
+        <translation >Start date for data you want to download. Cannot be the same as the ending date.</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="173"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="179"/>
         <source>Lopetuspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin aloitus päivämäärä.</source>
-        <translation type="obsolete">End date for the data you want to download. Cannot be same as the start date.</translation>
+        <translation >End date for the data you want to download. Cannot be same as the start date.</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="189"/>
@@ -111,7 +111,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="186"/>
         <source>Aseta palvelun käyttöön tarvittava tunnisteavain</source>
-        <translation type="obsolete">Set the required API-key to use the service</translation>
+        <translation >Set the required API-key to use the service</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="197"/>
@@ -126,7 +126,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="189"/>
         <source>Tietoa tästä sovelluksesta</source>
-        <translation type="obsolete">Information about this application</translation>
+        <translation >Information about this application</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="200"/>
@@ -159,7 +159,7 @@ Jos ohjelma lakkaa toimimasta, voit ottaa yhteyttä
 Tuomas Salmi, 2015
 http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja
 salmi.tuomas@gmail.com</source>
-        <translation type="obsolete">A simple application to download data from Finnish Meteorological Institute&apos;s open data service. 
+        <translation >A simple application to download data from Finnish Meteorological Institute&apos;s open data service. 
 In case of problems, please contact 
 
 Tuomas Salmi, 2015
@@ -185,7 +185,7 @@ Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloitusp�
 
 Virheen kuvaus:
 </source>
-        <translation type="obsolete">Specified date and time could not be found.
+        <translation >Specified date and time could not be found.
 Most likely FMI does not have data for this time-period.
 Please try a longer time-span,for example one year or later beginning date.
 
@@ -197,7 +197,7 @@ Error details:  </translation>
     <message>
         <location filename="downloadProgress.py" line="32"/>
         <source>Ladataan säädataa...</source>
-        <translation type="obsolete">Downloading weatherdata...</translation>
+        <translation >Downloading weatherdata...</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@ Error details:  </translation>
     <message>
         <location filename="messages.py" line="13"/>
         <source>Lopetus päivämäärä ei saa edeltää aloitus päivämäärää</source>
-        <translation type="obsolete">End date is not allowed to predate the start date.</translation>
+        <translation >End date is not allowed to predate the start date.</translation>
     </message>
 </context>
 <context>
@@ -216,7 +216,7 @@ Error details:  </translation>
 Oletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen?
 
 Ilmatieteenlaitos vaatii rekisteröitymistä palveluun ennen sen käyttöä. Katso lisätietoa valikosta Tiedosto-&gt;Aseta tunnisteavain.</source>
-        <translation type="obsolete">Data request failed.
+        <translation >Data request failed.
 Have you set the required API-key or is it invalid?
 
 FMI requires users to register into their service before using it. More information in File-&gt;Set API-key.</translation>
@@ -227,7 +227,7 @@ FMI requires users to register into their service before using it. More informat
     <message>
         <location filename="mainwindow.py" line="174"/>
         <source>Tallenna säädata csv-muodossa:</source>
-        <translation type="obsolete">Save weather data in csv-format:</translation>
+        <translation >Save weather data in csv-format:</translation>
     </message>
 </context>
 <context>
@@ -246,7 +246,7 @@ FMI requires users to register into their service before using it. More informat
 Mene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.
 
 Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:</source>
-        <translation type="obsolete">To use this application you&apos;ll need FMI&apos;s API-key. Go to the  http://ilmatieteenlaitos.fi/avoin-data to get more information about obtaining the API-key.
+        <translation >To use this application you&apos;ll need FMI&apos;s API-key. Go to the  http://ilmatieteenlaitos.fi/avoin-data to get more information about obtaining the API-key.
 
 After you have registered to the FMI&apos;s service, copy and paste the API-key into field below:</translation>
     </message>
@@ -264,7 +264,7 @@ After you have registered to the FMI&apos;s service, copy and paste the API-key 
     <message>
         <location filename="messages.py" line="16"/>
         <source>Aloitus ja lopetuspäivämäärät eivät saa olla samoja</source>
-        <translation type="obsolete">Start and end dates cannot be the same date</translation>
+        <translation >Start and end dates cannot be the same date</translation>
     </message>
 </context>
 <context>
@@ -284,7 +284,7 @@ Ilmatieteenlaitoksen palvelussa on häiriö tai mikäli ongelma toistuu muillaki
 
 Virheen kuvaus:
 </source>
-        <translation type="obsolete">Weather station was not found.
+        <translation >Weather station was not found.
 There might be a problem with FMI&apos;s service. If problem appears with other stations, software might require updating. You can check contact-details from File-&gt;About
 
 Error description: </translation>
