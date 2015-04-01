@@ -13,7 +13,6 @@ Since not all enthusiasts and researchers have programming skills to use the ser
 This downloadable application was originally developed by request of [Lammi Biological Station](http://www.helsinki.fi/lammi/). 
 
 ![screenshot](assets/images/english-screen.png)
-![screenshot](assets/images/finnish-screen.png)
 
 ## Supported features
 At the moment the application supports 
