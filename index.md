@@ -12,13 +12,15 @@ Since not all enthusiasts and researchers have programming skills to use the ser
 
 This downloadable application was originally developed by request of [Lammi Biological Station](http://www.helsinki.fi/lammi/). 
 
-![screenshot](http://i.imgur.com/VI5a5fz.png)
+![screenshot](assets/english-screen.png)
+![screenshot](assets/finnish-screen.png)
 
 ## Supported features
 At the moment the application supports 
 
 * Downloading daily weather observations from single weather stations
 * Downloading realtime weather observations from single weather stations
+* English and Finnish user-interface
 
 
 ## Download
@@ -27,7 +29,7 @@ Please check the [Quickstart page](quickstart/quickstart.html) before usage! It 
 
 
 ## Weatherdata license
-The data downloaded by this program is directly from FMI's server. User should follow the [license of the data described in FMI's service](http://ilmatieteenlaitos.fi/avoin-data-lisenssi).
+The data downloaded by this program is directly from FMI's server. User should follow the [license of the data described in FMI's service](http://ilmatieteenlaitos.fi/avoin-data-lisenssi). When using the data in your work, research etc. it is your responsibility to follow the guidelines and licenses of the FMI.
 
 
 ##Opensource
