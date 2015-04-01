@@ -27,6 +27,7 @@ class DownloadProgress(QObject):
 
     def beginDownload(self, requestparams, request_function):
         self.progressDialog = QProgressDialog(self.parent)
+        self.progressDialog.setWindowTitle(" ")
         self.progressDialog.setCancelButton(None)
         self.progressDialog.setLabelText(self.parent.MESSAGES.downloading_weatherdata())
         self.progressDialog.open()
