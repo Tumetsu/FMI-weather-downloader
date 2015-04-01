@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main_window.ui'
 #
-# Created: Wed Apr  1 09:53:48 2015
+# Created: Wed Apr  1 15:08:45 2015
 #      by: PyQt5 UI code generator 5.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -133,6 +133,8 @@ class Ui_MainWindow(object):
         self.menubar.setObjectName("menubar")
         self.menuOptions = QtWidgets.QMenu(self.menubar)
         self.menuOptions.setObjectName("menuOptions")
+        self.menuApua = QtWidgets.QMenu(self.menubar)
+        self.menuApua.setObjectName("menuApua")
         MainWindow.setMenuBar(self.menubar)
         self.actionSet_api_key = QtWidgets.QAction(MainWindow)
         self.actionSet_api_key.setObjectName("actionSet_api_key")
@@ -144,11 +146,15 @@ class Ui_MainWindow(object):
         self.actionExit.setObjectName("actionExit")
         self.actionAseta_kieli = QtWidgets.QAction(MainWindow)
         self.actionAseta_kieli.setObjectName("actionAseta_kieli")
+        self.actionOhjeet = QtWidgets.QAction(MainWindow)
+        self.actionOhjeet.setObjectName("actionOhjeet")
         self.menuOptions.addAction(self.actionSet_api_key)
         self.menuOptions.addAction(self.actionAseta_kieli)
-        self.menuOptions.addAction(self.actionAbout)
         self.menuOptions.addAction(self.actionExit)
+        self.menuApua.addAction(self.actionOhjeet)
+        self.menuApua.addAction(self.actionAbout)
         self.menubar.addAction(self.menuOptions.menuAction())
+        self.menubar.addAction(self.menuApua.menuAction())
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -185,6 +191,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.realtimetab), _translate("MainWindow", "Reaaliaika havainnot"))
         self.tabWidget.setTabToolTip(self.tabWidget.indexOf(self.realtimetab), _translate("MainWindow", "Ilmatieteenlaitoksen reaaliaikaisten havaintojen lataus"))
         self.menuOptions.setTitle(_translate("MainWindow", "Tiedosto"))
+        self.menuApua.setTitle(_translate("MainWindow", "Apua"))
         self.actionSet_api_key.setText(_translate("MainWindow", "Aseta tunnisteavain"))
         self.actionSet_api_key.setToolTip(_translate("MainWindow", "Aseta palvelun käyttöön tarvittava tunnisteavain"))
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
@@ -192,4 +199,5 @@ class Ui_MainWindow(object):
         self.actionAbout.setToolTip(_translate("MainWindow", "Tietoa tästä sovelluksesta"))
         self.actionExit.setText(_translate("MainWindow", "Poistu"))
         self.actionAseta_kieli.setText(_translate("MainWindow", "Aseta kieli"))
+        self.actionOhjeet.setText(_translate("MainWindow", "Ohjeet"))
 

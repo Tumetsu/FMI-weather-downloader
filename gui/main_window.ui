@@ -302,10 +302,17 @@
     </property>
     <addaction name="actionSet_api_key"/>
     <addaction name="actionAseta_kieli"/>
-    <addaction name="actionAbout"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuApua">
+    <property name="title">
+     <string>Apua</string>
+    </property>
+    <addaction name="actionOhjeet"/>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuOptions"/>
+   <addaction name="menuApua"/>
   </widget>
   <action name="actionSet_api_key">
    <property name="text">
@@ -336,6 +343,11 @@
   <action name="actionAseta_kieli">
    <property name="text">
     <string>Aseta kieli</string>
+   </property>
+  </action>
+  <action name="actionOhjeet">
+   <property name="text">
+    <string>Ohjeet</string>
    </property>
   </action>
  </widget>

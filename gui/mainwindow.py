@@ -10,17 +10,18 @@ from fmiapi.fmixmlparser import FMIxmlParser
 from gui.downloadProgress import *
 from gui.messages import Messages
 from gui.languagedialog import LanguageDialog
-
+import webbrowser
 
 class Mainwindow(QMainWindow):
 
-    _LANGUAGE_IDS = {"finnish" : "fi", "english" : "en"}
+    _LANGUAGE_IDS = {"Finnish" : "fi", "English" : "en"}
+    _MANUAL_URL = "http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja/quickstart/quickstart.html"
     def __init__(self, app, translators, parent=None):
         super(Mainwindow, self).__init__(parent)
         self.MESSAGES = Messages()
 
         self._api = None
-        self._language = self._LANGUAGE_IDS["english"]
+        self._language = self._LANGUAGE_IDS["English"]
         self.entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
         self.currentSelectedModel = None
         self._apiKey = ""
@@ -35,6 +36,8 @@ class Mainwindow(QMainWindow):
         self._settings = QSettings("fmidownloader", "fmidownloader")
 
 
+    def _open_manual(self):
+        webbrowser.open(self._MANUAL_URL)
 
     def _load_qsettings(self):
         self._load_lang_settings()
@@ -121,6 +124,7 @@ class Mainwindow(QMainWindow):
         self.ui.actionExit.triggered.connect(self._quit)
         self.ui.actionAbout.triggered.connect(self._about)
         self.ui.actionAseta_kieli.triggered.connect(self._select_language)
+        self.ui.actionOhjeet.triggered.connect(self._open_manual)
 
     @pyqtSlot()
     def _quit(self):
