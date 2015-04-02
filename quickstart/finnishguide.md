@@ -14,13 +14,16 @@ Asennettuasi ohjelman, ennen sen käyttöönottoa sinun tarvitsee rekisteröity�
 
  1. Avaa seuraava verkko-osoite internetselaimeesi: https://ilmatieteenlaitos.fi/avoin-data
  2. Ilmatieteenlaitoksen sivuilla pitäisi olla tarjottuna keino rekisteröityä palveluun. Kuvassa on kuva sivustosta 2.3.2015. Noudata sivun ohjeita ja luo itsellesi tunnus palveluun. 
-    <div style="text-align:center"><img src ="../assets/images/fmi_guide1.png" /></div>
+    
+<div style="text-align:center"><img src ="../assets/images/fmi_guide1.png" /></div>
 
  3. Kirjaudu sisään käyttäjätilillesi Ilmatieteenlaitoksen palvelussa. Kirjauduttuasi palvelussa pitäisi näkyä ”Omat tiedot” sivu, jonka alareunassa on kohta ”tunnisteavain (fmi-apikey)” kts. Kuva 2. Kopioi (Ctrl+C) tunnisteavain. 
-    <div style="text-align:center"><img src ="../assets/images/fmi_guide2.png" /></div>
+    
+<div style="text-align:center"><img src ="../assets/images/fmi_guide2.png" /></div>
 
  4. Avaa nyt latausohjelma ja valitse Tiedosto > Aseta tunnisteavain kts. Kuva 3. Avautuneessa ikkunassa liitä kopioimasi tunnisteavain annettuun tekstikenttään ja klikkaa OK. 
-    <div style="text-align:center"><img src ="../assets/images/fmi_guide3.png" /></div>
+    
+<div style="text-align:center"><img src ="../assets/images/fmi_guide3.png" /></div>
 
  5. Ohjelma on nyt valmis käytettäväksi.
 

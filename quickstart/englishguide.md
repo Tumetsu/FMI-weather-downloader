@@ -15,13 +15,16 @@ After isntalling the application, before using it you have to register into FMI'
 
  1. Open the following page on your browser: https://ilmatieteenlaitos.fi/avoin-data
  2. On the page there is a way to register an account and log in. Below is a picture of the page on 2.3.2015. Follow the instructions on the page and create an account. 
-    <div style="text-align:center"><img src ="../assets/images/fmi_guide1.png"/></div>
+
+<div style="text-align:center"><img src ="../assets/images/fmi_guide1.png"/></div>
 
  3. Log in to your new user account. You should see ”Omat tiedot” page. On the bottom of the page should be ”tunnisteavain (fmi-apikey)” check picture below. Copy (Ctrl+C) the API-key to your clipboard. 
-    <div style="text-align:center"><img src ="../assets/images/fmi_guide2.png" /></div>
+
+<div style="text-align:center"><img src ="../assets/images/fmi_guide2.png" /></div>
 
  4. Now open the FMIDownloader and go to File > Set API-key You should see a dialog like in picture below. Paste the API-key into text-field and click OK. 
-    <div style="text-align:center"><img src ="../assets/images/fmi_guide3.png" /></div>
+
+<div style="text-align:center"><img src ="../assets/images/fmi_guide3.png" /></div>
 
  5. FMIDownloader is now ready to use!
 
@@ -52,9 +55,9 @@ The FMIDownloader provides a way to download real time observation data from var
 
  1. Select "Real time observations" tab.
  2. Select the weather station of your choice from the dropdown menu or write the initial letters of the station to the field and select the right one from suggestions. 
- 3.  After selecting the station you can see the starting year where data is available fro this station. For example in the picture below the Lammi's station has data from 2010. Kuvan 5. 
+ 3.  After selecting the station you can see the starting year where data is available fro this station.
 
-	> ATTENTION! The Available from year **doesn't** mean that there is data available from beginning of the year. In this case if you search data from beginning of the year (e.g. 1.1.1963 - 1.2.1963) the application will not find data and will display an error message. In this case you can edit your start and end dates towards the end of the year until you can find some data (e.g. esim. 1.1.1963 – 1.1.1964)
+		> ATTENTION! The Available from year **doesn't** mean that there is data available from beginning of the year. In this case if you search data from beginning of the year (e.g. 1.1.1963 - 1.2.1963) the application will not find data and will display an error message. In this case you can edit your start and end dates towards the end of the year until you can find some data (e.g. esim. 1.1.1963 – 1.1.1964)
 
  4.  Set dates you want to the start and end date fields. Note that the dates are not allowed to be same and the end date is not allowed to predate the start date.  
  5.  Press the "Download" button. 
