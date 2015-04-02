@@ -7,7 +7,7 @@ group: navigation
 {% include JB/setup %}
 
 ## Installable releases
-[Latest releases can be found from project's releases page](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/releases)
+[Latest releases can be found from project's releases page](https://github.com/Tumetsu/FMI-weather-downloader/releases)
 
 ## Installation instructions Windows
 After downloading the setup.exe and follow the instructions on screen. After installation there should be "FMIDownloader" on your startup-menu.
