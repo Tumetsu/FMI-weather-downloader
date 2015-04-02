@@ -1,40 +1,89 @@
 import datetime
-
-from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QTranslator
+from PyQt5.QtCore import QCoreApplication, QEvent
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
 from PyQt5.QtCore import pyqtSlot, QSettings, QStandardPaths
 from gui.ui_mainwindow import Ui_MainWindow
 from fmiapi.fmiapi import FMIApi
 from fmiapi.fmixmlparser import FMIxmlParser
 from gui.downloadProgress import *
-
+from gui.messages import Messages
+from gui.languagedialog import LanguageDialog
+import webbrowser
 
 class Mainwindow(QMainWindow):
 
-    _api = None
-    entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
-    currentSelectedModel = None
-    _apiKey = ""
-    _SET_APIKEY_MESSAGE = "Tunnisteavainta ei ole määritetty. Aseta se valikossa Tiedosto->Aseta tunnisteavain"
-    _settings = None
-
-    def __init__(self, parent=None):
+    _LANGUAGE_IDS = {"Finnish" : "fi", "English" : "en"}
+    _MANUAL_URL = "http://tumetsu.github.io/FMI-weather-downloader/quickstart/quickstart.html"
+    def __init__(self, app, translators, parent=None):
         super(Mainwindow, self).__init__(parent)
+        self.MESSAGES = Messages()
+
+        self._api = None
+        self._language = self._LANGUAGE_IDS["English"]
+        self.entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
+        self.currentSelectedModel = None
+        self._apiKey = ""
+        self._settings = None
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self._set_up_api()
         self._set_up_ui()
-        self._load_qsettings()
+        self._app = app
+        self._translators = translators
+        self._settings = QSettings("fmidownloader", "fmidownloader")
+
+
+    def _open_manual(self):
+        webbrowser.open(self._MANUAL_URL)
 
     def _load_qsettings(self):
-        self._settings = QSettings("_api", "_api")
+        self._load_lang_settings()
+        self._load_api_settings()
+
+
+    def show(self):
+        """ Override so that we can show possible settings dialogs right after startup """
+        super(Mainwindow, self).show()
+        self._load_qsettings()
+
+
+    def _load_api_settings(self):
         storedApikey = self._settings.value("apikey")
         if storedApikey is not None:
             self._apiKey = storedApikey
             self._api.auth(self._apiKey)
 
         if self._apiKey == "":
-            self.statusBar().showMessage(self._SET_APIKEY_MESSAGE, 0)
+            self.statusBar().showMessage(self.MESSAGES.set_apikey_message(), 0)
+
+    def _load_lang_settings(self):
+        storedLang = self._settings.value("language")
+        if storedLang is not None:
+            self._set_language(storedLang)
+        else:
+            self._select_language()
+
+    def _select_language(self):
+        langDialog = LanguageDialog(self._LANGUAGE_IDS, self._language, self)
+        do_change = langDialog.exec_()
+
+        if do_change == 1:
+            self._settings.setValue("language", langDialog.getLanguage())
+            self._set_language(langDialog.getLanguage())
+
+
+    def _set_language(self, language):
+        """ Set the language of the UI """
+        self._language = language
+        self._app.installTranslator(self._translators[language])
+
+    def changeEvent(self, event):
+        if event.type() == QEvent.LanguageChange:
+            self.ui.retranslateUi(self)
+
+        super(Mainwindow, self).changeEvent(event)
 
     def _set_up_api(self):
         self._api = FMIApi()
@@ -73,6 +122,8 @@ class Mainwindow(QMainWindow):
         self.ui.actionSet_api_key.triggered.connect(self._set_apikey)
         self.ui.actionExit.triggered.connect(self._quit)
         self.ui.actionAbout.triggered.connect(self._about)
+        self.ui.actionAseta_kieli.triggered.connect(self._select_language)
+        self.ui.actionOhjeet.triggered.connect(self._open_manual)
 
     @pyqtSlot()
     def _quit(self):
@@ -81,13 +132,12 @@ class Mainwindow(QMainWindow):
     @pyqtSlot()
     def _about(self):
         msgbox = QMessageBox()
-        msgbox.information(self, "Tietoa", "Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.\nJos ohjelma lakkaa toimimasta, voit ottaa yhteyttä\n\nTuomas Salmi, 2015\nhttps://github.com/Tumetsu?tab=repositories\nsalmi.tuomas@gmail.com")
+        msgbox.information(self, QCoreApplication.translate("aboutheading", "Tietoa"), self.MESSAGES.about_dialog())
         msgbox.show()
 
     @pyqtSlot()
     def _set_apikey(self):
-        key = QInputDialog.getText(self, "Aseta tunnisteavain", "Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.\nMene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.\n\n"
-                                         "Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:", text=self._apiKey)
+        key = QInputDialog.getText(self, QCoreApplication.translate("setapikeyheading", "Aseta tunnisteavain"), self.MESSAGES.set_apikey_dialog(), text=self._apiKey)
         if key[1]:
             self._apiKey = key[0].strip()
             self._api.auth(self._apiKey)
@@ -165,7 +215,7 @@ class Mainwindow(QMainWindow):
             path = paths[0]
         else:
             path = ""
-        filename = QFileDialog.getSaveFileName(self, "Tallenna säädata csv-muodossa:",
+        filename = QFileDialog.getSaveFileName(self, self.MESSAGES.save_weatherdata_csv(),
                                                path +"/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
         if filename[0] != "":
             self._save_to_csv(dataframe, filename[0])
@@ -176,12 +226,13 @@ class Mainwindow(QMainWindow):
     def _get_dateTime_from_UI(self, dateEdit):
         return QDateTime(dateEdit.date()).toPyDateTime()
 
+
     @pyqtSlot()
     def _daily_date_edited(self):
         if self.ui.startimeDateEdit.date() == self.ui.endtime_dateEdit.date():
             self.ui.startimeDateEdit.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage("Aloitus ja lopetuspäivämäärät eivät saa olla samoja", 5000)
+            self.statusBar().showMessage(self.MESSAGES.start_end_date_warning(), 5000)
             self.ui.pushButton.setEnabled(False)
         else:
             self.ui.startimeDateEdit.setStyleSheet("background-color: white;")
@@ -190,7 +241,7 @@ class Mainwindow(QMainWindow):
 
             if self.ui.endtime_dateEdit.date() < self.ui.startimeDateEdit.date():
                 self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage("Lopetus päivämäärä ei saa edeltää aloitus päivämäärää", 5000)
+                self.statusBar().showMessage(self.MESSAGES.end_date_warning(), 5000)
                 self.ui.pushButton.setEnabled(False)
             else:
                 self.ui.endtime_dateEdit.setStyleSheet("background-color: white;")
@@ -203,7 +254,7 @@ class Mainwindow(QMainWindow):
         if self.ui.startimeDateTimeEdit_2.date() == self.ui.endtime_dateTimeEdit_2.date():
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage("Aloitus ja lopetuspäivämäärät eivät saa olla samoja", 5000)
+            self.statusBar().showMessage(self.MESSAGES.start_end_date_warning(), 5000)
             self.ui.pushButton_2.setEnabled(False)
         else:
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: white;")
@@ -212,7 +263,7 @@ class Mainwindow(QMainWindow):
 
             if self.ui.endtime_dateTimeEdit_2.date() < self.ui.startimeDateTimeEdit_2.date():
                 self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage("Lopetus päivämäärä ei saa edeltää aloitus päivämäärää", 5000)
+                self.statusBar().showMessage(self.MESSAGES.end_date_warning(), 5000)
                 self.ui.pushButton_2.setEnabled(False)
             else:
                 self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: white;")
@@ -233,7 +284,6 @@ class Mainwindow(QMainWindow):
         download.beginDownload(params, self._api.get_daily_weather)
 
 
-
     @pyqtSlot(list)
     def _download_realtime_finished(self, results):
         try:
@@ -247,10 +297,9 @@ class Mainwindow(QMainWindow):
 
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._show_error_alerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
-                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
+                     self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
         except Exception as e:
-            self._show_error_alerts("Tuntematon virhe: " + str(e))
+            self._show_error_alerts(self.MESSAGES.unknown_error() + str(e))
 
     @pyqtSlot(list)
     def _download_daily_finished(self, results):
@@ -264,8 +313,7 @@ class Mainwindow(QMainWindow):
             except (NoDataException) as e:
                 if e.errorCode == "NODATA":
                      #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._show_error_alerts("Määritettyä ajanjaksoa ei löytynyt.\nTodennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.\nKokeile "
-                                           "pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.\n\nVirheen kuvaus:\n" + str(e))
+                     self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
 
         except Exception as e:
              raise e
@@ -293,8 +341,18 @@ class Mainwindow(QMainWindow):
 
 def start():
     import sys
+
+    #translators have to be created before anything else. List of them are then passed to
+    #the Mainwindow
+    translator_en = QTranslator()
+    translator_en.load("translations/mainwindow_en.qm")
+    translator_fi = QTranslator()
+    translator_fi.load("translations/mainwindow_fi.qm")
+
     app = QApplication(sys.argv)
-    downloader = Mainwindow()
+    print(app.installTranslator(translator_en))
+
+    downloader = Mainwindow(app, {"en": translator_en, "fi": translator_fi})
     downloader.show()
     sys.exit(app.exec_())
 
