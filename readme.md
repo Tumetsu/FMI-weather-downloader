@@ -1,7 +1,5 @@
 Ilmatieteenlaitoksen säädatan lataaja / FMI Weather Downloader
 ==============================
-[Webpage of the application](http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja/)
-
 [Webpage of the application with downloads & guides](http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja/)
 ![screenshot](http://i.imgur.com/CzXFzIQ.png)
 
