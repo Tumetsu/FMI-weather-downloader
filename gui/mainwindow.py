@@ -14,7 +14,7 @@ import webbrowser
 class Mainwindow(QMainWindow):
 
     _LANGUAGE_IDS = {"Finnish" : "fi", "English" : "en"}
-    _MANUAL_URL = "http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja/quickstart/quickstart.html"
+    _MANUAL_URL = "http://tumetsu.github.io/FMI-weather-downloader/quickstart/quickstart.html"
     def __init__(self, app, translators, parent=None):
         super(Mainwindow, self).__init__(parent)
         self.MESSAGES = Messages()

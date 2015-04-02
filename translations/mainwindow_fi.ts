@@ -6,7 +6,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="159"/>
         <source>Säähavaintodatan lataaja</source>
-        <translation >Säähavaintodatan lataaja</translation>
+        <translation>Säähavaintodatan lataaja</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="178"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="175"/>
         <source>Valitse sääasema, jonka tiedot tahdot ladata</source>
-        <translation >Valitse sääasema, jonka tiedot tahdot ladata</translation>
+        <translation>Valitse sääasema, jonka tiedot tahdot ladata</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="182"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="177"/>
         <source>Vuosi josta lähtien dataa on saatavilla. Huomaa, että dataa ei välttämättä ole saatavilla vuoden alusta asti! </source>
-        <translation >Vuosi josta lähtien dataa on saatavilla. Huomaa, että dataa ei välttämättä ole saatavilla vuoden alusta asti!</translation>
+        <translation>Vuosi josta lähtien dataa on saatavilla. Huomaa, että dataa ei välttämättä ole saatavilla vuoden alusta asti!</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="171"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="181"/>
         <source>Aloituspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin lopetus päivämäärä.</source>
-        <translation >Aloituspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin lopetus päivämäärä.</translation>
+        <translation>Aloituspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin lopetus päivämäärä.</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="173"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="182"/>
         <source>Lopetuspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin aloitus päivämäärä.</source>
-        <translation >Lopetuspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin aloitus päivämäärä.</translation>
+        <translation>Lopetuspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin aloitus päivämäärä.</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="189"/>
@@ -111,7 +111,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="189"/>
         <source>Aseta palvelun käyttöön tarvittava tunnisteavain</source>
-        <translation >Aseta palvelun käyttöön tarvittava tunnisteavain</translation>
+        <translation>Aseta palvelun käyttöön tarvittava tunnisteavain</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="197"/>
@@ -126,7 +126,7 @@
     <message>
         <location filename="ui_mainwindow.py" line="192"/>
         <source>Tietoa tästä sovelluksesta</source>
-        <translation >Tietoa tästä sovelluksesta</translation>
+        <translation>Tietoa tästä sovelluksesta</translation>
     </message>
     <message>
         <location filename="ui_mainwindow.py" line="200"/>
@@ -159,11 +159,11 @@ Jos ohjelma lakkaa toimimasta, voit ottaa yhteyttä
 Tuomas Salmi, 2015
 http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja
 salmi.tuomas@gmail.com</source>
-        <translation >Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.
+        <translation type="unfinished">Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.
 Jos ohjelma lakkaa toimimasta, voit ottaa yhteyttä
 
 Tuomas Salmi, 2015
-http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja
+http://tumetsu.github.io/FMI-weather-downloader
 salmi.tuomas@gmail.com</translation>
     </message>
 </context>
@@ -185,7 +185,7 @@ Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloitusp�
 
 Virheen kuvaus:
 </source>
-        <translation >Määritettyä ajanjaksoa ei löytynyt.
+        <translation>Määritettyä ajanjaksoa ei löytynyt.
 Todennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.
 Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.
 
@@ -197,7 +197,7 @@ Virheen kuvaus:</translation>
     <message>
         <location filename="messages.py" line="35"/>
         <source>Ladataan säädataa...</source>
-        <translation >Ladataan säädataa...</translation>
+        <translation>Ladataan säädataa...</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@ Virheen kuvaus:</translation>
     <message>
         <location filename="messages.py" line="16"/>
         <source>Lopetus päivämäärä ei saa edeltää aloitus päivämäärää</source>
-        <translation >Lopetus päivämäärä ei saa edeltää aloitus päivämäärää</translation>
+        <translation>Lopetus päivämäärä ei saa edeltää aloitus päivämäärää</translation>
     </message>
 </context>
 <context>
@@ -216,7 +216,7 @@ Virheen kuvaus:</translation>
 Oletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen?
 
 Ilmatieteenlaitos vaatii rekisteröitymistä palveluun ennen sen käyttöä. Katso lisätietoa valikosta Tiedosto-&gt;Aseta tunnisteavain.</source>
-        <translation >Datapyyntö ei onnistunut.
+        <translation>Datapyyntö ei onnistunut.
 Oletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen?
 
 Ilmatieteenlaitos vaatii rekisteröitymistä palveluun ennen sen käyttöä. Katso lisätietoa valikosta Tiedosto-&gt;Aseta tunnisteavain.</translation>
@@ -227,7 +227,7 @@ Ilmatieteenlaitos vaatii rekisteröitymistä palveluun ennen sen käyttöä. Kat
     <message>
         <location filename="messages.py" line="32"/>
         <source>Tallenna säädata csv-muodossa:</source>
-        <translation >Tallenna säädata csv-muodossa:</translation>
+        <translation>Tallenna säädata csv-muodossa:</translation>
     </message>
 </context>
 <context>
@@ -246,7 +246,7 @@ Ilmatieteenlaitos vaatii rekisteröitymistä palveluun ennen sen käyttöä. Kat
 Mene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.
 
 Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:</source>
-        <translation >Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.
+        <translation>Käyttääksesi sovellusta tarvitset ilmatieteenlaitoksen avoimen datan tunnisteavaimen.
 Mene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.
 
 Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:</translation>
@@ -265,7 +265,7 @@ Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se t
     <message>
         <location filename="messages.py" line="19"/>
         <source>Aloitus ja lopetuspäivämäärät eivät saa olla samoja</source>
-        <translation >Aloitus ja lopetuspäivämäärät eivät saa olla samoja</translation>
+        <translation>Aloitus ja lopetuspäivämäärät eivät saa olla samoja</translation>
     </message>
 </context>
 <context>
@@ -285,7 +285,7 @@ Ilmatieteenlaitoksen palvelussa on häiriö tai mikäli ongelma toistuu muillaki
 
 Virheen kuvaus:
 </source>
-        <translation >Määritettyä sääasemaa ei löydetty.
+        <translation>Määritettyä sääasemaa ei löydetty.
 Ilmatieteenlaitoksen palvelussa on häiriö tai mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta Tiedosto-&gt;Tietoa valikosta.
 
 Virheen kuvaus:</translation>
