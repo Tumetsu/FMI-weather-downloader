@@ -57,7 +57,7 @@ The FMIDownloader provides a way to download real time observation data from var
  2. Select the weather station of your choice from the dropdown menu or write the initial letters of the station to the field and select the right one from suggestions. 
  3.  After selecting the station you can see the starting year where data is available fro this station.
 
-		> ATTENTION! The Available from year **doesn't** mean that there is data available from beginning of the year. In this case if you search data from beginning of the year (e.g. 1.1.1963 - 1.2.1963) the application will not find data and will display an error message. In this case you can edit your start and end dates towards the end of the year until you can find some data (e.g. esim. 1.1.1963 – 1.1.1964)
+	> ATTENTION! The Available from year **doesn't** mean that there is data available from beginning of the year. In this case if you search data from beginning of the year (e.g. 1.1.1963 - 1.2.1963) the application will not find data and will display an error message. In this case you can edit your start and end dates towards the end of the year until you can find some data (e.g. esim. 1.1.1963 – 1.1.1964)
 
  4.  Set dates you want to the start and end date fields. Note that the dates are not allowed to be same and the end date is not allowed to predate the start date.  
  5.  Press the "Download" button. 
