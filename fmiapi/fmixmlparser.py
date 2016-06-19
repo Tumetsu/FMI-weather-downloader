@@ -24,7 +24,6 @@ class FMIxmlParser:
             for item in xml_data_list:
                 location_name = self._get_location_name(item)
                 df = self._parse_datapoints(item)
-                df = df[:-2]
                 self._dataframes.append(df)
                 # TODO: Callback to notify about progress?
 
