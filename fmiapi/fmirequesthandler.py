@@ -15,8 +15,8 @@ class FMIRequestHandler:
         self._FMI_request = FMIRequest(self._api_key)
         self._callbackFunction = None
 
-    def request(self, params, max_range, progress_callback=None):
-        requests = self._prepare_requests(params, max_range)
+    def request(self, params, max_timespan, progress_callback=None):
+        requests = self._divide_to_multiple_requests(params, max_timespan)
         return self._execute_requests(requests, progress_callback)
 
     def _execute_requests(self, requests, progress_callback):
@@ -29,9 +29,6 @@ class FMIRequestHandler:
             if progress_callback is not None:
                 progress_callback(count, all_requests)
         return responses
-
-    def _prepare_requests(self, params, max_timespan):
-        return self._divide_to_multiple_requests(params, max_timespan)
 
     def _do_request(self, request):
         return self._FMI_request.get(request)

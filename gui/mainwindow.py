@@ -10,6 +10,7 @@ from gui.downloadProgress import *
 from gui.messages import Messages
 from gui.languagedialog import LanguageDialog
 import webbrowser
+import csv
 
 class Mainwindow(QMainWindow):
 
@@ -221,7 +222,11 @@ class Mainwindow(QMainWindow):
             self._save_to_csv(dataframe, filename[0])
 
     def _save_to_csv(self, df, path):
-        df.to_csv(path, sep=";", date_format="%d.%m.%Y %H:%M", index=False, chunksize=10)
+        with open(path, 'w') as outfile:
+            writer = csv.writer(outfile)
+            writer.writerow(df.keys())
+            writer.writerows(zip(*df.values()))
+            outfile.close()
 
     def _get_dateTime_from_UI(self, dateEdit):
         return QDateTime(dateEdit.date()).toPyDateTime()
@@ -270,7 +275,7 @@ class Mainwindow(QMainWindow):
                 self.statusBar().showMessage("", 50)
                 self.ui.pushButton_2.setEnabled(True)
 
-    @pyqtSlot(int)
+
     def _download_daily(self):
         params = { "request" : "getFeature",
                    "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
@@ -319,7 +324,6 @@ class Mainwindow(QMainWindow):
              raise e
              #self._show_error_alerts("Tuntematon virhe: " + str(e))
 
-    @pyqtSlot(int)
     def _download_realtime(self):
 
         params = {"request" : "getFeature",

@@ -22,11 +22,11 @@ class FMIApi:
         self._request_handler = FMIRequestHandler(self._api_key)
 
     def get_daily_weather(self, params, callback_function=None):
-        return self._request_handler.request(params, max_range=self._DAILY_REQUEST_MAX_RANGE_HOURS,
+        return self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
                                              progress_callback=callback_function)
 
     def get_realtime_weather(self, params, callback_function=None):
-        return self._request_handler.request(params, max_range=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
+        return self._request_handler.request(params, max_timespan=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
                                              progress_callback=callback_function)
 
     def _load_station_metadata(self):

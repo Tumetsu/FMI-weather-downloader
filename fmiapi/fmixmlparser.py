@@ -1,12 +1,11 @@
-from io import StringIO
-import pandas as pd
 from fmiapi.fmierrors import *
-
+import datetime
+from collections import OrderedDict
 
 class FMIxmlParser:
     """
     Ad-hoc class to parse multipoint-coverage xml supplied from FMI-service and convert the multipoint-coverage
-    values to a single Pandas dataframe. Class is not designed for general use and extracts only relevant data
+    values to dict of lists. Class is not designed for general use and extracts only relevant data
     for this use case. More general approach might be nice for extending the application.
     """
 
@@ -21,67 +20,76 @@ class FMIxmlParser:
     def parse(self, xml_data_list):
         try:
             location_name = ""
+            dataframe = None
             for item in xml_data_list:
                 location_name = self._get_location_name(item)
                 df = self._parse_datapoints(item)
-                self._dataframes.append(df)
+                dataframe = self._join_data(dataframe, df)
                 # TODO: Callback to notify about progress?
 
-            totaldf = self._join_dataframes(self._dataframes)
-            totaldf = self._clean_na_values(totaldf)
-            totaldf["place"] = location_name
-            return totaldf
+            dataframe["place"] = [location_name] * len(dataframe['time'])
+            return dataframe
         except (IndexError, ValueError):
             raise NoDataException()
+
+    def _join_data(self, existing, df):
+        if existing is None:
+            return df
+        else:
+            for key in df:
+                existing[key] = existing[key] + df[key]
+            return existing
 
     @staticmethod
     def _get_location_name(item):
         return item[0].find(".//gml:name", namespaces=FMIxmlParser._GML).text
 
-    @staticmethod
-    def _join_dataframes(dataframes) -> pd.DataFrame:
-        return pd.concat(dataframes, ignore_index=True)
-
     def _parse_datapoints(self, xml_data):
         df_position_time = self._parse_positions(xml_data)
         df_observations = self._parse_measurementdata(xml_data)
-        df_observations = self._combine_time_and_observation(df_observations, df_position_time)
+        df_observations = self._map_times_to_observations(df_observations, df_position_time)
         return df_observations
 
     def _parse_positions(self, xml_data):
         positions = xml_data[0].find(".//gmlcov:positions", namespaces=self._GMLCOV).text
-        # TODO: Replace Pandas with more lightweight implementation
-        return pd.read_csv(StringIO(positions), delim_whitespace=True, names=["lat", "long", "time"])
+        positions = positions.split()
+
+        result = OrderedDict({'time': [], 'lat': [], 'long': []})
+
+        for i in range(0, len(positions), 3):
+            result['time'].append(self._timestamp2datestr(positions[i + 2]))
+            result['long'].append(positions[i+1])
+            result['lat'].append(positions[i])
+
+        return result
+
+    def _timestamp2datestr(self, timestamp):
+        return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%d')
 
     def _parse_measurementdata(self, xml_data):
         # get field names available in file
         fields = xml_data[0].findall(".//swe:field", namespaces=self._SWE)
-        self._field_names = []
+        result = OrderedDict()
+        headers = []
         for f in fields:
-            self._field_names.append(f.get("name"))
+            headers.append(f.get("name"))
+            result[f.get("name")] = []
 
         # get actual measurement data
         observed = xml_data[0].find(".//gml:doubleOrNilReasonTupleList", namespaces=self._GML).text
-        # TODO: Replace Pandas with more lightweight implementation
-        df_observations = pd.read_csv(StringIO(observed), delim_whitespace=True, names=self._field_names)
-        df_observations = df_observations.applymap(str).replace(r'\.', ',', regex=True)  # decimal dot to comma
-        return df_observations
+        observed = observed.split()
 
-    def _combine_time_and_observation(self, df_observations, df_position_time):
-        # TODO: Do conversion from unix timestamp to regular date with something else than Pandas
-        df_observations["time"] = df_position_time["time"]
-        df_observations["time"] = pd.to_datetime(df_observations["time"], unit="s")
-        self._field_names.insert(0, "time")
-        df_observations = df_observations[self._field_names]
-        return df_observations
+        for i in range(0, len(observed), len(headers)):
+            for h in range(0, len(headers)):
+                result[headers[h]].append(observed[i + h])
+        return result
 
-    @staticmethod
-    def _clean_na_values(df):
-        df = df.replace('nan', pd.np.nan)
-        df = df.dropna(axis=1, how='all')
-        df = df.replace(pd.np.nan, "")
-        return df
+    def _map_times_to_observations(self, df_observations, df_position_time):
+        combined = OrderedDict()
+        combined["time"] = df_position_time["time"]
+        combined.update(df_observations)
+        return combined
 
-    def clear(self):
-        self._dataframes = []
-        self._field_names = []
+    # TODO: Might be needed later
+    def _clean_na_values(self, df):
+        pass
