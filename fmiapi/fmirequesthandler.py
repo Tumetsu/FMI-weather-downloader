@@ -30,12 +30,8 @@ class FMIRequestHandler:
                 progress_callback(count, all_requests)
         return responses
 
-    def _prepare_requests(self, params, max_range):
-        required_requests = self._required_requests_count(params["starttime"], params["endtime"], max_range)
-        if required_requests == 1:
-            return [params]
-        else:
-            return self._divide_to_multiple_requests(params, required_requests)
+    def _prepare_requests(self, params, max_timespan):
+        return self._divide_to_multiple_requests(params, max_timespan)
 
     def _do_request(self, request):
         return self._FMI_request.get(request)
@@ -47,19 +43,18 @@ class FMIRequestHandler:
         return math.ceil(time_diff_in_hours / max_range)
 
     @staticmethod
-    def _divide_to_multiple_requests(params, amount):
-        time_diff = params["endtime"] - params["starttime"]
-        time_diff_in_days = time_diff.days
-        time_delta = math.ceil(time_diff_in_days/amount)
-
+    def _divide_to_multiple_requests(params, max_timespan):
         requests = []
-        for i in range(0, amount):
-            new_request_params = copy.copy(params)
-            offset = time_delta*i
-            new_date = params["starttime"] + datetime.timedelta(days=offset)
-            new_request_params["starttime"] = new_date.strftime("%Y-%m-%dT00:00:00Z")
+        done = False
+        i = 0
+        while not done:
+            request_params = copy.copy(params)
+            request_params["starttime"] += datetime.timedelta(hours=max_timespan)*i
+            request_params["endtime"] = request_params["starttime"] + datetime.timedelta(hours=max_timespan-1)
+            requests.append(request_params)
 
-            new_end_date = new_date + datetime.timedelta(days=time_delta)
-            new_request_params["endtime"] = new_end_date.strftime("%Y-%m-%dT00:00:00Z")
-            requests.append(new_request_params)
+            if request_params["endtime"] > params["endtime"]:
+                done = True
+                request_params["endtime"] = params["endtime"]
+            i += 1
         return requests

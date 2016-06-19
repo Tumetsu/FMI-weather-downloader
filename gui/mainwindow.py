@@ -53,7 +53,7 @@ class Mainwindow(QMainWindow):
         storedApikey = self._settings.value("apikey")
         if storedApikey is not None:
             self._apiKey = storedApikey
-            self._api.auth(self._apiKey)
+            self._api.set_apikey(self._apiKey)
 
         if self._apiKey == "":
             self.statusBar().showMessage(self.MESSAGES.set_apikey_message(), 0)
@@ -87,7 +87,7 @@ class Mainwindow(QMainWindow):
 
     def _set_up_api(self):
         self._api = FMIApi()
-        self._api.auth(self._apiKey)
+        self._api.set_apikey(self._apiKey)
 
     def _set_up_ui(self):
         self.ui.stationComboBox.clear()
@@ -140,7 +140,7 @@ class Mainwindow(QMainWindow):
         key = QInputDialog.getText(self, QCoreApplication.translate("setapikeyheading", "Aseta tunnisteavain"), self.MESSAGES.set_apikey_dialog(), text=self._apiKey)
         if key[1]:
             self._apiKey = key[0].strip()
-            self._api.auth(self._apiKey)
+            self._api.set_apikey(self._apiKey)
             self._settings.setValue("apikey", self._apiKey)
 
     @pyqtSlot(int)
