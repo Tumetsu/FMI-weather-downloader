@@ -5,7 +5,9 @@ from fmiapi.fmierrors import *
 
 
 class FMIRequest:
-    """ This class does the actual single http-request required """
+    """
+    This class provides a GET http-request to fetch a chunk of data.
+    """
 
     def __init__(self, api_key):
         self._url = "data.fmi.fi"
@@ -17,7 +19,9 @@ class FMIRequest:
         self._connection = http.client.HTTPConnection(self._url)
 
     def get(self, params):
-        self._connection.request("GET", "/fmi-apikey/" + self._apikey + "/wfs?" + urllib.parse.urlencode(params),
+        self._connection.request("GET", "/fmi-apikey/{apikey}/wfs?{query_params}"
+                                 .format(apikey=self._apikey,
+                                         query_params=urllib.parse.urlencode(params)),
                                  headers=self._headers)
         response = self._connection.getresponse()
         if response.status == 200:
@@ -28,6 +32,10 @@ class FMIRequest:
             raise RequestException(self._get_error_reason(response), response.status)
 
     def _get_error_reason(self, response):
+        """
+        FMI responds to some errors with HTML-page and some with XML-response. Figure out which one is the
+        case and raise different error for further processing
+        """
         if response.getheader("Content-Type") == "text/html":
             raise RequestException("Error in html", response.status, html=response.read())
 
