@@ -1,6 +1,7 @@
 from fmiapi.fmierrors import *
 import datetime
 from collections import OrderedDict
+import math
 
 class FMIxmlParser:
     """
@@ -28,6 +29,7 @@ class FMIxmlParser:
                 # TODO: Callback to notify about progress?
 
             dataframe["place"] = [location_name] * len(dataframe['time'])
+            dataframe = self._clean_na_values(dataframe)
             return dataframe
         except (IndexError, ValueError):
             raise NoDataException()
@@ -64,7 +66,7 @@ class FMIxmlParser:
         return result
 
     def _timestamp2datestr(self, timestamp):
-        return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%d')
+        return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%dT%H:%M')
 
     def _parse_measurementdata(self, xml_data):
         # get field names available in file
@@ -81,7 +83,7 @@ class FMIxmlParser:
 
         for i in range(0, len(observed), len(headers)):
             for h in range(0, len(headers)):
-                result[headers[h]].append(observed[i + h])
+                result[headers[h]].append(float(observed[i + h]))
         return result
 
     def _map_times_to_observations(self, df_observations, df_position_time):
@@ -90,6 +92,17 @@ class FMIxmlParser:
         combined.update(df_observations)
         return combined
 
-    # TODO: Might be needed later
     def _clean_na_values(self, df):
-        pass
+        mark_for_removal = []
+        for key, column in df.items():
+            nan_count = 0
+            for i in range(0, len(column)):
+                if type(column[i]) is float and math.isnan(column[i]):
+                    nan_count += 1
+                    column[i] = 'NaN'
+            if nan_count == len(column):
+                mark_for_removal.append(key)
+
+        for rm in mark_for_removal:
+            df.pop(rm, None)
+        return df
