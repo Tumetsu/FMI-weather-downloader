@@ -3,3 +3,5 @@ dist/
 *.pyc
 .eggs
 .cache
+venv/
+build/
