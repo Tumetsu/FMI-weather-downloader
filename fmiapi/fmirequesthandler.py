@@ -34,12 +34,6 @@ class FMIRequestHandler:
         return self._FMI_request.get(request)
 
     @staticmethod
-    def _required_requests_count(start_time, end_time, max_range):
-        time_diff = end_time - start_time
-        time_diff_in_hours = time_diff.days*24
-        return math.ceil(time_diff_in_hours / max_range)
-
-    @staticmethod
     def _divide_to_multiple_requests(params, max_timespan):
         requests = []
         done = False
