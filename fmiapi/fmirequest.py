@@ -29,7 +29,6 @@ class FMIRequest:
             return etree.XML(data)
         else:
             self._get_error_reason(response)
-            raise RequestException(self._get_error_reason(response), response.status)
 
     def _get_error_reason(self, response):
         """

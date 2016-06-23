@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExceptionReport xmlns="http://www.opengis.net/ows/1.1"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"
+  version="2.0.0" xml:lang="eng">
+    <Exception exceptionCode="OperationProcessingFailed">
+        <ExceptionText>Too long time interval &apos;1916-May-23 21:31:57&apos; to &apos;2011-May-27 21:31:57&apos; specified (no more than 8928 hours allowed)</ExceptionText>
+        <ExceptionText>URI: /wfs?endtime=2011-05-27T21%3A31%3A57&amp;fmisid=101154&amp;request=getFeature&amp;starttime=1916-05-23T21%3A31%3A57&amp;storedquery_id=fmi%3A%3Aobservations%3A%3Aweather%3A%3Adaily%3A%3Amultipointcoverage</ExceptionText>
+    </Exception>
+</ExceptionReport>

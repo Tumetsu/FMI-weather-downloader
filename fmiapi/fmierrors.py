@@ -2,11 +2,9 @@
 class RequestException(Exception):
 
     def __init__(self, text, error_code, html=""):
-        self.message = "ERROR in "
-        self.errorCode = 0
-        self.html = ""
+        self.error_code = 0
         self.message = text
-        self.errorCode = error_code
+        self.error_code = error_code
         self.html = html
 
     def __str__(self):
