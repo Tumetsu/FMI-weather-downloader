@@ -24,10 +24,22 @@ class InvalidApikeyException(Exception):
         return self.message
 
 
+class QueryLimitException(Exception):
+
+    def __init__(self, wait_time=None, wait_unit=None):
+        self.message = "ERROR in data-retrieving. Query limit exceeded. Please wait."
+        self.error_code = "QUERYLIMIT"
+        self.wait_unit = wait_unit
+        self.wait_time = wait_time
+
+    def __str__(self):
+        return self.message
+
+
 class NoDataException(Exception):
 
-    def __init__(self):
-        self.message = "ERROR in data-retrieving. Does the server have data for this timespan?"
+    def __init__(self, starttime=None, endtime=None):
+        self.message = "ERROR in data-retrieving. Did not find any data in range {} - {}".format(starttime, endtime)
         self.error_code = "NODATA"
 
     def __str__(self):

@@ -1,7 +1,9 @@
 import http.client
 import urllib.request
 from lxml import etree
+from lxml import html
 from fmiapi.fmierrors import *
+import re
 
 
 class FMIRequest:
@@ -36,9 +38,11 @@ class FMIRequest:
         case and raise different error for further processing
         """
         if response.getheader("Content-Type") == "text/html":
-            html = response.read()
-            if 'Invalid fmi-apikey' in html:
+            html_data = response.read()
+            if 'Invalid fmi-apikey' in html_data:
                 raise InvalidApikeyException()
+            elif 'Query limit' in html_data:
+                self._raise_query_limit_exception(html_data)
             else:
                 raise RequestException("Error in html", response.status, html=response.read())
 
@@ -46,3 +50,24 @@ class FMIRequest:
             xml = etree.XML(response.read())
             raise RequestException(xml.find(".//xmlns:ExceptionText", namespaces=self._XMLNS_NAMESPACE).text,
                                    response.status)
+
+    @staticmethod
+    def _raise_query_limit_exception(html_str):
+        """
+        Try to find extra information from query limit response. Mainly waiting time and waiting unit
+        until next query can be done.
+        :param html_str:
+        :return:
+        """
+        html_data = html.document_fromstring(html_str)
+        elements = html_data.xpath('.//p[contains(text(),"Query limit")]')
+
+        if len(elements) == 1:
+            info = elements[0].text
+            p = re.compile('Please wait (\d+) (seconds)')
+            m = p.search(info)
+            if m is not None:
+                wait_time = m.group(1)
+                wait_unit = m.group(2)
+                raise QueryLimitException(wait_time=wait_time, wait_unit=wait_unit)
+        raise QueryLimitException()

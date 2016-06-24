@@ -3,6 +3,7 @@ import datetime
 from collections import OrderedDict
 import math
 
+
 class FMIxmlParser:
     """
     Ad-hoc class to parse multipoint-coverage xml supplied from FMI-service and convert the multipoint-coverage
@@ -19,22 +20,28 @@ class FMIxmlParser:
         self._dataframes = []
 
     def parse(self, xml_data_list):
-        try:
-            location_name = ""
-            dataframe = None
-            for item in xml_data_list:
+        location_name = ""
+        dataframe = None
+        no_data_cases = 0
+        for item in xml_data_list:
+            try:
                 location_name = self._get_location_name(item)
                 df = self._parse_datapoints(item)
                 dataframe = self._join_data(dataframe, df)
                 # TODO: Callback to notify about progress?
+            except (IndexError, ValueError):
+                no_data_cases += 1
 
-            dataframe["place"] = [location_name] * len(dataframe['time'])
-            dataframe = self._clean_na_values(dataframe)
-            return dataframe
-        except (IndexError, ValueError):
+        # If request did not produce anything, throw exception. Otherwise return gotten data.
+        if no_data_cases == len(xml_data_list):
             raise NoDataException()
 
-    def _join_data(self, existing, df):
+        dataframe["place"] = [location_name] * len(dataframe['time'])
+        dataframe = self._clean_na_values(dataframe)
+        return dataframe
+
+    @staticmethod
+    def _join_data(existing, df):
         if existing is None:
             return df
         else:
@@ -65,7 +72,8 @@ class FMIxmlParser:
 
         return result
 
-    def _timestamp2datestr(self, timestamp):
+    @staticmethod
+    def _timestamp2datestr(timestamp):
         return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%dT%H:%M')
 
     def _parse_measurementdata(self, xml_data):
@@ -86,13 +94,15 @@ class FMIxmlParser:
                 result[headers[h]].append(float(observed[i + h]))
         return result
 
-    def _map_times_to_observations(self, df_observations, df_position_time):
+    @staticmethod
+    def _map_times_to_observations(df_observations, df_position_time):
         combined = OrderedDict()
         combined["time"] = df_position_time["time"]
         combined.update(df_observations)
         return combined
 
-    def _clean_na_values(self, df):
+    @staticmethod
+    def _clean_na_values(df):
         mark_for_removal = []
         for key, column in df.items():
             nan_count = 0

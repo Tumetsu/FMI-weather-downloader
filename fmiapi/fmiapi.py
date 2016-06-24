@@ -1,4 +1,6 @@
 import csv
+
+from fmiapi.fmierrors import NoDataException
 from fmiapi.fmirequesthandler import FMIRequestHandler
 from fmiapi.fmixmlparser import FMIxmlParser
 
@@ -26,8 +28,11 @@ class FMIApi:
     def get_daily_weather(self, params, callback_function=None):
         data = self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
                                              progress_callback=callback_function)
-        return self._parser.parse(data)
-
+        try:
+            return self._parser.parse(data)
+        except NoDataException:
+            # Augment date data to exception and raise it again
+            raise NoDataException(starttime=params['starttime'], endtime=params['endtime'])
 
     def get_realtime_weather(self, params, callback_function=None):
         data = self._request_handler.request(params, max_timespan=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
