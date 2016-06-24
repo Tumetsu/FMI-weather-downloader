@@ -36,7 +36,11 @@ class FMIRequest:
         case and raise different error for further processing
         """
         if response.getheader("Content-Type") == "text/html":
-            raise RequestException("Error in html", response.status, html=response.read())
+            html = response.read()
+            if 'Invalid fmi-apikey' in html:
+                raise InvalidApikeyException()
+            else:
+                raise RequestException("Error in html", response.status, html=response.read())
 
         elif response.getheader("Content-Type") == "text/xml; charset=UTF8":
             xml = etree.XML(response.read())

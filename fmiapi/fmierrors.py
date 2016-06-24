@@ -14,9 +14,21 @@ class RequestException(Exception):
             return self.message
 
 
+class InvalidApikeyException(Exception):
+
+    def __init__(self):
+        self.message = "ERROR in data-retrieving. Your API-key is invalid."
+        self.error_code = "APIKEY"
+
+    def __str__(self):
+        return self.message
+
+
 class NoDataException(Exception):
-    message = "ERROR in data-retrieving. Does the server have data for this timespan?"
-    errorCode = "NODATA"
+
+    def __init__(self):
+        self.message = "ERROR in data-retrieving. Does the server have data for this timespan?"
+        self.error_code = "NODATA"
 
     def __str__(self):
         return self.message

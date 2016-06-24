@@ -1,5 +1,6 @@
 import csv
 from fmiapi.fmirequesthandler import FMIRequestHandler
+from fmiapi.fmixmlparser import FMIxmlParser
 
 
 class FMIApi:
@@ -16,18 +17,22 @@ class FMIApi:
         self._PATH_TO_STATIONS_CSV = "stations.csv"
         self._stations = []
         self._load_station_metadata()
+        self._parser = FMIxmlParser()
 
     def set_apikey(self, api_key):
         self._api_key = api_key
         self._request_handler = FMIRequestHandler(self._api_key)
 
     def get_daily_weather(self, params, callback_function=None):
-        return self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
+        data = self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
                                              progress_callback=callback_function)
+        return self._parser.parse(data)
+
 
     def get_realtime_weather(self, params, callback_function=None):
-        return self._request_handler.request(params, max_timespan=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
+        data = self._request_handler.request(params, max_timespan=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
                                              progress_callback=callback_function)
+        return self._parser.parse(data)
 
     def _load_station_metadata(self):
         """ FMI apparently didn't provide an API-endpoint to get list of all the stations. For now, we load the

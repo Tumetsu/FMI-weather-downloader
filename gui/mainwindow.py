@@ -292,37 +292,24 @@ class Mainwindow(QMainWindow):
     @pyqtSlot(list)
     def _download_realtime_finished(self, results):
         try:
-            try:
-                parser = FMIxmlParser()
-                dataframe = parser.parse(results)
-                parser = None
-                self._choose_place_to_save_data(dataframe)
-                dataframe = None
-            except (NoDataException) as e:
-
-                if e.errorCode == "NODATA":
-                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
+            self._choose_place_to_save_data(results)
+        except NoDataException as e:
+            if e.errorCode == "NODATA":
+                 #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
+                 self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
         except Exception as e:
             self._show_error_alerts(self.MESSAGES.unknown_error() + str(e))
 
     @pyqtSlot(list)
     def _download_daily_finished(self, results):
         try:
-            try:
-                parser = FMIxmlParser()
-                dataframe = parser.parse(results)
-                parser = None
-                self._choose_place_to_save_data(dataframe)
-                dataframe = None
-            except (NoDataException) as e:
-                if e.errorCode == "NODATA":
-                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
-
+            self._choose_place_to_save_data(results)
+        except NoDataException as e:
+            if e.errorCode == "NODATA":
+                # vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
+                self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
         except Exception as e:
-             raise e
-             #self._show_error_alerts("Tuntematon virhe: " + str(e))
+            self._show_error_alerts(self.MESSAGES.unknown_error() + str(e))
 
     def _download_realtime(self):
 

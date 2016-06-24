@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QProgressDialog
 from PyQt5.QtCore import pyqtSlot, QObject
 from fmiapi.fmierrors import *
 from gui.mainwindow import *
+from collections import OrderedDict
 
 class DownloadProgress(QObject):
 
@@ -11,8 +12,8 @@ class DownloadProgress(QObject):
     processCount = 0
     threadUpdateSignal = pyqtSignal(int, int, name="progressUpdate")
     threadExceptionSignal = pyqtSignal(object,name="exceptionInProcess")
-    threadResultsSignal = pyqtSignal(list, name="results")
-    finishedSignal = pyqtSignal(list, name="processFinished")
+    threadResultsSignal = pyqtSignal(OrderedDict, name="results")
+    finishedSignal = pyqtSignal(OrderedDict, name="processFinished")
     result = {}
 
     def __init__(self, parent):
@@ -56,24 +57,20 @@ class DownloadProgress(QObject):
         self.progressDialog.cancel()
 
         try:
-            try:
-                raise error
-            except (RequestException, NoDataException) as e:
-                if e.errorCode == 400:
-                    #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
-                    self.parent._show_error_alerts(self.parent.MESSAGES.weatherstation_error() + str(e))
-                if e.errorCode == 404:
-                    #apikey on luultavasti väärä
-                    self.parent._show_error_alerts(self.parent.MESSAGES.request_failed_error())
+            raise error
+        except (RequestException, NoDataException) as e:
+            if e.errorCode == 400:
+                #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
+                self.parent._show_error_alerts(self.parent.MESSAGES.weatherstation_error() + str(e))
+            if e.errorCode == 404:
+                #apikey on luultavasti väärä
+                self.parent._show_error_alerts(self.parent.MESSAGES.request_failed_error())
 
-                if e.errorCode == "NODATA":
-                     #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                     self.parent._show_error_alerts(Mainwindow._DATE_NOT_FOUND_ERROR + str(e))
+            if e.errorCode == "NODATA":
+                 #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
+                 self.parent._show_error_alerts(Mainwindow._DATE_NOT_FOUND_ERROR + str(e))
         except Exception as e:
-             self.parent._show_error_alerts(self.parent.MESSAGES.unknown_error() + str(e))
-
-
-
+            self.parent._show_error_alerts(self.parent.MESSAGES.unknown_error() + str(e))
 
     @pyqtSlot(list)
     def _processFinished(self, result):
