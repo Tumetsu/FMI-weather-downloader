@@ -58,10 +58,3 @@ class FMIApi:
                 return i
         return -1
 
-
-class ApiKeyException(Exception):
-    message = "Please provide a valid API-key. Instructions to get one available on: " \
-              "http://en.ilmatieteenlaitos.fi/open-data or" \
-              "https://ilmatieteenlaitos.fi/avoin-data"
-    errorCode = 0
-    html = ""
