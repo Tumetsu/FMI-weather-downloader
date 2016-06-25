@@ -1,5 +1,6 @@
 import http.client
 import urllib.request
+import pytz
 from lxml import etree
 from lxml import html
 from fmiapi.fmierrors import *
@@ -21,6 +22,9 @@ class FMIRequest:
         self._connection = http.client.HTTPConnection(self._url)
 
     def get(self, params):
+        # Convert Finnish time to UTC here:
+        params["starttime"] = params["starttime"].astimezone(pytz.utc)
+        params["endtime"] = params["endtime"].astimezone(pytz.utc)
         self._connection.request("GET", "/fmi-apikey/{apikey}/wfs?{query_params}"
                                  .format(apikey=self._apikey,
                                          query_params=urllib.parse.urlencode(params)),

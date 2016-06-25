@@ -2,7 +2,8 @@ from fmiapi.fmierrors import *
 import datetime
 from collections import OrderedDict
 import math
-
+import pytz
+timezone = pytz.timezone('Europe/Helsinki')
 
 class FMIxmlParser:
     """
@@ -74,7 +75,11 @@ class FMIxmlParser:
 
     @staticmethod
     def _timestamp2datestr(timestamp):
-        return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%dT%H:%M')
+        ts = datetime.datetime.fromtimestamp(int(timestamp))
+        ts = pytz.utc.localize(ts)
+        ts = ts.astimezone(timezone)
+        return ts.strftime('%Y-%m-%dT%H:%M')
+
 
     def _parse_measurementdata(self, xml_data):
         # get field names available in file

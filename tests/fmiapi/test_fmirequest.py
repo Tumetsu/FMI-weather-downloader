@@ -20,8 +20,8 @@ class TestFMIRequest:
         mock_connection = mock_httpconn.return_value
         mock_connection.getresponse.return_value = MockResponse(200, '<asd>Important data</asd>')
         fmi_request = FMIRequest('apikey')
-        query = create_daily_query(datetime(2010, 1, 1, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                   datetime(2011, 1, 5, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone))
+        query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone),
+                                   datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone))
         result = fmi_request.get(query)
 
         assert_equal(1, mock_connection.getresponse.call_count)
@@ -46,8 +46,8 @@ class TestFMIRequest:
         mock_connection = mock_httpconn.return_value
         mock_connection.getresponse.return_value = MockResponse(404, self.html_error, content_type='text/html')
         fmi_request = FMIRequest('apikey')
-        query = create_daily_query(datetime(2010, 1, 1, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                   datetime(2011, 1, 5, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone))
+        query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone),
+                                   datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone))
 
         with pytest.raises(RequestException) as e:
             fmi_request.get(query)
