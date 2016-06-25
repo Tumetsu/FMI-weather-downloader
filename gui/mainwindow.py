@@ -6,7 +6,7 @@ from PyQt5.QtCore import pyqtSlot, QSettings, QStandardPaths
 from gui.ui_mainwindow import Ui_MainWindow
 from fmiapi.fmiapi import FMIApi
 from fmiapi.fmixmlparser import FMIxmlParser
-from gui.downloadProgress import *
+from gui.download.downloadProgress import *
 from gui.messages import Messages
 from gui.languagedialog import LanguageDialog
 import webbrowser
@@ -289,7 +289,7 @@ class Mainwindow(QMainWindow):
 
         download = DownloadProgress(self)
         download.finishedSignal.connect(self._download_daily_finished)
-        download.beginDownload(params, self._api.get_daily_weather)
+        download.begin_download(params, self._api.get_daily_weather)
 
 
     @pyqtSlot(list)
@@ -325,7 +325,7 @@ class Mainwindow(QMainWindow):
 
         download = DownloadProgress(self)
         download.finishedSignal.connect(self._download_realtime_finished)
-        download.beginDownload(params, self._api.get_realtime_weather)
+        download.begin_download(params, self._api.get_realtime_weather)
 
     def _show_error_alerts(self, message):
         msgbox = QMessageBox()
