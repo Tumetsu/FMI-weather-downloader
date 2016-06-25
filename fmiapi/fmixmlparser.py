@@ -75,7 +75,7 @@ class FMIxmlParser:
 
     @staticmethod
     def _timestamp2datestr(timestamp):
-        ts = datetime.datetime.fromtimestamp(int(timestamp))
+        ts = datetime.datetime.utcfromtimestamp(int(timestamp))
         ts = pytz.utc.localize(ts)
         ts = ts.astimezone(timezone)
         return ts.strftime('%Y-%m-%dT%H:%M')

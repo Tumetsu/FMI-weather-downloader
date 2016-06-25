@@ -27,8 +27,8 @@ def describe_fmi_api():
         def should_use_set_apikey_in_query(mock_httpconn):
             mock_connection = mock_httpconn.return_value
             mock_connection.getresponse.return_value = MockResponse(200, etree.tostring(daily_4_days))
-            query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                       datetime(2010, 1, 5, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone))
+            query = create_daily_query(datetime(2000, 1, 13, hour=0, minute=1, second=0, microsecond=0),
+                                       datetime(2000, 1, 16, hour=0, minute=1, second=0, microsecond=0))
 
             fmiapi = FMIApi()
             apikey = '12345-12345'
@@ -41,9 +41,9 @@ def describe_fmi_api():
         @mock.patch('http.client.HTTPConnection', spec=True)
         def should_raise_invalid_apikey_exception_when_invalid_apikey_supplied(mock_httpconn):
             mock_connection = mock_httpconn.return_value
-            mock_connection.getresponse.return_value = MockResponse(404, html_apikey_error, content_type='text/html')
-            query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                       datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone))
+            mock_connection.getresponse.return_value = MockResponse(404, html_apikey_error.encode('utf-8'), content_type='text/html')
+            query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0),
+                                       datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0))
 
             fmiapi = FMIApi()
             apikey = '12345-12345'
@@ -60,8 +60,8 @@ def describe_fmi_api():
             mock_connection = mock_httpconn.return_value
             mock_connection.getresponse.side_effect = [MockResponse(200, etree.tostring(daily_12_days)),
                                                        MockResponse(200, etree.tostring(daily_4_days))]
-            query = create_daily_query(datetime(2000, 1, 1, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                       datetime(2001, 1, 16, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone))
+            query = create_daily_query(datetime(2000, 1, 1, hour=2, minute=1, second=0, microsecond=0),
+                                       datetime(2001, 1, 16, hour=2, minute=1, second=0, microsecond=0))
 
             # simulate one long query with two short xml files which are fed to the request
             expected_df = copy.deepcopy(EXPECTED_DAILY_12_DAYS)
@@ -81,8 +81,8 @@ def describe_fmi_api():
             fmiapi = FMIApi()
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
-            query = create_realtime_query(datetime(2012, 1, 13, hour=2, minute=0, second=0, microsecond=0, tzinfo=timezone),
-                                          datetime(2012, 1, 14, hour=2, minute=0, second=0, microsecond=0, tzinfo=timezone))
+            query = create_realtime_query(datetime(2012, 1, 13, hour=2, minute=0, second=0, microsecond=0),
+                                          datetime(2012, 1, 14, hour=2, minute=0, second=0, microsecond=0))
             result = fmiapi.get_realtime_weather(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
@@ -94,8 +94,8 @@ def describe_fmi_api():
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
             query = create_realtime_query(
-                datetime(2012, 1, 1, hour=2, minute=0, second=0, microsecond=0, tzinfo=timezone),
-                datetime(2012, 1, 14, hour=2, minute=0, second=0, microsecond=0, tzinfo=timezone))
+                datetime(2012, 1, 1, hour=2, minute=0, second=0, microsecond=0),
+                datetime(2012, 1, 14, hour=2, minute=0, second=0, microsecond=0))
             result = fmiapi.get_realtime_weather(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
@@ -109,8 +109,8 @@ def describe_fmi_api():
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
             query = create_realtime_query(
-                datetime(2012, 1, 8, hour=2, minute=0, second=0, microsecond=0, tzinfo=timezone),
-                datetime(2012, 1, 16, hour=2, minute=0, second=0, microsecond=0, tzinfo=timezone))
+                datetime(2012, 1, 8, hour=2, minute=0, second=0, microsecond=0),
+                datetime(2012, 1, 16, hour=2, minute=0, second=0, microsecond=0))
             result = fmiapi.get_realtime_weather(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
@@ -118,9 +118,9 @@ def describe_fmi_api():
         @mock.patch('http.client.HTTPConnection', spec=True)
         def should_raise_request_exception_when_request_count_exceeds_fmi_api_quota(mock_httpconn):
             mock_connection = mock_httpconn.return_value
-            mock_connection.getresponse.return_value = MockResponse(409, html_querylimit_error, content_type='text/html')
-            query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                       datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone))
+            mock_connection.getresponse.return_value = MockResponse(409, html_querylimit_error.encode('utf-8'), content_type='text/html')
+            query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0),
+                                       datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0))
             fmiapi = FMIApi()
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
@@ -139,8 +139,8 @@ def describe_fmi_api():
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
             query = create_realtime_query(
-                datetime(2008, 1, 13, hour=2, minute=0, second=0, microsecond=0, tzinfo=timezone),
-                datetime(2008, 1, 14, hour=2, minute=0, second=0, microsecond=0, tzinfo=timezone))
+                datetime(2008, 1, 13, hour=2, minute=0, second=0, microsecond=0),
+                datetime(2008, 1, 14, hour=2, minute=0, second=0, microsecond=0))
 
             with pytest.raises(NoDataException) as e:
                 fmiapi.get_realtime_weather(query, None)

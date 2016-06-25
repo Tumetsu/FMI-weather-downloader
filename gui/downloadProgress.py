@@ -59,14 +59,14 @@ class DownloadProgress(QObject):
         try:
             raise error
         except (RequestException, NoDataException) as e:
-            if e.errorCode == 400:
+            if e.error_code == 400:
                 #luultavasti komento jolla pyydetään on väärä tai palvelussa on vika tälle paikkakunnalle
                 self.parent._show_error_alerts(self.parent.MESSAGES.weatherstation_error() + str(e))
-            if e.errorCode == 404:
+            if e.error_code == 404:
                 #apikey on luultavasti väärä
                 self.parent._show_error_alerts(self.parent.MESSAGES.request_failed_error())
 
-            if e.errorCode == "NODATA":
+            if e.error_code == "NODATA":
                  #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
                  self.parent._show_error_alerts(Mainwindow._DATE_NOT_FOUND_ERROR + str(e))
         except Exception as e:

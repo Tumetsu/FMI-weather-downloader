@@ -20,8 +20,8 @@ class TestFMIRequest:
         mock_connection = mock_httpconn.return_value
         mock_connection.getresponse.return_value = MockResponse(200, '<asd>Important data</asd>')
         fmi_request = FMIRequest('apikey')
-        query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                   datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone))
+        query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0),
+                                   datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0))
         result = fmi_request.get(query)
 
         assert_equal(1, mock_connection.getresponse.call_count)
@@ -32,8 +32,8 @@ class TestFMIRequest:
         mock_connection = mock_httpconn.return_value
         mock_connection.getresponse.return_value = MockResponse(400, etree.tostring(self.xml_error), content_type='text/xml; charset=UTF8')
         fmi_request = FMIRequest('apikey')
-        query = create_daily_query(datetime(1916, 5, 23, hour=21, minute=31, second=57, microsecond=0, tzinfo=timezone),
-                                   datetime(2011, 5, 27, hour=21, minute=31, second=57, microsecond=0, tzinfo=timezone))
+        query = create_daily_query(datetime(1916, 5, 23, hour=21, minute=31, second=57, microsecond=0),
+                                   datetime(2011, 5, 27, hour=21, minute=31, second=57, microsecond=0))
 
         with pytest.raises(RequestException) as e:
             fmi_request.get(query)
@@ -44,13 +44,13 @@ class TestFMIRequest:
     @mock.patch('http.client.HTTPConnection', spec=True)
     def should_get_exception_reason_from_html_response(self, mock_httpconn):
         mock_connection = mock_httpconn.return_value
-        mock_connection.getresponse.return_value = MockResponse(404, self.html_error, content_type='text/html')
+        mock_connection.getresponse.return_value = MockResponse(404, self.html_error.encode('utf-8'), content_type='text/html')
         fmi_request = FMIRequest('apikey')
-        query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                   datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0, tzinfo=timezone))
+        query = create_daily_query(datetime(2010, 1, 1, hour=0, minute=1, second=0, microsecond=0),
+                                   datetime(2011, 1, 5, hour=0, minute=1, second=0, microsecond=0))
 
         with pytest.raises(RequestException) as e:
             fmi_request.get(query)
 
         assert_equal(404, e.value.error_code)
-        assert 'Some module: Some random error' in e.value.html
+        assert 'Some module: Some random error' in e.value.html.decode('utf-8')
