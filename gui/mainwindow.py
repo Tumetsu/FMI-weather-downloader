@@ -228,8 +228,11 @@ class Mainwindow(QMainWindow):
             writer.writerows(zip(*df.values()))
             outfile.close()
 
-    def _get_dateTime_from_UI(self, dateEdit):
-        return QDateTime(dateEdit.date()).toPyDateTime()
+    def _get_dateTime_from_UI(self, dateEdit, onlyDate=True):
+        if onlyDate:
+            return QDateTime(dateEdit.date()).toPyDateTime()
+        else:
+            return QDateTime(dateEdit.dateTime()).toPyDateTime()
 
 
     @pyqtSlot()
@@ -316,8 +319,8 @@ class Mainwindow(QMainWindow):
         params = {"request" : "getFeature",
                            "storedquery_id" : "fmi::observations::weather::multipointcoverage",
                            "fmisid": self.currentSelectedModel["FMISID"],
-                           "starttime" : self._get_dateTime_from_UI(self.ui.startimeDateTimeEdit_2),
-                           "endtime" : self._get_dateTime_from_UI(self.ui.endtime_dateTimeEdit_2),
+                           "starttime" : self._get_dateTime_from_UI(self.ui.startimeDateTimeEdit_2, onlyDate=False),
+                           "endtime" : self._get_dateTime_from_UI(self.ui.endtime_dateTimeEdit_2, onlyDate=False),
                 }
 
         download = DownloadProgress(self)

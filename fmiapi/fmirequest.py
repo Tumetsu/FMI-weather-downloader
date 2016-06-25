@@ -1,10 +1,12 @@
 import http.client
 import urllib.request
+import pytz
 from lxml import etree
 from lxml import html
 from fmiapi.fmierrors import *
 import re
-
+import pytz
+timezone = pytz.timezone('Europe/Helsinki')
 
 class FMIRequest:
     """
@@ -21,6 +23,13 @@ class FMIRequest:
         self._connection = http.client.HTTPConnection(self._url)
 
     def get(self, params):
+        # Convert Finnish time to UTC here:
+        params["starttime"] = timezone.localize(params["starttime"])
+        params["endtime"] = timezone.localize(params["endtime"])
+        params["starttime"] = params["starttime"].astimezone(pytz.utc)
+        params["endtime"] = params["endtime"].astimezone(pytz.utc)
+        params["starttime"] = params["starttime"].strftime('%Y-%m-%dT%H:%M:%SZ')
+        params["endtime"] = params["endtime"].strftime('%Y-%m-%dT%H:%M:%SZ')
         self._connection.request("GET", "/fmi-apikey/{apikey}/wfs?{query_params}"
                                  .format(apikey=self._apikey,
                                          query_params=urllib.parse.urlencode(params)),
@@ -38,7 +47,7 @@ class FMIRequest:
         case and raise different error for further processing
         """
         if response.getheader("Content-Type") == "text/html":
-            html_data = response.read()
+            html_data = response.read().decode('utf-8')
             if 'Invalid fmi-apikey' in html_data:
                 raise InvalidApikeyException()
             elif 'Query limit' in html_data:

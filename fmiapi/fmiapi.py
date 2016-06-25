@@ -1,4 +1,5 @@
 import csv
+import datetime
 
 from fmiapi.fmierrors import NoDataException
 from fmiapi.fmirequesthandler import FMIRequestHandler
@@ -26,6 +27,7 @@ class FMIApi:
         self._request_handler = FMIRequestHandler(self._api_key)
 
     def get_daily_weather(self, params, callback_function=None):
+        params['endtime'] += datetime.timedelta(days=1) # add one day to end time to get final day into result too
         data = self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
                                              progress_callback=callback_function)
         try:
