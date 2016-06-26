@@ -26,20 +26,34 @@ class FMIApi:
         self._api_key = api_key
         self._request_handler = FMIRequestHandler(self._api_key)
 
-    def get_daily_weather(self, params, callback_function=None):
+    def get_daily_weather(self, params, callback_function=None, change_to_parsing=None):
         params['endtime'] += datetime.timedelta(days=1) # add one day to end time to get final day into result too
         data = self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
                                              progress_callback=callback_function)
+
+        # Notify ui that moving to parsing phase
+        if change_to_parsing is not None:
+            change_to_parsing()
+
         try:
-            return self._parser.parse(data)
+            return self._parser.parse(data, progress_callback=callback_function)
         except NoDataException:
             # Augment date data to exception and raise it again
             raise NoDataException(starttime=params['starttime'], endtime=params['endtime'])
 
-    def get_realtime_weather(self, params, callback_function=None):
+    def get_realtime_weather(self, params, callback_function=None, change_to_parsing=None):
         data = self._request_handler.request(params, max_timespan=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
                                              progress_callback=callback_function)
-        return self._parser.parse(data)
+
+        # Notify ui that moving to parsing phase
+        if change_to_parsing is not None:
+            change_to_parsing()
+
+        try:
+            return self._parser.parse(data, progress_callback=callback_function)
+        except NoDataException:
+            # Augment date data to exception and raise it again
+            raise NoDataException(starttime=params['starttime'], endtime=params['endtime'])
 
     def _load_station_metadata(self):
         """ FMI apparently didn't provide an API-endpoint to get list of all the stations. For now, we load the

@@ -19,6 +19,7 @@ class DownloadProgress(QObject):
     def begin_download(self, request_params, request_function):
         self.progressDialog = QProgressDialog(self.parent)
         self.progressDialog.setWindowTitle(" ")
+        self.progressDialog.setAutoClose(False)
         self.progressDialog.setCancelButton(None)
         self.progressDialog.setLabelText(self.parent.MESSAGES.downloading_weatherdata())
         self.progressDialog.open()
@@ -28,6 +29,7 @@ class DownloadProgress(QObject):
         self.obj.threadUpdateSignal.connect(self._update_progress_bar)
         self.obj.threadExceptionSignal.connect(self._loading_failed)
         self.obj.threadResultsSignal.connect(self._process_finished)
+        self.obj.threadChangeTaskSignal.connect(self._change_progress_dialog)
 
         self.thread = QThread()
         self.obj.moveToThread(self.thread)
@@ -61,7 +63,13 @@ class DownloadProgress(QObject):
         except Exception as e:
             self.parent._show_error_alerts(Messages.unknown_error() + str(e))
 
+    @pyqtSlot(str, name="progressChange")
+    def _change_progress_dialog(self, header):
+        self.progressDialog.setLabelText(header)
+        self.progressDialog.setValue(0)
+
     @pyqtSlot(list, name="results")
     def _process_finished(self, result):
         self.result = result
+        self.progressDialog.close()
         self.finishedSignal.emit(self.result)

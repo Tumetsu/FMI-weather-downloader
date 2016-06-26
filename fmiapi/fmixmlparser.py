@@ -20,16 +20,19 @@ class FMIxmlParser:
         self._field_names = []
         self._dataframes = []
 
-    def parse(self, xml_data_list):
+    def parse(self, xml_data_list, progress_callback=None):
         location_name = ""
         dataframe = None
         no_data_cases = 0
-        for item in xml_data_list:
+
+        for i, item in enumerate(xml_data_list):
             try:
                 location_name = self._get_location_name(item)
                 df = self._parse_datapoints(item)
                 dataframe = self._join_data(dataframe, df)
-                # TODO: Callback to notify about progress?
+
+                if progress_callback is not None:
+                    progress_callback(i, len(xml_data_list)-1)
             except (IndexError, ValueError):
                 no_data_cases += 1
 

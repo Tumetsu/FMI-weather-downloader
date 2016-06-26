@@ -44,6 +44,10 @@ class Messages:
         return QCoreApplication.translate("downloading_weatherdata","Ladataan säädataa...")
 
     @staticmethod
+    def parsing_weatherdata():
+        return QCoreApplication.translate("parsing_weatherdata", "Käsitellään säädataa...")
+
+    @staticmethod
     def weatherstation_error():
         return QCoreApplication.translate("weatherstationnotfound_error", "Määritettyä sääasemaa ei löydetty.\nIlmatieteenlaitoksen palvelussa on häiriö tai "
                                           "mikäli ongelma toistuu muillakin kohteilla, saattaa tämä ohjelma vaatia päivitystä. Katso tiedot yhteydenotosta Tiedosto->Tietoa valikosta.\n\nVirheen kuvaus:\n")
