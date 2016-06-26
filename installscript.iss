@@ -1,24 +1,20 @@
-; -- Example1.iss --
-; Demonstrates copying 3 files and creating an icon.
-
-; SEE THE DOCUMENTATION FOR DETAILS ON CREATING .ISS SCRIPT FILES!
+; InnoSetup script for creating installable Windows package from built app.
 
 [Setup]
-AppName=FMI Downloader
-AppVersion=0.7b
+AppName=FMIDownloader
+AppVersion=0.9
 DefaultDirName={pf}\FMIDownloader
 DefaultGroupName=FMIDownloader
 UninstallDisplayIcon={app}\FMIDownloader.exe
 Compression=lzma2
 SolidCompression=yes
-OutputDir=userdocs:Inno Setup Examples Output
+OutputDir="build"
+UsePreviousAppDir=no
+OutputBaseFilename=FMIDownloader_Setup
 
 [Files]
-Source: "*"; DestDir: "{app}"
-Source: "/platforms/*"; DestDir: "{app}\platforms"
-Source: "/translations/*"; DestDir: "{app}\platforms"
-;Source: "MyProg.chm"; DestDir: "{app}"
-Source: "OHJEKIRJA.pdf"; DestDir: "{app}"; Flags: isreadme
+Source: "build/exe.win32-3.5/*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "build/exe.win32-3.5/OHJEKIRJA.pdf"; DestDir: "{app}"; Flags: isreadme
 
 [Icons]
 Name: "{group}\FMIDownloader"; Filename: "{app}\FMIDownloader.exe"
