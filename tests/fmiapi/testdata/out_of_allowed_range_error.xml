@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExceptionReport xmlns="http://www.opengis.net/ows/1.1"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd"
+  version="2.0.0">
+    <Exception exceptionCode="OperationProcessingFailed">
+        <ExceptionText>2016-Jun-25 21:22:14 C++ exception &apos;std::range_error&apos;: BrainStorm::Value::check_limits: value 2012-Jan-13 00:00:00 is out of allowed range (lowerLimit=2010-Jan-01 00:00:00)</ExceptionText>
+        <ExceptionText>URI: /wfs?endtime=2010-01-01T05%3A00%3A00Z&amp;fmisid=101154&amp;request=getFeature&amp;starttime=2009-01-01T00%3A00%3A00Z&amp;storedquery_id=fmi%3A%3Aobservations%3A%3Aweather%3A%3Amultipointcoverage</ExceptionText>
+    </Exception>
+</ExceptionReport>
