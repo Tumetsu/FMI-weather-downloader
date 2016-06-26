@@ -3,6 +3,7 @@ from collections import OrderedDict
 from PyQt5.QtCore import pyqtSlot, QObject
 from gui.messages import Messages
 
+
 class Worker(QObject):
     threadUpdateSignal = pyqtSignal(int, int, name="progressUpdate")
     threadExceptionSignal = pyqtSignal(object, name="exceptionInProcess")
@@ -14,8 +15,8 @@ class Worker(QObject):
         self.request_params = params
         self.request_function = request_function
 
-    def _update_signal(self, i, max):
-        self.threadUpdateSignal.emit(i, max)
+    def _update_signal(self, i, max_value):
+        self.threadUpdateSignal.emit(i, max_value)
 
     def _change_to_parsing(self):
         self.threadChangeTaskSignal.emit(Messages.parsing_weatherdata())
@@ -27,4 +28,3 @@ class Worker(QObject):
             self.threadResultsSignal.emit(results)
         except Exception as e:
             self.threadExceptionSignal.emit(e)
-

@@ -26,6 +26,9 @@ class FMIApi:
         self._api_key = api_key
         self._request_handler = FMIRequestHandler(self._api_key)
 
+    def get_apikey(self):
+        return self._api_key
+
     def get_daily_weather(self, params, callback_function=None, change_to_parsing=None):
         params['endtime'] += datetime.timedelta(days=1) # add one day to end time to get final day into result too
         data = self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,

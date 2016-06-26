@@ -1,81 +1,41 @@
 import datetime
-from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QTranslator
-from PyQt5.QtCore import QCoreApplication, QEvent
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QTranslator, QStandardPaths, QCoreApplication, QEvent
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
-from PyQt5.QtCore import pyqtSlot, QSettings, QStandardPaths
 from gui.ui_mainwindow import Ui_MainWindow
 from fmiapi.fmiapi import FMIApi
-from fmiapi.fmixmlparser import FMIxmlParser
 from gui.download.downloadProgress import *
+from gui.settings import Settings
+import gui.menubar_actions as menubar_actions
 from gui.messages import Messages
-from gui.languagedialog import LanguageDialog
-import webbrowser
 import csv
+
 
 class Mainwindow(QMainWindow):
 
-    _LANGUAGE_IDS = {"Finnish" : "fi", "English" : "en"}
-    _MANUAL_URL = "http://tumetsu.github.io/FMI-weather-downloader/quickstart/quickstart.html"
+    # signals
+    setLanguageSignal = pyqtSignal(str, name="setLanguage")
+    entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
+
     def __init__(self, app, translators, parent=None):
         super(Mainwindow, self).__init__(parent)
-        self.MESSAGES = Messages()
-
-        self._api = None
-        self._language = self._LANGUAGE_IDS["English"]
-        self.entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
-        self.currentSelectedModel = None
-        self._apiKey = ""
-        self._settings = None
+        self.api = None
+        self._language = menubar_actions.LANGUAGE_IDS["English"]
+        self._current_selected_model = None
+        self.api = FMIApi()
+        self._settings = Settings()
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self._set_up_api()
         self._set_up_ui()
         self._app = app
         self._translators = translators
-        self._settings = QSettings("fmidownloader", "fmidownloader")
-
-
-    def _open_manual(self):
-        webbrowser.open(self._MANUAL_URL)
-
-    def _load_qsettings(self):
-        self._load_lang_settings()
-        self._load_api_settings()
-
 
     def show(self):
         """ Override so that we can show possible settings dialogs right after startup """
         super(Mainwindow, self).show()
-        self._load_qsettings()
+        self._settings.load_qsettings(self)
 
-
-    def _load_api_settings(self):
-        storedApikey = self._settings.value("apikey")
-        if storedApikey is not None:
-            self._apiKey = storedApikey
-            self._api.set_apikey(self._apiKey)
-
-        if self._apiKey == "":
-            self.statusBar().showMessage(self.MESSAGES.set_apikey_message(), 0)
-
-    def _load_lang_settings(self):
-        storedLang = self._settings.value("language")
-        if storedLang is not None:
-            self._set_language(storedLang)
-        else:
-            self._select_language()
-
-    def _select_language(self):
-        langDialog = LanguageDialog(self._LANGUAGE_IDS, self._language, self)
-        do_change = langDialog.exec_()
-
-        if do_change == 1:
-            self._settings.setValue("language", langDialog.getLanguage())
-            self._set_language(langDialog.getLanguage())
-
-
-    def _set_language(self, language):
+    def set_language(self, language):
         """ Set the language of the UI """
         self._language = language
         self._app.installTranslator(self._translators[language])
@@ -83,16 +43,12 @@ class Mainwindow(QMainWindow):
     def changeEvent(self, event):
         if event.type() == QEvent.LanguageChange:
             self.ui.retranslateUi(self)
-
         super(Mainwindow, self).changeEvent(event)
 
-    def _set_up_api(self):
-        self._api = FMIApi()
-        self._api.set_apikey(self._apiKey)
-
-    def _set_up_ui(self):
+    def _set_up_station_comboboxes(self):
+        """ Set station names for combobox in both tabs. Configure completion."""
         self.ui.stationComboBox.clear()
-        stations = self._api.get_stations()
+        stations = self.api.get_stations()
         completer_strings = []
         for s in stations:
             self.ui.stationComboBox.addItem(s["Name"])
@@ -105,107 +61,95 @@ class Mainwindow(QMainWindow):
 
         self.ui.stationComboBox.currentIndexChanged.connect(self._select_place_from_combobox)
         self.ui.stationComboBox_2.currentIndexChanged.connect(self._select_place_from_combobox)
-        self.ui.stationComboBox.setCurrentIndex(self._api.get_index_of_station("Hämeenlinna Lammi Pappila"))
-        self.ui.stationComboBox_2.setCurrentIndex(self._api.get_index_of_station("Hämeenlinna Lammi Pappila"))
+        self.ui.stationComboBox.setCurrentIndex(self.api.get_index_of_station("Hämeenlinna Lammi Pappila"))
+        self.ui.stationComboBox_2.setCurrentIndex(self.api.get_index_of_station("Hämeenlinna Lammi Pappila"))
+
+    def _set_up_ui(self):
+        self._set_up_station_comboboxes()
+
+        # wire download buttons to actions
         self.ui.pushButton.clicked.connect(self._download_daily)
         self.ui.pushButton_2.clicked.connect(self._download_realtime)
 
+        # wire date fields to their actions
         self.ui.endtime_dateEdit.dateChanged.connect(self._daily_date_edited)
         self.ui.startimeDateEdit.dateChanged.connect(self._daily_date_edited)
-
         self.ui.endtime_dateTimeEdit_2.dateChanged.connect(self._realtime_date_edited)
         self.ui.startimeDateTimeEdit_2.dateChanged.connect(self._realtime_date_edited)
 
-        #statusbar
+        # statusbar
         self.statusBar().setStyleSheet("color: red;")
 
-        #actions
-        self.ui.actionSet_api_key.triggered.connect(self._set_apikey)
-        self.ui.actionExit.triggered.connect(self._quit)
-        self.ui.actionAbout.triggered.connect(self._about)
-        self.ui.actionAseta_kieli.triggered.connect(self._select_language)
-        self.ui.actionOhjeet.triggered.connect(self._open_manual)
+        # menubar actions
+        self.ui.actionSet_api_key.triggered.connect(lambda: menubar_actions.set_apikey(self, self._settings))
+        self.ui.actionExit.triggered.connect(menubar_actions.quit)
+        self.ui.actionAbout.triggered.connect(menubar_actions.about)
+        self.ui.actionAseta_kieli.triggered.connect(lambda: menubar_actions.select_language(self, self._settings))
+        self.ui.actionOhjeet.triggered.connect(menubar_actions.open_manual)
 
-    @pyqtSlot()
-    def _quit(self):
-        QApplication.quit()
+        # language change signal
+        self.setLanguageSignal.connect(lambda: menubar_actions.select_language(self, self._settings))
 
-    @pyqtSlot()
-    def _about(self):
-        msgbox = QMessageBox()
-        msgbox.information(self, QCoreApplication.translate("aboutheading", "Tietoa"), self.MESSAGES.about_dialog())
-        msgbox.show()
+    @pyqtSlot(int, name='selectPlace')
+    def _select_place_from_combobox(self, place_index):
+        self.ui.stationComboBox_2.setCurrentIndex(place_index)
+        self.ui.stationComboBox.setCurrentIndex(place_index)
+        self._current_selected_model = self.api.get_stations()[place_index]
+        self.ui.data_availableLabel.setText(self._current_selected_model["Since"])
 
-    @pyqtSlot()
-    def _set_apikey(self):
-        key = QInputDialog.getText(self, QCoreApplication.translate("setapikeyheading", "Aseta tunnisteavain"), self.MESSAGES.set_apikey_dialog(), text=self._apiKey)
-        if key[1]:
-            self._apiKey = key[0].strip()
-            self._api.set_apikey(self._apiKey)
-            self._settings.setValue("apikey", self._apiKey)
+        self._set_daily_field_limits(place_index)
+        self._set_realtime_field_limits(place_index)
 
-    @pyqtSlot(int)
-    def _select_place_from_combobox(self,placeIndex):
-        self.ui.stationComboBox_2.setCurrentIndex(placeIndex)
-        self.ui.stationComboBox.setCurrentIndex(placeIndex)
-        self.currentSelectedModel = self._api.get_stations()[placeIndex]
-        self.ui.data_availableLabel.setText(self.currentSelectedModel["Since"])
-
-        self._set_daily_fieldLimits(placeIndex)
-        self._set_realtime_fieldLimits(placeIndex)
-
-
-    def _set_realtime_fieldLimits(self, placeIndex):
-        #realtime values are available only after 2010.
-        minYear = int(self.currentSelectedModel["Since"])
-        if  minYear > 2010:
-            self.ui.data_availableLabel_2.setText(str(minYear))
+    def _set_realtime_field_limits(self, place_index):
+        # realtime values are available only after 2010.
+        min_year = int(self._current_selected_model["Since"])
+        if min_year > 2010:
+            self.ui.data_availableLabel_2.setText(str(min_year))
         else:
-            minYear = 2010
+            min_year = 2010
             self.ui.data_availableLabel_2.setText("1.1.2010")
 
         self.ui.startimeDateTimeEdit_2.clearMinimumDate()
-        minDate = QDate(minYear, 1, 1)
-        self.ui.startimeDateTimeEdit_2.setMinimumDate(minDate)
+        min_date = QDate(min_year, 1, 1)
+        self.ui.startimeDateTimeEdit_2.setMinimumDate(min_date)
 
         self.ui.startimeDateTimeEdit_2.clearMaximumDate()
-        maxDate = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.startimeDateTimeEdit_2.setMaximumDate(maxDate)
+        max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+        self.ui.startimeDateTimeEdit_2.setMaximumDate(max_date)
 
         self.ui.endtime_dateTimeEdit_2.clearMinimumDate()
-        minDate = QDate(minYear, 1, 1)
-        self.ui.endtime_dateTimeEdit_2.setMinimumDate(minDate)
+        min_date = QDate(min_year, 1, 1)
+        self.ui.endtime_dateTimeEdit_2.setMinimumDate(min_date)
 
         self.ui.endtime_dateTimeEdit_2.clearMaximumDate()
-        maxDate = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.endtime_dateTimeEdit_2.setMaximumDate(maxDate)
+        max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+        self.ui.endtime_dateTimeEdit_2.setMaximumDate(max_date)
 
-        newDate = QDate(self.ui.startimeDateTimeEdit_2.date().year(), self.ui.startimeDateTimeEdit_2.date().month(), self.ui.startimeDateTimeEdit_2.date().day() +1)
-        self.ui.endtime_dateTimeEdit_2.setDate(newDate)
+        new_date = QDate(self.ui.startimeDateTimeEdit_2.date().year(), self.ui.startimeDateTimeEdit_2.date().month(), self.ui.startimeDateTimeEdit_2.date().day() + 1)
+        self.ui.endtime_dateTimeEdit_2.setDate(new_date)
 
         if self.ui.startimeDateTimeEdit_2.date() < self.ui.startimeDateTimeEdit_2.minimumDate():
             self.ui.startimeDateTimeEdit_2.setDate(self.ui.startimeDateTimeEdit_2.minimumDate())
 
-    def _set_daily_fieldLimits(self, placeIndex):
-        #DAILY TAB
+    def _set_daily_field_limits(self, place_index):
         self.ui.startimeDateEdit.clearMinimumDate()
-        minDate = QDate(int(self.currentSelectedModel["Since"]), 1, 1)
-        self.ui.startimeDateEdit.setMinimumDate(minDate)
+        min_date = QDate(int(self._current_selected_model["Since"]), 1, 1)
+        self.ui.startimeDateEdit.setMinimumDate(min_date)
 
         self.ui.startimeDateEdit.clearMaximumDate()
-        maxDate = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.startimeDateEdit.setMaximumDate(maxDate)
+        max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+        self.ui.startimeDateEdit.setMaximumDate(max_date)
 
         self.ui.endtime_dateEdit.clearMinimumDate()
-        minDate = QDate(int(self.currentSelectedModel["Since"]), 1, 1)
-        self.ui.endtime_dateEdit.setMinimumDate(minDate)
+        min_date = QDate(int(self._current_selected_model["Since"]), 1, 1)
+        self.ui.endtime_dateEdit.setMinimumDate(min_date)
 
         self.ui.endtime_dateEdit.clearMaximumDate()
-        maxDate = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.endtime_dateEdit.setMaximumDate(maxDate)
+        max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+        self.ui.endtime_dateEdit.setMaximumDate(max_date)
 
-        newDate = QDate(self.ui.startimeDateEdit.date().year(), self.ui.startimeDateEdit.date().month(), self.ui.startimeDateEdit.date().day() +1)
-        self.ui.endtime_dateEdit.setDate(newDate)
+        new_date = QDate(self.ui.startimeDateEdit.date().year(), self.ui.startimeDateEdit.date().month(), self.ui.startimeDateEdit.date().day() +1)
+        self.ui.endtime_dateEdit.setDate(new_date)
 
         if self.ui.startimeDateEdit.date() < self.ui.startimeDateEdit.minimumDate():
             self.ui.startimeDateEdit.setDate(self.ui.startimeDateEdit.minimumDate())
@@ -216,8 +160,8 @@ class Mainwindow(QMainWindow):
             path = paths[0]
         else:
             path = ""
-        filename = QFileDialog.getSaveFileName(self, self.MESSAGES.save_weatherdata_csv(),
-                                               path +"/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
+        filename = QFileDialog.getSaveFileName(self, Messages.save_weatherdata_csv(),
+                                               path + "/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
         if filename[0] != "":
             self._save_to_csv(dataframe, filename[0])
 
@@ -240,7 +184,7 @@ class Mainwindow(QMainWindow):
         if self.ui.startimeDateEdit.date() == self.ui.endtime_dateEdit.date():
             self.ui.startimeDateEdit.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage(self.MESSAGES.start_end_date_warning(), 5000)
+            self.statusBar().showMessage(Messages.start_end_date_warning(), 5000)
             self.ui.pushButton.setEnabled(False)
         else:
             self.ui.startimeDateEdit.setStyleSheet("background-color: white;")
@@ -249,20 +193,20 @@ class Mainwindow(QMainWindow):
 
             if self.ui.endtime_dateEdit.date() < self.ui.startimeDateEdit.date():
                 self.ui.endtime_dateEdit.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage(self.MESSAGES.end_date_warning(), 5000)
+                self.statusBar().showMessage(Messages.end_date_warning(), 5000)
                 self.ui.pushButton.setEnabled(False)
             else:
                 self.ui.endtime_dateEdit.setStyleSheet("background-color: white;")
                 self.statusBar().showMessage("", 50)
                 self.ui.pushButton.setEnabled(True)
 
-    @pyqtSlot()
+    @pyqtSlot(name='editRealtimeDate')
     def _realtime_date_edited(self):
         #realtimetab
         if self.ui.startimeDateTimeEdit_2.date() == self.ui.endtime_dateTimeEdit_2.date():
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
             self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage(self.MESSAGES.start_end_date_warning(), 5000)
+            self.statusBar().showMessage(Messages.start_end_date_warning(), 5000)
             self.ui.pushButton_2.setEnabled(False)
         else:
             self.ui.startimeDateTimeEdit_2.setStyleSheet("background-color: white;")
@@ -271,63 +215,40 @@ class Mainwindow(QMainWindow):
 
             if self.ui.endtime_dateTimeEdit_2.date() < self.ui.startimeDateTimeEdit_2.date():
                 self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage(self.MESSAGES.end_date_warning(), 5000)
+                self.statusBar().showMessage(Messages.end_date_warning(), 5000)
                 self.ui.pushButton_2.setEnabled(False)
             else:
                 self.ui.endtime_dateTimeEdit_2.setStyleSheet("background-color: white;")
                 self.statusBar().showMessage("", 50)
                 self.ui.pushButton_2.setEnabled(True)
 
-
     def _download_daily(self):
-        params = { "request" : "getFeature",
-                   "storedquery_id" : "fmi::observations::weather::daily::multipointcoverage",
-                   "fmisid": self.currentSelectedModel["FMISID"],
-                   "starttime" : self._get_dateTime_from_UI(self.ui.startimeDateEdit),
-                   "endtime" : self._get_dateTime_from_UI(self.ui.endtime_dateEdit)
-        }
+        """ Download daily weather data from FMI api """
+        params = {"request": "getFeature",
+                   "storedquery_id": "fmi::observations::weather::daily::multipointcoverage",
+                   "fmisid": self._current_selected_model["FMISID"],
+                   "starttime": self._get_dateTime_from_UI(self.ui.startimeDateEdit),
+                   "endtime": self._get_dateTime_from_UI(self.ui.endtime_dateEdit)
+                  }
 
         download = DownloadProgress(self)
-        download.finishedSignal.connect(self._download_daily_finished)
-        download.begin_download(params, self._api.get_daily_weather)
-
-
-    @pyqtSlot(list)
-    def _download_realtime_finished(self, results):
-        try:
-            self._choose_place_to_save_data(results)
-        except NoDataException as e:
-            if e.errorCode == "NODATA":
-                 #vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                 self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
-        except Exception as e:
-            self._show_error_alerts(self.MESSAGES.unknown_error() + str(e))
-
-    @pyqtSlot(list)
-    def _download_daily_finished(self, results):
-        try:
-            self._choose_place_to_save_data(results)
-        except NoDataException as e:
-            if e.errorCode == "NODATA":
-                # vastauksessa ei ollut dataa. Onko paikasta saatavissa dataa tältä aikaväliltä?
-                self._show_error_alerts(self.MESSAGES.date_not_found_error() + str(e))
-        except Exception as e:
-            self._show_error_alerts(self.MESSAGES.unknown_error() + str(e))
+        download.finishedSignal.connect(self._choose_place_to_save_data)
+        download.begin_download(params, self.api.get_daily_weather)
 
     def _download_realtime(self):
-
-        params = {"request" : "getFeature",
-                           "storedquery_id" : "fmi::observations::weather::multipointcoverage",
-                           "fmisid": self.currentSelectedModel["FMISID"],
-                           "starttime" : self._get_dateTime_from_UI(self.ui.startimeDateTimeEdit_2, onlyDate=False),
-                           "endtime" : self._get_dateTime_from_UI(self.ui.endtime_dateTimeEdit_2, onlyDate=False),
-                }
+        """ Download real time weather data from FMI api """
+        params = {"request": "getFeature",
+                  "storedquery_id": "fmi::observations::weather::multipointcoverage",
+                  "fmisid": self._current_selected_model["FMISID"],
+                  "starttime": self._get_dateTime_from_UI(self.ui.startimeDateTimeEdit_2, onlyDate=False),
+                  "endtime": self._get_dateTime_from_UI(self.ui.endtime_dateTimeEdit_2, onlyDate=False),
+                  }
 
         download = DownloadProgress(self)
-        download.finishedSignal.connect(self._download_realtime_finished)
-        download.begin_download(params, self._api.get_realtime_weather)
+        download.finishedSignal.connect(self._choose_place_to_save_data)
+        download.begin_download(params, self.api.get_realtime_weather)
 
-    def _show_error_alerts(self, message):
+    def show_error_alerts(self, message):
         msgbox = QMessageBox()
         msgbox.information(self, "ERROR", message)
         msgbox.show()
@@ -336,15 +257,14 @@ class Mainwindow(QMainWindow):
 def start():
     import sys
 
-    #translators have to be created before anything else. List of them are then passed to
-    #the Mainwindow
+    # translators have to be created before anything else. List of them are then passed to
+    # the Mainwindow
     translator_en = QTranslator()
     translator_en.load("translations/mainwindow_en.qm")
     translator_fi = QTranslator()
     translator_fi.load("translations/mainwindow_fi.qm")
 
     app = QApplication(sys.argv)
-    print(app.installTranslator(translator_en))
 
     downloader = Mainwindow(app, {"en": translator_en, "fi": translator_fi})
     downloader.show()
@@ -352,5 +272,3 @@ def start():
 
 if __name__ == '__main__':
     start()
-
-

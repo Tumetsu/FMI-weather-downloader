@@ -15,30 +15,33 @@ class DownloadProgress(QObject):
     def __init__(self, parent):
         super(DownloadProgress, self).__init__(parent)
         self.parent = parent
+        self.progressDialog = None
+        self.worker = None
+        self.thread = None
 
     def begin_download(self, request_params, request_function):
         self.progressDialog = QProgressDialog(self.parent)
         self.progressDialog.setWindowTitle(" ")
         self.progressDialog.setAutoClose(False)
         self.progressDialog.setCancelButton(None)
-        self.progressDialog.setLabelText(self.parent.MESSAGES.downloading_weatherdata())
+        self.progressDialog.setLabelText(Messages.downloading_weatherdata())
         self.progressDialog.open()
         self.progressDialog.setValue(0)
 
-        self.obj = Worker(request_params, request_function)
-        self.obj.threadUpdateSignal.connect(self._update_progress_bar)
-        self.obj.threadExceptionSignal.connect(self._loading_failed)
-        self.obj.threadResultsSignal.connect(self._process_finished)
-        self.obj.threadChangeTaskSignal.connect(self._change_progress_dialog)
+        self.worker = Worker(request_params, request_function)
+        self.worker.threadUpdateSignal.connect(self._update_progress_bar)
+        self.worker.threadExceptionSignal.connect(self._loading_failed)
+        self.worker.threadResultsSignal.connect(self._process_finished)
+        self.worker.threadChangeTaskSignal.connect(self._change_progress_dialog)
 
         self.thread = QThread()
-        self.obj.moveToThread(self.thread)
-        self.thread.started.connect(self.obj.download_data)
+        self.worker.moveToThread(self.thread)
+        self.thread.started.connect(self.worker.download_data)
         self.thread.start()
 
     @pyqtSlot(int, int, name="progressUpdate")
-    def _update_progress_bar(self, i, max):
-        self.progressDialog.setRange(0, max)
+    def _update_progress_bar(self, i, max_value):
+        self.progressDialog.setRange(0, max_value)
         self.progressDialog.setValue(i)
 
     @pyqtSlot(object, name="exceptionInProcess")
@@ -50,18 +53,18 @@ class DownloadProgress(QObject):
         except RequestException as e:
             if e.error_code == 400:
                 # command to ask data probably invalid or there is a problem with current station
-                self.parent._show_error_alerts(Messages.weatherstation_error() + str(e))
+                self.parent.show_error_alerts(Messages.weatherstation_error() + str(e))
             else:
-                self.parent._show_error_alerts(Messages.unknown_error() + str(e))
+                self.parent.show_error_alerts(Messages.unknown_error() + str(e))
         except InvalidApikeyException:
                 # apikey is invalid
-                self.parent._show_error_alerts(Messages.request_failed_error())
+                self.parent.show_error_alerts(Messages.request_failed_error())
         except NoDataException:
-            self.parent._show_error_alerts(Messages.date_not_found_error())
+            self.parent.show_error_alerts(Messages.date_not_found_error())
         except QueryLimitException as e:
-            self.parent._show_error_alerts(Messages.query_limit_error().format(e.wait_time))
+            self.parent.show_error_alerts(Messages.query_limit_error().format(e.wait_time))
         except Exception as e:
-            self.parent._show_error_alerts(Messages.unknown_error() + str(e))
+            self.parent.show_error_alerts(Messages.unknown_error() + str(e))
 
     @pyqtSlot(str, name="progressChange")
     def _change_progress_dialog(self, header):
