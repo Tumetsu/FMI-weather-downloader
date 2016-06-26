@@ -166,7 +166,7 @@ class Mainwindow(QMainWindow):
             self._save_to_csv(dataframe, filename[0])
 
     def _save_to_csv(self, df, path):
-        with open(path, 'w') as outfile:
+        with open(path, 'w', newline='\n') as outfile:
             writer = csv.writer(outfile)
             writer.writerow(df.keys())
             writer.writerows(zip(*df.values()))
