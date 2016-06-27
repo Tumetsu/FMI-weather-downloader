@@ -1,7 +1,6 @@
 import datetime
 import http.client
 import urllib.request
-import pytz
 from lxml import etree
 from lxml import html
 from fmiapi.fmierrors import *
@@ -103,9 +102,17 @@ class FMIRequest:
                 if 'out of allowed range' in el.text:
                     p = re.compile('lowerLimit=(.+)\)')
                     m = p.search(el.text)
+
+                    # Transform lcoale dependent date format into ISO-date
+                    months = {'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04',
+                              'May': '05', 'Jun': '06', 'Jul': '07', 'Aug': '08',
+                              'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'}
                     if m is not None:
                         lower_limit = m.group(1)
-                        lower_limit = datetime.datetime.strptime(lower_limit, '%Y-%b-%d %H:%M:%S')
+                        for key, value in months.items():
+                            lower_limit = re.sub(key, value, lower_limit)
+
+                        lower_limit = datetime.datetime.strptime(lower_limit, '%Y-%m-%d %H:%M:%S')
                         return {
                             'type': 'lowerlimit',
                             'lowerlimit': lower_limit

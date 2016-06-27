@@ -125,7 +125,7 @@ def describe_fmi_request():
 
             # Should raise RequestException with information given by FMIApi in xml
             assert_equal(400, e.value.error_code)
-            assert 'value 2012-01-13 00:00:00 is out of allowed range' in e.value.message
+            assert 'value 2012-Tam-13 00:00:00 is out of allowed range' in e.value.message
 
         @mock.patch('http.client.HTTPConnection', spec=True)
         def should_not_get_into_infinite_recursion_if_lower_limit_is_invalid_and_throw_regular_regquest_exception(mock_httpconn):
