@@ -181,15 +181,10 @@ salmi.tuomas@gmail.com</translation>
         <location filename="messages.py" line="9"/>
         <source>Määritettyä ajanjaksoa ei löytynyt.
 Todennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.
-Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.
-
-Virheen kuvaus:
-</source>
+Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.</source>
         <translation>Specified date and time could not be found.
 Most likely FMI does not have data for this time-period.
-Please try a longer time-span,for example one year or later beginning date.
-
-Error details:  </translation>
+Please try a longer time-span,for example one year or later beginning date.</translation>
     </message>
 </context>
 <context>
@@ -206,6 +201,23 @@ Error details:  </translation>
         <location filename="messages.py" line="13"/>
         <source>Lopetus päivämäärä ei saa edeltää aloitus päivämäärää</source>
         <translation>End date is not allowed to predate the start date.</translation>
+    </message>
+</context>
+<context>
+    <name>processing_weatherdata</name>
+    <message>
+        <location filename="messages.py" line="32"/>
+        <source>Käsitellään säädataa...</source>
+        <translation>Processing weatherdata...</translation>
+    </message>
+</context>
+<context>
+    <name>querylimit_error</name>
+    <message>
+        <location filename="../gui/messages.py" line="62"/>
+        <source>Ilmatieteenlaitoksen latausraja ylitetty.
+Olet tehnyt liikaa datapyyntöjä lyhyessä ajassa. Jatkaaksesi lataamista, odota {} sekuntia ennen seuraavaa datapyyntöä.</source>
+        <translation>FMI api service query quota exceeded. Too many requests done in short time. To continue downloading, please wait {} seconds before trying again.</translation>
     </message>
 </context>
 <context>
@@ -254,7 +266,7 @@ After you have registered to the FMI&apos;s service, copy and paste the API-key 
 <context>
     <name>setapikeymessage</name>
     <message>
-        <location filename="messages.py" line="22"/>
+        <location filename="../gui/messages.py" line="27"/>
         <source>Tunnisteavainta ei ole maaritetty. Aseta se valikossa Tiedosto-&gt;Aseta tunnisteavain</source>
         <translation>API-key is not defined. Set it in File-&gt;Set API-key</translation>
     </message>
@@ -270,7 +282,7 @@ After you have registered to the FMI&apos;s service, copy and paste the API-key 
 <context>
     <name>unknown_error</name>
     <message>
-        <location filename="messages.py" line="9"/>
+        <location filename="../gui/messages.py" line="10"/>
         <source>Tuntematon virhe: </source>
         <translation>Unknown error: </translation>
     </message>

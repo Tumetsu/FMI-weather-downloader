@@ -34,9 +34,20 @@ First install `Python 3.5` and `virtualenv` package for it. Then in project root
 On Windows, you can package the app to runnable exe with `cx_Freeze` tool by running following command in project root
 after installing [cx_Freeze 5.0 Windows binary wheel](https://github.com/sekrause/cx_Freeze-Wheels):
 
-    `python setup_win_cx.py build`
+    python setup_win_cx.py build
 The build folder can be transformed into install setup with. [InnoSetup](http://www.jrsoftware.org/isinfo.php) There is a script for it which
 can be run in root directory to create a install exe to the build/ directory on Windows.
+
+Translations
+--------------
+Translations are done by *pylupdate5* and *lrelease* tools which come with PyQt distribution. To update .ts translation files
+run `pylupdate5 fmidownloader.pro` on root directory adter adding new phrases to the messages.py. Launch *Qt Linguist* to edit
+.ts files in `translations` directory. Finally in `translations` directory run `lrelease *.ts` to generate qm-files. App should pick correct translations now.
+
+### Note
+Translations are bit screwed up now because of messages.py and honestly my inexperience with PyQt i18n. If I have time I might clean them but
+for now rather focus on more pressing issues.
+
 
 Thanks
 ---------

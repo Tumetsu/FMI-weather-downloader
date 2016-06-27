@@ -159,7 +159,7 @@ Jos ohjelma lakkaa toimimasta, voit ottaa yhteyttä
 Tuomas Salmi, 2015
 http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja
 salmi.tuomas@gmail.com</source>
-        <translation type="unfinished">Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.
+        <translation>Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.
 Jos ohjelma lakkaa toimimasta, voit ottaa yhteyttä
 
 Tuomas Salmi, 2015
@@ -181,10 +181,7 @@ salmi.tuomas@gmail.com</translation>
         <location filename="messages.py" line="12"/>
         <source>Määritettyä ajanjaksoa ei löytynyt.
 Todennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.
-Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.
-
-Virheen kuvaus:
-</source>
+Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.</source>
         <translation>Määritettyä ajanjaksoa ei löytynyt.
 Todennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.
 Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.
@@ -198,6 +195,14 @@ Virheen kuvaus:</translation>
         <location filename="messages.py" line="35"/>
         <source>Ladataan säädataa...</source>
         <translation>Ladataan säädataa...</translation>
+    </message>
+</context>
+<context>
+    <name>processing_weatherdata</name>
+    <message>
+        <location filename="messages.py" line="32"/>
+        <source>Käsitellään säädataa...</source>
+        <translation>Käsitellään säädataa...</translation>
     </message>
 </context>
 <context>
@@ -274,6 +279,14 @@ Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se t
         <location filename="messages.py" line="9"/>
         <source>Tuntematon virhe: </source>
         <translation>Tuntematon virhe: </translation>
+    </message>
+</context>
+<context>
+    <name>querylimit_error</name>
+    <message>
+        <location filename="messages.py" line="62"/>
+        <source>Ilmatieteenlaitoksen latausraja ylitetty.\nOlet tehnyt liikaa datapyyntöjä lyhyessä ajassa. Jatkaaksesi lataamista, odota {} sekuntia ennen seuraavaa datapyyntöä.</source>
+        <translation>Ilmatieteenlaitoksen latausraja ylitetty. Olet tehnyt liikaa datapyyntöjä lyhyessä ajassa. Jatkaaksesi lataamista, odota {} sekuntia ennen seuraavaa datapyyntöä.</translation>
     </message>
 </context>
 <context>

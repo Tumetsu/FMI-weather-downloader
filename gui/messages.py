@@ -45,7 +45,7 @@ class Messages:
 
     @staticmethod
     def parsing_weatherdata():
-        return QCoreApplication.translate("parsing_weatherdata", "Käsitellään säädataa...")
+        return QCoreApplication.translate("processing_weatherdata", "Käsitellään säädataa...")
 
     @staticmethod
     def weatherstation_error():
