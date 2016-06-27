@@ -1,4 +1,4 @@
-from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, QCoreApplication
+from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtWidgets import QProgressDialog
 from PyQt5.QtCore import pyqtSlot, QObject
 from fmiapi.fmierrors import *
@@ -20,8 +20,8 @@ class DownloadProgress(QObject):
         self.thread = None
 
     def begin_download(self, request_params, request_function):
-        self.progressDialog = QProgressDialog(self.parent)
-        self.progressDialog.setWindowTitle(" ")
+        self.progressDialog = QProgressDialog(self.parent, Qt.WindowSystemMenuHint | Qt.WindowTitleHint)
+        self.progressDialog.setWindowTitle(Messages.downloading_weatherdata())
         self.progressDialog.setAutoClose(False)
         self.progressDialog.setCancelButton(None)
         self.progressDialog.setLabelText(Messages.downloading_weatherdata())

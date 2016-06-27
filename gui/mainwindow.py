@@ -2,6 +2,7 @@ import datetime
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, QDate, QDateTime, QTranslator, QStandardPaths, QCoreApplication, QEvent
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog, QMessageBox, QCompleter
 from gui.ui_mainwindow import Ui_MainWindow
+from PyQt5.QtGui import QIcon
 from fmiapi.fmiapi import FMIApi
 from gui.download.downloadProgress import *
 from gui.settings import Settings
@@ -29,6 +30,10 @@ class Mainwindow(QMainWindow):
         self._set_up_ui()
         self._app = app
         self._translators = translators
+
+        app_icon = QIcon()
+        app_icon.addFile('icon.ico')
+        app.setWindowIcon(app_icon)
 
     def show(self):
         """ Override so that we can show possible settings dialogs right after startup """

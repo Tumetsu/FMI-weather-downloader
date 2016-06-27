@@ -14,7 +14,8 @@ options = {
         'include_files': (pytz.__path__[0], # http://stackoverflow.com/questions/10606932/cx-freeze-how-do-i-add-package-files-into-library-zip
                           'stations.csv',
                           'translations/',
-                          'OHJEKIRJA.pdf')
+                          'OHJEKIRJA.pdf',
+                          'icon.ico')
     }
 }
 
