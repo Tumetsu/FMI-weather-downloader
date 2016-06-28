@@ -2,6 +2,53 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en" sourcelanguage="fi">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../gui/ui_aboutdialog.py" line="67"/>
+        <source>About</source>
+        <translation>About</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_aboutdialog.py" line="68"/>
+        <source>FMIDownloader</source>
+        <translation>FMIDownloader {version}</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_aboutdialog.py" line="69"/>
+        <source>Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.Jos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä</source>
+        <translation>A simple application to download data from Finnish Meteorological Institute&apos;s open data service.
+In case of questions about the software, please contact with details below</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_aboutdialog.py" line="70"/>
+        <source>&lt;a href=&apos;http://www.tuomassalmi.com&apos;&gt;Tuomas Salmi 2015-2016&lt;/a&gt;</source>
+        <translation>{author}</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_aboutdialog.py" line="71"/>
+        <source>&lt;a href=&apos;mailto:salmi.tuomas@gmail.com&apos;&gt;salmi.tuomas@gmail.com&lt;/a&gt;</source>
+        <translation>{email}</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_aboutdialog.py" line="72"/>
+        <source>&lt;a href=&apos;https://github.com/Tumetsu/FMI-weather-downloader&apos;&gt;FMIDownloader Github&lt;/a&gt;</source>
+        <translation>{github}</translation>
+    </message>
+</context>
+<context>
+    <name>LanguageDialog</name>
+    <message>
+        <location filename="../gui/ui_languagedialog.py" line="36"/>
+        <source>Language</source>
+        <translation>Language</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_languagedialog.py" line="37"/>
+        <source>Select language</source>
+        <translation>Select language</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="ui_mainwindow.py" line="156"/>
@@ -9,12 +56,12 @@
         <translation>Weather observation data downloader</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="178"/>
+        <location filename="../gui/ui_mainwindow.py" line="184"/>
         <source>Ilmatieteenlaitoksen vuorokausiarvojen lataus</source>
         <translation>FMI daily observations download</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="180"/>
+        <location filename="../gui/ui_mainwindow.py" line="186"/>
         <source>Paikka:</source>
         <translation>Location:</translation>
     </message>
@@ -24,7 +71,7 @@
         <translation>Choose the weather station</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="182"/>
+        <location filename="../gui/ui_mainwindow.py" line="188"/>
         <source>Saatavilla vuodesta:</source>
         <translation>Available from:</translation>
     </message>
@@ -34,7 +81,7 @@
         <translation>The year where data is available. Please note that there is not necessarily data available from the beginning of the year!</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="171"/>
+        <location filename="../gui/ui_mainwindow.py" line="177"/>
         <source>Aloitus pvm:</source>
         <translation>Start date:</translation>
     </message>
@@ -44,7 +91,7 @@
         <translation>Start date for data you want to download. Cannot be the same as the ending date.</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="173"/>
+        <location filename="../gui/ui_mainwindow.py" line="179"/>
         <source>Lopetus pvm:</source>
         <translation>End date:</translation>
     </message>
@@ -54,57 +101,57 @@
         <translation>End date for the data you want to download. Cannot be same as the start date.</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="189"/>
+        <location filename="../gui/ui_mainwindow.py" line="195"/>
         <source>Lataa data, ja tallenna se tiedostoon</source>
         <translation>Download data and save as a file</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="190"/>
+        <location filename="../gui/ui_mainwindow.py" line="196"/>
         <source>Lataa</source>
         <translation>Download</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="177"/>
+        <location filename="../gui/ui_mainwindow.py" line="183"/>
         <source>Vuorokausiarvot</source>
         <translation>Daily observations</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="179"/>
+        <location filename="../gui/ui_mainwindow.py" line="185"/>
         <source>Ilmatieteenlaitoksen reaaliaika havaintojen lataus</source>
         <translation>Real time observations</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="184"/>
+        <location filename="../gui/ui_mainwindow.py" line="190"/>
         <source>1.1.2010</source>
         <translation>1.1.2010</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="185"/>
+        <location filename="../gui/ui_mainwindow.py" line="191"/>
         <source>Aloitus pvm ja aika:</source>
         <translation>Start date and time:</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="186"/>
+        <location filename="../gui/ui_mainwindow.py" line="192"/>
         <source>Lopetus pvm ja aika:</source>
         <translation>End date and time:</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="191"/>
+        <location filename="../gui/ui_mainwindow.py" line="197"/>
         <source>Reaaliaika havainnot</source>
         <translation>Real time observations</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="192"/>
+        <location filename="../gui/ui_mainwindow.py" line="198"/>
         <source>Ilmatieteenlaitoksen reaaliaikaisten havaintojen lataus</source>
         <translation>FMI real time observation data download</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="193"/>
+        <location filename="../gui/ui_mainwindow.py" line="199"/>
         <source>Tiedosto</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="195"/>
+        <location filename="../gui/ui_mainwindow.py" line="201"/>
         <source>Aseta tunnisteavain</source>
         <translation>Set API-key</translation>
     </message>
@@ -114,12 +161,12 @@
         <translation>Set the required API-key to use the service</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="197"/>
+        <location filename="../gui/ui_mainwindow.py" line="203"/>
         <source>Quit</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="198"/>
+        <location filename="../gui/ui_mainwindow.py" line="204"/>
         <source>Tietoa</source>
         <translation>About</translation>
     </message>
@@ -129,42 +176,61 @@
         <translation>Information about this application</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="200"/>
+        <location filename="../gui/ui_mainwindow.py" line="206"/>
         <source>Poistu</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="201"/>
+        <location filename="../gui/ui_mainwindow.py" line="207"/>
         <source>Aseta kieli</source>
         <translation>Set language</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="194"/>
+        <location filename="../gui/ui_mainwindow.py" line="200"/>
         <source>Apua</source>
         <translation>Help</translation>
     </message>
     <message>
-        <location filename="ui_mainwindow.py" line="202"/>
+        <location filename="../gui/ui_mainwindow.py" line="208"/>
         <source>Ohjeet</source>
         <translation>Manual</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_mainwindow.py" line="209"/>
+        <source>Tarkista päivitykset</source>
+        <translation>Check updates</translation>
     </message>
 </context>
 <context>
     <name>about_description</name>
     <message>
-        <location filename="mainwindow.py" line="89"/>
-        <source>Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.
-Jos ohjelma lakkaa toimimasta, voit ottaa yhteyttä
+        <location filename="messages.py" line="31"/>
+        <source>FMIDownloader {version}
+Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.\nJos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä\n\n{author}, {year}\n{url}\n{email}}</source>
+        <translation>FMIDownloader {version}
+A simple application to download data from Finnish Meteorological Institute&apos;s open data service.
+In case of questions about the software, please contact
 
-Tuomas Salmi, 2015
-http://tumetsu.github.io/Ilmatieteenlaitoksen-saadata-lataaja
-salmi.tuomas@gmail.com</source>
-        <translation>A simple application to download data from Finnish Meteorological Institute&apos;s open data service. 
-In case of problems, please contact 
+{author}, {year}
+{url}
+{email}</translation>
+    </message>
+    <message>
+        <location filename="../gui/messages.py" line="31"/>
+        <source>FMIDownloader {version}
+Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.
+Jos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä
 
-Tuomas Salmi, 2015
-http://tumetsu.github.io/FMI-weather-downloader
-salmi.tuomas@gmail.com</translation>
+{author}, {year}
+{url}
+{email}</source>
+        <translation>FMIDownloader {version}
+A simple application to download data from Finnish Meteorological Institute&apos;s open data service.
+In case of questions about the software, please contact
+
+{author}, {year}
+{url}
+{email}</translation>
     </message>
 </context>
 <context>

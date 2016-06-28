@@ -41,12 +41,13 @@ can be run in root directory to create a install exe to the build/ directory on 
 Translations
 --------------
 Translations are done by *pylupdate5* and *lrelease* tools which come with PyQt distribution. To update .ts translation files
-run `pylupdate5 fmidownloader.pro` on root directory adter adding new phrases to the messages.py. Launch *Qt Linguist* to edit
+run `pylupdate5 fmidownloader.pro` on root directory after adding new phrases to the messages.py. Launch *Qt Linguist* to edit
 .ts files in `translations` directory. Finally in `translations` directory run `lrelease *.ts` to generate qm-files. App should pick correct translations now.
 
 ### Note
 Translations are bit screwed up now because of messages.py and honestly my inexperience with PyQt i18n. If I have time I might clean them but
-for now rather focus on more pressing issues.
+for now rather focus on more pressing issues. At the moment after doing changes to translations in Linguist, you have to remove `type="obsolete"` from
+mainwindow_fi.ts file.
 
 
 Thanks
