@@ -184,9 +184,7 @@ Todennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.
 Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.</source>
         <translation>Määritettyä ajanjaksoa ei löytynyt.
 Todennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.
-Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.
-
-Virheen kuvaus:</translation>
+Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.</translation>
     </message>
 </context>
 <context>
