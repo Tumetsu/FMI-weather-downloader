@@ -22,6 +22,5 @@ class Settings(QSettings):
         if stored_lang is not None:
             app.set_language(stored_lang)
         else:
-            print('emit setLanguageSignal')
             app.setLanguageSignal.emit()
 

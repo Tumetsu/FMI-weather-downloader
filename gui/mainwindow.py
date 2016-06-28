@@ -14,7 +14,7 @@ import csv
 class Mainwindow(QMainWindow):
 
     # signals
-    setLanguageSignal = pyqtSignal(str, name="setLanguage")
+    setLanguageSignal = pyqtSignal(name="setLanguage")
     entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
 
     def __init__(self, app, translators, parent=None):
