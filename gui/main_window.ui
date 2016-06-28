@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="datamodeTabWidget">
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -27,9 +27,9 @@
        <attribute name="toolTip">
         <string>Ilmatieteenlaitoksen vuorokausiarvojen lataus</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="dailyTabLayout">
         <item>
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="headerLabel_daily">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -46,22 +46,37 @@
          </widget>
         </item>
         <item>
-         <layout class="QFormLayout" name="formLayout">
+         <layout class="QFormLayout" name="dailyTabLayout_2">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
           </property>
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
           </property>
+          <property name="horizontalSpacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item row="0" column="0">
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="placeLabel_daily">
             <property name="text">
              <string>Paikka:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="stationComboBox">
+           <widget class="QComboBox" name="stationComboBox_daily">
             <property name="toolTip">
              <string>Valitse sääasema, jonka tiedot tahdot ladata</string>
             </property>
@@ -74,14 +89,14 @@
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="availableFromLabel_daily">
             <property name="text">
              <string>Saatavilla vuodesta:</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLabel" name="data_availableLabel">
+           <widget class="QLabel" name="availableDataFromContent_daily">
             <property name="toolTip">
              <string>Vuosi josta lähtien dataa on saatavilla. Huomaa, että dataa ei välttämättä ole saatavilla vuoden alusta asti! </string>
             </property>
@@ -91,14 +106,14 @@
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="startDatetimeLabel_daily">
             <property name="text">
              <string>Aloitus pvm:</string>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QDateEdit" name="startimeDateEdit">
+           <widget class="QDateEdit" name="startDatetimeEdit_daily">
             <property name="toolTip">
              <string>Aloituspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin lopetus päivämäärä.</string>
             </property>
@@ -108,14 +123,14 @@
            </widget>
           </item>
           <item row="3" column="0">
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="endDatetimeLabel_daily">
             <property name="text">
              <string>Lopetus pvm:</string>
             </property>
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QDateEdit" name="endtime_dateEdit">
+           <widget class="QDateEdit" name="endDatetimeEdit_daily">
             <property name="toolTip">
              <string>Lopetuspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin aloitus päivämäärä.</string>
             </property>
@@ -124,7 +139,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="downloadButton_daily">
           <property name="toolTip">
            <string>Lataa data, ja tallenna se tiedostoon</string>
           </property>
@@ -134,7 +149,7 @@
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer">
+         <spacer name="spacer_daily">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
@@ -161,9 +176,9 @@
        <attribute name="toolTip">
         <string>Ilmatieteenlaitoksen reaaliaikaisten havaintojen lataus</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <layout class="QVBoxLayout" name="realtimeTabLayout">
         <item>
-         <widget class="QLabel" name="label_6">
+         <widget class="QLabel" name="headerLabel_realtime">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -180,7 +195,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QFormLayout" name="formLayout_2">
+         <layout class="QFormLayout" name="realtimeTabLayout_2">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
           </property>
@@ -188,14 +203,14 @@
            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
           </property>
           <item row="0" column="0">
-           <widget class="QLabel" name="label_7">
+           <widget class="QLabel" name="placeLabel_realtime">
             <property name="text">
              <string>Paikka:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="stationComboBox_2">
+           <widget class="QComboBox" name="stationComboBox_realtime">
             <property name="toolTip">
              <string>Valitse sääasema, jonka tiedot tahdot ladata</string>
             </property>
@@ -208,14 +223,14 @@
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="label_8">
+           <widget class="QLabel" name="availableFromLabel_realtime">
             <property name="text">
              <string>Saatavilla vuodesta:</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLabel" name="data_availableLabel_2">
+           <widget class="QLabel" name="availableFromContent_realtime">
             <property name="toolTip">
              <string>Vuosi josta lähtien dataa on saatavilla. Huomaa, että dataa ei välttämättä ole saatavilla vuoden alusta asti! </string>
             </property>
@@ -225,21 +240,21 @@
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="label_9">
+           <widget class="QLabel" name="startDatetimeLabel_realtime">
             <property name="text">
              <string>Aloitus pvm ja aika:</string>
             </property>
            </widget>
           </item>
           <item row="3" column="0">
-           <widget class="QLabel" name="label_10">
+           <widget class="QLabel" name="endDatetimeLabel_realtime">
             <property name="text">
              <string>Lopetus pvm ja aika:</string>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QDateTimeEdit" name="startimeDateTimeEdit_2">
+           <widget class="QDateTimeEdit" name="startDatetimeEdit_realtime">
             <property name="toolTip">
              <string>Aloituspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin lopetus päivämäärä.</string>
             </property>
@@ -249,7 +264,7 @@
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QDateTimeEdit" name="endtime_dateTimeEdit_2">
+           <widget class="QDateTimeEdit" name="endDatetimeEdit_realtime">
             <property name="toolTip">
              <string>Lopetuspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin aloitus päivämäärä.</string>
             </property>
@@ -258,7 +273,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="downloadButton_realtime">
           <property name="toolTip">
            <string>Lataa data, ja tallenna se tiedostoon</string>
           </property>
@@ -268,7 +283,7 @@
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer_2">
+         <spacer name="spacer_realtime">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
@@ -301,18 +316,19 @@
      <string>Tiedosto</string>
     </property>
     <addaction name="actionSet_api_key"/>
-    <addaction name="actionAseta_kieli"/>
+    <addaction name="actionSet_language"/>
     <addaction name="actionExit"/>
    </widget>
-   <widget class="QMenu" name="menuApua">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Apua</string>
     </property>
-    <addaction name="actionOhjeet"/>
+    <addaction name="actionView_instructions"/>
+    <addaction name="actionCheck_updates"/>
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuOptions"/>
-   <addaction name="menuApua"/>
+   <addaction name="menuHelp"/>
   </widget>
   <action name="actionSet_api_key">
    <property name="text">
@@ -340,14 +356,19 @@
     <string>Poistu</string>
    </property>
   </action>
-  <action name="actionAseta_kieli">
+  <action name="actionSet_language">
    <property name="text">
     <string>Aseta kieli</string>
    </property>
   </action>
-  <action name="actionOhjeet">
+  <action name="actionView_instructions">
    <property name="text">
     <string>Ohjeet</string>
+   </property>
+  </action>
+  <action name="actionCheck_updates">
+   <property name="text">
+    <string>Tarkista päivitykset</string>
    </property>
   </action>
  </widget>
