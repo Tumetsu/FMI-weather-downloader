@@ -4,63 +4,73 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="67"/>
+        <location filename="../gui/ui_aboutdialog.py" line="68"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="68"/>
+        <location filename="../gui/ui_aboutdialog.py" line="69"/>
         <source>FMIDownloader</source>
         <translation>FMIDownloader {version}</translation>
     </message>
     <message>
         <location filename="../gui/ui_aboutdialog.py" line="69"/>
         <source>Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.Jos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä</source>
-        <translation >A simple application to download data from Finnish Meteorological Institute&apos;s open data service.
+        <translation>A simple application to download data from Finnish Meteorological Institute&apos;s open data service.
 In case of questions about the software, please contact with details below</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="70"/>
+        <location filename="../gui/ui_aboutdialog.py" line="71"/>
         <source>&lt;a href=&apos;http://www.tuomassalmi.com&apos;&gt;Tuomas Salmi 2015-2016&lt;/a&gt;</source>
         <translation>{author}</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="71"/>
+        <location filename="../gui/ui_aboutdialog.py" line="72"/>
         <source>&lt;a href=&apos;mailto:salmi.tuomas@gmail.com&apos;&gt;salmi.tuomas@gmail.com&lt;/a&gt;</source>
         <translation>{email}</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="72"/>
+        <location filename="../gui/ui_aboutdialog.py" line="73"/>
         <source>&lt;a href=&apos;https://github.com/Tumetsu/FMI-weather-downloader&apos;&gt;FMIDownloader Github&lt;/a&gt;</source>
         <translation>{github}</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_aboutdialog.py" line="74"/>
+        <source>Close</source>
+        <translation>Close</translation>
     </message>
 </context>
 <context>
     <name>CheckUpdatesDialog</name>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="54"/>
+        <location filename="../gui/ui_updatedialog.py" line="53"/>
         <source>Updates</source>
         <translation>Updates</translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="55"/>
+        <location filename="../gui/ui_updatedialog.py" line="54"/>
         <source>Available FMIDownloader version: </source>
         <translation>Available FMIDownloader version: </translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="56"/>
+        <location filename="../gui/ui_updatedialog.py" line="55"/>
         <source>Your current version is: </source>
         <translation>Available FMIDownloader version: </translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="57"/>
+        <location filename="../gui/ui_updatedialog.py" line="56"/>
         <source>Check updates on startup</source>
         <translation>Check updates on program startup</translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="58"/>
+        <location filename="../gui/ui_updatedialog.py" line="57"/>
         <source>Go to downloads</source>
         <translation>Go to downloads</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_updatedialog.py" line="58"/>
+        <source>Close</source>
+        <translation>Close</translation>
     </message>
 </context>
 <context>
@@ -81,7 +91,7 @@ In case of questions about the software, please contact with details below</tran
     <message>
         <location filename="ui_mainwindow.py" line="156"/>
         <source>Säähavaintodatan lataaja</source>
-        <translation >Weather observation data downloader</translation>
+        <translation>Weather observation data downloader</translation>
     </message>
     <message>
         <location filename="../gui/ui_mainwindow.py" line="184"/>
@@ -96,7 +106,7 @@ In case of questions about the software, please contact with details below</tran
     <message>
         <location filename="ui_mainwindow.py" line="172"/>
         <source>Valitse sääasema, jonka tiedot tahdot ladata</source>
-        <translation >Choose the weather station</translation>
+        <translation>Choose the weather station</translation>
     </message>
     <message>
         <location filename="../gui/ui_mainwindow.py" line="188"/>
@@ -106,7 +116,7 @@ In case of questions about the software, please contact with details below</tran
     <message>
         <location filename="ui_mainwindow.py" line="174"/>
         <source>Vuosi josta lähtien dataa on saatavilla. Huomaa, että dataa ei välttämättä ole saatavilla vuoden alusta asti! </source>
-        <translation >The year where data is available. Please note that there is not necessarily data available from the beginning of the year!</translation>
+        <translation>The year where data is available. Please note that there is not necessarily data available from the beginning of the year!</translation>
     </message>
     <message>
         <location filename="../gui/ui_mainwindow.py" line="177"/>
@@ -116,7 +126,7 @@ In case of questions about the software, please contact with details below</tran
     <message>
         <location filename="ui_mainwindow.py" line="178"/>
         <source>Aloituspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin lopetus päivämäärä.</source>
-        <translation >Start date for data you want to download. Cannot be the same as the ending date.</translation>
+        <translation>Start date for data you want to download. Cannot be the same as the ending date.</translation>
     </message>
     <message>
         <location filename="../gui/ui_mainwindow.py" line="179"/>
@@ -126,7 +136,7 @@ In case of questions about the software, please contact with details below</tran
     <message>
         <location filename="ui_mainwindow.py" line="179"/>
         <source>Lopetuspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin aloitus päivämäärä.</source>
-        <translation >End date for the data you want to download. Cannot be same as the start date.</translation>
+        <translation>End date for the data you want to download. Cannot be same as the start date.</translation>
     </message>
     <message>
         <location filename="../gui/ui_mainwindow.py" line="195"/>
@@ -186,7 +196,7 @@ In case of questions about the software, please contact with details below</tran
     <message>
         <location filename="ui_mainwindow.py" line="186"/>
         <source>Aseta palvelun käyttöön tarvittava tunnisteavain</source>
-        <translation >Set the required API-key to use the service</translation>
+        <translation>Set the required API-key to use the service</translation>
     </message>
     <message>
         <location filename="../gui/ui_mainwindow.py" line="203"/>
@@ -201,7 +211,7 @@ In case of questions about the software, please contact with details below</tran
     <message>
         <location filename="ui_mainwindow.py" line="189"/>
         <source>Tietoa tästä sovelluksesta</source>
-        <translation >Information about this application</translation>
+        <translation>Information about this application</translation>
     </message>
     <message>
         <location filename="../gui/ui_mainwindow.py" line="206"/>
@@ -226,7 +236,7 @@ In case of questions about the software, please contact with details below</tran
     <message>
         <location filename="../gui/ui_mainwindow.py" line="209"/>
         <source>Tarkista päivitykset</source>
-        <translation >Check updates</translation>
+        <translation>Check updates</translation>
     </message>
 </context>
 <context>
@@ -235,7 +245,7 @@ In case of questions about the software, please contact with details below</tran
         <location filename="messages.py" line="31"/>
         <source>FMIDownloader {version}
 Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.\nJos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä\n\n{author}, {year}\n{url}\n{email}}</source>
-        <translation >FMIDownloader {version}
+        <translation>FMIDownloader {version}
 A simple application to download data from Finnish Meteorological Institute&apos;s open data service.
 In case of questions about the software, please contact
 
@@ -252,7 +262,7 @@ Jos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä
 {author}, {year}
 {url}
 {email}</source>
-        <translation >FMIDownloader {version}
+        <translation>FMIDownloader {version}
 A simple application to download data from Finnish Meteorological Institute&apos;s open data service.
 In case of questions about the software, please contact
 
@@ -266,7 +276,7 @@ In case of questions about the software, please contact
     <message>
         <location filename="mainwindow.py" line="133"/>
         <source>Tietoa</source>
-        <translation >About</translation>
+        <translation>About</translation>
     </message>
 </context>
 <context>
@@ -276,7 +286,7 @@ In case of questions about the software, please contact
         <source>Määritettyä ajanjaksoa ei löytynyt.
 Todennäköisesti ilmatieteenlaitoksella ei ole dataa tälle ajanjaksolle.
 Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloituspäivämäärää.</source>
-        <translation >Specified date and time could not be found.
+        <translation>Specified date and time could not be found.
 Most likely FMI does not have data for this time-period.
 Please try a longer time-span,for example one year or later beginning date.</translation>
     </message>
@@ -286,7 +296,7 @@ Please try a longer time-span,for example one year or later beginning date.</tra
     <message>
         <location filename="downloadProgress.py" line="32"/>
         <source>Ladataan säädataa...</source>
-        <translation >Downloading weatherdata...</translation>
+        <translation>Downloading weatherdata...</translation>
     </message>
 </context>
 <context>
@@ -294,7 +304,7 @@ Please try a longer time-span,for example one year or later beginning date.</tra
     <message>
         <location filename="messages.py" line="13"/>
         <source>Lopetus päivämäärä ei saa edeltää aloitus päivämäärää</source>
-        <translation >End date is not allowed to predate the start date.</translation>
+        <translation>End date is not allowed to predate the start date.</translation>
     </message>
 </context>
 <context>
@@ -302,7 +312,7 @@ Please try a longer time-span,for example one year or later beginning date.</tra
     <message>
         <location filename="messages.py" line="32"/>
         <source>Käsitellään säädataa...</source>
-        <translation >Processing weatherdata...</translation>
+        <translation>Processing weatherdata...</translation>
     </message>
 </context>
 <context>
@@ -311,7 +321,7 @@ Please try a longer time-span,for example one year or later beginning date.</tra
         <location filename="../gui/messages.py" line="62"/>
         <source>Ilmatieteenlaitoksen latausraja ylitetty.
 Olet tehnyt liikaa datapyyntöjä lyhyessä ajassa. Jatkaaksesi lataamista, odota {} sekuntia ennen seuraavaa datapyyntöä.</source>
-        <translation >FMI api service query quota exceeded. Too many requests done in short time. To continue downloading, please wait {} seconds before trying again.</translation>
+        <translation>FMI api service query quota exceeded. Too many requests done in short time. To continue downloading, please wait {} seconds before trying again.</translation>
     </message>
 </context>
 <context>
@@ -322,7 +332,7 @@ Olet tehnyt liikaa datapyyntöjä lyhyessä ajassa. Jatkaaksesi lataamista, odot
 Oletko asettanut vaadittavan tunnisteavaimen tai onko se virheellinen?
 
 Ilmatieteenlaitos vaatii rekisteröitymistä palveluun ennen sen käyttöä. Katso lisätietoa valikosta Tiedosto-&gt;Aseta tunnisteavain.</source>
-        <translation >Data request failed.
+        <translation>Data request failed.
 Have you set the required API-key or is it invalid?
 
 FMI requires users to register into their service before using it. More information in File-&gt;Set API-key.</translation>
@@ -333,7 +343,7 @@ FMI requires users to register into their service before using it. More informat
     <message>
         <location filename="mainwindow.py" line="174"/>
         <source>Tallenna säädata csv-muodossa:</source>
-        <translation >Save weather data in csv-format:</translation>
+        <translation>Save weather data in csv-format:</translation>
     </message>
 </context>
 <context>
@@ -341,7 +351,7 @@ FMI requires users to register into their service before using it. More informat
     <message>
         <location filename="mainwindow.py" line="138"/>
         <source>Aseta tunnisteavain</source>
-        <translation >Set API-key</translation>
+        <translation>Set API-key</translation>
     </message>
 </context>
 <context>
@@ -352,7 +362,7 @@ FMI requires users to register into their service before using it. More informat
 Mene osoitteeseen http://ilmatieteenlaitos.fi/avoin-data saadaksesi lisätietoa avaimen hankkimisesta.
 
 Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se tähän:</source>
-        <translation >To use this application you&apos;ll need FMI&apos;s API-key. Go to the  http://ilmatieteenlaitos.fi/avoin-data to get more information about obtaining the API-key.
+        <translation>To use this application you&apos;ll need FMI&apos;s API-key. Go to the  http://ilmatieteenlaitos.fi/avoin-data to get more information about obtaining the API-key.
 
 After you have registered to the FMI&apos;s service, copy and paste the API-key into field below:</translation>
     </message>
@@ -370,7 +380,7 @@ After you have registered to the FMI&apos;s service, copy and paste the API-key 
     <message>
         <location filename="messages.py" line="16"/>
         <source>Aloitus ja lopetuspäivämäärät eivät saa olla samoja</source>
-        <translation >Start and end dates cannot be the same date</translation>
+        <translation>Start and end dates cannot be the same date</translation>
     </message>
 </context>
 <context>
@@ -398,7 +408,7 @@ Ilmatieteenlaitoksen palvelussa on häiriö tai mikäli ongelma toistuu muillaki
 
 Virheen kuvaus:
 </source>
-        <translation >Weather station was not found.
+        <translation>Weather station was not found.
 There might be a problem with FMI&apos;s service. If problem appears with other stations, software might require updating. You can check contact-details from File-&gt;About
 
 Error description: </translation>

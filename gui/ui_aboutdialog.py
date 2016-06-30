@@ -49,17 +49,18 @@ class Ui_AboutDialog(object):
         self.verticalLayout_3.addItem(spacerItem)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.buttonBox = QtWidgets.QDialogButtonBox(AboutDialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Vertical)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Close)
-        self.buttonBox.setCenterButtons(False)
-        self.buttonBox.setObjectName("buttonBox")
-        self.horizontalLayout.addWidget(self.buttonBox)
+        self.closeButton = QtWidgets.QPushButton(AboutDialog)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.closeButton.sizePolicy().hasHeightForWidth())
+        self.closeButton.setSizePolicy(sizePolicy)
+        self.closeButton.setObjectName("closeButton")
+        self.horizontalLayout.addWidget(self.closeButton)
         self.verticalLayout_3.addLayout(self.horizontalLayout)
 
         self.retranslateUi(AboutDialog)
-        self.buttonBox.accepted.connect(AboutDialog.accept)
-        self.buttonBox.rejected.connect(AboutDialog.reject)
+        self.closeButton.clicked.connect(AboutDialog.reject)
         QtCore.QMetaObject.connectSlotsByName(AboutDialog)
 
     def retranslateUi(self, AboutDialog):
@@ -70,4 +71,5 @@ class Ui_AboutDialog(object):
         self.authorLabel.setText(_translate("AboutDialog", "<a href=\'http://www.tuomassalmi.com\'>Tuomas Salmi 2015-2016</a>"))
         self.emailLabel.setText(_translate("AboutDialog", "<a href=\'mailto:salmi.tuomas@gmail.com\'>salmi.tuomas@gmail.com</a>"))
         self.githubLabel.setText(_translate("AboutDialog", "<a href=\'https://github.com/Tumetsu/FMI-weather-downloader\'>FMIDownloader Github</a>"))
+        self.closeButton.setText(_translate("AboutDialog", "Close"))
 

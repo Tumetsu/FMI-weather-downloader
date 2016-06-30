@@ -76,9 +76,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QDialogButtonBox" name="buttonBox">
-       <property name="standardButtons">
-        <set>QDialogButtonBox::Ok</set>
+      <widget class="QPushButton" name="closeButton">
+       <property name="text">
+        <string>Close</string>
        </property>
       </widget>
      </item>
@@ -89,10 +89,10 @@
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
    <receiver>CheckUpdatesDialog</receiver>
-   <slot>close()</slot>
+   <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>352</x>

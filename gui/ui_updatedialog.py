@@ -39,14 +39,13 @@ class Ui_CheckUpdatesDialog(object):
         self.goToDownloads_Button.setSizePolicy(sizePolicy)
         self.goToDownloads_Button.setObjectName("goToDownloads_Button")
         self.horizontalLayout.addWidget(self.goToDownloads_Button)
-        self.buttonBox = QtWidgets.QDialogButtonBox(CheckUpdatesDialog)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.horizontalLayout.addWidget(self.buttonBox)
+        self.closeButton = QtWidgets.QPushButton(CheckUpdatesDialog)
+        self.closeButton.setObjectName("closeButton")
+        self.horizontalLayout.addWidget(self.closeButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(CheckUpdatesDialog)
-        self.buttonBox.accepted.connect(CheckUpdatesDialog.close)
+        self.closeButton.clicked.connect(CheckUpdatesDialog.reject)
         QtCore.QMetaObject.connectSlotsByName(CheckUpdatesDialog)
 
     def retranslateUi(self, CheckUpdatesDialog):
@@ -56,4 +55,5 @@ class Ui_CheckUpdatesDialog(object):
         self.currentVersion_label.setText(_translate("CheckUpdatesDialog", "Your current version is: "))
         self.checkUpdatesOnStartUp_Checkbox.setText(_translate("CheckUpdatesDialog", "Check updates on startup"))
         self.goToDownloads_Button.setText(_translate("CheckUpdatesDialog", "Go to downloads"))
+        self.closeButton.setText(_translate("CheckUpdatesDialog", "Close"))
 
