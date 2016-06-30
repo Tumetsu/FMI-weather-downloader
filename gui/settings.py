@@ -9,6 +9,7 @@ class Settings(QSettings):
     def load_qsettings(self, app):
         self._load_lang_settings(app)
         self._load_api_settings(app)
+        self.check_updates()
 
     def _load_api_settings(self, app):
         stored_apikey = self.value("apikey")
@@ -24,3 +25,10 @@ class Settings(QSettings):
         else:
             app.setLanguageSignal.emit()
 
+    def check_updates(self):
+        check = self.value("checkupdates")
+        if check is not None:
+            return check
+        else:
+            self.setValue("checkupdates", True)
+            return True

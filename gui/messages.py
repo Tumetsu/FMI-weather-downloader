@@ -57,3 +57,7 @@ class Messages:
     def query_limit_error():
         return QCoreApplication.translate("querylimit_error",
                                           "Ilmatieteenlaitoksen latausraja ylitetty.\nOlet tehnyt liikaa datapyyntöjä lyhyessä ajassa. Jatkaaksesi lataamista, odota {} sekuntia ennen seuraavaa datapyyntöä.")
+
+    @staticmethod
+    def failed_to_get_version():
+        return QCoreApplication.translate("version_retrieve_error", "Päivitysten haku epäonnistui.")

@@ -16,7 +16,7 @@
     <message>
         <location filename="../gui/ui_aboutdialog.py" line="69"/>
         <source>Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.Jos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä</source>
-        <translation>Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.Jos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä</translation>
+        <translation >Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.Jos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä</translation>
     </message>
     <message>
         <location filename="../gui/ui_aboutdialog.py" line="70"/>
@@ -32,6 +32,34 @@
         <location filename="../gui/ui_aboutdialog.py" line="72"/>
         <source>&lt;a href=&apos;https://github.com/Tumetsu/FMI-weather-downloader&apos;&gt;FMIDownloader Github&lt;/a&gt;</source>
         <translation>{github}</translation>
+    </message>
+</context>
+<context>
+    <name>CheckUpdatesDialog</name>
+    <message>
+        <location filename="../gui/ui_updatedialog.py" line="54"/>
+        <source>Updates</source>
+        <translation>Päivitykset</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_updatedialog.py" line="55"/>
+        <source>Available FMIDownloader version: </source>
+        <translation>Saatavilla oleva versio: </translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_updatedialog.py" line="56"/>
+        <source>Your current version is: </source>
+        <translation>Nykyinen ohjelmaversiosi: </translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_updatedialog.py" line="57"/>
+        <source>Check updates on startup</source>
+        <translation>Tarkista päivitykset ohjelman käynnistyessä</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_updatedialog.py" line="58"/>
+        <source>Go to downloads</source>
+        <translation>Latauksiin</translation>
     </message>
 </context>
 <context>
@@ -197,7 +225,7 @@
     <message>
         <location filename="../gui/ui_mainwindow.py" line="209"/>
         <source>Tarkista päivitykset</source>
-        <translation>Tarkista päivitykset</translation>
+        <translation >Tarkista päivitykset</translation>
     </message>
 </context>
 <context>
@@ -254,7 +282,7 @@ Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloitusp�
     <message>
         <location filename="messages.py" line="35"/>
         <source>Ladataan säädataa...</source>
-        <translation>Ladataan säädataa...</translation>
+        <translation >Ladataan säädataa...</translation>
     </message>
 </context>
 <context>
@@ -270,7 +298,7 @@ Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloitusp�
     <message>
         <location filename="messages.py" line="32"/>
         <source>Käsitellään säädataa...</source>
-        <translation>Käsitellään säädataa...</translation>
+        <translation >Käsitellään säädataa...</translation>
     </message>
 </context>
 <context>
@@ -354,6 +382,14 @@ Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se t
         <location filename="../gui/messages.py" line="10"/>
         <source>Tuntematon virhe: </source>
         <translation>Tuntematon virhe: </translation>
+    </message>
+</context>
+<context>
+    <name>version_retrieve_error</name>
+    <message>
+        <location filename="../gui/messages.py" line="63"/>
+        <source>Päivitysten haku epäonnistui.</source>
+        <translation>Päivitysten haku epäonnistui.</translation>
     </message>
 </context>
 <context>

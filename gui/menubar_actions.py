@@ -4,24 +4,18 @@ from PyQt5.QtWidgets import QInputDialog, QApplication, QMessageBox, QDialog
 from gui.messages import Messages
 from gui.languagedialog import LanguageDialog
 from gui.ui_aboutdialog import Ui_AboutDialog
-
-_ABOUT_INFORMATION = {
-    'author': "<a href='http://www.tuomassalmi.com'>Tuomas Salmi</a>",
-    'email': "<a href='mailto:salmi.tuomas@gmail.com'>salmi.tuomas@gmail.com</a>",
-    'github': "<a href='https://github.com/Tumetsu/FMI-weather-downloader'>FMIDownloader Github</a>",
-    'version': 'v. 0.9'
-}
-
+from gui.checkupdates import UpdateDialog
+from gui.app_information import ABOUT_INFORMATION
 
 class AboutDialog(QDialog):
     def __init__(self, parent=None):
         super(AboutDialog, self).__init__(parent)
         self.ui = Ui_AboutDialog()
         self.ui.setupUi(self)
-        self.insert_params(self.ui.emailLabel, {'email': _ABOUT_INFORMATION['email']})
-        self.insert_params(self.ui.authorLabel, {'author': _ABOUT_INFORMATION['author']})
-        self.insert_params(self.ui.githubLabel, {'github': _ABOUT_INFORMATION['github']})
-        self.insert_params(self.ui.aboutHeader, {'version': _ABOUT_INFORMATION['version']})
+        self.insert_params(self.ui.emailLabel, {'email': ABOUT_INFORMATION['email']})
+        self.insert_params(self.ui.authorLabel, {'author': ABOUT_INFORMATION['author']})
+        self.insert_params(self.ui.githubLabel, {'github': ABOUT_INFORMATION['github']})
+        self.insert_params(self.ui.aboutHeader, {'version': ABOUT_INFORMATION['version']})
 
     def insert_params(self, ui_element, param):
         ui_element.setText(ui_element.text().format(**param))
@@ -62,4 +56,10 @@ def quit():
 def about():
     about_dialog = AboutDialog()
     about_dialog.exec()
+
+
+@pyqtSlot(name='checkUpdates')
+def check_updates(settings):
+    updates_dialog = UpdateDialog(settings)
+    updates_dialog.exec()
 

@@ -8,6 +8,7 @@ from gui.download.downloadProgress import *
 from gui.settings import Settings
 import gui.menubar_actions as menubar_actions
 from gui.messages import Messages
+from gui.checkupdates import CheckUpdatesOnStartup
 import csv
 
 
@@ -30,6 +31,7 @@ class Mainwindow(QMainWindow):
         self._set_up_ui()
         self._app = app
         self._translators = translators
+        self.update_checker = CheckUpdatesOnStartup(self._settings)
 
         app_icon = QIcon()
         app_icon.addFile('icon.ico')
@@ -91,6 +93,7 @@ class Mainwindow(QMainWindow):
         self.ui.actionAbout.triggered.connect(menubar_actions.about)
         self.ui.actionSet_language.triggered.connect(lambda: menubar_actions.select_language(self, self._settings))
         self.ui.actionView_instructions.triggered.connect(menubar_actions.open_manual)
+        self.ui.actionCheck_updates.triggered.connect(lambda: menubar_actions.check_updates(self._settings))
 
         # language change signal
         self.setLanguageSignal.connect(lambda: menubar_actions.select_language(self, self._settings))
