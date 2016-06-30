@@ -37,7 +37,7 @@ class UpdateDialog(QDialog):
             self.thread.started.connect(self.worker.check_updates)
             self.thread.start()
         else:
-            self._set_version_labels(their_version, ABOUT_INFORMATION['version'])
+            self.ui.newVersion_label.setText(self.ui.newVersion_label.text() + their_version)
 
     def _checkbox_set(self):
         value = self.ui.checkUpdatesOnStartUp_Checkbox.checkState()
@@ -47,7 +47,7 @@ class UpdateDialog(QDialog):
     def _updates_information_retrieved(self, result):
         if result['status'] == 'success':
             # Update version info to the dialog
-            their_version = result['raw_data']['tag_name']
+            their_version = result['their_version']
             self.ui.newVersion_label.setText(self.ui.newVersion_label.text() + their_version)
         else:
             self.ui.newVersion_label.setText(self.ui.newVersion_label.text() + Messages.failed_to_get_version())
@@ -74,7 +74,7 @@ class CheckUpdatesOnStartup:
     @pyqtSlot(name='startupcheck')
     def _updates_information_retrieved(self, result):
         if result['status'] == 'success' and result['should_update']:
-            updates_dialog = UpdateDialog(self.settings)
+            updates_dialog = UpdateDialog(self.settings, their_version=result['their_version'])
             updates_dialog.exec()
 
 
@@ -124,7 +124,9 @@ class CheckUpdatesWorker(QObject):
                 data = response.read().decode('utf-8')
                 data = json.loads(data)
                 should_update = self._get_release_version(data)
-                self.threadResultsSignal.emit({'status': 'success', 'raw_data': data, 'should_update': should_update})
+                self.threadResultsSignal.emit({'status': 'success', 'raw_data': data,
+                                               'should_update': should_update,
+                                               'their_version': data['tag_name']})
             else:
                 raise Exception('Error ' + str(response.status))
         except Exception:
