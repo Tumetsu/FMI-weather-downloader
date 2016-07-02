@@ -5,6 +5,7 @@ import math
 import pytz
 timezone = pytz.timezone('Europe/Helsinki')
 
+
 class FMIxmlParser:
     """
     Ad-hoc class to parse multipoint-coverage xml supplied from FMI-service and convert the multipoint-coverage
@@ -78,8 +79,11 @@ class FMIxmlParser:
 
     @staticmethod
     def _timestamp2datestr(timestamp):
-        ts = datetime.datetime.utcfromtimestamp(int(timestamp))
-        ts = pytz.utc.localize(ts)
+        if int(timestamp) < 0:
+            ts = datetime.datetime(1970, 1, 1, tzinfo=pytz.UTC) + datetime.timedelta(seconds=int(timestamp))
+        else:
+            ts = datetime.datetime.utcfromtimestamp(int(timestamp))
+            ts = pytz.utc.localize(ts)
         ts = ts.astimezone(timezone)
         return ts.strftime('%Y-%m-%dT%H:%M')
 

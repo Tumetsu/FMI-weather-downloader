@@ -1,4 +1,5 @@
 .idea/
+devtools/
 dist/
 *.pyc
 .eggs

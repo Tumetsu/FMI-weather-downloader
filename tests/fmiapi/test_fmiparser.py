@@ -11,6 +11,7 @@ def describe_fmi_xml_parser():
         test_data1 = load_xml('./tests/fmiapi/testdata/daily_12_days.xml')
         test_data2 = load_xml('./tests/fmiapi/testdata/daily_4_days.xml')
         test_data3 = load_xml('./tests/fmiapi/testdata/daily_14_days.xml')
+        test_1965 = load_xml('./tests/fmiapi/testdata/daily_11_days_1965.xml')
 
         def should_parse_xml():
             result = parser.parse([test_data1])
@@ -24,6 +25,11 @@ def describe_fmi_xml_parser():
             assert 'place' in result
             verify_dataframe(result, EXPECTED_DAILY_12_DAYS)
 
+        def should_parse_dates_before_1970_correctly():
+            result = parser.parse([test_1965])
+            assert_equal(11, len(result['time']))
+            verify_dataframe(result, EXPECTED_DAILY_1965)
+
         def should_parse_multipart_request_correctly():
             result = parser.parse([test_data1, test_data2, test_data3])
             assert_equal(30, len(result['time']))
@@ -35,6 +41,7 @@ def describe_fmi_xml_parser():
             for key in EXPECTED_DAILY_14_DAYS:
                 expected_df[key] = expected_df[key] + EXPECTED_DAILY_14_DAYS[key]
             verify_dataframe(result, expected_df)
+
 
     def describe_realtime_data():
         test_data1 = load_xml('./tests/fmiapi/testdata/realtime_1_day.xml')
