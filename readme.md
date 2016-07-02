@@ -1,11 +1,12 @@
 Ilmatieteenlaitoksen säädatan lataaja / FMI Weather Downloader
 ==============================
 [Webpage of the application with downloads & guides](http://tumetsu.github.io/FMI-weather-downloader/)
+
 ![screenshot](http://i.imgur.com/CzXFzIQ.png)
 
-This is a simple application to provide a graphical user interface to download weather data from [Finnish Meteorological Institute's open data service](https://ilmatieteenlaitos.fi/avoin-data). The application was originally developed for [Lammi Biological Station's](http://www.helsinki.fi/lammi/) needs.
+Simple application to provide a graphical user interface to download weather data from [Finnish Meteorological Institute's open data service](https://ilmatieteenlaitos.fi/avoin-data). The application was originally developed for [Lammi Biological Station's](http://www.helsinki.fi/lammi/) needs.
 
-At this point application supports downloads of daily and real time obseration data from FMI's Finnish weather stations and has Finnish and Eglish user interface. For more information about the usage and downloads, head to the website of the application or go directly to [download page](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/releases) 
+At this point application supports downloads of daily and real time obseration data from FMI's Finnish weather stations and has Finnish and English user interface. For more information about the usage and downloads, head to the website of the application or go directly to [download page](https://github.com/Tumetsu/Ilmatieteenlaitoksen-saadata-lataaja/releases)
 
 Please note that this application **is not made by FMI!** It only uses the open data service provided by FMI.
 
@@ -13,13 +14,7 @@ Please note that this application **is not made by FMI!** It only uses the open 
 Material
 ---------
 The data downloaded by this program is directly from FMI's server. User should follow the [license of the data described in FMI's service](http://ilmatieteenlaitos.fi/avoin-data-lisenssi). When using the data in your work, research etc. it is your responsibility to follow the guidelines and licenses of the FMI.
-
-For software developers
--------------
-
-This application was put together rapidly using Python3, PyQt5 and few other libraries. As such especially the GUI code haven't been cleaned that much. I might clean it in near future by breaking it to several smaller functions and classes. Note however, that the API-code has been placed into its own module. I'm not sure if I'll do much further development for this project, so forks and pull requests are welcome if you are so inclined. Finnish researchers really seem to have a need for this kind of application. 
-
-I think that this kind of tool might work better as a webservice. I decided to build a standalone version to avoid having to maintain server. The fmi-module's code should be easily portable to a backend Python frameworks as it is (for example Django).
+FMI-Downloader is licensed as GNU GPL 3.0 license as required by Qt/PyQt licenses.
 
 Install for development
 --------------------
@@ -48,7 +43,6 @@ run `pylupdate5 fmidownloader.pro` on root directory after adding new phrases to
 Translations are bit screwed up now because of messages.py and honestly my inexperience with PyQt i18n. If I have time I might clean them but
 for now rather focus on more pressing issues. At the moment after doing changes to translations in Linguist, you have to remove `type="obsolete"` from
 mainwindow_fi.ts file.
-
 
 Thanks
 ---------
