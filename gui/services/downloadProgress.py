@@ -4,12 +4,15 @@ from PyQt5.QtCore import pyqtSlot, QObject
 from fmiapi.fmierrors import *
 from gui.mainwindow import *
 from collections import OrderedDict
-from gui.services.downloadworker import Worker
+from gui.services.downloadworker import DownloadWorker
 from gui.messages import Messages
 
 
 class DownloadProgress(QObject):
-
+    """
+    Dialog which is shown during download and parsing of the data. Displays the progress of the task
+    of downloading and parsing. Creates a worker thread to do the actual download process in the background.
+    """
     finishedSignal = pyqtSignal(OrderedDict, name="processFinished")
 
     def __init__(self, parent):
@@ -28,7 +31,7 @@ class DownloadProgress(QObject):
         self.progressDialog.open()
         self.progressDialog.setValue(0)
 
-        self.worker = Worker(request_params, request_function)
+        self.worker = DownloadWorker(request_params, request_function)
         self.worker.threadUpdateSignal.connect(self._update_progress_bar)
         self.worker.threadExceptionSignal.connect(self._loading_failed)
         self.worker.threadResultsSignal.connect(self._process_finished)
@@ -68,6 +71,11 @@ class DownloadProgress(QObject):
 
     @pyqtSlot(str, name="progressChange")
     def _change_progress_dialog(self, header):
+        """
+        When the "topic" of the progress bar changes from download to parsing for example.
+        :param header:
+        :return:
+        """
         self.progressDialog.setLabelText(header)
         self.progressDialog.setValue(0)
 

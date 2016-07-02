@@ -181,7 +181,6 @@ class Mainwindow(QMainWindow):
         else:
             return QDateTime(dateEdit.dateTime()).toPyDateTime()
 
-
     @pyqtSlot()
     def _daily_date_edited(self):
         if self.ui.startDatetimeEdit_daily.date() == self.ui.endDatetimeEdit_daily.date():

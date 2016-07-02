@@ -4,7 +4,11 @@ from PyQt5.QtCore import pyqtSlot, QObject
 from gui.messages import Messages
 
 
-class Worker(QObject):
+class DownloadWorker(QObject):
+    """
+    A simple download worker class which is ran in separate thread to keep the ui responsive. utilizes
+    FMIApi classes to process the data request made by user.
+    """
     threadUpdateSignal = pyqtSignal(int, int, name="progressUpdate")
     threadExceptionSignal = pyqtSignal(object, name="exceptionInProcess")
     threadResultsSignal = pyqtSignal(OrderedDict, name="results")

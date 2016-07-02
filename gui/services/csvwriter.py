@@ -5,7 +5,9 @@ from gui.messages import Messages
 
 
 class CsvExport:
-
+    """
+    Utility class to export downloaded data to csv file format.
+    """
     def __init__(self, app):
         self.app = app
 

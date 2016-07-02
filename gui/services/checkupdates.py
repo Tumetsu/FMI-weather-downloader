@@ -11,6 +11,9 @@ from gui.messages import Messages
 
 
 class UpdateDialog(QDialog):
+    """
+    Dialog to check the updates and to navigate to downloads page in Github.
+    """
     def __init__(self, settings, their_version=None, parent=None):
         super(UpdateDialog, self).__init__(parent)
         self.ui = Ui_CheckUpdatesDialog()
@@ -57,6 +60,9 @@ class UpdateDialog(QDialog):
 
 
 class CheckUpdatesOnStartup:
+    """
+    Helper class to check updates automatically on background when application starts up.
+    """
     def __init__(self, settings):
         self.settings = settings
         if settings.check_updates() == 'true' and not ABOUT_INFORMATION['disable_update_check']:
@@ -78,6 +84,9 @@ class CheckUpdatesOnStartup:
 
 
 class CheckUpdatesWorker(QObject):
+    """
+    Implements threading to fetch and parse version update information from the web.
+    """
     threadResultsSignal = pyqtSignal(object, name="results")
 
     def __init__(self, host, url, current_version, parent=None):
