@@ -9,5 +9,6 @@ ABOUT_INFORMATION = {
     'releases_url': "https://github.com/Tumetsu/FMI-weather-downloader/releases",
     'github_api_releases_url': "/repos/tumetsu/FMI-weather-downloader/releases/latest",
     'github_api_host': "api.github.com",
-    'version': 'v0.11'
+    'version': 'v0.11',
+    'disable_update_check': False   # disables auto update check by default. Good for university software portal
 }

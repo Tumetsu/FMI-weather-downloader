@@ -1,11 +1,14 @@
 import webbrowser
-from PyQt5.QtCore import pyqtSlot, QCoreApplication, Qt
-from PyQt5.QtWidgets import QInputDialog, QApplication, QMessageBox, QDialog
-from gui.messages import Messages
-from gui.languagedialog import LanguageDialog
-from gui.ui_aboutdialog import Ui_AboutDialog
-from gui.checkupdates import UpdateDialog
+
+from PyQt5.QtCore import pyqtSlot, QCoreApplication
+from PyQt5.QtWidgets import QInputDialog, QApplication, QDialog
+
 from gui.app_information import ABOUT_INFORMATION
+from gui.dialogs.languagedialog import LanguageDialog
+from gui.dialogs.ui_aboutdialog import Ui_AboutDialog
+from gui.messages import Messages
+from gui.services.checkupdates import UpdateDialog
+
 
 class AboutDialog(QDialog):
     def __init__(self, parent=None):

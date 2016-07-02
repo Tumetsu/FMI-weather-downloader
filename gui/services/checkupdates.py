@@ -1,13 +1,12 @@
-import webbrowser
-from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QDialog
-from PyQt5.QtCore import pyqtSlot, QObject
-from gui.ui_updatedialog import Ui_CheckUpdatesDialog
-from gui.app_information import ABOUT_INFORMATION
 import http.client
-import urllib.request
 import json
 import re
+import webbrowser
+from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtCore import pyqtSlot, QObject
+from PyQt5.QtWidgets import QDialog
+from gui.app_information import ABOUT_INFORMATION
+from gui.dialogs.ui_updatedialog import Ui_CheckUpdatesDialog
 from gui.messages import Messages
 
 
@@ -60,7 +59,7 @@ class UpdateDialog(QDialog):
 class CheckUpdatesOnStartup:
     def __init__(self, settings):
         self.settings = settings
-        if settings.check_updates() == 'true':
+        if settings.check_updates() == 'true' and not ABOUT_INFORMATION['disable_update_check']:
             # Retrieve update information on background:
             self.worker = CheckUpdatesWorker(ABOUT_INFORMATION['github_api_host'],
                                              ABOUT_INFORMATION['github_api_releases_url'],
@@ -112,7 +111,7 @@ class CheckUpdatesWorker(QObject):
                 return there_is_update
             return False
 
-    @pyqtSlot(name='download')
+    @pyqtSlot(name='services')
     def check_updates(self):
         try:
             connection = http.client.HTTPSConnection(self.host)

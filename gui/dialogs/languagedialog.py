@@ -1,9 +1,7 @@
-from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal
-
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QDialog, QProgressDialog, QMessageBox
-from PyQt5.QtCore import pyqtSlot, QObject
+from PyQt5.QtWidgets import QDialog
 from PyQt5.QtWidgets import QRadioButton
-from gui.ui_languagedialog import Ui_LanguageDialog
+
+from gui.dialogs.ui_languagedialog import Ui_LanguageDialog
 
 
 class LanguageDialog(QDialog):

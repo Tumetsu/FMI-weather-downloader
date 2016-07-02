@@ -4,12 +4,13 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QInputDialog
 from gui.ui_mainwindow import Ui_MainWindow
 from PyQt5.QtGui import QIcon
 from fmiapi.fmiapi import FMIApi
-from gui.download.downloadProgress import *
-from gui.settings import Settings
+from gui.services.downloadProgress import *
+from gui.services.settings import Settings
 import gui.menubar_actions as menubar_actions
 from gui.messages import Messages
-from gui.checkupdates import CheckUpdatesOnStartup
+from gui.services.checkupdates import CheckUpdatesOnStartup
 import csv
+from gui.services.csvwriter import CsvExport
 
 
 class Mainwindow(QMainWindow):
@@ -25,6 +26,7 @@ class Mainwindow(QMainWindow):
         self._current_selected_model = None
         self.api = FMIApi()
         self._settings = Settings()
+        self._csvexport = CsvExport(self)
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -173,13 +175,6 @@ class Mainwindow(QMainWindow):
         if filename[0] != "":
             self._save_to_csv(dataframe, filename[0])
 
-    def _save_to_csv(self, df, path):
-        with open(path, 'w', newline='\n') as outfile:
-            writer = csv.writer(outfile)
-            writer.writerow(df.keys())
-            writer.writerows(zip(*df.values()))
-            outfile.close()
-
     def _get_dateTime_from_UI(self, dateEdit, onlyDate=True):
         if onlyDate:
             return QDateTime(dateEdit.date()).toPyDateTime()
@@ -240,7 +235,7 @@ class Mainwindow(QMainWindow):
                   }
 
         download = DownloadProgress(self)
-        download.finishedSignal.connect(self._choose_place_to_save_data)
+        download.finishedSignal.connect(self._csvexport.save_data_to_csv)
         download.begin_download(params, self.api.get_daily_weather)
 
     def _download_realtime(self):
@@ -253,7 +248,7 @@ class Mainwindow(QMainWindow):
                   }
 
         download = DownloadProgress(self)
-        download.finishedSignal.connect(self._choose_place_to_save_data)
+        download.finishedSignal.connect(self._csvexport.save_data_to_csv)
         download.begin_download(params, self.api.get_realtime_weather)
 
     def show_error_alerts(self, message):

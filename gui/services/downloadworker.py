@@ -21,7 +21,7 @@ class Worker(QObject):
     def _change_to_parsing(self):
         self.threadChangeTaskSignal.emit(Messages.parsing_weatherdata())
 
-    @pyqtSlot(name='download')
+    @pyqtSlot(name='services')
     def download_data(self):
         try:
             results = self.request_function(self.request_params, self._update_signal, change_to_parsing=self._change_to_parsing)

@@ -4,7 +4,7 @@ from PyQt5.QtCore import pyqtSlot, QObject
 from fmiapi.fmierrors import *
 from gui.mainwindow import *
 from collections import OrderedDict
-from gui.download.downloadworker import Worker
+from gui.services.downloadworker import Worker
 from gui.messages import Messages
 
 
