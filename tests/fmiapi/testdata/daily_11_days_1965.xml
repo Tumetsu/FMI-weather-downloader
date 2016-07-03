@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wfs:FeatureCollection
+  timeStamp="2016-07-02T08:53:53Z"
+  numberMatched="1"
+  numberReturned="1"
+
+    xmlns:wfs="http://www.opengis.net/wfs/2.0"
+
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+
+    xmlns:om="http://www.opengis.net/om/2.0"
+
+    xmlns:ompr="http://inspire.ec.europa.eu/schemas/ompr/3.0"
+
+    xmlns:omso="http://inspire.ec.europa.eu/schemas/omso/3.0"
+
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+
+    xmlns:gmd="http://www.isotc211.org/2005/gmd"
+
+    xmlns:gco="http://www.isotc211.org/2005/gco"
+
+    xmlns:swe="http://www.opengis.net/swe/2.0"
+
+    xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
+
+    xmlns:sam="http://www.opengis.net/sampling/2.0"
+
+    xmlns:sams="http://www.opengis.net/samplingSpatial/2.0"
+
+    xmlns:target="http://xml.fmi.fi/namespace/om/atmosphericfeatures/1.0"
+  xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd
+  http://www.opengis.net/gmlcov/1.0 http://schemas.opengis.net/gmlcov/1.0/gmlcovAll.xsd
+  http://www.opengis.net/sampling/2.0 http://schemas.opengis.net/sampling/2.0/samplingFeature.xsd
+  http://www.opengis.net/samplingSpatial/2.0 http://schemas.opengis.net/samplingSpatial/2.0/spatialSamplingFeature.xsd
+  http://www.opengis.net/swe/2.0 http://schemas.opengis.net/sweCommon/2.0/swe.xsd
+  http://inspire.ec.europa.eu/schemas/ompr/3.0 http://inspire.ec.europa.eu/schemas/ompr/3.0/Processes.xsd
+  http://inspire.ec.europa.eu/schemas/omso/3.0 http://inspire.ec.europa.eu/schemas/omso/3.0/SpecialisedObservations.xsd
+  http://xml.fmi.fi/namespace/om/atmosphericfeatures/1.0 http://xml.fmi.fi/schema/om/atmosphericfeatures/1.0/atmosphericfeatures.xsd">
+    <wfs:member>
+        <omso:GridSeriesObservation gml:id="WFS-Kjclwp6NZqzbVzHe1XRGKzrwRzGJTowtYWbbpdOt.Lnl5dsPTTv3c3Trvlw9NGXk6dZMOnZ5dOtvXZ008N.nd0x7.2Xlhz5YWliy59O6pp25bVvsKFCMbHy51qRaFOO6dNGTVwzsu7JU07ctq32FCraIqIjOzbdPPTk5yRcxRmdry.e._lkqdGvL577.WS_v7ZeXflp6YcWzLEzNmHpl59ImZs348OzLWpm0340ld16ZnDW24fETTz6Yd2PLStXQgNLbh8ReG_Ho5zgqjmN7bl6Zd9DDyw7cvTLy51lcuWTD5rI6ZMPmsjnu396yOm3TurI6bcPhrbdPPnp3Z6mXx0rGnYZza3dds_NT6Yemnfu5zhNbj1w7NPTzJ3Zt8TW59MPTTv3VPPDLW5v4Zd2TD0w38mHTs8tzn038suTj1y8vN_TkrrCzbdLp1vxc8vLth6ad.7m6dd8uHpoy8nTrJh07PLp1t67Omnhv07umPf2y8sOfK0Omnblp9MvCZodNO3La37stY1WpDA--">
+            <om:phenomenonTime>
+                <gml:TimePeriod gml:id="time1-1-1">
+                    <gml:beginPosition>1965-01-01T00:00:00Z</gml:beginPosition>
+                    <gml:endPosition>1965-01-11T20:30:00Z</gml:endPosition>
+                </gml:TimePeriod>
+            </om:phenomenonTime>
+            <om:resultTime>
+                <gml:TimeInstant gml:id="time2-1-1">
+                    <gml:timePosition>1965-01-11T20:30:00Z</gml:timePosition>
+                </gml:TimeInstant>
+            </om:resultTime>
+            <om:procedure xlink:href="http://xml.fmi.fi/inspire/process/opendata_daily"/>
+            <om:parameter>
+                <om:NamedValue>
+                    <om:name xlink:href="http://inspire.ec.europa.eu/codeList/ProcessParameterValue/value/groundObservation/observationIntent"/>
+                    <om:value>
+			atmosphere
+                    </om:value>
+                </om:NamedValue>
+            </om:parameter>
+            <om:observedProperty  xlink:href="http://data.fmi.fi/fmi-apikey/5f021760-3d0e-4923-bb4e-b65386265e6d/meta?observableProperty=observation&amp;param=rrday,tday,snow,tmin,tmax&amp;language=eng"/>
+            <om:featureOfInterest>
+                <sams:SF_SpatialSamplingFeature gml:id="sampling-feature-1-1-fmisid">
+                    <sam:sampledFeature>
+                        <target:LocationCollection gml:id="sampled-target-1-1">
+                            <target:member>
+                                <target:Location gml:id="obsloc-fmisid-101154-pos">
+                                    <gml:identifier codeSpace="http://xml.fmi.fi/namespace/stationcode/fmisid">101154</gml:identifier>
+                                    <gml:name codeSpace="http://xml.fmi.fi/namespace/locationcode/name">Hämeenlinna Lammi Pappila</gml:name>
+                                    <gml:name codeSpace="http://xml.fmi.fi/namespace/locationcode/geoid">-16000032</gml:name>
+                                    <gml:name codeSpace="http://xml.fmi.fi/namespace/locationcode/wmo">2767</gml:name>
+                                    <target:representativePoint xlink:href="#point-101154"/>
+                                    <target:region codeSpace="http://xml.fmi.fi/namespace/location/region">Hämeenlinna</target:region>
+                                </target:Location>
+                            </target:member>
+                        </target:LocationCollection>
+                    </sam:sampledFeature>
+                    <sams:shape>
+                        <gml:MultiPoint gml:id="mp-1-1-fmisid">
+                            <gml:pointMember>
+                                <gml:Point gml:id="point-101154" srsName="http://www.opengis.net/def/crs/EPSG/0/4258" srsDimension="2">
+                                    <gml:name>Hämeenlinna Lammi Pappila</gml:name>
+                                    <gml:pos>61.05408 25.03844 </gml:pos>
+                                </gml:Point>
+                            </gml:pointMember>
+                        </gml:MultiPoint>
+                    </sams:shape>
+                </sams:SF_SpatialSamplingFeature>
+            </om:featureOfInterest>
+            <om:result>
+                <gmlcov:MultiPointCoverage gml:id="mpcv1-1-1">
+                    <gml:domainSet>
+                        <gmlcov:SimpleMultiPoint gml:id="mp1-1-1" srsName="http://xml.fmi.fi/gml/crs/compoundCRS.php?crs=4258&amp;time=unixtime" srsDimension="3">
+                            <gmlcov:positions>
+                61.05408 25.03844  -157766400
+                61.05408 25.03844  -157680000
+                61.05408 25.03844  -157593600
+                61.05408 25.03844  -157507200
+                61.05408 25.03844  -157420800
+                61.05408 25.03844  -157334400
+                61.05408 25.03844  -157248000
+                61.05408 25.03844  -157161600
+                61.05408 25.03844  -157075200
+                61.05408 25.03844  -156988800
+                61.05408 25.03844  -156902400
+                </gmlcov:positions>
+                        </gmlcov:SimpleMultiPoint>
+                    </gml:domainSet>
+                    <gml:rangeSet>
+                        <gml:DataBlock>
+                            <gml:rangeParameters/>
+                            <gml:doubleOrNilReasonTupleList>
+                4.5 0.4 9.0 -0.6 1.4
+                0.5 -0.1 12.0 -0.2 0.5
+                0.1 -1.7 12.0 -2.1 -0.2
+                7.4 -3.0 12.0 -5.3 -2.1
+                4.0 -4.7 19.0 -5.2 -2.3
+                0.1 -8.5 25.0 -10.1 -4.1
+                2.8 -9.3 25.0 -12.6 -7.7
+                0.2 -11.5 27.0 -16.4 -4.1
+                -1.0 -19.2 25.0 -21.2 -15.7
+                -1.0 -18.4 25.0 -23.1 -12.8
+                2.7 -12.3 25.0 -24.1 -9.9
+                </gml:doubleOrNilReasonTupleList>
+                        </gml:DataBlock>
+                    </gml:rangeSet>
+                    <gml:coverageFunction>
+                        <gml:CoverageMappingRule>
+                            <gml:ruleDefinition>Linear</gml:ruleDefinition>
+                        </gml:CoverageMappingRule>
+                    </gml:coverageFunction>
+                    <gmlcov:rangeType>
+                        <swe:DataRecord>
+                            <swe:field name="rrday"  xlink:href="http://data.fmi.fi/fmi-apikey/5f021760-3d0e-4923-bb4e-b65386265e6d/meta?observableProperty=observation&amp;param=rrday&amp;language=eng"/>
+                            <swe:field name="tday"  xlink:href="http://data.fmi.fi/fmi-apikey/5f021760-3d0e-4923-bb4e-b65386265e6d/meta?observableProperty=observation&amp;param=tday&amp;language=eng"/>
+                            <swe:field name="snow"  xlink:href="http://data.fmi.fi/fmi-apikey/5f021760-3d0e-4923-bb4e-b65386265e6d/meta?observableProperty=observation&amp;param=snow&amp;language=eng"/>
+                            <swe:field name="tmin"  xlink:href="http://data.fmi.fi/fmi-apikey/5f021760-3d0e-4923-bb4e-b65386265e6d/meta?observableProperty=observation&amp;param=tmin&amp;language=eng"/>
+                            <swe:field name="tmax"  xlink:href="http://data.fmi.fi/fmi-apikey/5f021760-3d0e-4923-bb4e-b65386265e6d/meta?observableProperty=observation&amp;param=tmax&amp;language=eng"/>
+                        </swe:DataRecord>
+                    </gmlcov:rangeType>
+                </gmlcov:MultiPointCoverage>
+            </om:result>
+        </omso:GridSeriesObservation>
+    </wfs:member>
+</wfs:FeatureCollection>

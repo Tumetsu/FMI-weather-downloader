@@ -1,3 +1,8 @@
 .idea/
+devtools/
 dist/
 *.pyc
+.eggs
+.cache
+venv/
+build/
