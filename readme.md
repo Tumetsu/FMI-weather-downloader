@@ -1,5 +1,6 @@
-Ilmatieteenlaitoksen säädatan lataaja / FMI Weather Downloader
+Ilmatieteenlaitoksen säädatan lataaja / FMI Weather Downloader ![TravisCI](https://travis-ci.org/Tumetsu/FMI-weather-downloader.svg?branch=master)
 ==============================
+
 [Webpage of the application with downloads & guides](http://tumetsu.github.io/FMI-weather-downloader/)
 
 ![screenshot](http://i.imgur.com/CzXFzIQ.png)
