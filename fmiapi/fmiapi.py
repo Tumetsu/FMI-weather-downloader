@@ -12,9 +12,9 @@ class FMIApi:
     data from FMI's open data service.
     """
 
-    def __init__(self):
-        self._api_key = ""
-        self._request_handler = None
+    def __init__(self, api_key=''):
+        self._api_key = api_key
+        self._request_handler = FMIRequestHandler(self._api_key)
         self._DAILY_REQUEST_MAX_RANGE_HOURS = 8928
         self._REALTIME_REQUEST_MAX_RANGE_HOURS = 168
         self._PATH_TO_STATIONS_CSV = "stations.csv"

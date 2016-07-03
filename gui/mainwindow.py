@@ -21,7 +21,6 @@ class Mainwindow(QMainWindow):
 
     def __init__(self, app, translators, parent=None):
         super(Mainwindow, self).__init__(parent)
-        self.api = None
         self._language = menubar_actions.LANGUAGE_IDS["English"]
         self._current_selected_model = None
         self.api = FMIApi()

@@ -18,6 +18,7 @@ def describe_fmi_api():
     daily_4_days = load_xml('./tests/fmiapi/testdata/daily_4_days.xml')
     daily_12_days = load_xml('./tests/fmiapi/testdata/daily_12_days.xml')
     html_apikey_error = load_txt('./tests/fmiapi/testdata/invalid_apikey_error.html')
+    html_apikey_missing_error = load_txt('./tests/fmiapi/testdata/apikey_missing.html')
     html_querylimit_error = load_txt('./tests/fmiapi/testdata/querylimit_error.html')
     realtime_1_day = load_xml('./tests/fmiapi/testdata/realtime_1_day.xml')
     nodata = load_xml('./tests/fmiapi/testdata/nodata.xml')
@@ -48,6 +49,20 @@ def describe_fmi_api():
             fmiapi = FMIApi()
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
+
+            with pytest.raises(InvalidApikeyException) as e:
+                fmiapi.get_daily_weather(query, None)
+            assert_equal('APIKEY', e.value.error_code)
+
+        @mock.patch('http.client.HTTPConnection', spec=True)
+        def should_raise_invalid_apikey_exception_when_apikey_is_not_set(mock_httpconn):
+            mock_connection = mock_httpconn.return_value
+            mock_connection.getresponse.return_value = MockResponse(404, html_apikey_missing_error.encode('utf-8'),
+                                                                    content_type='text/html')
+            query = create_daily_query(datetime(2010, 1, 1, hour=2, minute=1, second=0, microsecond=0),
+                                       datetime(2011, 1, 5, hour=2, minute=1, second=0, microsecond=0))
+
+            fmiapi = FMIApi()
 
             with pytest.raises(InvalidApikeyException) as e:
                 fmiapi.get_daily_weather(query, None)

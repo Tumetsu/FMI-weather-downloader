@@ -54,7 +54,7 @@ def describe_fmi_request():
             fmi_request.get(query)
 
         assert_equal(404, e.value.error_code)
-        assert 'Some module: Some random error' in e.value.html.decode('utf-8')
+        assert 'Some module: Some random error' in e.value.html
 
     def describe_forbidden_range_error_recovery():
         """

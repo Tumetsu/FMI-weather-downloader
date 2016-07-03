@@ -65,12 +65,12 @@ class FMIRequest:
         """
         if response.getheader("Content-Type") == "text/html":
             html_data = response.read().decode('utf-8')
-            if 'Invalid fmi-apikey' in html_data:
+            if 'Invalid fmi-apikey' in html_data or 'fmi-apikey missing' in html_data:
                 raise InvalidApikeyException()
             elif 'Query limit' in html_data:
                 self._raise_query_limit_exception(html_data)
             else:
-                raise RequestException("Error in html", response.status, html=response.read())
+                raise RequestException("Error in html", response.status, html=html_data)
 
         elif response.getheader("Content-Type") == "text/xml; charset=UTF8":
             xml = etree.XML(response.read())

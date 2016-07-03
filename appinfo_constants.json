@@ -1,0 +1,10 @@
+{
+    "author": "<a href='http://www.tuomassalmi.com'>Tuomas Salmi</a>",
+    "email": "<a href='mailto:salmi.tuomas@gmail.com'>salmi.tuomas@gmail.com</a>",
+    "github": "<a href='https://github.com/Tumetsu/FMI-weather-downloader'>FMIDownloader Github</a>",
+    "releases_url": "https://github.com/Tumetsu/FMI-weather-downloader/releases",
+    "github_api_releases_url": "/repos/tumetsu/FMI-weather-downloader/releases/latest",
+    "github_api_host": "api.github.com",
+    "version": "v0.14",
+    "disable_update_check": false
+}

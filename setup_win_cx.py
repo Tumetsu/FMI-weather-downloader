@@ -16,7 +16,7 @@ options = {
                           'translations/',
                           'readme.md',
                           'license',
-                          'OHJEKIRJA.pdf',
+                          'appinfo_constants.json',
                           'icon.ico')
     }
 }
