@@ -47,43 +47,53 @@ class Mainwindow(QMainWindow):
         """ Set the language of the UI """
         self._language = language
         self._app.installTranslator(self._translators[language])
+        self._set_up_supported_queries_combobox()
 
     def changeEvent(self, event):
         if event.type() == QEvent.LanguageChange:
             self.ui.retranslateUi(self)
         super(Mainwindow, self).changeEvent(event)
 
+    def _set_up_supported_queries_combobox(self):
+        """ Set available queries to combobox"""
+        self.ui.dataSelectionCombobox.clear()
+        available_queries = self.api.get_supported_queries()
+        for q in available_queries:
+            self.ui.dataSelectionCombobox.addItem(q["name"][self._language])
+
+        self.ui.dataSelectionCombobox.currentIndexChanged.connect(self._select_dataset_from_combobox)
+        self.ui.dataSelectionCombobox.setCurrentIndex(0)
+
+        self._set_time_field_limits(self.ui.stationComboBox.currentIndex())
+
     def _set_up_station_comboboxes(self):
         """ Set station names for combobox in both tabs. Configure completion."""
-        self.ui.stationComboBox_daily.clear()
+        self.ui.stationComboBox.clear()
         stations = self.api.get_stations()
         completer_strings = []
         for s in stations:
-            self.ui.stationComboBox_daily.addItem(s["Name"])
-            self.ui.stationComboBox_realtime.addItem(s["Name"])
+            self.ui.stationComboBox.addItem(s["Name"])
             completer_strings.append(s["Name"])
         self.comboboxCompleter = QCompleter(completer_strings, self)
         self.comboboxCompleter.setCompletionMode(0)
-        self.ui.stationComboBox_daily.setCompleter(self.comboboxCompleter)
-        self.ui.stationComboBox_realtime.setCompleter(self.comboboxCompleter)
+        self.ui.stationComboBox.setCompleter(self.comboboxCompleter)
 
-        self.ui.stationComboBox_daily.currentIndexChanged.connect(self._select_place_from_combobox)
-        self.ui.stationComboBox_realtime.currentIndexChanged.connect(self._select_place_from_combobox)
-        self.ui.stationComboBox_daily.setCurrentIndex(self.api.get_index_of_station("Hämeenlinna Lammi Pappila"))
-        self.ui.stationComboBox_realtime.setCurrentIndex(self.api.get_index_of_station("Hämeenlinna Lammi Pappila"))
+        self.ui.stationComboBox.currentIndexChanged.connect(self._select_place_from_combobox)
+        self.ui.stationComboBox.setCurrentIndex(self.api.get_index_of_station("Hämeenlinna Lammi Pappila"))
 
     def _set_up_ui(self):
+        # language change signal
+        self.setLanguageSignal.connect(lambda: menubar_actions.select_language(self, self._settings))
+
         self._set_up_station_comboboxes()
+        self._set_up_supported_queries_combobox()
 
         # wire download buttons to actions
-        self.ui.downloadButton_daily.clicked.connect(self._download_daily)
-        self.ui.downloadButton_realtime.clicked.connect(self._download_realtime)
+        self.ui.downloadButton.clicked.connect(self._download)
 
         # wire date fields to their actions
-        self.ui.endDatetimeEdit_daily.dateChanged.connect(self._daily_date_edited)
-        self.ui.startDatetimeEdit_daily.dateChanged.connect(self._daily_date_edited)
-        self.ui.endDatetimeEdit_realtime.dateChanged.connect(self._realtime_date_edited)
-        self.ui.startDatetimeEdit_realtime.dateChanged.connect(self._realtime_date_edited)
+        self.ui.endDatetimeEdit.dateChanged.connect(self._realtime_date_edited)
+        self.ui.startDatetimeEdit.dateChanged.connect(self._realtime_date_edited)
 
         # statusbar
         self.statusBar().setStyleSheet("color: red;")
@@ -96,72 +106,87 @@ class Mainwindow(QMainWindow):
         self.ui.actionView_instructions.triggered.connect(menubar_actions.open_manual)
         self.ui.actionCheck_updates.triggered.connect(lambda: menubar_actions.check_updates(self._settings))
 
-        # language change signal
-        self.setLanguageSignal.connect(lambda: menubar_actions.select_language(self, self._settings))
-
     @pyqtSlot(int, name='selectPlace')
     def _select_place_from_combobox(self, place_index):
-        self.ui.stationComboBox_realtime.setCurrentIndex(place_index)
-        self.ui.stationComboBox_daily.setCurrentIndex(place_index)
+        self.ui.stationComboBox.setCurrentIndex(place_index)
         self._current_selected_model = self.api.get_stations()[place_index]
-        self.ui.availableDataFromContent_daily.setText(self._current_selected_model["Since"])
+        self.ui.availableFromContent.setText(self._current_selected_model["Since"])
+        self._set_time_field_limits(place_index)
 
-        self._set_daily_field_limits(place_index)
-        self._set_realtime_field_limits(place_index)
+    @pyqtSlot(int, name='selectDataset')
+    def _select_dataset_from_combobox(self, dataset_index):
+        self.ui.availableFromContent.setText(self._current_selected_model["Since"])
+        self._set_time_field_limits(self.ui.stationComboBox.currentIndex())
 
-    def _set_realtime_field_limits(self, place_index):
-        # realtime values are available only after 2010.
-        min_year = int(self._current_selected_model["Since"])
-        if min_year > 2010:
-            self.ui.availableFromContent_realtime.setText(str(min_year))
+    def get_selected_query_model(self):
+        return self.api.get_supported_queries()[self.ui.dataSelectionCombobox.currentIndex()]
+
+    def _set_time_field_limits(self, place_index):
+        """
+        For now assume that only dailyWeather has special time ranges and all other datasets are from 2010 onwards.
+        In future when adding new datasets this assumption should be revised and write more robust solution to update
+        the available data ranges applicable for each dataset.
+        :param place_index:
+        :return:
+        """
+        model = self.get_selected_query_model()
+        if model["id"] == "dailyWeather":
+            self._set_daily_field_limits(place_index)
+            self.ui.availableFromContent.setText(self._current_selected_model["Since"])
         else:
-            min_year = 2010
-            self.ui.availableFromContent_realtime.setText("1.1.2010")
+            # realtime values are available only after 2010.
+            min_year = int(self._current_selected_model["Since"])
+            if min_year > 2010:
+                self.ui.availableFromContent.setText(str(min_year))
+            else:
+                min_year = 2010
+                self.ui.availableFromContent.setText("1.1.2010")
 
-        self.ui.startDatetimeEdit_realtime.clearMinimumDate()
-        min_date = QDate(min_year, 1, 1)
-        self.ui.startDatetimeEdit_realtime.setMinimumDate(min_date)
+            self.ui.startDatetimeEdit.clearMinimumDate()
+            min_date = QDate(min_year, 1, 1)
+            self.ui.startDatetimeEdit.setMinimumDate(min_date)
 
-        self.ui.startDatetimeEdit_realtime.clearMaximumDate()
-        max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.startDatetimeEdit_realtime.setMaximumDate(max_date)
+            self.ui.startDatetimeEdit.clearMaximumDate()
+            max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+            self.ui.startDatetimeEdit.setMaximumDate(max_date)
 
-        self.ui.endDatetimeEdit_realtime.clearMinimumDate()
-        min_date = QDate(min_year, 1, 1)
-        self.ui.endDatetimeEdit_realtime.setMinimumDate(min_date)
+            self.ui.endDatetimeEdit.clearMinimumDate()
+            min_date = QDate(min_year, 1, 1)
+            self.ui.endDatetimeEdit.setMinimumDate(min_date)
 
-        self.ui.endDatetimeEdit_realtime.clearMaximumDate()
-        max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.endDatetimeEdit_realtime.setMaximumDate(max_date)
+            self.ui.endDatetimeEdit.clearMaximumDate()
+            max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+            self.ui.endDatetimeEdit.setMaximumDate(max_date)
 
-        new_date = QDate(self.ui.startDatetimeEdit_realtime.date().year(), self.ui.startDatetimeEdit_realtime.date().month(), self.ui.startDatetimeEdit_realtime.date().day() + 1)
-        self.ui.endDatetimeEdit_realtime.setDate(new_date)
+            new_date = QDate(self.ui.startDatetimeEdit.date().year(), self.ui.startDatetimeEdit.date().month(), self.ui.startDatetimeEdit.date().day() + 1)
+            self.ui.endDatetimeEdit.setDate(new_date)
 
-        if self.ui.startDatetimeEdit_realtime.date() < self.ui.startDatetimeEdit_realtime.minimumDate():
-            self.ui.startDatetimeEdit_realtime.setDate(self.ui.startDatetimeEdit_realtime.minimumDate())
+            if self.ui.startDatetimeEdit.date() < self.ui.startDatetimeEdit.minimumDate():
+                self.ui.startDatetimeEdit.setDate(self.ui.startDatetimeEdit.minimumDate())
 
     def _set_daily_field_limits(self, place_index):
-        self.ui.startDatetimeEdit_daily.clearMinimumDate()
+        self.ui.startDatetimeEdit.clearMinimumDate()
         min_date = QDate(int(self._current_selected_model["Since"]), 1, 1)
-        self.ui.startDatetimeEdit_daily.setMinimumDate(min_date)
+        self.ui.startDatetimeEdit.setMinimumDate(min_date)
 
-        self.ui.startDatetimeEdit_daily.clearMaximumDate()
+        self.ui.startDatetimeEdit.clearMaximumDate()
         max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.startDatetimeEdit_daily.setMaximumDate(max_date)
+        self.ui.startDatetimeEdit.setMaximumDate(max_date)
 
-        self.ui.endDatetimeEdit_daily.clearMinimumDate()
+        self.ui.endDatetimeEdit.clearMinimumDate()
         min_date = QDate(int(self._current_selected_model["Since"]), 1, 1)
-        self.ui.endDatetimeEdit_daily.setMinimumDate(min_date)
+        self.ui.endDatetimeEdit.setMinimumDate(min_date)
 
-        self.ui.endDatetimeEdit_daily.clearMaximumDate()
+        self.ui.endDatetimeEdit.clearMaximumDate()
         max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.endDatetimeEdit_daily.setMaximumDate(max_date)
+        self.ui.endDatetimeEdit.setMaximumDate(max_date)
 
-        new_date = QDate(self.ui.startDatetimeEdit_daily.date().year(), self.ui.startDatetimeEdit_daily.date().month(), self.ui.startDatetimeEdit_daily.date().day() +1)
-        self.ui.endDatetimeEdit_daily.setDate(new_date)
+        new_date = QDate(self.ui.startDatetimeEdit.date().year(), self.ui.startDatetimeEdit.date().month(),
+                         self.ui.startDatetimeEdit.date().day() + 1)
+        self.ui.endDatetimeEdit.setDate(new_date)
 
-        if self.ui.startDatetimeEdit_daily.date() < self.ui.startDatetimeEdit_daily.minimumDate():
-            self.ui.startDatetimeEdit_daily.setDate(self.ui.startDatetimeEdit_daily.minimumDate())
+        if self.ui.startDatetimeEdit.date() < self.ui.startDatetimeEdit.minimumDate():
+            self.ui.startDatetimeEdit.setDate(self.ui.startDatetimeEdit.minimumDate())
 
     def _choose_place_to_save_data(self, dataframe):
         paths = QStandardPaths.standardLocations(0)
@@ -180,74 +205,41 @@ class Mainwindow(QMainWindow):
         else:
             return QDateTime(dateEdit.dateTime()).toPyDateTime()
 
-    @pyqtSlot()
-    def _daily_date_edited(self):
-        if self.ui.startDatetimeEdit_daily.date() == self.ui.endDatetimeEdit_daily.date():
-            self.ui.startDatetimeEdit_daily.setStyleSheet("background-color: #FC9DB7;")
-            self.ui.endDatetimeEdit_daily.setStyleSheet("background-color: #FC9DB7;")
-            self.statusBar().showMessage(Messages.start_end_date_warning(), 5000)
-            self.ui.downloadButton_daily.setEnabled(False)
-        else:
-            self.ui.startDatetimeEdit_daily.setStyleSheet("background-color: white;")
-            self.ui.endDatetimeEdit_daily.setStyleSheet("background-color: white;")
-            self.ui.downloadButton_daily.setEnabled(True)
-
-            if self.ui.endDatetimeEdit_daily.date() < self.ui.startDatetimeEdit_daily.date():
-                self.ui.endDatetimeEdit_daily.setStyleSheet("background-color: #FC9DB7;")
-                self.statusBar().showMessage(Messages.end_date_warning(), 5000)
-                self.ui.downloadButton_daily.setEnabled(False)
-            else:
-                self.ui.endDatetimeEdit_daily.setStyleSheet("background-color: white;")
-                self.statusBar().showMessage("", 50)
-                self.ui.downloadButton_daily.setEnabled(True)
-
     @pyqtSlot(name='editRealtimeDate')
     def _realtime_date_edited(self):
         #realtimetab
-        if self.ui.startDatetimeEdit_realtime.date() == self.ui.endDatetimeEdit_realtime.date():
-            self.ui.startDatetimeEdit_realtime.setStyleSheet("background-color: #FC9DB7;")
-            self.ui.endDatetimeEdit_realtime.setStyleSheet("background-color: #FC9DB7;")
+        if self.ui.startDatetimeEdit.date() == self.ui.endDatetimeEdit.date():
+            self.ui.startDatetimeEdit.setStyleSheet("background-color: #FC9DB7;")
+            self.ui.endDatetimeEdit.setStyleSheet("background-color: #FC9DB7;")
             self.statusBar().showMessage(Messages.start_end_date_warning(), 5000)
-            self.ui.downloadButton_realtime.setEnabled(False)
+            self.ui.downloadButton.setEnabled(False)
         else:
-            self.ui.startDatetimeEdit_realtime.setStyleSheet("background-color: white;")
-            self.ui.endDatetimeEdit_realtime.setStyleSheet("background-color: white;")
-            self.ui.downloadButton_realtime.setEnabled(True)
+            self.ui.startDatetimeEdit.setStyleSheet("background-color: white;")
+            self.ui.endDatetimeEdit.setStyleSheet("background-color: white;")
+            self.ui.downloadButton.setEnabled(True)
 
-            if self.ui.endDatetimeEdit_realtime.date() < self.ui.startDatetimeEdit_realtime.date():
-                self.ui.endDatetimeEdit_realtime.setStyleSheet("background-color: #FC9DB7;")
+            if self.ui.endDatetimeEdit.date() < self.ui.startDatetimeEdit.date():
+                self.ui.endDatetimeEdit.setStyleSheet("background-color: #FC9DB7;")
                 self.statusBar().showMessage(Messages.end_date_warning(), 5000)
-                self.ui.downloadButton_realtime.setEnabled(False)
+                self.ui.downloadButton.setEnabled(False)
             else:
-                self.ui.endDatetimeEdit_realtime.setStyleSheet("background-color: white;")
+                self.ui.endDatetimeEdit.setStyleSheet("background-color: white;")
                 self.statusBar().showMessage("", 50)
-                self.ui.downloadButton_realtime.setEnabled(True)
+                self.ui.downloadButton.setEnabled(True)
 
-    def _download_daily(self):
-        """ Download daily weather data from FMI api """
-        params = {"request": "getFeature",
-                   "storedquery_id": "fmi::observations::weather::daily::multipointcoverage",
-                   "fmisid": self._current_selected_model["FMISID"],
-                   "starttime": self._get_dateTime_from_UI(self.ui.startDatetimeEdit_daily),
-                   "endtime": self._get_dateTime_from_UI(self.ui.endDatetimeEdit_daily)
-                  }
-
-        download = DownloadProgress(self)
-        download.finishedSignal.connect(self._csvexport.save_data_to_csv)
-        download.begin_download(params, self.api.get_daily_weather)
-
-    def _download_realtime(self):
-        """ Download real time weather data from FMI api """
-        params = {"request": "getFeature",
-                  "storedquery_id": "fmi::observations::weather::multipointcoverage",
+    def _download(self):
+        """ Download weather data"""
+        query = self.get_selected_query_model()
+        params = {"request": query["request"],
+                  "storedquery_id": query["storedquery_id"],
                   "fmisid": self._current_selected_model["FMISID"],
-                  "starttime": self._get_dateTime_from_UI(self.ui.startDatetimeEdit_realtime, onlyDate=False),
-                  "endtime": self._get_dateTime_from_UI(self.ui.endDatetimeEdit_realtime, onlyDate=False),
+                  "starttime": self._get_dateTime_from_UI(self.ui.startDatetimeEdit, onlyDate=False),
+                  "endtime": self._get_dateTime_from_UI(self.ui.endDatetimeEdit, onlyDate=False)
                   }
 
         download = DownloadProgress(self)
         download.finishedSignal.connect(self._csvexport.save_data_to_csv)
-        download.begin_download(params, self.api.get_realtime_weather)
+        download.begin_download(params, self.api.get_data)
 
     def show_error_alerts(self, message):
         msgbox = QMessageBox()

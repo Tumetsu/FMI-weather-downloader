@@ -1,4 +1,5 @@
 import csv
+import json
 import datetime
 
 from fmiapi.fmierrors import NoDataException
@@ -18,8 +19,9 @@ class FMIApi:
         self._DAILY_REQUEST_MAX_RANGE_HOURS = 8928
         self._REALTIME_REQUEST_MAX_RANGE_HOURS = 168
         self._PATH_TO_STATIONS_CSV = "stations.csv"
-        self._stations = []
-        self._load_station_metadata()
+        self._PATH_TO_QUERY_METADATA = "supported_queries.json"
+        self._stations = self._load_station_metadata()
+        self._supported_queries = self._load_supported_queries_metadata()
         self._parser = FMIxmlParser()
 
     def set_apikey(self, api_key):
@@ -29,24 +31,16 @@ class FMIApi:
     def get_apikey(self):
         return self._api_key
 
-    def get_daily_weather(self, params, callback_function=None, change_to_parsing=None):
-        params['endtime'] += datetime.timedelta(days=1) # add one day to end time to get final day into result too
-        data = self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
-                                             progress_callback=callback_function)
-
-        # Notify ui that moving to parsing phase
-        if change_to_parsing is not None:
-            change_to_parsing()
-
-        try:
-            return self._parser.parse(data, progress_callback=callback_function)
-        except NoDataException:
-            # Augment date data to exception and raise it again
-            raise NoDataException(starttime=params['starttime'], endtime=params['endtime'])
-
-    def get_realtime_weather(self, params, callback_function=None, change_to_parsing=None):
-        data = self._request_handler.request(params, max_timespan=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
-                                             progress_callback=callback_function)
+    def get_data(self, params, callback_function=None, change_to_parsing=None):
+        if params["storedquery_id"] == "fmi::observations::weather::daily::multipointcoverage":
+            # Special logic for daily observations
+            params['endtime'] += datetime.timedelta(days=1)  # add one day to end time to get final day into result too
+            data = self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
+                                                 progress_callback=callback_function)
+        else:
+            print(params)
+            data = self._request_handler.request(params, max_timespan=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
+                                                 progress_callback=callback_function)
 
         # Notify ui that moving to parsing phase
         if change_to_parsing is not None:
@@ -62,14 +56,24 @@ class FMIApi:
         """ FMI apparently didn't provide an API-endpoint to get list of all the stations. For now, we load the
         required station information from CSV-file. Change to a api-endpoint if one becomes (or is already?) available.
         """
+        stations = []
         with open(self._PATH_TO_STATIONS_CSV, "r", encoding="utf8") as file:
             reader = csv.DictReader(file, ["Name", "FMISID", "LPNN", "WMO", "lat", "lon", "Altitude", "Group", "Since"],
                                     delimiter=";")
             for row in reader:
-                self._stations.append(row)
+                stations.append(row)
+        return stations
+
+    def _load_supported_queries_metadata(self):
+        with open(self._PATH_TO_QUERY_METADATA, "r", encoding="utf8") as file:
+            queries = json.load(file)
+        return queries
 
     def get_stations(self):
         return self._stations
+
+    def get_supported_queries(self):
+        return self._supported_queries
 
     def get_index_of_station(self, place_name):
         for i in range(0, len(self._stations)):

@@ -5,6 +5,6 @@
     "releases_url": "https://github.com/Tumetsu/FMI-weather-downloader/releases",
     "github_api_releases_url": "/repos/tumetsu/FMI-weather-downloader/releases/latest",
     "github_api_host": "api.github.com",
-    "version": "v0.14",
+    "version": "v0.15",
     "disable_update_check": false
 }

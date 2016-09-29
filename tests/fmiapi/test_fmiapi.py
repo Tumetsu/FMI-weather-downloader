@@ -35,7 +35,7 @@ def describe_fmi_api():
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
 
-            result = fmiapi.get_daily_weather(query, None)
+            result = fmiapi.get_data(query, None)
             assert 'fmi-apikey/{}/wfs?'.format(apikey) in mock_connection.request.call_args[0][1]
             verify_dataframe(result, EXPECTED_DAILY_4_DAYS)
 
@@ -51,7 +51,7 @@ def describe_fmi_api():
             fmiapi.set_apikey(apikey)
 
             with pytest.raises(InvalidApikeyException) as e:
-                fmiapi.get_daily_weather(query, None)
+                fmiapi.get_data(query, None)
             assert_equal('APIKEY', e.value.error_code)
 
         @mock.patch('http.client.HTTPConnection', spec=True)
@@ -65,7 +65,7 @@ def describe_fmi_api():
             fmiapi = FMIApi()
 
             with pytest.raises(InvalidApikeyException) as e:
-                fmiapi.get_daily_weather(query, None)
+                fmiapi.get_data(query, None)
             assert_equal('APIKEY', e.value.error_code)
 
     def describe_data_retrieval():
@@ -86,7 +86,7 @@ def describe_fmi_api():
             fmiapi = FMIApi()
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
-            result = fmiapi.get_daily_weather(query, None)
+            result = fmiapi.get_data(query, None)
             verify_dataframe(result, expected_df)
 
         @mock.patch('http.client.HTTPConnection', spec=True)
@@ -98,7 +98,7 @@ def describe_fmi_api():
             fmiapi.set_apikey(apikey)
             query = create_realtime_query(datetime(2012, 1, 13, hour=2, minute=0, second=0, microsecond=0),
                                           datetime(2012, 1, 14, hour=2, minute=0, second=0, microsecond=0))
-            result = fmiapi.get_realtime_weather(query, None)
+            result = fmiapi.get_data(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
         @mock.patch('http.client.HTTPConnection', spec=True)
@@ -111,7 +111,7 @@ def describe_fmi_api():
             query = create_realtime_query(
                 datetime(2012, 1, 1, hour=2, minute=0, second=0, microsecond=0),
                 datetime(2012, 1, 14, hour=2, minute=0, second=0, microsecond=0))
-            result = fmiapi.get_realtime_weather(query, None)
+            result = fmiapi.get_data(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
         @mock.patch('http.client.HTTPConnection', spec=True)
@@ -126,7 +126,7 @@ def describe_fmi_api():
             query = create_realtime_query(
                 datetime(2012, 1, 8, hour=2, minute=0, second=0, microsecond=0),
                 datetime(2012, 1, 16, hour=2, minute=0, second=0, microsecond=0))
-            result = fmiapi.get_realtime_weather(query, None)
+            result = fmiapi.get_data(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
     def describe_exceptions():
@@ -141,7 +141,7 @@ def describe_fmi_api():
             fmiapi.set_apikey(apikey)
 
             with pytest.raises(QueryLimitException) as e:
-                fmiapi.get_daily_weather(query, None)
+                fmiapi.get_data(query, None)
             assert_equal('QUERYLIMIT', e.value.error_code)
             assert_equal('39', e.value.wait_time)
             assert_equal('seconds', e.value.wait_unit)
@@ -158,5 +158,5 @@ def describe_fmi_api():
                 datetime(2008, 1, 14, hour=2, minute=0, second=0, microsecond=0))
 
             with pytest.raises(NoDataException) as e:
-                fmiapi.get_realtime_weather(query, None)
+                fmiapi.get_data(query, None)
             assert_equal('NODATA', e.value.error_code)

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "realtimeWeather",
+    "name": {
+      "fi": "Sää: reaaliaikahavainnot",
+      "en": "Weather: real time observations"
+    },
+    "request": "getFeature",
+    "storedquery_id": "fmi::observations::weather::multipointcoverage",
+    "params": [
+      "fmisid",
+      "starttime",
+      "endtime"
+    ]
+  },
+  {
+    "id": "dailyWeather",
+    "name": {
+      "fi": "Sää: vuorokausihavainnot",
+      "en": "Weather: daily observations"
+    },
+    "request": "getFeature",
+    "storedquery_id": "fmi::observations::weather::daily::multipointcoverage",
+    "params": [
+      "fmisid",
+      "starttime",
+      "endtime"
+    ]
+  },
+  {
+    "id": "sunRadiation",
+    "name": {
+      "fi": "Auringon säteilyhavaintoaineisto",
+      "en": "Solar radiation observations"
+    },
+    "request": "getFeature",
+    "storedquery_id": "fmi::observations::radiation::multipointcoverage",
+    "params": [
+      "fmisid",
+      "starttime",
+      "endtime"
+    ]
+  }
+]
