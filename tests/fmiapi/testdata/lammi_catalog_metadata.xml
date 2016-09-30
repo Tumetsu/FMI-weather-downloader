@@ -1,0 +1,2698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+    <csw:SearchStatus timestamp="2016-09-30T15:48:45" />
+    <csw:SearchResults numberOfRecordsMatched="5" numberOfRecordsReturned="5" elementSet="full" nextRecord="0">
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/csw.xsd http://www.isotc211.org/2005/gmd http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd http://www.isotc211.org/2005/gmx http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmx/gmx.xsd http://www.isotc211.org/2005/gco http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gco/gco.xsd http://www.isotc211.org/2005/gts http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gts/gts.xsd http://www.opengis.net/gml http://schemas.opengis.net/gml/3.2.1/gml.xsd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>fd8403c9-3a96-4ae7-8a60-e4c13bea1221</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:language>
+                <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="fin">fin</gmd:LanguageCode>
+            </gmd:language>
+            <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_ScopeCode" codeListValue="series" />
+            </gmd:hierarchyLevel>
+            <gmd:hierarchyLevelName>
+                <gco:CharacterString>Tietoaineisto</gco:CharacterString>
+            </gmd:hierarchyLevelName>
+            <gmd:contact xlink:type="simple">
+                <gmd:CI_ResponsibleParty>
+                    <gmd:organisationName>
+                        <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                    </gmd:organisationName>
+                    <gmd:contactInfo xlink:type="simple">
+                        <gmd:CI_Contact>
+                            <gmd:address xlink:type="simple">
+                                <gmd:CI_Address>
+                                    <gmd:electronicMailAddress>
+                                        <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                    </gmd:electronicMailAddress>
+                                </gmd:CI_Address>
+                            </gmd:address>
+                        </gmd:CI_Contact>
+                    </gmd:contactInfo>
+                    <gmd:role>
+                        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="pointOfContact" />
+                    </gmd:role>
+                </gmd:CI_ResponsibleParty>
+            </gmd:contact>
+            <gmd:dateStamp>
+                <gco:DateTime>2016-09-01T03:07:50</gco:DateTime>
+            </gmd:dateStamp>
+            <gmd:metadataStandardName>
+                <gco:CharacterString>ISO19115</gco:CharacterString>
+            </gmd:metadataStandardName>
+            <gmd:metadataStandardVersion>
+                <gco:CharacterString>2003/Cor.1:2006</gco:CharacterString>
+            </gmd:metadataStandardVersion>
+            <gmd:identificationInfo xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Säähavaintojen kuukausiarvot: Hämeenlinna Lammi Pappila</gco:CharacterString>
+                            </gmd:title>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-01-01</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="creation" />
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-14</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-29</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="revision" />
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:identifier xlink:type="simple">
+                                <gmd:MD_Identifier xsi:type="gmd:RS_Identifier_Type">
+                                    <gmd:code>
+                                        <gco:CharacterString>obs_point monthly101154</gco:CharacterString>
+                                    </gmd:code>
+                                    <gmd:codeSpace>
+                                        <gco:CharacterString>http://xml.fmi.fi/identifier/codespace/INSPIRE/dataset</gco:CharacterString>
+                                    </gmd:codeSpace>
+                                </gmd:MD_Identifier>
+                            </gmd:identifier>
+                            <gmd:presentationForm>
+                                <gmd:CI_PresentationFormCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_PresentationFormCode" codeListValue="documentDigital" />
+                            </gmd:presentationForm>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+                    <gmd:abstract>
+                        <gco:CharacterString>Aineisto sisältää asemakohtaisia pintasäähavaintoaseman laskennallisia ilman lämpötilan kuukausikeskiarvoja ja kuukauden sadekertymiä. Tilastolliset arvot laskettu säähavaintoasemilla tehdyistä mittauksia. Ilman lämpötilan kuukausiarvo on keskiarvo kyseisen kalenterikuukauden jokaisesta vuorokausikeskiarvosta. Sademäärän kuukausiarvo on kyseisen kalenterikuukauden vuorokausikertymien summa.</gco:CharacterString>
+                    </gmd:abstract>
+                    <gmd:pointOfContact xlink:type="simple">
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo xlink:type="simple">
+                                <gmd:CI_Contact>
+                                    <gmd:phone xlink:type="simple">
+                                        <gmd:CI_Telephone>
+                                            <gmd:voice>
+                                                <gco:CharacterString>+358295391000</gco:CharacterString>
+                                            </gmd:voice>
+                                        </gmd:CI_Telephone>
+                                    </gmd:phone>
+                                    <gmd:address xlink:type="simple">
+                                        <gmd:CI_Address>
+                                            <gmd:city>
+                                                <gco:CharacterString>Helsinki</gco:CharacterString>
+                                            </gmd:city>
+                                            <gmd:postalCode>
+                                                <gco:CharacterString>PL 503</gco:CharacterString>
+                                            </gmd:postalCode>
+                                            <gmd:country>
+                                                <gco:CharacterString>Suomi</gco:CharacterString>
+                                            </gmd:country>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                    <gmd:onlineResource xlink:type="simple">
+                                        <gmd:CI_OnlineResource>
+                                            <gmd:linkage>
+                                                <gmd:URL>http://www.ilmatieteenlaitos.fi/avoin-data</gmd:URL>
+                                            </gmd:linkage>
+                                        </gmd:CI_OnlineResource>
+                                    </gmd:onlineResource>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="custodian" />
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+                    <gmd:resourceMaintenance xlink:type="simple">
+                        <gmd:MD_MaintenanceInformation>
+                            <gmd:maintenanceAndUpdateFrequency>
+                                <gmd:MD_MaintenanceFrequencyCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_MaintenanceFrequencyCode" codeListValue="Continual" />
+                            </gmd:maintenanceAndUpdateFrequency>
+                            <gmd:userDefinedMaintenanceFrequency>
+                                <gts:TM_PeriodDuration>P0Y1M0DT0H0M</gts:TM_PeriodDuration>
+                            </gmd:userDefinedMaintenanceFrequency>
+                            <gmd:updateScope>
+                                <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_ScopeCode" codeListValue="dataset" />
+                            </gmd:updateScope>
+                            <gmd:updateScopeDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Update interval of the data is 1 month</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:updateScopeDescription>
+                        </gmd:MD_MaintenanceInformation>
+                    </gmd:resourceMaintenance>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilmasto</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sää</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilman lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sade</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>temperature</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>rain</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>climate</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>weather</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - Concepts, version 3.1</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2008-06-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>Atmospheric conditions</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Meteorological geographical features</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Environmental monitoring facilities</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2012-07-20</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>kuukausiarvot</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sademäärä</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sadekertymä</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>avoindata.fi</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>Ilmatieteen laitoksen avainsanat</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2013-01-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_LegalConstraints>
+                            <gmd:accessConstraints>
+                                <gmd:MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_RestrictionCode" codeListValue="otherRestrictions" />
+                            </gmd:accessConstraints>
+                            <gmd:otherConstraints>
+                                <gco:CharacterString>Palvelu vaatii rekisteröitymisen</gco:CharacterString>
+                            </gmd:otherConstraints>
+                        </gmd:MD_LegalConstraints>
+                    </gmd:resourceConstraints>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_Constraints>
+                            <gmd:useLimitation>
+                                <gco:CharacterString>http://ilmatieteenlaitos.fi/avoin-data-lisenssi</gco:CharacterString>
+                            </gmd:useLimitation>
+                        </gmd:MD_Constraints>
+                    </gmd:resourceConstraints>
+                    <gmd:spatialRepresentationType>
+                        <gmd:MD_SpatialRepresentationTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_SpatialRepresentationTypeCode" codeListValue="vector" />
+                    </gmd:spatialRepresentationType>
+                    <gmd:language>
+                        <gmd:LanguageCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#LanguageCode" codeListValue="fin" />
+                    </gmd:language>
+                    <gmd:characterSet>
+                        <gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" codeListValue="utf8" />
+                    </gmd:characterSet>
+                    <gmd:topicCategory>
+                        <gmd:MD_TopicCategoryCode>climatologyMeteorologyAtmosphere</gmd:MD_TopicCategoryCode>
+                    </gmd:topicCategory>
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>25.03839</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>25.03849</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>61.05403</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>61.05413</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                            <gmd:temporalElement xlink:type="simple">
+                                <gmd:EX_TemporalExtent>
+                                    <gmd:extent xlink:type="simple">
+                                        <gml:TimePeriod gml:id="ID">
+                                            <gml:beginPosition>1963-07-01T00:00:00Z</gml:beginPosition>
+                                            <gml:endPosition>2016-08-01T00:00:00Z</gml:endPosition>
+                                        </gml:TimePeriod>
+                                    </gmd:extent>
+                                </gmd:EX_TemporalExtent>
+                            </gmd:temporalElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+            <gmd:distributionInfo xlink:type="simple">
+                <gmd:MD_Distribution>
+                    <gmd:distributionFormat xlink:type="simple">
+                        <gmd:MD_Format>
+                            <gmd:name>
+                                <gco:CharacterString>application/xml</gco:CharacterString>
+                            </gmd:name>
+                            <gmd:version>
+                                <gco:CharacterString>GML 3.2.1</gco:CharacterString>
+                            </gmd:version>
+                            <gmd:specification>
+                                <gco:CharacterString>http://www.opengeospatial.org/standards/gml</gco:CharacterString>
+                            </gmd:specification>
+                        </gmd:MD_Format>
+                    </gmd:distributionFormat>
+                    <gmd:transferOptions xlink:type="simple">
+                        <gmd:MD_DigitalTransferOptions>
+                            <gmd:onLine xlink:type="simple">
+                                <gmd:CI_OnlineResource>
+                                    <gmd:linkage>
+                                        <gmd:URL>http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&amp;storedquery_id=fmi::observations::weather::monthly::timevaluepair&amp;crs=EPSG::3067&amp;fmisid=101154</gmd:URL>
+                                    </gmd:linkage>
+                                    <gmd:protocol>
+                                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                                    </gmd:protocol>
+                                    <gmd:name>
+                                        <gco:CharacterString>OGC Web Feature Service 2.0</gco:CharacterString>
+                                    </gmd:name>
+                                    <gmd:description>
+                                        <gco:CharacterString>INSPIRE Download Service -palvelurajapinta (OGC WFS 2.0)</gco:CharacterString>
+                                    </gmd:description>
+                                </gmd:CI_OnlineResource>
+                            </gmd:onLine>
+                        </gmd:MD_DigitalTransferOptions>
+                    </gmd:transferOptions>
+                </gmd:MD_Distribution>
+            </gmd:distributionInfo>
+            <gmd:dataQualityInfo xlink:type="simple">
+                <gmd:DQ_DataQuality>
+                    <gmd:scope xlink:type="simple">
+                        <gmd:DQ_Scope>
+                            <gmd:level>
+                                <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_ScopeCode" codeListValue="series" />
+                            </gmd:level>
+                            <gmd:levelDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Aikasarja</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:levelDescription>
+                        </gmd:DQ_Scope>
+                    </gmd:scope>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>KOMISSION ASETUS (EU) N:o 1089/2010, annettu 23 päivänä marraskuuta 2010, Euroopan parlamentin ja neuvoston direktiivin 2007/2/EY täytäntöönpanosta paikkatietoaineistojen ja -palvelujen yhteentoimivuuden osalta</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2010-12-08</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>European Commission</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="publisher" />
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Draft Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>INSPIRE Thematic Working Group Atmospheric Conditions-Meteorological geographical features</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="publisher" />
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Environmental monitoring Facilities - Draft Technical Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>Members of the INSPIRE Thematic Working Group Environmental monitoring Facilities</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="publisher" />
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>false</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:lineage xlink:type="simple">
+                        <gmd:LI_Lineage>
+                            <gmd:statement>
+                                <gco:CharacterString>Havaintoarvot ovat laatutarkistettuja.</gco:CharacterString>
+                            </gmd:statement>
+                            <gmd:processStep xlink:type="simple">
+                                <gmd:LI_ProcessStep>
+                                    <gmd:description>
+                                        <gco:CharacterString>Havaintoarvot läpikäyvät automaattisen laadunvalvonnan heti havaintohetken jälkeen, mutta saattavat sisältää virheitä. Havainnoille tehdään viiveellä manuaalinen laaduntarkistus, jossa korjataan automaattisessa laadunvalvonnassa ja muilla menetelmillä huomatut epäillyttävät/virheelliset havaintoarvot.</gco:CharacterString>
+                                    </gmd:description>
+                                    <gmd:dateTime>
+                                        <gco:DateTime>2016-09-01T03:07:50.423+00:02</gco:DateTime>
+                                    </gmd:dateTime>
+                                </gmd:LI_ProcessStep>
+                            </gmd:processStep>
+                        </gmd:LI_Lineage>
+                    </gmd:lineage>
+                </gmd:DQ_DataQuality>
+            </gmd:dataQualityInfo>
+        </gmd:MD_Metadata>
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/csw.xsd http://www.isotc211.org/2005/gmd http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd http://www.isotc211.org/2005/gmx http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmx/gmx.xsd http://www.isotc211.org/2005/gco http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gco/gco.xsd http://www.isotc211.org/2005/gts http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gts/gts.xsd http://www.opengis.net/gml http://schemas.opengis.net/gml/3.2.1/gml.xsd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>2bdb904d-db0a-41c1-b242-8e1c6c28f098</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:language>
+                <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="fin">fin</gmd:LanguageCode>
+            </gmd:language>
+            <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_ScopeCode" codeListValue="series" />
+            </gmd:hierarchyLevel>
+            <gmd:hierarchyLevelName>
+                <gco:CharacterString>Tietoaineisto</gco:CharacterString>
+            </gmd:hierarchyLevelName>
+            <gmd:contact xlink:type="simple">
+                <gmd:CI_ResponsibleParty>
+                    <gmd:organisationName>
+                        <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                    </gmd:organisationName>
+                    <gmd:contactInfo xlink:type="simple">
+                        <gmd:CI_Contact>
+                            <gmd:address xlink:type="simple">
+                                <gmd:CI_Address>
+                                    <gmd:electronicMailAddress>
+                                        <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                    </gmd:electronicMailAddress>
+                                </gmd:CI_Address>
+                            </gmd:address>
+                        </gmd:CI_Contact>
+                    </gmd:contactInfo>
+                    <gmd:role>
+                        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="pointOfContact" />
+                    </gmd:role>
+                </gmd:CI_ResponsibleParty>
+            </gmd:contact>
+            <gmd:dateStamp>
+                <gco:DateTime>2016-09-30T00:06:57</gco:DateTime>
+            </gmd:dateStamp>
+            <gmd:metadataStandardName>
+                <gco:CharacterString>ISO19115</gco:CharacterString>
+            </gmd:metadataStandardName>
+            <gmd:metadataStandardVersion>
+                <gco:CharacterString>2003/Cor.1:2006</gco:CharacterString>
+            </gmd:metadataStandardVersion>
+            <gmd:identificationInfo xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Säähavainnot: Hämeenlinna Lammi Pappila</gco:CharacterString>
+                            </gmd:title>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-03-21</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="creation" />
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-14</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-29</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="revision" />
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:identifier xlink:type="simple">
+                                <gmd:MD_Identifier xsi:type="gmd:RS_Identifier_Type">
+                                    <gmd:code>
+                                        <gco:CharacterString>obs_point weather101154</gco:CharacterString>
+                                    </gmd:code>
+                                    <gmd:codeSpace>
+                                        <gco:CharacterString>http://xml.fmi.fi/identifier/codespace/INSPIRE/dataset</gco:CharacterString>
+                                    </gmd:codeSpace>
+                                </gmd:MD_Identifier>
+                            </gmd:identifier>
+                            <gmd:presentationForm>
+                                <gmd:CI_PresentationFormCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_PresentationFormCode" codeListValue="documentDigital" />
+                            </gmd:presentationForm>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+                    <gmd:abstract>
+                        <gco:CharacterString>Aineisto sisältää Ilmatieteen laitoksen säähavaintoaseman hetkelliset pintasäähavaintoarvot. Pintasäähavaintoarvoja ovat lämpötila, paine, suhteellinen kosteus, tuulen nopeus ja suunta sekä sademäärä. Mitattavat havaintoarvot vaihtelevat asemittain. Tyypillisesti havaintoarvoja mitataan 10 min välein.</gco:CharacterString>
+                    </gmd:abstract>
+                    <gmd:pointOfContact xlink:type="simple">
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo xlink:type="simple">
+                                <gmd:CI_Contact>
+                                    <gmd:phone xlink:type="simple">
+                                        <gmd:CI_Telephone>
+                                            <gmd:voice>
+                                                <gco:CharacterString>+358295391000</gco:CharacterString>
+                                            </gmd:voice>
+                                        </gmd:CI_Telephone>
+                                    </gmd:phone>
+                                    <gmd:address xlink:type="simple">
+                                        <gmd:CI_Address>
+                                            <gmd:city>
+                                                <gco:CharacterString>Helsinki</gco:CharacterString>
+                                            </gmd:city>
+                                            <gmd:postalCode>
+                                                <gco:CharacterString>PL 503</gco:CharacterString>
+                                            </gmd:postalCode>
+                                            <gmd:country>
+                                                <gco:CharacterString>Suomi</gco:CharacterString>
+                                            </gmd:country>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                    <gmd:onlineResource xlink:type="simple">
+                                        <gmd:CI_OnlineResource>
+                                            <gmd:linkage>
+                                                <gmd:URL>http://www.ilmatieteenlaitos.fi/avoin-data</gmd:URL>
+                                            </gmd:linkage>
+                                        </gmd:CI_OnlineResource>
+                                    </gmd:onlineResource>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="custodian" />
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+                    <gmd:resourceMaintenance xlink:type="simple">
+                        <gmd:MD_MaintenanceInformation>
+                            <gmd:maintenanceAndUpdateFrequency>
+                                <gmd:MD_MaintenanceFrequencyCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_MaintenanceFrequencyCode" codeListValue="Continual" />
+                            </gmd:maintenanceAndUpdateFrequency>
+                            <gmd:userDefinedMaintenanceFrequency>
+                                <gts:TM_PeriodDuration>P0Y0M0DT0H10M0S</gts:TM_PeriodDuration>
+                            </gmd:userDefinedMaintenanceFrequency>
+                            <gmd:updateScope>
+                                <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_ScopeCode" codeListValue="dataset" />
+                            </gmd:updateScope>
+                            <gmd:updateScopeDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Update interval of the data is 10 minutes</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:updateScopeDescription>
+                        </gmd:MD_MaintenanceInformation>
+                    </gmd:resourceMaintenance>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilmasto</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilmakehä</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sää</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilman lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>paine</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>tuuli</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilmankosteus</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sade</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>climate</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>weather</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>air temperature</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>wind</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>pressure</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - Concepts, version 3.1</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2008-06-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>Atmospheric conditions</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Meteorological geographical features</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Environmental monitoring facilities</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2012-07-20</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>Ilman lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Kastepistelämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Suhteellinen kosteus</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_KeywordTypeCode" codeListValue="theme" />
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>FMI - Custom Keywords</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2013-01-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_LegalConstraints>
+                            <gmd:accessConstraints>
+                                <gmd:MD_RestrictionCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_RestrictionCode" codeListValue="otherRestrictions" />
+                            </gmd:accessConstraints>
+                            <gmd:otherConstraints>
+                                <gco:CharacterString>Palvelu vaatii rekisteröitymisen</gco:CharacterString>
+                            </gmd:otherConstraints>
+                        </gmd:MD_LegalConstraints>
+                    </gmd:resourceConstraints>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_Constraints>
+                            <gmd:useLimitation>
+                                <gco:CharacterString>http://ilmatieteenlaitos.fi/avoin-data-lisenssi</gco:CharacterString>
+                            </gmd:useLimitation>
+                        </gmd:MD_Constraints>
+                    </gmd:resourceConstraints>
+                    <gmd:spatialRepresentationType>
+                        <gmd:MD_SpatialRepresentationTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_SpatialRepresentationTypeCode" codeListValue="vector" />
+                    </gmd:spatialRepresentationType>
+                    <gmd:language>
+                        <gmd:LanguageCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#LanguageCode" codeListValue="fin" />
+                    </gmd:language>
+                    <gmd:characterSet>
+                        <gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_CharacterSetCode" codeListValue="utf8" />
+                    </gmd:characterSet>
+                    <gmd:topicCategory>
+                        <gmd:MD_TopicCategoryCode>climatologyMeteorologyAtmosphere</gmd:MD_TopicCategoryCode>
+                    </gmd:topicCategory>
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>25.03839</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>25.03849</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>61.05403</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>61.05413</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                            <gmd:temporalElement xlink:type="simple">
+                                <gmd:EX_TemporalExtent>
+                                    <gmd:extent xlink:type="simple">
+                                        <gml:TimePeriod gml:id="ID">
+                                            <gml:beginPosition>2010-01-01T00:00:00Z</gml:beginPosition>
+                                            <gml:endPosition indeterminatePosition="now" />
+                                        </gml:TimePeriod>
+                                    </gmd:extent>
+                                </gmd:EX_TemporalExtent>
+                            </gmd:temporalElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+            <gmd:distributionInfo xlink:type="simple">
+                <gmd:MD_Distribution>
+                    <gmd:distributionFormat xlink:type="simple">
+                        <gmd:MD_Format>
+                            <gmd:name>
+                                <gco:CharacterString>application/xml</gco:CharacterString>
+                            </gmd:name>
+                            <gmd:version>
+                                <gco:CharacterString>GML 3.2.1</gco:CharacterString>
+                            </gmd:version>
+                            <gmd:specification>
+                                <gco:CharacterString>http://www.opengeospatial.org/standards/gml</gco:CharacterString>
+                            </gmd:specification>
+                        </gmd:MD_Format>
+                    </gmd:distributionFormat>
+                    <gmd:transferOptions xlink:type="simple">
+                        <gmd:MD_DigitalTransferOptions>
+                            <gmd:onLine xlink:type="simple">
+                                <gmd:CI_OnlineResource>
+                                    <gmd:linkage>
+                                        <gmd:URL>http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&amp;storedquery_id=fmi::observations::weather::timevaluepair&amp;crs=EPSG::3067&amp;fmisid=101154</gmd:URL>
+                                    </gmd:linkage>
+                                    <gmd:protocol>
+                                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                                    </gmd:protocol>
+                                    <gmd:name>
+                                        <gco:CharacterString>OGC Web Feature Service 2.0</gco:CharacterString>
+                                    </gmd:name>
+                                    <gmd:description>
+                                        <gco:CharacterString>INSPIRE Download Service -palvelurajapinta (OGC WFS 2.0)</gco:CharacterString>
+                                    </gmd:description>
+                                </gmd:CI_OnlineResource>
+                            </gmd:onLine>
+                        </gmd:MD_DigitalTransferOptions>
+                    </gmd:transferOptions>
+                </gmd:MD_Distribution>
+            </gmd:distributionInfo>
+            <gmd:dataQualityInfo xlink:type="simple">
+                <gmd:DQ_DataQuality>
+                    <gmd:scope xlink:type="simple">
+                        <gmd:DQ_Scope>
+                            <gmd:level>
+                                <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#MD_ScopeCode" codeListValue="series" />
+                            </gmd:level>
+                            <gmd:levelDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Aikasarja</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:levelDescription>
+                        </gmd:DQ_Scope>
+                    </gmd:scope>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>KOMISSION ASETUS (EU) N:o 1089/2010, annettu 23 päivänä marraskuuta 2010, Euroopan parlamentin ja neuvoston direktiivin 2007/2/EY täytäntöönpanosta paikkatietoaineistojen ja -palvelujen yhteentoimivuuden osalta</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2010-12-08</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>European Commission</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="publisher" />
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Draft Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>INSPIRE Thematic Working Group Atmospheric Conditions-Meteorological geographical features</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="publisher" />
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Environmental monitoring Facilities - Draft Technical Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode" codeListValue="publication" />
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>Members of the INSPIRE Thematic Working Group Environmental monitoring Facilities</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode" codeListValue="publisher" />
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>false</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:lineage xlink:type="simple">
+                        <gmd:LI_Lineage>
+                            <gmd:statement>
+                                <gco:CharacterString>Havaintoarvot ovat laatutarkistettuja</gco:CharacterString>
+                            </gmd:statement>
+                            <gmd:processStep xlink:type="simple">
+                                <gmd:LI_ProcessStep>
+                                    <gmd:description>
+                                        <gco:CharacterString>Havaintoarvot läpikäyvät automaattisen laadunvalvonnan heti havaintohetken jälkeen, mutta saattavat sisältää virheitä. Havainnoille tehdään viiveellä manuaalinen laaduntarkistus, jossa korjataan automaattisessa laadunvalvonnassa ja muilla menetelmillä huomatut epäillyttävät/virheelliset havaintoarvot.</gco:CharacterString>
+                                    </gmd:description>
+                                    <gmd:dateTime>
+                                        <gco:DateTime>2016-09-30T00:06:56.646+00:02</gco:DateTime>
+                                    </gmd:dateTime>
+                                </gmd:LI_ProcessStep>
+                            </gmd:processStep>
+                        </gmd:LI_Lineage>
+                    </gmd:lineage>
+                </gmd:DQ_DataQuality>
+            </gmd:dataQualityInfo>
+        </gmd:MD_Metadata>
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/csw.xsd http://www.isotc211.org/2005/gmd http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd http://www.isotc211.org/2005/gmx http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmx/gmx.xsd http://www.isotc211.org/2005/gco http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gco/gco.xsd http://www.isotc211.org/2005/gts http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gts/gts.xsd http://www.opengis.net/gml http://schemas.opengis.net/gml/3.2.1/gml.xsd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>74ce3007-6854-4035-9f8f-7dc11ac10174</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:language>
+                <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="fin">fin</gmd:LanguageCode>
+            </gmd:language>
+            <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="series">series</gmd:MD_ScopeCode>
+            </gmd:hierarchyLevel>
+            <gmd:hierarchyLevelName>
+                <gco:CharacterString>Tietoaineisto</gco:CharacterString>
+            </gmd:hierarchyLevelName>
+            <gmd:contact xlink:type="simple">
+                <gmd:CI_ResponsibleParty>
+                    <gmd:organisationName>
+                        <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                    </gmd:organisationName>
+                    <gmd:contactInfo xlink:type="simple">
+                        <gmd:CI_Contact>
+                            <gmd:address xlink:type="simple">
+                                <gmd:CI_Address>
+                                    <gmd:electronicMailAddress>
+                                        <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                    </gmd:electronicMailAddress>
+                                </gmd:CI_Address>
+                            </gmd:address>
+                        </gmd:CI_Contact>
+                    </gmd:contactInfo>
+                    <gmd:role>
+                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+                    </gmd:role>
+                </gmd:CI_ResponsibleParty>
+            </gmd:contact>
+            <gmd:dateStamp>
+                <gco:DateTime>2016-07-01T03:07:21.662+00:02</gco:DateTime>
+            </gmd:dateStamp>
+            <gmd:metadataStandardName>
+                <gco:CharacterString>ISO19115</gco:CharacterString>
+            </gmd:metadataStandardName>
+            <gmd:metadataStandardVersion>
+                <gco:CharacterString>2003/Cor.1:2006</gco:CharacterString>
+            </gmd:metadataStandardVersion>
+            <gmd:identificationInfo xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Säähavaintojen kuukausiarvot: Hämeenlinna Lammi Pappila</gco:CharacterString>
+                            </gmd:title>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-01-01</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-14</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-29</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revision</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:identifier xlink:type="simple">
+                                <gmd:MD_Identifier xsi:type="gmd:RS_Identifier_Type">
+                                    <gmd:code>
+                                        <gco:CharacterString>obs_point monthly101154</gco:CharacterString>
+                                    </gmd:code>
+                                    <gmd:codeSpace>
+                                        <gco:CharacterString>http://xml.fmi.fi/identifier/codespace/INSPIRE/dataset</gco:CharacterString>
+                                    </gmd:codeSpace>
+                                </gmd:MD_Identifier>
+                            </gmd:identifier>
+                            <gmd:presentationForm>
+                                <gmd:CI_PresentationFormCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_PresentationFormCode" codeListValue="documentDigital">documentDigital</gmd:CI_PresentationFormCode>
+                            </gmd:presentationForm>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+                    <gmd:abstract>
+                        <gco:CharacterString>Aineisto sisältää asemakohtaisia pintasäähavaintoaseman laskennallisia ilman lämpötilan kuukausikeskiarvoja ja kuukauden sadekertymiä. Tilastolliset arvot laskettu säähavaintoasemilla tehdyistä mittauksia. Ilman lämpötilan kuukausiarvo on keskiarvo kyseisen kalenterikuukauden jokaisesta vuorokausikeskiarvosta. Sademäärän kuukausiarvo on kyseisen kalenterikuukauden vuorokausikertymien summa.</gco:CharacterString>
+                    </gmd:abstract>
+                    <gmd:pointOfContact xlink:type="simple">
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo xlink:type="simple">
+                                <gmd:CI_Contact>
+                                    <gmd:phone xlink:type="simple">
+                                        <gmd:CI_Telephone>
+                                            <gmd:voice>
+                                                <gco:CharacterString>+358295391000</gco:CharacterString>
+                                            </gmd:voice>
+                                        </gmd:CI_Telephone>
+                                    </gmd:phone>
+                                    <gmd:address xlink:type="simple">
+                                        <gmd:CI_Address>
+                                            <gmd:city>
+                                                <gco:CharacterString>Helsinki</gco:CharacterString>
+                                            </gmd:city>
+                                            <gmd:postalCode>
+                                                <gco:CharacterString>PL 503</gco:CharacterString>
+                                            </gmd:postalCode>
+                                            <gmd:country>
+                                                <gco:CharacterString>Suomi</gco:CharacterString>
+                                            </gmd:country>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                    <gmd:onlineResource xlink:type="simple">
+                                        <gmd:CI_OnlineResource>
+                                            <gmd:linkage>
+                                                <gmd:URL>http://www.ilmatieteenlaitos.fi/avoin-data</gmd:URL>
+                                            </gmd:linkage>
+                                        </gmd:CI_OnlineResource>
+                                    </gmd:onlineResource>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian">custodian</gmd:CI_RoleCode>
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+                    <gmd:resourceMaintenance xlink:type="simple">
+                        <gmd:MD_MaintenanceInformation>
+                            <gmd:maintenanceAndUpdateFrequency>
+                                <gmd:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeListValue="Continual">Continual</gmd:MD_MaintenanceFrequencyCode>
+                            </gmd:maintenanceAndUpdateFrequency>
+                            <gmd:userDefinedMaintenanceFrequency>
+                                <gts:TM_PeriodDuration>P0Y1M0DT0H0M</gts:TM_PeriodDuration>
+                            </gmd:userDefinedMaintenanceFrequency>
+                            <gmd:updateScope>
+                                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+                            </gmd:updateScope>
+                            <gmd:updateScopeDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Update interval of the data is 1 month</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:updateScopeDescription>
+                        </gmd:MD_MaintenanceInformation>
+                    </gmd:resourceMaintenance>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilmasto</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sää</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilman lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sade</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>temperature</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>rain</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>climate</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>weather</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - Concepts, version 3.1</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2008-06-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>Atmospheric conditions</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Meteorological geographical features</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Environmental monitoring facilities</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2012-07-20</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>kuukausiarvot</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sademäärä</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sadekertymä</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>avoindata.fi</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>Ilmatieteen laitoksen avainsanat</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2013-01-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_LegalConstraints>
+                            <gmd:accessConstraints>
+                                <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</gmd:MD_RestrictionCode>
+                            </gmd:accessConstraints>
+                            <gmd:otherConstraints>
+                                <gco:CharacterString>Palvelu vaatii rekisteröitymisen</gco:CharacterString>
+                            </gmd:otherConstraints>
+                        </gmd:MD_LegalConstraints>
+                    </gmd:resourceConstraints>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_Constraints>
+                            <gmd:useLimitation>
+                                <gco:CharacterString>http://ilmatieteenlaitos.fi/avoin-data-lisenssi</gco:CharacterString>
+                            </gmd:useLimitation>
+                        </gmd:MD_Constraints>
+                    </gmd:resourceConstraints>
+                    <gmd:spatialRepresentationType>
+                        <gmd:MD_SpatialRepresentationTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="vector">vector</gmd:MD_SpatialRepresentationTypeCode>
+                    </gmd:spatialRepresentationType>
+                    <gmd:language>
+                        <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="fin">fin</gmd:LanguageCode>
+                    </gmd:language>
+                    <gmd:characterSet>
+                        <gmd:MD_CharacterSetCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+                    </gmd:characterSet>
+                    <gmd:topicCategory>
+                        <gmd:MD_TopicCategoryCode>climatologyMeteorologyAtmosphere</gmd:MD_TopicCategoryCode>
+                    </gmd:topicCategory>
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>25.03839</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>25.03849</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>61.05403</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>61.05413</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                            <gmd:temporalElement xlink:type="simple">
+                                <gmd:EX_TemporalExtent>
+                                    <gmd:extent xlink:type="simple">
+                                        <gml:TimePeriod gml:id="ID">
+                                            <gml:beginPosition>1963-07-01T00:00:00Z</gml:beginPosition>
+                                            <gml:endPosition>2016-06-01T00:00:00Z</gml:endPosition>
+                                        </gml:TimePeriod>
+                                    </gmd:extent>
+                                </gmd:EX_TemporalExtent>
+                            </gmd:temporalElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+            <gmd:distributionInfo xlink:type="simple">
+                <gmd:MD_Distribution>
+                    <gmd:distributionFormat xlink:type="simple">
+                        <gmd:MD_Format>
+                            <gmd:name>
+                                <gco:CharacterString>application/xml</gco:CharacterString>
+                            </gmd:name>
+                            <gmd:version>
+                                <gco:CharacterString>GML 3.2.1</gco:CharacterString>
+                            </gmd:version>
+                            <gmd:specification>
+                                <gco:CharacterString>http://www.opengeospatial.org/standards/gml</gco:CharacterString>
+                            </gmd:specification>
+                        </gmd:MD_Format>
+                    </gmd:distributionFormat>
+                    <gmd:transferOptions xlink:type="simple">
+                        <gmd:MD_DigitalTransferOptions>
+                            <gmd:onLine xlink:type="simple">
+                                <gmd:CI_OnlineResource>
+                                    <gmd:linkage>
+                                        <gmd:URL>http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&amp;storedquery_id=fmi::observations::weather::monthly::timevaluepair&amp;crs=EPSG::3067&amp;fmisid=101154</gmd:URL>
+                                    </gmd:linkage>
+                                    <gmd:protocol>
+                                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                                    </gmd:protocol>
+                                    <gmd:name>
+                                        <gco:CharacterString>OGC Web Feature Service 2.0</gco:CharacterString>
+                                    </gmd:name>
+                                    <gmd:description>
+                                        <gco:CharacterString>INSPIRE Download Service -palvelurajapinta (OGC WFS 2.0)</gco:CharacterString>
+                                    </gmd:description>
+                                </gmd:CI_OnlineResource>
+                            </gmd:onLine>
+                        </gmd:MD_DigitalTransferOptions>
+                    </gmd:transferOptions>
+                </gmd:MD_Distribution>
+            </gmd:distributionInfo>
+            <gmd:dataQualityInfo xlink:type="simple">
+                <gmd:DQ_DataQuality>
+                    <gmd:scope xlink:type="simple">
+                        <gmd:DQ_Scope>
+                            <gmd:level>
+                                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="series">series</gmd:MD_ScopeCode>
+                            </gmd:level>
+                            <gmd:levelDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Aikasarja</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:levelDescription>
+                        </gmd:DQ_Scope>
+                    </gmd:scope>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>KOMISSION ASETUS (EU) N:o 1089/2010, annettu 23 päivänä marraskuuta 2010, Euroopan parlamentin ja neuvoston direktiivin 2007/2/EY täytäntöönpanosta paikkatietoaineistojen ja -palvelujen yhteentoimivuuden osalta</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2010-12-08</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>European Commission</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Draft Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>INSPIRE Thematic Working Group Atmospheric Conditions-Meteorological geographical features</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Environmental monitoring Facilities - Draft Technical Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>Members of the INSPIRE Thematic Working Group Environmental monitoring Facilities</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>false</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:lineage xlink:type="simple">
+                        <gmd:LI_Lineage>
+                            <gmd:statement>
+                                <gco:CharacterString>Havaintoarvot ovat laatutarkistettuja.</gco:CharacterString>
+                            </gmd:statement>
+                            <gmd:processStep xlink:type="simple">
+                                <gmd:LI_ProcessStep>
+                                    <gmd:description>
+                                        <gco:CharacterString>Havaintoarvot läpikäyvät automaattisen laadunvalvonnan heti havaintohetken jälkeen, mutta saattavat sisältää virheitä. Havainnoille tehdään viiveellä manuaalinen laaduntarkistus, jossa korjataan automaattisessa laadunvalvonnassa ja muilla menetelmillä huomatut epäillyttävät/virheelliset havaintoarvot.</gco:CharacterString>
+                                    </gmd:description>
+                                    <gmd:dateTime>
+                                        <gco:DateTime>2016-07-01T03:07:21.663+00:02</gco:DateTime>
+                                    </gmd:dateTime>
+                                </gmd:LI_ProcessStep>
+                            </gmd:processStep>
+                        </gmd:LI_Lineage>
+                    </gmd:lineage>
+                </gmd:DQ_DataQuality>
+            </gmd:dataQualityInfo>
+        </gmd:MD_Metadata>
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/csw.xsd http://www.isotc211.org/2005/gmd http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd http://www.isotc211.org/2005/gmx http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmx/gmx.xsd http://www.isotc211.org/2005/gco http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gco/gco.xsd http://www.isotc211.org/2005/gts http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gts/gts.xsd http://www.opengis.net/gml http://schemas.opengis.net/gml/3.2.1/gml.xsd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>94d6482d-3484-48bc-a2b4-032c42f5709a</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:language>
+                <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="fin">fin</gmd:LanguageCode>
+            </gmd:language>
+            <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="series">series</gmd:MD_ScopeCode>
+            </gmd:hierarchyLevel>
+            <gmd:hierarchyLevelName>
+                <gco:CharacterString>Tietoaineisto</gco:CharacterString>
+            </gmd:hierarchyLevelName>
+            <gmd:contact xlink:type="simple">
+                <gmd:CI_ResponsibleParty>
+                    <gmd:organisationName>
+                        <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                    </gmd:organisationName>
+                    <gmd:contactInfo xlink:type="simple">
+                        <gmd:CI_Contact>
+                            <gmd:address xlink:type="simple">
+                                <gmd:CI_Address>
+                                    <gmd:electronicMailAddress>
+                                        <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                    </gmd:electronicMailAddress>
+                                </gmd:CI_Address>
+                            </gmd:address>
+                        </gmd:CI_Contact>
+                    </gmd:contactInfo>
+                    <gmd:role>
+                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+                    </gmd:role>
+                </gmd:CI_ResponsibleParty>
+            </gmd:contact>
+            <gmd:dateStamp>
+                <gco:DateTime>2016-08-01T03:06:56.105+00:02</gco:DateTime>
+            </gmd:dateStamp>
+            <gmd:metadataStandardName>
+                <gco:CharacterString>ISO19115</gco:CharacterString>
+            </gmd:metadataStandardName>
+            <gmd:metadataStandardVersion>
+                <gco:CharacterString>2003/Cor.1:2006</gco:CharacterString>
+            </gmd:metadataStandardVersion>
+            <gmd:identificationInfo xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Säähavaintojen kuukausiarvot: Hämeenlinna Lammi Pappila</gco:CharacterString>
+                            </gmd:title>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-01-01</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-14</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-29</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revision</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:identifier xlink:type="simple">
+                                <gmd:MD_Identifier xsi:type="gmd:RS_Identifier_Type">
+                                    <gmd:code>
+                                        <gco:CharacterString>obs_point monthly101154</gco:CharacterString>
+                                    </gmd:code>
+                                    <gmd:codeSpace>
+                                        <gco:CharacterString>http://xml.fmi.fi/identifier/codespace/INSPIRE/dataset</gco:CharacterString>
+                                    </gmd:codeSpace>
+                                </gmd:MD_Identifier>
+                            </gmd:identifier>
+                            <gmd:presentationForm>
+                                <gmd:CI_PresentationFormCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_PresentationFormCode" codeListValue="documentDigital">documentDigital</gmd:CI_PresentationFormCode>
+                            </gmd:presentationForm>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+                    <gmd:abstract>
+                        <gco:CharacterString>Aineisto sisältää asemakohtaisia pintasäähavaintoaseman laskennallisia ilman lämpötilan kuukausikeskiarvoja ja kuukauden sadekertymiä. Tilastolliset arvot laskettu säähavaintoasemilla tehdyistä mittauksia. Ilman lämpötilan kuukausiarvo on keskiarvo kyseisen kalenterikuukauden jokaisesta vuorokausikeskiarvosta. Sademäärän kuukausiarvo on kyseisen kalenterikuukauden vuorokausikertymien summa.</gco:CharacterString>
+                    </gmd:abstract>
+                    <gmd:pointOfContact xlink:type="simple">
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo xlink:type="simple">
+                                <gmd:CI_Contact>
+                                    <gmd:phone xlink:type="simple">
+                                        <gmd:CI_Telephone>
+                                            <gmd:voice>
+                                                <gco:CharacterString>+358295391000</gco:CharacterString>
+                                            </gmd:voice>
+                                        </gmd:CI_Telephone>
+                                    </gmd:phone>
+                                    <gmd:address xlink:type="simple">
+                                        <gmd:CI_Address>
+                                            <gmd:city>
+                                                <gco:CharacterString>Helsinki</gco:CharacterString>
+                                            </gmd:city>
+                                            <gmd:postalCode>
+                                                <gco:CharacterString>PL 503</gco:CharacterString>
+                                            </gmd:postalCode>
+                                            <gmd:country>
+                                                <gco:CharacterString>Suomi</gco:CharacterString>
+                                            </gmd:country>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                    <gmd:onlineResource xlink:type="simple">
+                                        <gmd:CI_OnlineResource>
+                                            <gmd:linkage>
+                                                <gmd:URL>http://www.ilmatieteenlaitos.fi/avoin-data</gmd:URL>
+                                            </gmd:linkage>
+                                        </gmd:CI_OnlineResource>
+                                    </gmd:onlineResource>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian">custodian</gmd:CI_RoleCode>
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+                    <gmd:resourceMaintenance xlink:type="simple">
+                        <gmd:MD_MaintenanceInformation>
+                            <gmd:maintenanceAndUpdateFrequency>
+                                <gmd:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeListValue="Continual">Continual</gmd:MD_MaintenanceFrequencyCode>
+                            </gmd:maintenanceAndUpdateFrequency>
+                            <gmd:userDefinedMaintenanceFrequency>
+                                <gts:TM_PeriodDuration>P0Y1M0DT0H0M</gts:TM_PeriodDuration>
+                            </gmd:userDefinedMaintenanceFrequency>
+                            <gmd:updateScope>
+                                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+                            </gmd:updateScope>
+                            <gmd:updateScopeDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Update interval of the data is 1 month</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:updateScopeDescription>
+                        </gmd:MD_MaintenanceInformation>
+                    </gmd:resourceMaintenance>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilmasto</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sää</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>ilman lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sade</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>temperature</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>rain</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>climate</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>weather</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - Concepts, version 3.1</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2008-06-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>Atmospheric conditions</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Meteorological geographical features</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Environmental monitoring facilities</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2012-07-20</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>kuukausiarvot</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sademäärä</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sadekertymä</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>avoindata.fi</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>Ilmatieteen laitoksen avainsanat</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2013-01-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_LegalConstraints>
+                            <gmd:accessConstraints>
+                                <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</gmd:MD_RestrictionCode>
+                            </gmd:accessConstraints>
+                            <gmd:otherConstraints>
+                                <gco:CharacterString>Palvelu vaatii rekisteröitymisen</gco:CharacterString>
+                            </gmd:otherConstraints>
+                        </gmd:MD_LegalConstraints>
+                    </gmd:resourceConstraints>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_Constraints>
+                            <gmd:useLimitation>
+                                <gco:CharacterString>http://ilmatieteenlaitos.fi/avoin-data-lisenssi</gco:CharacterString>
+                            </gmd:useLimitation>
+                        </gmd:MD_Constraints>
+                    </gmd:resourceConstraints>
+                    <gmd:spatialRepresentationType>
+                        <gmd:MD_SpatialRepresentationTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="vector">vector</gmd:MD_SpatialRepresentationTypeCode>
+                    </gmd:spatialRepresentationType>
+                    <gmd:language>
+                        <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="fin">fin</gmd:LanguageCode>
+                    </gmd:language>
+                    <gmd:characterSet>
+                        <gmd:MD_CharacterSetCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+                    </gmd:characterSet>
+                    <gmd:topicCategory>
+                        <gmd:MD_TopicCategoryCode>climatologyMeteorologyAtmosphere</gmd:MD_TopicCategoryCode>
+                    </gmd:topicCategory>
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>25.03839</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>25.03849</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>61.05403</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>61.05413</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                            <gmd:temporalElement xlink:type="simple">
+                                <gmd:EX_TemporalExtent>
+                                    <gmd:extent xlink:type="simple">
+                                        <gml:TimePeriod gml:id="ID">
+                                            <gml:beginPosition>1963-07-01T00:00:00Z</gml:beginPosition>
+                                            <gml:endPosition>2016-07-01T00:00:00Z</gml:endPosition>
+                                        </gml:TimePeriod>
+                                    </gmd:extent>
+                                </gmd:EX_TemporalExtent>
+                            </gmd:temporalElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+            <gmd:distributionInfo xlink:type="simple">
+                <gmd:MD_Distribution>
+                    <gmd:distributionFormat xlink:type="simple">
+                        <gmd:MD_Format>
+                            <gmd:name>
+                                <gco:CharacterString>application/xml</gco:CharacterString>
+                            </gmd:name>
+                            <gmd:version>
+                                <gco:CharacterString>GML 3.2.1</gco:CharacterString>
+                            </gmd:version>
+                            <gmd:specification>
+                                <gco:CharacterString>http://www.opengeospatial.org/standards/gml</gco:CharacterString>
+                            </gmd:specification>
+                        </gmd:MD_Format>
+                    </gmd:distributionFormat>
+                    <gmd:transferOptions xlink:type="simple">
+                        <gmd:MD_DigitalTransferOptions>
+                            <gmd:onLine xlink:type="simple">
+                                <gmd:CI_OnlineResource>
+                                    <gmd:linkage>
+                                        <gmd:URL>http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&amp;storedquery_id=fmi::observations::weather::monthly::timevaluepair&amp;crs=EPSG::3067&amp;fmisid=101154</gmd:URL>
+                                    </gmd:linkage>
+                                    <gmd:protocol>
+                                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                                    </gmd:protocol>
+                                    <gmd:name>
+                                        <gco:CharacterString>OGC Web Feature Service 2.0</gco:CharacterString>
+                                    </gmd:name>
+                                    <gmd:description>
+                                        <gco:CharacterString>INSPIRE Download Service -palvelurajapinta (OGC WFS 2.0)</gco:CharacterString>
+                                    </gmd:description>
+                                </gmd:CI_OnlineResource>
+                            </gmd:onLine>
+                        </gmd:MD_DigitalTransferOptions>
+                    </gmd:transferOptions>
+                </gmd:MD_Distribution>
+            </gmd:distributionInfo>
+            <gmd:dataQualityInfo xlink:type="simple">
+                <gmd:DQ_DataQuality>
+                    <gmd:scope xlink:type="simple">
+                        <gmd:DQ_Scope>
+                            <gmd:level>
+                                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="series">series</gmd:MD_ScopeCode>
+                            </gmd:level>
+                            <gmd:levelDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Aikasarja</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:levelDescription>
+                        </gmd:DQ_Scope>
+                    </gmd:scope>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>KOMISSION ASETUS (EU) N:o 1089/2010, annettu 23 päivänä marraskuuta 2010, Euroopan parlamentin ja neuvoston direktiivin 2007/2/EY täytäntöönpanosta paikkatietoaineistojen ja -palvelujen yhteentoimivuuden osalta</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2010-12-08</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>European Commission</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Draft Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>INSPIRE Thematic Working Group Atmospheric Conditions-Meteorological geographical features</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Environmental monitoring Facilities - Draft Technical Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>Members of the INSPIRE Thematic Working Group Environmental monitoring Facilities</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>false</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:lineage xlink:type="simple">
+                        <gmd:LI_Lineage>
+                            <gmd:statement>
+                                <gco:CharacterString>Havaintoarvot ovat laatutarkistettuja.</gco:CharacterString>
+                            </gmd:statement>
+                            <gmd:processStep xlink:type="simple">
+                                <gmd:LI_ProcessStep>
+                                    <gmd:description>
+                                        <gco:CharacterString>Havaintoarvot läpikäyvät automaattisen laadunvalvonnan heti havaintohetken jälkeen, mutta saattavat sisältää virheitä. Havainnoille tehdään viiveellä manuaalinen laaduntarkistus, jossa korjataan automaattisessa laadunvalvonnassa ja muilla menetelmillä huomatut epäillyttävät/virheelliset havaintoarvot.</gco:CharacterString>
+                                    </gmd:description>
+                                    <gmd:dateTime>
+                                        <gco:DateTime>2016-08-01T03:06:56.107+00:02</gco:DateTime>
+                                    </gmd:dateTime>
+                                </gmd:LI_ProcessStep>
+                            </gmd:processStep>
+                        </gmd:LI_Lineage>
+                    </gmd:lineage>
+                </gmd:DQ_DataQuality>
+            </gmd:dataQualityInfo>
+        </gmd:MD_Metadata>
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/csw.xsd http://www.isotc211.org/2005/gmd http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmd/gmd.xsd http://www.isotc211.org/2005/srv http://schemas.opengis.net/iso/19139/20060504/srv/srv.xsd http://www.isotc211.org/2005/gmx http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gmx/gmx.xsd http://www.isotc211.org/2005/gco http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gco/gco.xsd http://www.isotc211.org/2005/gts http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/gts/gts.xsd http://www.opengis.net/gml http://schemas.opengis.net/gml/3.2.1/gml.xsd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>401f089a-f4fa-4534-8214-f7db5d580971</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:language>
+                <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="fin">fin</gmd:LanguageCode>
+            </gmd:language>
+            <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="series">series</gmd:MD_ScopeCode>
+            </gmd:hierarchyLevel>
+            <gmd:hierarchyLevelName>
+                <gco:CharacterString>Tietoaineisto</gco:CharacterString>
+            </gmd:hierarchyLevelName>
+            <gmd:contact xlink:type="simple">
+                <gmd:CI_ResponsibleParty>
+                    <gmd:organisationName>
+                        <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                    </gmd:organisationName>
+                    <gmd:contactInfo xlink:type="simple">
+                        <gmd:CI_Contact>
+                            <gmd:address xlink:type="simple">
+                                <gmd:CI_Address>
+                                    <gmd:electronicMailAddress>
+                                        <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                    </gmd:electronicMailAddress>
+                                </gmd:CI_Address>
+                            </gmd:address>
+                        </gmd:CI_Contact>
+                    </gmd:contactInfo>
+                    <gmd:role>
+                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+                    </gmd:role>
+                </gmd:CI_ResponsibleParty>
+            </gmd:contact>
+            <gmd:dateStamp>
+                <gco:DateTime>2015-11-05T09:59:39.116+00:02</gco:DateTime>
+            </gmd:dateStamp>
+            <gmd:metadataStandardName>
+                <gco:CharacterString>ISO19115</gco:CharacterString>
+            </gmd:metadataStandardName>
+            <gmd:metadataStandardVersion>
+                <gco:CharacterString>2003/Cor.1:2006</gco:CharacterString>
+            </gmd:metadataStandardVersion>
+            <gmd:identificationInfo xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Säähavaintojen vuorokausiarvot: Hämeenlinna Lammi Pappila</gco:CharacterString>
+                            </gmd:title>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-03-21</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-03-22</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:date xlink:type="simple">
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2013-05-29</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revision</gmd:CI_DateTypeCode>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                            <gmd:identifier xlink:type="simple">
+                                <gmd:MD_Identifier xsi:type="gmd:RS_Identifier_Type">
+                                    <gmd:code>
+                                        <gco:CharacterString>obs_point daily101154</gco:CharacterString>
+                                    </gmd:code>
+                                    <gmd:codeSpace>
+                                        <gco:CharacterString>http://xml.fmi.fi/identifier/codespace/INSPIRE/dataset</gco:CharacterString>
+                                    </gmd:codeSpace>
+                                </gmd:MD_Identifier>
+                            </gmd:identifier>
+                            <gmd:presentationForm>
+                                <gmd:CI_PresentationFormCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_PresentationFormCode" codeListValue="documentDigital">documentDigital</gmd:CI_PresentationFormCode>
+                            </gmd:presentationForm>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+                    <gmd:abstract>
+                        <gco:CharacterString>Aineisto sisältää Ilmatieteen laitoksen säähavaintoaseman laskennallisia ja mitattuja vuorokausiarvoja. Laskennallisia arvoja ovat ilman lämpötilan vuorokausikeskiarvo ja sateen vuorokausikertymä. Mitattuja arvoja ovat ilman minimi- ja maksimilämpötila, maanpinnan minimilämpötila ja lumensyvyys. Ilman lämpötilan ääriarvot mitataan 06 ja 18 UTC ja maanpinnan minimilämpötila 06 UTC. Nämä kuvaavat ääriarvoja edellisen 12 tunnin (klo 18-06 ja 06-18 UTC) jakson ajalta.</gco:CharacterString>
+                    </gmd:abstract>
+                    <gmd:pointOfContact xlink:type="simple">
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>Ilmatieteen laitos</gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo xlink:type="simple">
+                                <gmd:CI_Contact>
+                                    <gmd:phone xlink:type="simple">
+                                        <gmd:CI_Telephone>
+                                            <gmd:voice>
+                                                <gco:CharacterString>+358295391000</gco:CharacterString>
+                                            </gmd:voice>
+                                        </gmd:CI_Telephone>
+                                    </gmd:phone>
+                                    <gmd:address xlink:type="simple">
+                                        <gmd:CI_Address>
+                                            <gmd:city>
+                                                <gco:CharacterString>Helsinki</gco:CharacterString>
+                                            </gmd:city>
+                                            <gmd:postalCode>
+                                                <gco:CharacterString>PL 503</gco:CharacterString>
+                                            </gmd:postalCode>
+                                            <gmd:country>
+                                                <gco:CharacterString>Suomi</gco:CharacterString>
+                                            </gmd:country>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>avoin-data@ilmatieteenlaitos.fi</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                    <gmd:onlineResource xlink:type="simple">
+                                        <gmd:CI_OnlineResource>
+                                            <gmd:linkage>
+                                                <gmd:URL>http://www.ilmatieteenlaitos.fi/avoin-data</gmd:URL>
+                                            </gmd:linkage>
+                                        </gmd:CI_OnlineResource>
+                                    </gmd:onlineResource>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian">custodian</gmd:CI_RoleCode>
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+                    <gmd:resourceMaintenance xlink:type="simple">
+                        <gmd:MD_MaintenanceInformation>
+                            <gmd:maintenanceAndUpdateFrequency>
+                                <gmd:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode" codeListValue="Continual">Continual</gmd:MD_MaintenanceFrequencyCode>
+                            </gmd:maintenanceAndUpdateFrequency>
+                            <gmd:userDefinedMaintenanceFrequency>
+                                <gts:TM_PeriodDuration>P0Y0M0DT0H1M0S</gts:TM_PeriodDuration>
+                            </gmd:userDefinedMaintenanceFrequency>
+                            <gmd:updateScope>
+                                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+                            </gmd:updateScope>
+                            <gmd:updateScopeDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Update interval of the data is 1 minute</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:updateScopeDescription>
+                        </gmd:MD_MaintenanceInformation>
+                    </gmd:resourceMaintenance>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>lämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sademäärä</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>lumi</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - Concepts, version 3.1</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2008-06-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>Atmospheric conditions</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Meteorological geographical features</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Environmental monitoring facilities</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2012-07-20</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:descriptiveKeywords xlink:type="simple">
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>vuorokausiarvot</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>keskilämpötila</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>sadesumma</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>lumensyvyys</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>lämpötilan minimi- ja maksimiarvo</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>avoindata.fi</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:type>
+                                <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+                            </gmd:type>
+                            <gmd:thesaurusName xlink:type="simple">
+                                <gmd:CI_Citation>
+                                    <gmd:title>
+                                        <gco:CharacterString>FMI - Custom Keywords</gco:CharacterString>
+                                    </gmd:title>
+                                    <gmd:date xlink:type="simple">
+                                        <gmd:CI_Date>
+                                            <gmd:date>
+                                                <gco:Date>2013-01-01</gco:Date>
+                                            </gmd:date>
+                                            <gmd:dateType>
+                                                <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                            </gmd:dateType>
+                                        </gmd:CI_Date>
+                                    </gmd:date>
+                                </gmd:CI_Citation>
+                            </gmd:thesaurusName>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_LegalConstraints>
+                            <gmd:accessConstraints>
+                                <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions">otherRestrictions</gmd:MD_RestrictionCode>
+                            </gmd:accessConstraints>
+                            <gmd:otherConstraints>
+                                <gco:CharacterString>Palvelu vaatii rekisteröitymisen</gco:CharacterString>
+                            </gmd:otherConstraints>
+                        </gmd:MD_LegalConstraints>
+                    </gmd:resourceConstraints>
+                    <gmd:resourceConstraints xlink:type="simple">
+                        <gmd:MD_Constraints>
+                            <gmd:useLimitation>
+                                <gco:CharacterString>http://ilmatieteenlaitos.fi/avoin-data-lisenssi</gco:CharacterString>
+                            </gmd:useLimitation>
+                        </gmd:MD_Constraints>
+                    </gmd:resourceConstraints>
+                    <gmd:spatialRepresentationType>
+                        <gmd:MD_SpatialRepresentationTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="vector">vector</gmd:MD_SpatialRepresentationTypeCode>
+                    </gmd:spatialRepresentationType>
+                    <gmd:language>
+                        <gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="fin">fin</gmd:LanguageCode>
+                    </gmd:language>
+                    <gmd:characterSet>
+                        <gmd:MD_CharacterSetCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+                    </gmd:characterSet>
+                    <gmd:topicCategory>
+                        <gmd:MD_TopicCategoryCode>climatologyMeteorologyAtmosphere</gmd:MD_TopicCategoryCode>
+                    </gmd:topicCategory>
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>25.03839</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>25.03849</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>61.05403</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>61.05413</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                            <gmd:temporalElement xlink:type="simple">
+                                <gmd:EX_TemporalExtent>
+                                    <gmd:extent xlink:type="simple">
+                                        <gml:TimePeriod gml:id="ID">
+                                            <gml:beginPosition>1963-07-01T00:00:00Z</gml:beginPosition>
+                                            <gml:endPosition indeterminatePosition="now" />
+                                        </gml:TimePeriod>
+                                    </gmd:extent>
+                                </gmd:EX_TemporalExtent>
+                            </gmd:temporalElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+            <gmd:distributionInfo xlink:type="simple">
+                <gmd:MD_Distribution>
+                    <gmd:distributionFormat xlink:type="simple">
+                        <gmd:MD_Format>
+                            <gmd:name>
+                                <gco:CharacterString>application/xml</gco:CharacterString>
+                            </gmd:name>
+                            <gmd:version>
+                                <gco:CharacterString>GML 3.2.1</gco:CharacterString>
+                            </gmd:version>
+                            <gmd:specification>
+                                <gco:CharacterString>http://www.opengeospatial.org/standards/gml</gco:CharacterString>
+                            </gmd:specification>
+                        </gmd:MD_Format>
+                    </gmd:distributionFormat>
+                    <gmd:transferOptions xlink:type="simple">
+                        <gmd:MD_DigitalTransferOptions>
+                            <gmd:onLine xlink:type="simple">
+                                <gmd:CI_OnlineResource>
+                                    <gmd:linkage>
+                                        <gmd:URL>http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&amp;storedquery_id=fmi::observations::weather::daily::timevaluepair&amp;crs=EPSG::3067&amp;fmisid=101154</gmd:URL>
+                                    </gmd:linkage>
+                                    <gmd:protocol>
+                                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                                    </gmd:protocol>
+                                    <gmd:name>
+                                        <gco:CharacterString>OGC Web Feature Service 2.0</gco:CharacterString>
+                                    </gmd:name>
+                                    <gmd:description>
+                                        <gco:CharacterString>INSPIRE Download Service -palvelurajapinta (OGC WFS 2.0)</gco:CharacterString>
+                                    </gmd:description>
+                                </gmd:CI_OnlineResource>
+                            </gmd:onLine>
+                        </gmd:MD_DigitalTransferOptions>
+                    </gmd:transferOptions>
+                </gmd:MD_Distribution>
+            </gmd:distributionInfo>
+            <gmd:dataQualityInfo xlink:type="simple">
+                <gmd:DQ_DataQuality>
+                    <gmd:scope xlink:type="simple">
+                        <gmd:DQ_Scope>
+                            <gmd:level>
+                                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="series">series</gmd:MD_ScopeCode>
+                            </gmd:level>
+                            <gmd:levelDescription>
+                                <gmd:MD_ScopeDescription>
+                                    <gmd:dataset>
+                                        <gco:CharacterString>Aikasarja</gco:CharacterString>
+                                    </gmd:dataset>
+                                </gmd:MD_ScopeDescription>
+                            </gmd:levelDescription>
+                        </gmd:DQ_Scope>
+                    </gmd:scope>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>KOMISSION ASETUS (EU) N:o 1089/2010, annettu 23 päivänä marraskuuta 2010, Euroopan parlamentin ja neuvoston direktiivin 2007/2/EY täytäntöönpanosta paikkatietoaineistojen ja -palvelujen yhteentoimivuuden osalta</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2010-12-08</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>European Commission</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Draft Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>INSPIRE Thematic Working Group Atmospheric Conditions-Meteorological geographical features</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>true</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:report xlink:type="simple">
+                        <gmd:DQ_DomainConsistency>
+                            <gmd:result xlink:type="simple">
+                                <gmd:DQ_ConformanceResult>
+                                    <gmd:specification xlink:type="simple">
+                                        <gmd:CI_Citation>
+                                            <gmd:title>
+                                                <gco:CharacterString>INSPIRE Data Specification on Environmental monitoring Facilities - Draft Technical Guidelines</gco:CharacterString>
+                                            </gmd:title>
+                                            <gmd:date xlink:type="simple">
+                                                <gmd:CI_Date>
+                                                    <gmd:date>
+                                                        <gco:Date>2013-02-04</gco:Date>
+                                                    </gmd:date>
+                                                    <gmd:dateType>
+                                                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                                                    </gmd:dateType>
+                                                </gmd:CI_Date>
+                                            </gmd:date>
+                                            <gmd:citedResponsibleParty xlink:type="simple">
+                                                <gmd:CI_ResponsibleParty>
+                                                    <gmd:organisationName>
+                                                        <gco:CharacterString>Members of the INSPIRE Thematic Working Group Environmental monitoring Facilities</gco:CharacterString>
+                                                    </gmd:organisationName>
+                                                    <gmd:role>
+                                                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="publisher">publisher</gmd:CI_RoleCode>
+                                                    </gmd:role>
+                                                </gmd:CI_ResponsibleParty>
+                                            </gmd:citedResponsibleParty>
+                                        </gmd:CI_Citation>
+                                    </gmd:specification>
+                                    <gmd:explanation>
+                                        <gco:CharacterString>Katso yksityiskohdat viitatusta standardimäärittelystä</gco:CharacterString>
+                                    </gmd:explanation>
+                                    <gmd:pass>
+                                        <gco:Boolean>false</gco:Boolean>
+                                    </gmd:pass>
+                                </gmd:DQ_ConformanceResult>
+                            </gmd:result>
+                        </gmd:DQ_DomainConsistency>
+                    </gmd:report>
+                    <gmd:lineage xlink:type="simple">
+                        <gmd:LI_Lineage>
+                            <gmd:statement>
+                                <gco:CharacterString>Havaintoarvot ovat laatutarkistettuja.</gco:CharacterString>
+                            </gmd:statement>
+                            <gmd:processStep xlink:type="simple">
+                                <gmd:LI_ProcessStep>
+                                    <gmd:description>
+                                        <gco:CharacterString>Havaintoarvot läpikäyvät reaaliaikaisen automaattisen laadunvalvonnan heti havaintohetken jälkeen, mutta saattavat sisältää virheitä. Havainnoille tehdään viiveellä manuaalinen laaduntarkistus, jossa korjataan automaattisessa laadunvalvonnassa ja muilla menetelmillä huomatut epäilyttävät/virheelliset havaintoarvot.</gco:CharacterString>
+                                    </gmd:description>
+                                    <gmd:dateTime>
+                                        <gco:DateTime>2015-11-05T09:59:39.118+00:02</gco:DateTime>
+                                    </gmd:dateTime>
+                                </gmd:LI_ProcessStep>
+                            </gmd:processStep>
+                        </gmd:LI_Lineage>
+                    </gmd:lineage>
+                </gmd:DQ_DataQuality>
+            </gmd:dataQualityInfo>
+        </gmd:MD_Metadata>
+    </csw:SearchResults>
+</csw:GetRecordsResponse>
