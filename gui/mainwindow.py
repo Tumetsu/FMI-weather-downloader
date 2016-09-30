@@ -11,6 +11,8 @@ from gui.messages import Messages
 from gui.services.checkupdates import CheckUpdatesOnStartup
 import csv
 from gui.services.csvwriter import CsvExport
+from gui.services.backgroundtask import BackgroundTask
+
 
 
 class Mainwindow(QMainWindow):
@@ -23,6 +25,8 @@ class Mainwindow(QMainWindow):
         super(Mainwindow, self).__init__(parent)
         self._language = menubar_actions.LANGUAGE_IDS["English"]
         self._current_selected_model = None
+        self._current_available_datasets = None
+        self._current_selected_dataset = None
         self.api = FMIApi()
         self._settings = Settings()
         self._csvexport = CsvExport(self)
@@ -55,16 +59,7 @@ class Mainwindow(QMainWindow):
         super(Mainwindow, self).changeEvent(event)
 
     def _set_up_supported_queries_combobox(self):
-        """ Set available queries to combobox"""
-        self.ui.dataSelectionCombobox.clear()
-        available_queries = self.api.get_supported_queries()
-        for q in available_queries:
-            self.ui.dataSelectionCombobox.addItem(q["name"][self._language])
-
         self.ui.dataSelectionCombobox.currentIndexChanged.connect(self._select_dataset_from_combobox)
-        self.ui.dataSelectionCombobox.setCurrentIndex(0)
-
-        self._set_time_field_limits(self.ui.stationComboBox.currentIndex())
 
     def _set_up_station_comboboxes(self):
         """ Set station names for combobox in both tabs. Configure completion."""
@@ -110,83 +105,66 @@ class Mainwindow(QMainWindow):
     def _select_place_from_combobox(self, place_index):
         self.ui.stationComboBox.setCurrentIndex(place_index)
         self._current_selected_model = self.api.get_stations()[place_index]
-        self.ui.availableFromContent.setText(self._current_selected_model["Since"])
-        self._set_time_field_limits(place_index)
+        #FIXME: REMOVE self.ui.availableFromContent.setText(self._current_selected_model["Since"])
+        self._set_time_field_limits()
+
+        print(self._current_selected_model)
+        # Fetch catalog information of the current station
+        self.catalogue_task = BackgroundTask(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'], self._set_available_datasets_from_catalogue)
+        self.catalogue_task.start()
+
+    def _set_available_datasets_from_catalogue(self, available_datasets):
+        self._current_available_datasets = available_datasets
+        self.ui.dataSelectionCombobox.clear()
+        for q in available_datasets:
+            self.ui.dataSelectionCombobox.addItem(q["title_fi"])
+
+        self.ui.dataSelectionCombobox.setCurrentIndex(0)
+
 
     @pyqtSlot(int, name='selectDataset')
     def _select_dataset_from_combobox(self, dataset_index):
-        self.ui.availableFromContent.setText(self._current_selected_model["Since"])
-        self._set_time_field_limits(self.ui.stationComboBox.currentIndex())
+        print("Set available dataset to combobox")
+        if self._current_available_datasets is not None:
+            self._current_selected_dataset = self._current_available_datasets[dataset_index]
+            self.ui.availableFromContent.setText(datetime.datetime.strftime(self._current_selected_dataset["starttime"], '%d.%m.%Y'))
+            self._set_time_field_limits()
 
     def get_selected_query_model(self):
         return self.api.get_supported_queries()[self.ui.dataSelectionCombobox.currentIndex()]
 
-    def _set_time_field_limits(self, place_index):
-        """
-        For now assume that only dailyWeather has special time ranges and all other datasets are from 2010 onwards.
-        In future when adding new datasets this assumption should be revised and write more robust solution to update
-        the available data ranges applicable for each dataset.
-        :param place_index:
-        :return:
-        """
-        model = self.get_selected_query_model()
-        if model["id"] == "dailyWeather":
-            self._set_daily_field_limits(place_index)
-            self.ui.availableFromContent.setText(self._current_selected_model["Since"])
-        else:
-            # realtime values are available only after 2010.
-            min_year = int(self._current_selected_model["Since"])
-            if min_year > 2010:
-                self.ui.availableFromContent.setText(str(min_year))
-            else:
-                min_year = 2010
-                self.ui.availableFromContent.setText("1.1.2010")
-
+    def _set_time_field_limits(self):
+        if self._current_selected_dataset is not None:
+            # minimum date
             self.ui.startDatetimeEdit.clearMinimumDate()
-            min_date = QDate(min_year, 1, 1)
+            min_date = QDate(self._current_selected_dataset["starttime"])
             self.ui.startDatetimeEdit.setMinimumDate(min_date)
 
-            self.ui.startDatetimeEdit.clearMaximumDate()
-            max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-            self.ui.startDatetimeEdit.setMaximumDate(max_date)
-
             self.ui.endDatetimeEdit.clearMinimumDate()
-            min_date = QDate(min_year, 1, 1)
+            min_date = QDate(self._current_selected_dataset["starttime"])
             self.ui.endDatetimeEdit.setMinimumDate(min_date)
 
+            # maximum date
+            self.ui.startDatetimeEdit.clearMaximumDate()
+            if self._current_selected_dataset["endtime"] is not None:
+                max_date = QDate(self._current_selected_dataset["endtime"])
+            else:
+                max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+            self.ui.startDatetimeEdit.setMaximumDate(max_date)
+
             self.ui.endDatetimeEdit.clearMaximumDate()
-            max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
+            if self._current_selected_dataset["endtime"] is not None:
+                max_date = QDate(self._current_selected_dataset["endtime"])
+            else:
+                max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
             self.ui.endDatetimeEdit.setMaximumDate(max_date)
 
-            new_date = QDate(self.ui.startDatetimeEdit.date().year(), self.ui.startDatetimeEdit.date().month(), self.ui.startDatetimeEdit.date().day() + 1)
+            new_date = QDate(self.ui.startDatetimeEdit.date().year(), self.ui.startDatetimeEdit.date().month(),
+                             self.ui.startDatetimeEdit.date().day() + 1)
             self.ui.endDatetimeEdit.setDate(new_date)
 
             if self.ui.startDatetimeEdit.date() < self.ui.startDatetimeEdit.minimumDate():
                 self.ui.startDatetimeEdit.setDate(self.ui.startDatetimeEdit.minimumDate())
-
-    def _set_daily_field_limits(self, place_index):
-        self.ui.startDatetimeEdit.clearMinimumDate()
-        min_date = QDate(int(self._current_selected_model["Since"]), 1, 1)
-        self.ui.startDatetimeEdit.setMinimumDate(min_date)
-
-        self.ui.startDatetimeEdit.clearMaximumDate()
-        max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.startDatetimeEdit.setMaximumDate(max_date)
-
-        self.ui.endDatetimeEdit.clearMinimumDate()
-        min_date = QDate(int(self._current_selected_model["Since"]), 1, 1)
-        self.ui.endDatetimeEdit.setMinimumDate(min_date)
-
-        self.ui.endDatetimeEdit.clearMaximumDate()
-        max_date = QDate(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day)
-        self.ui.endDatetimeEdit.setMaximumDate(max_date)
-
-        new_date = QDate(self.ui.startDatetimeEdit.date().year(), self.ui.startDatetimeEdit.date().month(),
-                         self.ui.startDatetimeEdit.date().day() + 1)
-        self.ui.endDatetimeEdit.setDate(new_date)
-
-        if self.ui.startDatetimeEdit.date() < self.ui.startDatetimeEdit.minimumDate():
-            self.ui.startDatetimeEdit.setDate(self.ui.startDatetimeEdit.minimumDate())
 
     def _choose_place_to_save_data(self, dataframe):
         paths = QStandardPaths.standardLocations(0)

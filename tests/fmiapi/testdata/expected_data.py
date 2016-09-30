@@ -52,30 +52,12 @@ EXPECTED_REALTIME_1_DAY = {
 EXPECTED_LAMMI_CATALOG_METADATA = [
     {
         "latitude": 61.05403,
-        "endtime": datetime.strptime("2016-08-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
-        "starttime": datetime.strptime("1963-07-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
-        "longitude": 25.03839,
-        "link": "http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&storedquery_id=fmi::observations::weather::monthly::timevaluepair&crs=EPSG::3067&fmisid=101154",
-        "identifier": "obs_point monthly101154",
-        "title_fi": "Säähavaintojen kuukausiarvot: Hämeenlinna Lammi Pappila"
-    },
-    {
-        "latitude": 61.05403,
         "endtime": None,
         "starttime": datetime.strptime("2010-01-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
         "longitude": 25.03839,
         "link": "http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&crs=EPSG::3067&fmisid=101154",
         "identifier": "obs_point weather101154",
         "title_fi": "Säähavainnot: Hämeenlinna Lammi Pappila"
-    },
-    {
-        "latitude": 61.05403,
-        "endtime": datetime.strptime("2016-06-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
-        "starttime": datetime.strptime("1963-07-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
-        "longitude": 25.03839,
-        "link": "http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&storedquery_id=fmi::observations::weather::monthly::timevaluepair&crs=EPSG::3067&fmisid=101154",
-        "identifier": "obs_point monthly101154",
-        "title_fi": "Säähavaintojen kuukausiarvot: Hämeenlinna Lammi Pappila"
     },
     {
         "latitude": 61.05403,

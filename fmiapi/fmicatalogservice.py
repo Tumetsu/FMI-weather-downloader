@@ -67,7 +67,8 @@ def _parse_data(data):
             "identifier": item.find(".//gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString", namespaces=_NAMESPACES).text
         }
         result.append(ds)
-    return result
+
+    return sorted(list({v['title_fi']: v for v in result}.values()), key=lambda x: x['title_fi']) # Remove duplicates with temporary dict where unique attribute is the key
 
 def get_station_metadata(fmisid):
     return _parse_data(_retrieve_metadata_by_fmisid(fmisid))

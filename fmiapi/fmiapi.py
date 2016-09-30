@@ -5,6 +5,7 @@ import datetime
 from fmiapi.fmierrors import NoDataException
 from fmiapi.fmirequesthandler import FMIRequestHandler
 from fmiapi.fmixmlparser import FMIxmlParser
+from fmiapi.fmicatalogservice import get_station_metadata
 
 
 class FMIApi:
@@ -74,6 +75,9 @@ class FMIApi:
 
     def get_supported_queries(self):
         return self._supported_queries
+
+    def get_catalogue_of_station(self, fmisid):
+        return get_station_metadata(fmisid)
 
     def get_index_of_station(self, place_name):
         for i in range(0, len(self._stations)):
