@@ -1,6 +1,7 @@
 import csv
 import json
 import datetime
+import re
 
 from fmiapi.fmierrors import NoDataException
 from fmiapi.fmirequesthandler import FMIRequestHandler
@@ -36,13 +37,9 @@ class FMIApi:
         if params["storedquery_id"] == "fmi::observations::weather::daily::multipointcoverage":
             # Special logic for daily observations
             params['endtime'] += datetime.timedelta(days=1)  # add one day to end time to get final day into result too
-            data = self._request_handler.request(params, max_timespan=self._DAILY_REQUEST_MAX_RANGE_HOURS,
-                                                 progress_callback=callback_function)
-        else:
-            print(params)
-            data = self._request_handler.request(params, max_timespan=self._REALTIME_REQUEST_MAX_RANGE_HOURS,
-                                                 progress_callback=callback_function)
 
+        data = self._request_handler.request(params, max_timespan=params['max_hours_range'],
+                                                 progress_callback=callback_function)
         # Notify ui that moving to parsing phase
         if change_to_parsing is not None:
             change_to_parsing()
@@ -77,7 +74,17 @@ class FMIApi:
         return self._supported_queries
 
     def get_catalogue_of_station(self, fmisid):
-        return get_station_metadata(fmisid)
+        # Add extra metadata for each dataset which are required for queries and translations
+        # in short data which is not provided by catalogue service. See supported_queries.json
+        datasets = get_station_metadata(fmisid)
+        augmented = []
+        for ds in datasets:
+            for sq in self._supported_queries:
+                if re.search(sq['id'], ds['identifier']):
+                    augmented.append({**ds, **sq})
+                    break
+
+        return augmented
 
     def get_index_of_station(self, place_name):
         for i in range(0, len(self._stations)):

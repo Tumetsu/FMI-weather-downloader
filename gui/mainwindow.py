@@ -108,7 +108,6 @@ class Mainwindow(QMainWindow):
         #FIXME: REMOVE self.ui.availableFromContent.setText(self._current_selected_model["Since"])
         self._set_time_field_limits()
 
-        print(self._current_selected_model)
         # Fetch catalog information of the current station
         self.catalogue_task = BackgroundTask(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'], self._set_available_datasets_from_catalogue)
         self.catalogue_task.start()
@@ -117,14 +116,13 @@ class Mainwindow(QMainWindow):
         self._current_available_datasets = available_datasets
         self.ui.dataSelectionCombobox.clear()
         for q in available_datasets:
-            self.ui.dataSelectionCombobox.addItem(q["title_fi"])
+            self.ui.dataSelectionCombobox.addItem(q["name"][self._language])
 
         self.ui.dataSelectionCombobox.setCurrentIndex(0)
 
 
     @pyqtSlot(int, name='selectDataset')
     def _select_dataset_from_combobox(self, dataset_index):
-        print("Set available dataset to combobox")
         if self._current_available_datasets is not None:
             self._current_selected_dataset = self._current_available_datasets[dataset_index]
             self.ui.availableFromContent.setText(datetime.datetime.strftime(self._current_selected_dataset["starttime"], '%d.%m.%Y'))
@@ -207,12 +205,12 @@ class Mainwindow(QMainWindow):
 
     def _download(self):
         """ Download weather data"""
-        query = self.get_selected_query_model()
-        params = {"request": query["request"],
-                  "storedquery_id": query["storedquery_id"],
+        params = {"request": self._current_selected_dataset["request"],
+                  "storedquery_id": self._current_selected_dataset["storedquery_id"],
                   "fmisid": self._current_selected_model["FMISID"],
                   "starttime": self._get_dateTime_from_UI(self.ui.startDatetimeEdit, onlyDate=False),
-                  "endtime": self._get_dateTime_from_UI(self.ui.endDatetimeEdit, onlyDate=False)
+                  "endtime": self._get_dateTime_from_UI(self.ui.endDatetimeEdit, onlyDate=False),
+                  "max_hours_range": self._current_selected_dataset["max_hours_range"]
                   }
 
         download = DownloadProgress(self)
