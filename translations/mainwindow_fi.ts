@@ -4,12 +4,12 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="68"/>
+        <location filename="../gui/dialogs/ui_aboutdialog.py" line="68"/>
         <source>About</source>
         <translation>Tietoa</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="69"/>
+        <location filename="../gui/dialogs/ui_aboutdialog.py" line="69"/>
         <source>FMIDownloader</source>
         <translation>FMIDownloader {version}</translation>
     </message>
@@ -19,22 +19,22 @@
         <translation>Yksinkertainen sovellus ilmatieteenlaitoksen säähavaintodatan lataamiseen.Jos ohjelmasta herää kysymyksiä, voit ottaa yhteyttä</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="71"/>
+        <location filename="../gui/dialogs/ui_aboutdialog.py" line="71"/>
         <source>&lt;a href=&apos;http://www.tuomassalmi.com&apos;&gt;Tuomas Salmi 2015-2016&lt;/a&gt;</source>
         <translation>{author}</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="72"/>
+        <location filename="../gui/dialogs/ui_aboutdialog.py" line="72"/>
         <source>&lt;a href=&apos;mailto:salmi.tuomas@gmail.com&apos;&gt;salmi.tuomas@gmail.com&lt;/a&gt;</source>
         <translation>{email}</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="73"/>
+        <location filename="../gui/dialogs/ui_aboutdialog.py" line="73"/>
         <source>&lt;a href=&apos;https://github.com/Tumetsu/FMI-weather-downloader&apos;&gt;FMIDownloader Github&lt;/a&gt;</source>
         <translation>{github}</translation>
     </message>
     <message>
-        <location filename="../gui/ui_aboutdialog.py" line="74"/>
+        <location filename="../gui/dialogs/ui_aboutdialog.py" line="74"/>
         <source>Close</source>
         <translation>Sulje</translation>
     </message>
@@ -42,32 +42,32 @@
 <context>
     <name>CheckUpdatesDialog</name>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="53"/>
+        <location filename="../gui/dialogs/ui_updatedialog.py" line="53"/>
         <source>Updates</source>
         <translation>Päivitykset</translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="54"/>
+        <location filename="../gui/dialogs/ui_updatedialog.py" line="54"/>
         <source>Available FMIDownloader version: </source>
         <translation>Saatavilla oleva versio: </translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="55"/>
+        <location filename="../gui/dialogs/ui_updatedialog.py" line="55"/>
         <source>Your current version is: </source>
         <translation>Nykyinen ohjelmaversiosi: </translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="56"/>
+        <location filename="../gui/dialogs/ui_updatedialog.py" line="56"/>
         <source>Check updates on startup</source>
         <translation>Tarkista päivitykset ohjelman käynnistyessä</translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="57"/>
+        <location filename="../gui/dialogs/ui_updatedialog.py" line="57"/>
         <source>Go to downloads</source>
         <translation>Latauksiin</translation>
     </message>
     <message>
-        <location filename="../gui/ui_updatedialog.py" line="58"/>
+        <location filename="../gui/dialogs/ui_updatedialog.py" line="58"/>
         <source>Close</source>
         <translation>Sulje</translation>
     </message>
@@ -75,12 +75,12 @@
 <context>
     <name>LanguageDialog</name>
     <message>
-        <location filename="../gui/ui_languagedialog.py" line="36"/>
+        <location filename="../gui/dialogs/ui_languagedialog.py" line="36"/>
         <source>Language</source>
         <translation>Kieli</translation>
     </message>
     <message>
-        <location filename="../gui/ui_languagedialog.py" line="37"/>
+        <location filename="../gui/dialogs/ui_languagedialog.py" line="37"/>
         <source>Select language</source>
         <translation>Valitse kieli</translation>
     </message>
@@ -98,7 +98,7 @@
         <translation>Ilmatieteenlaitoksen vuorokausiarvojen lataus</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="186"/>
+        <location filename="../gui/ui_mainwindow.py" line="130"/>
         <source>Paikka:</source>
         <translation>Paikka:</translation>
     </message>
@@ -108,7 +108,7 @@
         <translation>Valitse sääasema, jonka tiedot tahdot ladata</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="188"/>
+        <location filename="../gui/ui_mainwindow.py" line="133"/>
         <source>Saatavilla vuodesta:</source>
         <translation>Saatavilla vuodesta:</translation>
     </message>
@@ -138,12 +138,12 @@
         <translation>Lopetuspäivämäärä, jolta tahdot ladata datan. Ei saa olla sama kuin aloitus päivämäärä.</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="195"/>
+        <location filename="../gui/ui_mainwindow.py" line="143"/>
         <source>Lataa data, ja tallenna se tiedostoon</source>
         <translation>Lataa data, ja tallenna se tiedostoon</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="196"/>
+        <location filename="../gui/ui_mainwindow.py" line="144"/>
         <source>Lataa</source>
         <translation>Lataa</translation>
     </message>
@@ -158,17 +158,17 @@
         <translation>Ilmatieteenlaitoksen reaaliaika havaintojen lataus</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="190"/>
+        <location filename="../gui/ui_mainwindow.py" line="135"/>
         <source>1.1.2010</source>
         <translation>1.1.2010</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="191"/>
+        <location filename="../gui/ui_mainwindow.py" line="137"/>
         <source>Aloitus pvm ja aika:</source>
         <translation>Aloitus pvm ja aika:</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="192"/>
+        <location filename="../gui/ui_mainwindow.py" line="142"/>
         <source>Lopetus pvm ja aika:</source>
         <translation>Lopetus pvm ja aika:</translation>
     </message>
@@ -183,12 +183,12 @@
         <translation>Ilmatieteenlaitoksen reaaliaikaisten havaintojen lataus</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="199"/>
+        <location filename="../gui/ui_mainwindow.py" line="145"/>
         <source>Tiedosto</source>
         <translation>Tiedosto</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="201"/>
+        <location filename="../gui/ui_mainwindow.py" line="147"/>
         <source>Aseta tunnisteavain</source>
         <translation>Aseta tunnisteavain</translation>
     </message>
@@ -198,12 +198,12 @@
         <translation>Aseta palvelun käyttöön tarvittava tunnisteavain</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="203"/>
+        <location filename="../gui/ui_mainwindow.py" line="149"/>
         <source>Quit</source>
         <translation>Quit</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="204"/>
+        <location filename="../gui/ui_mainwindow.py" line="150"/>
         <source>Tietoa</source>
         <translation>Tietoa</translation>
     </message>
@@ -213,22 +213,22 @@
         <translation>Tietoa tästä sovelluksesta</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="206"/>
+        <location filename="../gui/ui_mainwindow.py" line="152"/>
         <source>Poistu</source>
         <translation>Poistu</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="207"/>
+        <location filename="../gui/ui_mainwindow.py" line="153"/>
         <source>Aseta kieli</source>
         <translation>Aseta kieli</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="200"/>
+        <location filename="../gui/ui_mainwindow.py" line="146"/>
         <source>Apua</source>
         <translation>Apua</translation>
     </message>
     <message>
-        <location filename="../gui/ui_mainwindow.py" line="208"/>
+        <location filename="../gui/ui_mainwindow.py" line="154"/>
         <source>Ohjeet</source>
         <translation>Ohjeet</translation>
     </message>
@@ -236,6 +236,26 @@
         <location filename="../gui/ui_mainwindow.py" line="209"/>
         <source>Tarkista päivitykset</source>
         <translation>Tarkista päivitykset</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_mainwindow.py" line="129"/>
+        <source>Aineistotyyppi ja havaintoasema</source>
+        <translation>Aineistotyyppi ja havaintoasema</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_mainwindow.py" line="132"/>
+        <source>Aineisto:</source>
+        <translation>Aineisto:</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_mainwindow.py" line="136"/>
+        <source>Aineiston rajaus</source>
+        <translation>Aineiston rajaus</translation>
+    </message>
+    <message>
+        <location filename="../gui/ui_mainwindow.py" line="141"/>
+        <source>dd.MM.yyyy hh:mm</source>
+        <translation></translation>
     </message>
 </context>
 <context>
