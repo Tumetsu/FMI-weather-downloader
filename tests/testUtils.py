@@ -29,7 +29,8 @@ def create_daily_query(starttime, endtime, fmisid='1234', request='getFeature'):
         'storedquery_id': 'fmi::observations::weather::daily::multipointcoverage',
         'fmisid': fmisid,
         'starttime': starttime,
-        'endtime': endtime
+        'endtime': endtime,
+        'max_hours_range': 8928
         }
 
 def create_realtime_query(starttime, endtime, fmisid='1234', request='getFeature'):
@@ -38,5 +39,6 @@ def create_realtime_query(starttime, endtime, fmisid='1234', request='getFeature
         'storedquery_id': 'fmi::observations::weather::multipointcoverage',
         'fmisid': fmisid,
         'starttime': starttime,
-        'endtime': endtime
+        'endtime': endtime,
+        'max_hours_range': 168
         }
