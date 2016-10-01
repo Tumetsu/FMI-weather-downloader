@@ -3,6 +3,7 @@ from PyQt5.QtCore import QStandardPaths
 from PyQt5.QtWidgets import QFileDialog
 from gui.messages import Messages
 from datetime import datetime
+import json
 
 
 class CsvExport:
@@ -29,8 +30,22 @@ class CsvExport:
 
     @staticmethod
     def _save_to_csv(df, path):
+
         with open(path, 'w', newline='\n') as outfile:
             writer = csv.writer(outfile)
-            writer.writerow(df.keys())
+            # Create description rows for measurement units
+            with open('data/measurement_descriptions.json', 'r', encoding="utf8") as file:
+                descriptions = json.load(file)
+                keys = df.keys()
+                writer.writerow(['id', 'Label', 'BasePhenomenon', 'Unit', 'AggregationTimePeriod', 'StatisticalFunction'])
+                for key in keys:
+                    key_lower = key.lower()
+                    if key_lower in descriptions:
+                        unit = descriptions[key_lower]
+                        writer.writerow([unit['id'], unit['label'], unit['basePhenomenon'], unit['uom'], unit['aggregationTimePeriod'], unit['statisticalFunction']])
+
+            writer.writerow([])
+            writer.writerow([])
+            writer.writerow(keys)
             writer.writerows(zip(*df.values()))
             outfile.close()
