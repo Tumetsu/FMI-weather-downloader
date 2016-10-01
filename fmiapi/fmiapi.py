@@ -6,7 +6,7 @@ import re
 from fmiapi.fmierrors import NoDataException
 from fmiapi.fmirequesthandler import FMIRequestHandler
 from fmiapi.fmixmlparser import FMIxmlParser
-from fmiapi.fmicatalogservice import get_station_metadata
+from fmiapi import fmicatalogservice
 
 
 class FMIApi:
@@ -76,7 +76,7 @@ class FMIApi:
     def get_catalogue_of_station(self, fmisid):
         # Add extra metadata for each dataset which are required for queries and translations
         # in short data which is not provided by catalogue service. See supported_queries.json
-        datasets = get_station_metadata(fmisid)
+        datasets = fmicatalogservice.get_station_metadata(fmisid)
         augmented = []
         for ds in datasets:
             for sq in self._supported_queries:

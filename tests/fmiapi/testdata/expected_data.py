@@ -49,6 +49,7 @@ EXPECTED_REALTIME_1_DAY = {
     'place': ['Hämeenlinna Lammi Pappila']*153
 }
 
+
 EXPECTED_LAMMI_CATALOG_METADATA = [
     {
         "latitude": 61.05403,
@@ -57,24 +58,60 @@ EXPECTED_LAMMI_CATALOG_METADATA = [
         "longitude": 25.03839,
         "link": "http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&crs=EPSG::3067&fmisid=101154",
         "identifier": "obs_point weather101154",
-        "title_fi": "Säähavainnot: Hämeenlinna Lammi Pappila"
+        "title_fi": "Säähavainnot: Hämeenlinna Lammi Pappila",
     },
     {
         "latitude": 61.05403,
-        "endtime": datetime.strptime("2016-07-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
-        "starttime": datetime.strptime("1963-07-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
+        "endtime": datetime.strptime("2016-07-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ"),
+        "starttime": datetime.strptime("1963-07-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ"),
         "longitude": 25.03839,
         "link": "http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&storedquery_id=fmi::observations::weather::monthly::timevaluepair&crs=EPSG::3067&fmisid=101154",
         "identifier": "obs_point monthly101154",
-        "title_fi": "Säähavaintojen kuukausiarvot: Hämeenlinna Lammi Pappila"
+        "title_fi": "Säähavaintojen kuukausiarvot: Hämeenlinna Lammi Pappila",
     },
     {
         "latitude": 61.05403,
         "endtime": None,
-        "starttime": datetime.strptime("1963-07-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
+        "starttime": datetime.strptime("1963-07-01T00:00:00Z", "%Y-%m-%dT%H:%M:%SZ"),
         "longitude": 25.03839,
         "link": "http://data.fmi.fi/fmi-apikey/insert-your-apikey-here/wfs?request=getFeature&storedquery_id=fmi::observations::weather::daily::timevaluepair&crs=EPSG::3067&fmisid=101154",
         "identifier": "obs_point daily101154",
-        "title_fi": "Säähavaintojen vuorokausiarvot: Hämeenlinna Lammi Pappila"
+        "title_fi": "Säähavaintojen vuorokausiarvot: Hämeenlinna Lammi Pappila",
     }
+]
+
+EXPECTED_LAMMI_CATALOG_AUGMENTED_METADATA = [
+    {**EXPECTED_LAMMI_CATALOG_METADATA[0], **{
+        # Augmented attributes from FMIApi"s supported_queries.json
+        "id": "weather",
+        "max_hours_range": 168,
+        "name": {
+            "en": "Weather: real time observations",
+            "fi": "Sää: reaaliaikahavainnot"
+        },
+        "request": "getFeature",
+        "storedquery_id": "fmi::observations::weather::multipointcoverage"
+    }},
+    {**EXPECTED_LAMMI_CATALOG_METADATA[1], **{
+        # Augmented attributes from FMIApi"s supported_queries.json
+        "id": "monthly",
+        "max_hours_range": 87600,
+        "name": {
+            "en": "Weather: monthly averages",
+            "fi": "Sää: kuukausikeskiarvot"
+        },
+        "request": "getFeature",
+        "storedquery_id": "fmi::observations::weather::monthly::multipointcoverage"
+    }},
+    {**EXPECTED_LAMMI_CATALOG_METADATA[2], **{
+        # Augmented attributes from FMIApi"s supported_queries.json
+        "id": "daily",
+        "max_hours_range": 8928,
+        "name": {
+            "en": "Weather: daily observations",
+            "fi": "Sää: vuorokausihavainnot"
+        },
+        "request": "getFeature",
+        "storedquery_id": "fmi::observations::weather::daily::multipointcoverage"
+    }}
 ]
