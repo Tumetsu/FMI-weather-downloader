@@ -4,10 +4,12 @@ from PyQt5.QtCore import pyqtSlot, QObject
 
 
 class BackgroundTask:
-    def __init__(self, runnable_method, method_params, callback):
+    def __init__(self, runnable_method, method_params, callback, error_callback):
         self.worker = BackgroundWorker(method_params, runnable_method)
         self.worker.threadResultsSignal.connect(self._end)
+        self.worker.threadExceptionSignal.connect(self._error)
         self.callback = callback
+        self.error_callback = error_callback
         self.thread = QThread()
 
     def start(self):
@@ -18,6 +20,11 @@ class BackgroundTask:
     @pyqtSlot(object, name="taskFinished")
     def _end(self, results):
         self.callback(results)
+        self.thread.quit()
+
+    @pyqtSlot(object, name="exceptionInProcess")
+    def _error(self, err):
+        self.error_callback(err)
         self.thread.quit()
 
 

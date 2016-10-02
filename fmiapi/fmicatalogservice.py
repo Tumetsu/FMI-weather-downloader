@@ -2,7 +2,7 @@ import http.client
 import urllib.request
 from lxml import etree
 from datetime import datetime
-from fmiapi.fmierrors import RequestException
+from fmiapi.fmierrors import RequestException, NoDataSetsException
 
 _NAMESPACES = {"csw": "http://www.opengis.net/cat/csw/2.0.2",
         "gmd": "http://www.isotc211.org/2005/gmd",
@@ -39,7 +39,7 @@ def _retrieve_metadata_by_fmisid(fmisid):
         data = response.read()
         return etree.XML(data)
     else:
-        raise RequestException("Error in metadata retrieval for fmisid " + fmisid, response.status)
+        raise RequestException("Error in metadata retrieval for fmisid " + fmisid, 'METADATA_RETRIEVAL')
 
 def _parse_data(data):
     """
@@ -71,5 +71,8 @@ def _parse_data(data):
     return sorted(list({v['title_fi']: v for v in result}.values()), key=lambda x: x['title_fi']) # Remove duplicates with temporary dict where unique attribute is the key
 
 def get_station_metadata(fmisid):
-    return _parse_data(_retrieve_metadata_by_fmisid(fmisid))
+    result = _parse_data(_retrieve_metadata_by_fmisid(fmisid))
+    if len(result) == 0:
+        raise NoDataSetsException(fmisid)
+    return result
 

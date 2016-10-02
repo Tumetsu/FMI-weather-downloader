@@ -4,7 +4,7 @@ from tests.testUtils import *
 from tests.fmiapi.commonmocks import *
 from unittest import mock
 from lxml import etree
-from fmiapi.fmierrors import RequestException
+from fmiapi.fmierrors import RequestException, NoDataSetsException
 import pytest
 
 
@@ -35,4 +35,12 @@ def describe_fmi_catalog_service():
 
         with pytest.raises(RequestException) as e:
             get_station_metadata('1234')
-        assert_equal(400, e.value.error_code)
+        assert_equal('METADATA_RETRIEVAL', e.value.error_code)
+
+    @mock.patch('fmiapi.fmicatalogservice._parse_data', spec=True)
+    def should_throw_exception_when_request_returns_empty_list(mock_parse):
+        mock_parse.return_value = []
+
+        with pytest.raises(NoDataSetsException) as e:
+            get_station_metadata('1234')
+        assert_equal('NODATASETS', e.value.error_code)

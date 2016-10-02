@@ -328,6 +328,24 @@ Please try a longer time-span,for example one year or later beginning date.</tra
     </message>
 </context>
 <context>
+    <name>fmicatalogue_error</name>
+    <message>
+        <location filename="../gui/messages.py" line="15"/>
+        <source>Saatavilla olevan aineiston listaus ei onnistunut FMI katalogipalvelusta.
+Yritä myöhemmin uudestaan tai kokeile toista asemaa.</source>
+        <translation>Listing of available data sets from FMI catalogue service did not succeed.
+Try again later or try another observation station.</translation>
+    </message>
+</context>
+<context>
+    <name>nodatasets_error</name>
+    <message>
+        <location filename="../gui/messages.py" line="10"/>
+        <source>Saatavilla olevia aineistoja ei löytynyt valitulle asemalle.</source>
+        <translation>Available data sets not found for selected station.</translation>
+    </message>
+</context>
+<context>
     <name>processing_weatherdata</name>
     <message>
         <location filename="messages.py" line="32"/>
@@ -390,7 +408,7 @@ After you have registered to the FMI&apos;s service, copy and paste the API-key 
 <context>
     <name>setapikeymessage</name>
     <message>
-        <location filename="../gui/messages.py" line="27"/>
+        <location filename="../gui/messages.py" line="36"/>
         <source>Tunnisteavainta ei ole maaritetty. Aseta se valikossa Tiedosto-&gt;Aseta tunnisteavain</source>
         <translation>API-key is not defined. Set it in File-&gt;Set API-key</translation>
     </message>
@@ -406,7 +424,7 @@ After you have registered to the FMI&apos;s service, copy and paste the API-key 
 <context>
     <name>unknown_error</name>
     <message>
-        <location filename="../gui/messages.py" line="10"/>
+        <location filename="../gui/messages.py" line="19"/>
         <source>Tuntematon virhe: </source>
         <translation>Unknown error: </translation>
     </message>

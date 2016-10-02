@@ -324,6 +324,24 @@ Kokeile pitempää ajanjaksoa, esim. yhtä vuotta tai myöhäisempää aloitusp�
     </message>
 </context>
 <context>
+    <name>fmicatalogue_error</name>
+    <message>
+        <location filename="../gui/messages.py" line="15"/>
+        <source>Saatavilla olevan aineiston listaus ei onnistunut FMI katalogipalvelusta.
+Yritä myöhemmin uudestaan tai kokeile toista asemaa.</source>
+        <translation>Saatavilla olevan aineiston listaus ei onnistunut FMI katalogipalvelusta.
+Yritä myöhemmin uudestaan tai kokeile toista asemaa.</translation>
+    </message>
+</context>
+<context>
+    <name>nodatasets_error</name>
+    <message>
+        <location filename="../gui/messages.py" line="10"/>
+        <source>Saatavilla olevia aineistoja ei löytynyt valitulle asemalle.</source>
+        <translation>Saatavilla olevia aineistoja ei löytynyt valitulle asemalle.</translation>
+    </message>
+</context>
+<context>
     <name>processing_weatherdata</name>
     <message>
         <location filename="messages.py" line="32"/>
@@ -393,7 +411,7 @@ Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se t
 <context>
     <name>setapikeymessage</name>
     <message>
-        <location filename="../gui/messages.py" line="27"/>
+        <location filename="../gui/messages.py" line="36"/>
         <source>Tunnisteavainta ei ole maaritetty. Aseta se valikossa Tiedosto-&gt;Aseta tunnisteavain</source>
         <translation>Tunnisteavainta ei ole maaritetty. Aseta se valikossa Tiedosto-&gt;Aseta tunnisteavain</translation>
     </message>
@@ -409,7 +427,7 @@ Kun olet rekisteröitynyt ja saanut tekstimuotoisen tunnisteavaimen, kopioi se t
 <context>
     <name>unknown_error</name>
     <message>
-        <location filename="../gui/messages.py" line="10"/>
+        <location filename="../gui/messages.py" line="19"/>
         <source>Tuntematon virhe: </source>
         <translation>Tuntematon virhe: </translation>
     </message>

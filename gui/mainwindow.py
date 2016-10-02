@@ -77,13 +77,38 @@ class Mainwindow(QMainWindow):
         self._current_selected_model = self.api.get_stations()[self.api.get_index_of_station("Hämeenlinna Lammi Pappila")]
         self.ui.stationComboBox.currentIndexChanged.connect(self._select_place_from_combobox)
 
+    def _background_fmicatalogue_error(self, err):
+        """
+        Handle errors which happened in fmi catalogue retrieval background thread. This is a
+        error callback function provided for BackgroundTask class on construction.
+        :param err:
+        :return:
+        """
+        if err.error_code == 'NODATASETS':
+            self.show_error_alerts(Messages.no_datasets_found())
+        elif err.error_code == 'METADATA_RETRIEVAL':
+            self.show_error_alerts(Messages.fmicatalogue_error())
+        else:
+            self.show_error_alerts(Messages.unknown_error() + str(err))
+
+        self._current_available_datasets = None
+        self._current_selected_dataset = None
+        self.ui.dataSelectionCombobox.clear()
+        self._set_ui_controls_status()
+
+    def _set_ui_controls_status(self):
+        active = self._current_selected_dataset is not None
+        self.ui.downloadButton.setEnabled(active)
+        self.ui.endDatetimeEdit.setEnabled(active)
+        self.ui.startDatetimeEdit.setEnabled(active)
+
     def _set_up_ui(self):
         # language change signal
         self.setLanguageSignal.connect(lambda: menubar_actions.select_language(self, self._settings))
 
         self._set_up_station_comboboxes()
         self.catalogue_task = BackgroundTask(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'],
-                                             self._set_available_datasets_from_catalogue)
+                                             self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
         self.catalogue_task.start()
 
         # When dataset is selected
@@ -113,7 +138,7 @@ class Mainwindow(QMainWindow):
         self._current_selected_model = self.api.get_stations()[place_index]
 
         # Fetch catalog information of the current station and set datasets on completion
-        self.catalogue_task = BackgroundTask(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'], self._set_available_datasets_from_catalogue)
+        self.catalogue_task = BackgroundTask(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'], self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
         self.catalogue_task.start()
 
     def _set_available_datasets_from_catalogue(self, available_datasets):
@@ -128,6 +153,7 @@ class Mainwindow(QMainWindow):
             self.ui.dataSelectionCombobox.addItem(q["name"][self._language])
         self.ui.dataSelectionCombobox.setCurrentIndex(0)
         self._current_selected_dataset = self._current_available_datasets[0]
+        self._set_ui_controls_status()
         self._set_time_field_limits()
 
     @pyqtSlot(int, name='selectDataset')
@@ -137,9 +163,10 @@ class Mainwindow(QMainWindow):
         :param dataset_index:
         :return:
         """
-        self._current_selected_dataset = self._current_available_datasets[dataset_index]
-        self.ui.availableFromContent.setText(datetime.datetime.strftime(self._current_selected_dataset["starttime"], '%d.%m.%Y'))
-        self._set_time_field_limits()
+        if self._current_available_datasets is not None:
+            self._current_selected_dataset = self._current_available_datasets[dataset_index]
+            self.ui.availableFromContent.setText(datetime.datetime.strftime(self._current_selected_dataset["starttime"], '%d.%m.%Y'))
+            self._set_time_field_limits()
 
     def _set_time_field_limits(self):
         # minimum date

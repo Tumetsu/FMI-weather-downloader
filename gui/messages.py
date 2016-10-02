@@ -6,6 +6,15 @@ class Messages:
     were saved in regular variables. With functions it seems to be ok. Better solutions are welcome. """
 
     @staticmethod
+    def no_datasets_found():
+        return QCoreApplication.translate("nodatasets_error",
+                                          "Saatavilla olevia aineistoja ei löytynyt valitulle asemalle.")
+
+    @staticmethod
+    def fmicatalogue_error():
+        return QCoreApplication.translate("fmicatalogue_error", "Saatavilla olevan aineiston listaus ei onnistunut FMI katalogipalvelusta.\nYritä myöhemmin uudestaan tai kokeile toista asemaa.")
+
+    @staticmethod
     def unknown_error():
         return QCoreApplication.translate("unknown_error", "Tuntematon virhe: ")
 
