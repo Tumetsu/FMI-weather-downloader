@@ -1,31 +1,41 @@
 from gui.mainwindow import *
 from collections import OrderedDict
 from PyQt5.QtCore import pyqtSlot, QObject
+from queue import Queue
 
 
 class BackgroundTask:
-    def __init__(self, runnable_method, method_params, callback, error_callback):
-        self.worker = BackgroundWorker(method_params, runnable_method)
+    """
+    Class to run background tasks in one thread one at a time. This is used to retrieve catalogue data
+    one at a time. Utilizes worker thread which waits something to fetch through synchronized queue.
+    Each new task will clear previous ones from queue.
+    """
+    def __init__(self):
+        self.queue = Queue()
+        self.worker = BackgroundWorker(self.queue)
         self.worker.threadResultsSignal.connect(self._end)
         self.worker.threadExceptionSignal.connect(self._error)
+
+        self.thread = QThread()
+        self.thread.started.connect(self.worker.run)
+        self.thread.start()
+
+    def start(self, runnable_method, method_params, callback, error_callback):
+        self.worker.moveToThread(self.thread)
         self.callback = callback
         self.error_callback = error_callback
-        self.thread = QThread()
-
-    def start(self):
-        self.worker.moveToThread(self.thread)
-        self.thread.started.connect(self.worker.download_data)
-        self.thread.start()
+        # Empty previous requests. Only newest matters
+        while not self.queue.empty():
+            self.queue.get()
+        self.queue.put({'params': method_params, 'method': runnable_method})
 
     @pyqtSlot(object, name="taskFinished")
     def _end(self, results):
         self.callback(results)
-        self.thread.quit()
 
     @pyqtSlot(object, name="exceptionInProcess")
     def _error(self, err):
         self.error_callback(err)
-        self.thread.quit()
 
 
 class BackgroundWorker(QObject):
@@ -36,15 +46,24 @@ class BackgroundWorker(QObject):
     threadExceptionSignal = pyqtSignal(object, name="exceptionInProcess")
     threadResultsSignal = pyqtSignal(object, name="results")
 
-    def __init__(self, params, request_function, parent=None):
+    def __init__(self, queue, parent=None):
         super().__init__(parent)
+        self.queue = queue
+
+    def set_task(self, params, request_function):
         self.request_params = params
         self.request_function = request_function
 
     @pyqtSlot(name='services')
-    def download_data(self):
+    def run(self):
+        while True:
+            task = self.queue.get()
+            if task is not None:
+                self.download_data(task['method'], task['params'])
+
+    def download_data(self, request_function, request_params):
         try:
-            results = self.request_function(self.request_params)
+            results = request_function(request_params)
             self.threadResultsSignal.emit(results)
         except Exception as e:
             self.threadExceptionSignal.emit(e)

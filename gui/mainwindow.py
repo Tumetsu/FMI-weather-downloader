@@ -107,9 +107,9 @@ class Mainwindow(QMainWindow):
         self.setLanguageSignal.connect(lambda: menubar_actions.select_language(self, self._settings))
 
         self._set_up_station_comboboxes()
-        self.catalogue_task = BackgroundTask(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'],
+        self.catalogue_task = BackgroundTask()
+        self.catalogue_task.start(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'],
                                              self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
-        self.catalogue_task.start()
 
         # When dataset is selected
         self.ui.dataSelectionCombobox.currentIndexChanged.connect(self._select_dataset_from_combobox)
@@ -138,8 +138,7 @@ class Mainwindow(QMainWindow):
         self._current_selected_model = self.api.get_stations()[place_index]
 
         # Fetch catalog information of the current station and set datasets on completion
-        self.catalogue_task = BackgroundTask(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'], self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
-        self.catalogue_task.start()
+        self.catalogue_task.start(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'], self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
 
     def _set_available_datasets_from_catalogue(self, available_datasets):
         """
