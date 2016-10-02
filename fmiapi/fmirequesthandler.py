@@ -1,4 +1,3 @@
-import math
 import datetime
 import copy
 from fmiapi.fmirequest import FMIRequest

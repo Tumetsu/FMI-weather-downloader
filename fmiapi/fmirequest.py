@@ -6,7 +6,9 @@ from lxml import html
 from fmiapi.fmierrors import *
 import re
 import pytz
+
 timezone = pytz.timezone('Europe/Helsinki')
+
 
 class FMIRequest:
     """
@@ -22,7 +24,8 @@ class FMIRequest:
         self._apikey = api_key
         self._connection = http.client.HTTPConnection(self._url)
 
-    def _do_timezone_conversions(self, params):
+    @staticmethod
+    def _do_timezone_conversions(params):
         # Convert Finnish time to UTC here:
         params["starttime"] = timezone.localize(params["starttime"])
         params["endtime"] = timezone.localize(params["endtime"])
@@ -56,7 +59,9 @@ class FMIRequest:
                 return self._do_get(params, second_call=True)
             else:
                 # otherwise raise general RequestException
-                raise RequestException('Couldn\'t retrieve data even with found lowerlimit date {}'.format(result['lowerlimit']), response.status)
+                raise RequestException(
+                    'Couldn\'t retrieve data even with found lowerlimit date {}'.format(result['lowerlimit']),
+                    response.status)
 
     def _get_error_reason(self, response):
         """
@@ -122,7 +127,7 @@ class FMIRequest:
                                    response.status)
         except:
             raise RequestException(xml.find(".//xmlns:ExceptionText", namespaces=self._XMLNS_NAMESPACE).text,
-                               response.status)
+                                   response.status)
 
     @staticmethod
     def _raise_query_limit_exception(html_str):

@@ -6,4 +6,3 @@ and check updates. Should be updated accordingly when doing a release. Especiall
 with open('data/appinfo_constants.json', 'r', encoding='utf-8') as f:
     ABOUT_INFORMATION = json.loads(f.read())
     f.close()
-

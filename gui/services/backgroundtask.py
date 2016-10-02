@@ -1,5 +1,4 @@
 from gui.mainwindow import *
-from collections import OrderedDict
 from PyQt5.QtCore import pyqtSlot, QObject
 from queue import Queue
 
@@ -49,10 +48,6 @@ class BackgroundWorker(QObject):
     def __init__(self, queue, parent=None):
         super().__init__(parent)
         self.queue = queue
-
-    def set_task(self, params, request_function):
-        self.request_params = params
-        self.request_function = request_function
 
     @pyqtSlot(name='services')
     def run(self):

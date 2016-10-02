@@ -9,14 +9,11 @@ from gui.services.settings import Settings
 import gui.menubar_actions as menubar_actions
 from gui.messages import Messages
 from gui.services.checkupdates import CheckUpdatesOnStartup
-import csv
 from gui.services.csvwriter import CsvExport
 from gui.services.backgroundtask import BackgroundTask
 
 
-
 class Mainwindow(QMainWindow):
-
     # signals
     setLanguageSignal = pyqtSignal(name="setLanguage")
     entrySelectedSignal = pyqtSignal(dict, name="entrySelected")
@@ -54,7 +51,6 @@ class Mainwindow(QMainWindow):
         if self._current_available_datasets is not None:
             self._set_available_datasets_from_catalogue(self._current_available_datasets)
 
-
     def changeEvent(self, event):
         if event.type() == QEvent.LanguageChange:
             self.ui.retranslateUi(self)
@@ -74,7 +70,8 @@ class Mainwindow(QMainWindow):
 
         # Select Lammi as a first station but do not run the selection logic on first run
         self.ui.stationComboBox.setCurrentIndex(self.api.get_index_of_station("Hämeenlinna Lammi Pappila"))
-        self._current_selected_model = self.api.get_stations()[self.api.get_index_of_station("Hämeenlinna Lammi Pappila")]
+        self._current_selected_model = self.api.get_stations()[
+            self.api.get_index_of_station("Hämeenlinna Lammi Pappila")]
         self.ui.stationComboBox.currentIndexChanged.connect(self._select_place_from_combobox)
 
     def _background_fmicatalogue_error(self, err):
@@ -109,7 +106,7 @@ class Mainwindow(QMainWindow):
         self._set_up_station_comboboxes()
         self.catalogue_task = BackgroundTask()
         self.catalogue_task.start(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'],
-                                             self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
+                                  self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
 
         # When dataset is selected
         self.ui.dataSelectionCombobox.currentIndexChanged.connect(self._select_dataset_from_combobox)
@@ -138,7 +135,8 @@ class Mainwindow(QMainWindow):
         self._current_selected_model = self.api.get_stations()[place_index]
 
         # Fetch catalog information of the current station and set datasets on completion
-        self.catalogue_task.start(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'], self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
+        self.catalogue_task.start(self.api.get_catalogue_of_station, self._current_selected_model['FMISID'],
+                                  self._set_available_datasets_from_catalogue, self._background_fmicatalogue_error)
 
     def _set_available_datasets_from_catalogue(self, available_datasets):
         """
@@ -164,7 +162,8 @@ class Mainwindow(QMainWindow):
         """
         if self._current_available_datasets is not None:
             self._current_selected_dataset = self._current_available_datasets[dataset_index]
-            self.ui.availableFromContent.setText(datetime.datetime.strftime(self._current_selected_dataset["starttime"], '%d.%m.%Y'))
+            self.ui.availableFromContent.setText(
+                datetime.datetime.strftime(self._current_selected_dataset["starttime"], '%d.%m.%Y'))
             self._set_time_field_limits()
 
     def _set_time_field_limits(self):
@@ -206,11 +205,12 @@ class Mainwindow(QMainWindow):
         else:
             path = ""
         filename = QFileDialog.getSaveFileName(self, Messages.save_weatherdata_csv(),
-                                               path + "/weather_data.csv", "Comma separated values CSV (*.csv);;All files (*)")
+                                               path + "/weather_data.csv",
+                                               "Comma separated values CSV (*.csv);;All files (*)")
         if filename[0] != "":
             self._save_to_csv(dataframe, filename[0])
 
-    def _get_dateTime_from_UI(self, dateEdit, onlyDate=True):
+    def _get_date_time_from_ui(self, dateEdit, onlyDate=True):
         if onlyDate:
             return QDateTime(dateEdit.date()).toPyDateTime()
         else:
@@ -246,8 +246,8 @@ class Mainwindow(QMainWindow):
         params = {"request": self._current_selected_dataset["request"],
                   "storedquery_id": self._current_selected_dataset["storedquery_id"],
                   "fmisid": self._current_selected_model["FMISID"],
-                  "starttime": self._get_dateTime_from_UI(self.ui.startDatetimeEdit, onlyDate=False),
-                  "endtime": self._get_dateTime_from_UI(self.ui.endDatetimeEdit, onlyDate=False),
+                  "starttime": self._get_date_time_from_ui(self.ui.startDatetimeEdit, onlyDate=False),
+                  "endtime": self._get_date_time_from_ui(self.ui.endDatetimeEdit, onlyDate=False),
                   "max_hours_range": self._current_selected_dataset["max_hours_range"]
                   }
 
@@ -276,6 +276,7 @@ def start():
     downloader = Mainwindow(app, {"en": translator_en, "fi": translator_fi})
     downloader.show()
     sys.exit(app.exec_())
+
 
 if __name__ == '__main__':
     start()

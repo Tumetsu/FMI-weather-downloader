@@ -91,4 +91,3 @@ class FMIApi:
             if self._stations[i]["Name"] == place_name:
                 return i
         return -1
-

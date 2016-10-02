@@ -5,9 +5,10 @@ from datetime import datetime
 from fmiapi.fmierrors import RequestException, NoDataSetsException
 
 _NAMESPACES = {"csw": "http://www.opengis.net/cat/csw/2.0.2",
-        "gmd": "http://www.isotc211.org/2005/gmd",
-        "gco": "http://www.isotc211.org/2005/gco",
-        "gml": "http://www.opengis.net/gml"}
+               "gmd": "http://www.isotc211.org/2005/gmd",
+               "gco": "http://www.isotc211.org/2005/gco",
+               "gml": "http://www.opengis.net/gml"}
+
 
 def _retrieve_metadata_by_fmisid(fmisid):
     url = "catalog.fmi.fi"
@@ -41,6 +42,7 @@ def _retrieve_metadata_by_fmisid(fmisid):
     else:
         raise RequestException("Error in metadata retrieval for fmisid " + fmisid, 'METADATA_RETRIEVAL')
 
+
 def _parse_data(data):
     """
     Parse catalog xml and pick interesting metadata from each search result
@@ -59,20 +61,28 @@ def _parse_data(data):
     for item in records:
         ds = {
             "title_fi": item.find(".//gmd:title/gco:CharacterString", namespaces=_NAMESPACES).text,
-            "starttime": convert_to_date(item.find(".//gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition", namespaces=_NAMESPACES).text),
-            "endtime": convert_to_date(item.find(".//gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition", namespaces=_NAMESPACES).text),
-            "longitude": float(item.find(".//gmd:EX_GeographicBoundingBox/gmd:westBoundLongitude/gco:Decimal", namespaces=_NAMESPACES).text),
-            "latitude": float(item.find(".//gmd:EX_GeographicBoundingBox/gmd:southBoundLatitude/gco:Decimal", namespaces=_NAMESPACES).text),
-            "link": item.find(".//gmd:distributionInfo//gmd:CI_OnlineResource/gmd:linkage/gmd:URL", namespaces=_NAMESPACES).text,
-            "identifier": item.find(".//gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString", namespaces=_NAMESPACES).text
+            "starttime": convert_to_date(
+                item.find(".//gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition",
+                          namespaces=_NAMESPACES).text),
+            "endtime": convert_to_date(item.find(".//gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition",
+                                                 namespaces=_NAMESPACES).text),
+            "longitude": float(item.find(".//gmd:EX_GeographicBoundingBox/gmd:westBoundLongitude/gco:Decimal",
+                                         namespaces=_NAMESPACES).text),
+            "latitude": float(item.find(".//gmd:EX_GeographicBoundingBox/gmd:southBoundLatitude/gco:Decimal",
+                                        namespaces=_NAMESPACES).text),
+            "link": item.find(".//gmd:distributionInfo//gmd:CI_OnlineResource/gmd:linkage/gmd:URL",
+                              namespaces=_NAMESPACES).text,
+            "identifier": item.find(".//gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString",
+                                    namespaces=_NAMESPACES).text
         }
         result.append(ds)
 
-    return sorted(list({v['title_fi']: v for v in result}.values()), key=lambda x: x['title_fi']) # Remove duplicates with temporary dict where unique attribute is the key
+    return sorted(list({v["title_fi"]: v for v in result}.values()), key=lambda x: x[
+        'title_fi'])  # Remove duplicates with temporary dict where unique attribute is the key
+
 
 def get_station_metadata(fmisid):
     result = _parse_data(_retrieve_metadata_by_fmisid(fmisid))
     if len(result) == 0:
         raise NoDataSetsException(fmisid)
     return result
-
