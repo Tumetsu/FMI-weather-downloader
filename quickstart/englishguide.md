@@ -7,7 +7,7 @@ description: ""
 
 
 ##What is this downloader?
-Finnish Meteorological Institute (FMI) provides open weather data service. This data is provided in machine readable format and is thus only usable for software developers. With this application it is however possible to get this data and save it into format which is compatible with regular spreadsheet programs, such as Excel wihtout programming knowledge.
+Finnish Meteorological Institute (FMI) provides open weather data service. This data is provided in machine readable format and is thus only usable for software developers. With this application it is however possible to get this data and save it into format which is compatible with regular spreadsheet programs, such as Excel without programming knowledge.
 
 
 ##Initial setup
@@ -31,45 +31,29 @@ After isntalling the application, before using it you have to register into FMI'
 
 ----------
 
-##Downloading the daily observations
-The FMIDownloader provides a way to download daily observation data from various Finnish weather stations. Resulting data depends on the sensors of the station. Application always downloads all available sensor data from station.
+## Downloading observation data
+The FMIDownloader provides a way to download observation data from various Finnish weather stations. Resulting data depends on the sensors of the station. Application always downloads all available sensor data from station.
 
-1.  Select "Daily observations" tab.
-2.  Select the weather station of your choice from the dropdown menu or write the initial letters of the station to the field and select the right one from suggestions. 
-3.  After selecting the station you can see the starting year where data is available fro this station. For example in the picture below the Lammi's station has data from 1963.
+1. Select the weather station of your choice from the dropdown menu or write the initial letters of the station to the field and select the right one from suggestions. 
+2. Select data set to download from drop down menu.
+3. After selecting the station you can see the starting year where data is available from this station. For example in the picture below the Lammi's station has data from 1963.
 
 	> ATTENTION! The Available from year **doesn't** mean that there is data available from beginning of the year. In this case if you search data from beginning of the year (e.g. 1.1.1963 - 1.2.1963) the application will not find data and will display an error message. In this case you can edit your start and end dates towards the end of the year until you can find some data (e.g. esim. 1.1.1963 – 1.1.1964)
 
-4.   Set dates you want to the start and end date fields. Note that the dates are not allowed to be same and the end date is not allowed to predate the start date. 
+4. Set dates you want to the start and end date fields. Note that the dates are not allowed to be same and the end date is not allowed to predate the start date. 
 5.   Press the "Download" button.
 6. After download has finished you can select the location to save the resulting csv-file. Wait a moment for program to save the file.
 
 <div style="text-align:center"><img src ="../assets/images/finnish-screen.png" /></div>
 
-
-----------
-
-
-##Downloading the real time observations 
-The FMIDownloader provides a way to download real time observation data from various Finnish weather stations. This usually means obervations with 10 minute interval. Resulting data depends on the sensors of the station. Application always downloads all available sensor data from station. 
-
- 1. Select "Real time observations" tab.
- 2. Select the weather station of your choice from the dropdown menu or write the initial letters of the station to the field and select the right one from suggestions. 
- 3.  After selecting the station you can see the starting year where data is available fro this station.
-
-	> ATTENTION! The Available from year **doesn't** mean that there is data available from beginning of the year. In this case if you search data from beginning of the year (e.g. 1.1.1963 - 1.2.1963) the application will not find data and will display an error message. In this case you can edit your start and end dates towards the end of the year until you can find some data (e.g. esim. 1.1.1963 – 1.1.1964)
-
- 4.  Set dates you want to the start and end date fields. Note that the dates are not allowed to be same and the end date is not allowed to predate the start date.  
- 5.  Press the "Download" button. 
- 6. After download has finished you can select the location to save the resulting csv-file. Wait a moment for program to save the file. 
-
-
-----------
-
-
-##Error messages
+## Troubleshooting
 Occasionally something might go wrong and the application shows an error message. It is important to read these messages since they usually give you advice on how to proceed. Below are descriptions of the most common error messages you might ecnounter.
 
+###Software won't start
+**Reason:**
+Most common reason is limited user privileges. If you are using a work place machine, you might have restricted privileges to install
+and run software. In this case please ask your system administrator to install FMIDownloader to your computer or use it instead on your
+own computer.
 
 ###Data request failed 
 **Reason:** 
@@ -85,7 +69,7 @@ Occasionally something might go wrong and the application shows an error message
 
 > Most likely FMI's service don't have data fro the time span you defined. In case you retrieved data from the first year of the available time range of the station, it is likely that there is not data available from beginning of the year. Follow instructions above about downloading data. 
 
-**Ratkaisu:**  
+**Solution:**  
 
 > Check Downloading the daily or real time instructions on this guide. Especially the ATTENTION part.
 

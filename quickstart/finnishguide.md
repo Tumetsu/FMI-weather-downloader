@@ -30,12 +30,12 @@ Asennettuasi ohjelman, ennen sen käyttöönottoa sinun tarvitsee rekisteröity�
 
 ----------
 
-##Vuorokausi säähavaintojen lataaminen
-Sovellus tarjoaa mahdollisuuden ladata Ilmatieteenlaitoksen sääasemien mittaamia vuorokausikohtaisia 
-tietoja. Asemasta riippuen dataa on saatavilla pitkiltäkin aikaväleiltä. 
+##Säähavaintojen lataaminen
+Sovellus tarjoaa mahdollisuuden ladata Ilmatieteenlaitoksen sääasemien mittaamia havaintotietoja eri ilmiöistä. 
+Asemasta riippuen dataa on saatavilla eri ajanjaksoilta ja eri aineistoina.
 
-1.  Valitse ”Vuorokausiarvot” välilehti. 
-2.  Valitse sääasema pudotusvalikosta tai kirjoita aseman nimen alku kenttään ja valitse löytynyt asema   listasta. 
+1.  Valitse sääasema pudotusvalikosta tai kirjoita aseman nimen alku kenttään ja valitse löytynyt asema listasta. 
+2.  Valitse haluamasi aineisto pudotusvalikosta, johon listattuna kaikki valitulta asemalta ladattavissa olevat aineistot.
 3.  Aseman valinnan jälkeen ohjelma kertoo miltä vuodelta dataa on asemalta saatavilla.  Kuvan 4. esimerkissä Lammin Biologisen aseman säädataa on saatavilla vuodesta 1963. 
 
 	> HUOM! Joillakin asemilla dataa on saatavilla vain ”keskeltä” ilmoitettua 
@@ -53,41 +53,18 @@ aloituspäivämäärän jälkeen.
 
 <div style="text-align:center"><img src ="../assets/images/finnish-screen.png" /></div>
 
-
-----------
-
-
-##Reaaliaikaisten säähavaintojen lataaminen 
-Sovellus tarjoaa mahdollisuuden ladata Ilmatieteenlaitoksen sääasemien mittaamia reaaliaikaisia 
-säähavaintoja. Tällöin kyseessä on yleensä 10 minuutin välein mitattua dataa. Aseman mittareista riippuen 
-saatavilla on eri määrä erilaisia suureita.  
-
- 1. Valitse ”Reaaliaika havainnot” välilehti. 
- 2. Valitse sääasema pudotusvalikosta tai kirjoita aseman nimen alku kenttään ja valitse löytynyt 
-asema listasta.
- 3.  Aseman valinnan jälkeen ohjelma kertoo miltä vuodelta dataa on asemalta saatavilla. Kuvan 5. 
-esimerkissä Lammin Biologisen aseman säädataa on saatavilla vuodesta 2010.  
-
-> HUOM! Joillakin asemilla dataa on saatavilla vain ”keskeltä” ilmoitettua 
-> vuotta. Tällöin mikäli etsit dataa alkuvuodesta (esim. 1.1.1963 – 
-> 1.2.1963) ohjelma ei luonnollisesti löydä dataa ja antaa 
-> virheilmoituksen.  
-> Tällöin kannattaa lopetus- ja aloitusaikoja säätää loppuvuotta kohti 
-> kunnes dataa alkaa löytymään (esim. 1.1.1963 – 1.1.1964). 
-
- 4.  Aseta Aloitus- ja lopetuspäivämäärä ja kellonaikakenttiin haluamasi päivämäärät, joiden väliltä 
-haluat hakea tietoa. Huomaa että päivämäärät eivät voi olla samoja ja lopetuspäivämäärän on 
-tultava aloituspäivämäärän jälkeen. 
- 5.  Paina ”Lataa” painiketta. 
- 6. Latauksen valmistuttua aukeavassa ikkunassa voit valita paikan johon tiedosto tallennetaan. 
-
-
 ----------
 
 
 ##Virhetilanteet
 Ajoittain jokin saattaa mennä pieleen ja ohjelma esittää virheilmoituksen ja yleensä neuvoja virheen 
-ratkaisemiseksi. Alla kuvaukset yleisimmistä virhetilanteista. 
+ratkaisemiseksi. Alla kuvaukset yleisimmistä virhetilanteista ja niiden ratkaisuista. 
+
+###Ohjelma ei käynnisty
+**Syy:**
+Yleisin syy ovat rajoitetut käyttöoikeudet. Mikäli asennusoikeuksiasi on rajoitettu esimerkiksi työkoneellasi, FMIDownloader
+näyttää asentuvan oikein, mutta käynnistyminen ei onnistu. Pyydä järjestelmänvalvojaasi asentamaan FMIDownloader koneellesi tai 
+asenna se kotikoneellesi johon sinulla on täydet käyttöoikeudet.
 
 ###Datapyyntö ei onnistunut 
 **Syy:** 
