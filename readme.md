@@ -3,7 +3,7 @@ Ilmatieteenlaitoksen säädatan lataaja / FMI Weather Downloader [![TravisCI](ht
 
 [Webpage of the application with downloads & guides](http://tumetsu.github.io/FMI-weather-downloader/)
 
-![screenshot](http://i.imgur.com/CzXFzIQ.png)
+![screenshot](http://imgur.com/JXkV9Li.png)
 
 Simple application to provide a graphical user interface to download weather data from [Finnish Meteorological Institute's open data service](https://ilmatieteenlaitos.fi/avoin-data). The application was originally developed for [Lammi Biological Station's](http://www.helsinki.fi/lammi/) needs.
 
