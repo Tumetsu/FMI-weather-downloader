@@ -9,7 +9,8 @@ highlighter: pygments
 # so be sure to set them if your theme uses them.
 #
 title : FMI Weather data downloader
-tagline: A GUI application to download weather data to Excel
+tagline: A GUI application to download weather data to Excel, Graafinen työkalu sää datan lataamiseen Exceliin
+url: http://tumetsu.github.io/FMI-weather-downloader
 author :
   name : Tuomas Salmi
   github : tumetsu
@@ -125,4 +126,7 @@ JB :
   # and include your custom code. Your custom file must be defined at:
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
+
+  gems:
+    - jekyll-seo-tag
   
