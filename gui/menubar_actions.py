@@ -1,8 +1,6 @@
 import webbrowser
-
 from PyQt5.QtCore import pyqtSlot, QCoreApplication
 from PyQt5.QtWidgets import QInputDialog, QApplication, QDialog
-
 from gui.app_information import ABOUT_INFORMATION
 from gui.dialogs.languagedialog import LanguageDialog
 from gui.dialogs.ui_aboutdialog import Ui_AboutDialog
@@ -65,4 +63,3 @@ def about():
 def check_updates(settings):
     updates_dialog = UpdateDialog(settings)
     updates_dialog.exec()
-

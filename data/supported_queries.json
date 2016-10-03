@@ -1,0 +1,61 @@
+[
+  {
+    "id": "weather",
+    "name": {
+      "fi": "Sää: reaaliaikahavainnot",
+      "en": "Weather: real time observations"
+    },
+    "request": "getFeature",
+    "max_hours_range": 168,
+    "storedquery_id": "fmi::observations::weather::multipointcoverage",
+    "params": [
+      "fmisid",
+      "starttime",
+      "endtime"
+    ]
+  },
+  {
+    "id": "daily",
+    "name": {
+      "fi": "Sää: vuorokausihavainnot",
+      "en": "Weather: daily observations"
+    },
+    "request": "getFeature",
+    "max_hours_range": 8928,
+    "storedquery_id": "fmi::observations::weather::daily::multipointcoverage",
+    "params": [
+      "fmisid",
+      "starttime",
+      "endtime"
+    ]
+  },{
+    "id": "monthly",
+    "name": {
+      "fi": "Sää: kuukausikeskiarvot",
+      "en": "Weather: monthly averages"
+    },
+    "request": "getFeature",
+    "max_hours_range": 87600,
+    "storedquery_id": "fmi::observations::weather::monthly::multipointcoverage",
+    "params": [
+      "fmisid",
+      "starttime",
+      "endtime"
+    ]
+  },
+  {
+    "id": "solar",
+    "name": {
+      "fi": "Auringon säteilyhavaintoaineisto",
+      "en": "Solar radiation observations"
+    },
+    "request": "getFeature",
+    "max_hours_range": 168,
+    "storedquery_id": "fmi::observations::radiation::multipointcoverage",
+    "params": [
+      "fmisid",
+      "starttime",
+      "endtime"
+    ]
+  }
+]

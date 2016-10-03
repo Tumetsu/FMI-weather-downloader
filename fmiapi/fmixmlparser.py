@@ -87,7 +87,6 @@ class FMIxmlParser:
         ts = ts.astimezone(timezone)
         return ts.strftime('%Y-%m-%dT%H:%M')
 
-
     def _parse_measurementdata(self, xml_data):
         # get field names available in file
         fields = xml_data[0].findall(".//swe:field", namespaces=self._SWE)

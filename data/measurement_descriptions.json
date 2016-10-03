@@ -1,0 +1,1898 @@
+{
+    "rscal_3": {
+        "id": "rscal_3",
+        "label": "Alert of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "clap1m": {
+        "id": "clap1m",
+        "label": "Normal total cloudiness",
+        "basePhenomenon": "Clouds",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "humidity": {
+        "id": "humidity",
+        "label": "Relative humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ta06p1m": {
+        "id": "ta06p1m",
+        "label": "Normal temperature 06 utc",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "rh06p1y": {
+        "id": "rh06p1y",
+        "label": "Normal relative humidity 00 utc",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ws0p1m": {
+        "id": "ws0p1m",
+        "label": "Calm normal",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "minimumtemperature": {
+        "id": "minimumtemperature",
+        "label": "Minimum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT24H",
+        "statisticalFunction": "min"
+    },
+    "ts_1h_max": {
+        "id": "ts_1h_max",
+        "label": "Soil maximum stemperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "max"
+    },
+    "rsil": {
+        "id": "rsil",
+        "label": "Ice layer",
+        "basePhenomenon": "Road surface condition",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rshu": {
+        "id": "rshu",
+        "label": "Surface moisture",
+        "basePhenomenon": "Road surface condition",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "prst1": {
+        "id": "prst1",
+        "label": "Precipitation state",
+        "basePhenomenon": "Precipitation codes",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "prap1m": {
+        "id": "prap1m",
+        "label": "Normal monthly precipitation",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ta_24h_avg": {
+        "id": "ta_24h_avg",
+        "label": "Air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P1D",
+        "statisticalFunction": "avg"
+    },
+    "ndpr010p1y": {
+        "id": "ndpr010p1y",
+        "label": "Precipitation days 1 mm normal",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "temperature": {
+        "id": "temperature",
+        "label": "Air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ws315p1y": {
+        "id": "ws315p1y",
+        "label": "Wind speed, Northwest",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "rscst3": {
+        "id": "rscst3",
+        "label": "State of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "elecst": {
+        "id": "elecst",
+        "label": "Electricity",
+        "basePhenomenon": "Technical",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ws135p1y": {
+        "id": "ws135p1y",
+        "label": "Wind speed, Southeast",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "snow06": {
+        "id": "snow06",
+        "label": "Snow depth",
+        "basePhenomenon": "Snow cover",
+        "uom": "cm",
+        "aggregationTimePeriod": "P1D",
+        "statisticalFunction": "instant"
+    },
+    "t2m": {
+        "id": "t2m",
+        "label": "Air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "precipitation1h": {
+        "id": "precipitation1h",
+        "label": "Precipitation amount",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "acc"
+    },
+    "wd225p1y": {
+        "id": "wd225p1y",
+        "label": "Wind distribution, Southwest",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "windgust": {
+        "id": "windgust",
+        "label": "Gust speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "max"
+    },
+    "wd315p1m": {
+        "id": "wd315p1m",
+        "label": "Wind distribution, Northwest",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "ws180p1y": {
+        "id": "ws180p1y",
+        "label": "Wind speed, South",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "sundp1y": {
+        "id": "sundp1y",
+        "label": "Normal sunshine duration",
+        "basePhenomenon": "Sunshine duration",
+        "uom": "h",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "rscal_2": {
+        "id": "rscal_2",
+        "label": "Alert of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rh12p1y": {
+        "id": "rh12p1y",
+        "label": "Normal relative humidity 00 utc",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "taft_2": {
+        "id": "taft_2",
+        "label": "Safety temperature",
+        "basePhenomenon": "Road surface condition",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "modalwdi": {
+        "id": "modalwdi",
+        "label": "Direction of waves",
+        "basePhenomenon": "Sea roll",
+        "uom": "deg",
+        "aggregationTimePeriod": "PT1S",
+        "statisticalFunction": "instant"
+    },
+    "tday": {
+        "id": "tday",
+        "label": "Air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P1D",
+        "statisticalFunction": "avg"
+    },
+    "rh_2": {
+        "id": "rh_2",
+        "label": "Relative humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ri_10min": {
+        "id": "ri_10min",
+        "label": "Precipitation intensity",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm/h",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "ws270p1m": {
+        "id": "ws270p1m",
+        "label": "Wind speed, West",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "ws270p1y": {
+        "id": "ws270p1y",
+        "label": "Wind speed, West",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "rscsst": {
+        "id": "rscsst",
+        "label": "Station Status",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "drs1_pt10m_avg": {
+        "id": "drs1_pt10m_avg",
+        "label": "Relative uncertainty",
+        "basePhenomenon": "Radioactivity",
+        "uom": "µSv/h",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "ta_2": {
+        "id": "ta_2",
+        "label": "Air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ws0p1y": {
+        "id": "ws0p1y",
+        "label": "Calm normal",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "rrday": {
+        "id": "rrday",
+        "label": "Precipitation amount",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT24H",
+        "statisticalFunction": "sum"
+    },
+    "watlev": {
+        "id": "watlev",
+        "label": "Water level",
+        "basePhenomenon": "Water level",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1S",
+        "statisticalFunction": "instant"
+    },
+    "trsc_pt1h_avg": {
+        "id": "trsc_pt1h_avg",
+        "label": "Odorous sulphur compounds",
+        "basePhenomenon": "Ilmanlaatu",
+        "uom": "ugS/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "diff_1min": {
+        "id": "diff_1min",
+        "label": "Diffuse radiation",
+        "basePhenomenon": "Solar radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "trs_10min_dif_4": {
+        "id": "trs_10min_dif_4",
+        "label": "Road surface temperature change",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "diffeb"
+    },
+    "rssl": {
+        "id": "rssl",
+        "label": "Snow layer",
+        "basePhenomenon": "Road surface condition",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "pap1y": {
+        "id": "pap1y",
+        "label": "Air pressure normal",
+        "basePhenomenon": "Air pressure",
+        "uom": "hPa",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "so2_pt1h_avg": {
+        "id": "so2_pt1h_avg",
+        "label": "Sulphur dioxide",
+        "basePhenomenon": "Ilmanlaatu",
+        "uom": "ug/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "snow": {
+        "id": "snow",
+        "label": "Snow depth",
+        "basePhenomenon": "Snow cover",
+        "uom": "cm",
+        "aggregationTimePeriod": "P1D",
+        "statisticalFunction": "instant"
+    },
+    "ta_3": {
+        "id": "ta_3",
+        "label": "Air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "trfp_4": {
+        "id": "trfp_4",
+        "label": "Freezing point temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ndtg0p1m": {
+        "id": "ndtg0p1m",
+        "label": "Days with ground minimum temperature <0C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "snowdepth06": {
+        "id": "snowdepth06",
+        "label": "Snow depth",
+        "basePhenomenon": "Snow cover",
+        "uom": "cm",
+        "aggregationTimePeriod": "P1D",
+        "statisticalFunction": "instant"
+    },
+    "wd090p1y": {
+        "id": "wd090p1y",
+        "label": "Wind distribution, East",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "wd180p1m": {
+        "id": "wd180p1m",
+        "label": "Wind distribution, South",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "refl_1min": {
+        "id": "refl_1min",
+        "label": "Reflected radiation",
+        "basePhenomenon": "Solar radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "senst": {
+        "id": "senst",
+        "label": "Sensor error",
+        "basePhenomenon": "Technical",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "prap1y": {
+        "id": "prap1y",
+        "label": "Normal yearly precipitation",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "net_1min": {
+        "id": "net_1min",
+        "label": "Radiation balance",
+        "basePhenomenon": "Solar radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "rh00p1y": {
+        "id": "rh00p1y",
+        "label": "Normal relative humidity 00 utc",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ndtan0p1y": {
+        "id": "ndtan0p1y",
+        "label": "Days with minimum temperature <0C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "tmax": {
+        "id": "tmax",
+        "label": "Maximum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT24H",
+        "statisticalFunction": "max"
+    },
+    "rh18p1y": {
+        "id": "rh18p1y",
+        "label": "Normal relative humidity 00 utc",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "clhb": {
+        "id": "clhb",
+        "label": "Height of base of cloud",
+        "basePhenomenon": "Clouds",
+        "uom": "m",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ta12p1y": {
+        "id": "ta12p1y",
+        "label": "Normal temperature 12 utc",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "tamaxp1y": {
+        "id": "tamaxp1y",
+        "label": "Normal maximum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "pm10_pt1h_avg": {
+        "id": "pm10_pt1h_avg",
+        "label": "Particulate matter < 10 µm",
+        "basePhenomenon": "Ilmanlaatu",
+        "uom": "ug/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "sundp1m": {
+        "id": "sundp1m",
+        "label": "Normal sunshine duration",
+        "basePhenomenon": "Sunshine duration",
+        "uom": "h",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ndpr100p1m": {
+        "id": "ndpr100p1m",
+        "label": "Precipitation days 10 mm normal",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "wd225p1m": {
+        "id": "wd225p1m",
+        "label": "Wind distribution, Southwest",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "rshu_2": {
+        "id": "rshu_2",
+        "label": "Surface moisture",
+        "basePhenomenon": "Road surface condition",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rh06p1m": {
+        "id": "rh06p1m",
+        "label": "Normal relative humidity 00 utc",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "pa0p1m": {
+        "id": "pa0p1m",
+        "label": "Air pressure normal",
+        "basePhenomenon": "Air pressure",
+        "uom": "hPa",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "trs": {
+        "id": "trs",
+        "label": "Road Surface temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "t": {
+        "id": "t",
+        "label": "Air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "lwin_1min": {
+        "id": "lwin_1min",
+        "label": "Long wave solar radiation ",
+        "basePhenomenon": "UV radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "trg_4": {
+        "id": "trg_4",
+        "label": "Road ground temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "rh_3": {
+        "id": "rh_3",
+        "label": "Relative humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ta18p1y": {
+        "id": "ta18p1y",
+        "label": "Normal temperature 18 utc",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "rh": {
+        "id": "rh",
+        "label": "Relative humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "o3_pt1h_avg": {
+        "id": "o3_pt1h_avg",
+        "label": "Ozone",
+        "basePhenomenon": "Ilmanlaatu",
+        "uom": "ug/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "snowdepth": {
+        "id": "snowdepth",
+        "label": "Snow depth",
+        "basePhenomenon": "Snow cover",
+        "uom": "cm",
+        "aggregationTimePeriod": "P1D",
+        "statisticalFunction": "instant"
+    },
+    "globp1m": {
+        "id": "globp1m",
+        "label": "Global radiation",
+        "basePhenomenon": "Solar radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "trs_2": {
+        "id": "trs_2",
+        "label": "Road Surface temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ndtan0p1m": {
+        "id": "ndtan0p1m",
+        "label": "Days with minimum temperature <0C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ws180p1m": {
+        "id": "ws180p1m",
+        "label": "Wind speed, South",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "wd270p1m": {
+        "id": "wd270p1m",
+        "label": "Wind distribution, West",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "wd360p1y": {
+        "id": "wd360p1y",
+        "label": "Wind distribution, North",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "prao_24h_acc": {
+        "id": "prao_24h_acc",
+        "label": "Precipitation amount (opt)",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT24H",
+        "statisticalFunction": "acc"
+    },
+    "tamaxp1m": {
+        "id": "tamaxp1m",
+        "label": "Normal maximum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "wawa2": {
+        "id": "wawa2",
+        "label": "Present weather (PWD)",
+        "basePhenomenon": "Weather",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "rank"
+    },
+    "trs_10min_dif_2": {
+        "id": "trs_10min_dif_2",
+        "label": "Road surface temperature change",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "diffeb"
+    },
+    "rscc": {
+        "id": "rscc",
+        "label": "Conductivity",
+        "basePhenomenon": "Road surface condition",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ndtax25p1y": {
+        "id": "ndtax25p1y",
+        "label": "Days with maximum temperature >25C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "rhp1m": {
+        "id": "rhp1m",
+        "label": "Normal relative humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "sund_1min": {
+        "id": "sund_1min",
+        "label": "Sunshine duration",
+        "basePhenomenon": "Sunshine duration",
+        "uom": "s",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "acc"
+    },
+    "ndtan10p1m": {
+        "id": "ndtan10p1m",
+        "label": "Days with minimum temperature <-10C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "p_sea": {
+        "id": "p_sea",
+        "label": "Pressure (msl)",
+        "basePhenomenon": "Air pressure",
+        "uom": "hPa",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "wd315p1y": {
+        "id": "wd315p1y",
+        "label": "Wind distribution, Northwest",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "rscif": {
+        "id": "rscif",
+        "label": "Icefrequency",
+        "basePhenomenon": "Road surface condition",
+        "uom": "Hz",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "totalcloudcover": {
+        "id": "totalcloudcover",
+        "label": "Cloud amount",
+        "basePhenomenon": "Clouds",
+        "uom": "1/8",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rscc_3": {
+        "id": "rscc_3",
+        "label": "Conductivity",
+        "basePhenomenon": "Road surface condition",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "dr_pt10m_avg": {
+        "id": "dr_pt10m_avg",
+        "label": "Dose rate",
+        "basePhenomenon": "Radioactivity",
+        "uom": "µSv/h",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "glob_1min": {
+        "id": "glob_1min",
+        "label": "Global radiation",
+        "basePhenomenon": "Solar radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "wd360p1m": {
+        "id": "wd360p1m",
+        "label": "Wind distribution, North",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "wd_10min": {
+        "id": "wd_10min",
+        "label": "Wind direction",
+        "basePhenomenon": "Wind",
+        "uom": "deg",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "wg_10min": {
+        "id": "wg_10min",
+        "label": "Gust speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "max"
+    },
+    "taminp1m": {
+        "id": "taminp1m",
+        "label": "Normal minimum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "twater": {
+        "id": "twater",
+        "label": "Water temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ts": {
+        "id": "ts",
+        "label": "Soil temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ta": {
+        "id": "ta",
+        "label": "Air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ndtax25p1m": {
+        "id": "ndtax25p1m",
+        "label": "Days with maximum temperature >25C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "wd135p1m": {
+        "id": "wd135p1m",
+        "label": "Wind distribution, Southeast",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "whdd": {
+        "id": "whdd",
+        "label": "Deviation of wave direction",
+        "basePhenomenon": "Sea roll",
+        "uom": "deg",
+        "aggregationTimePeriod": "PT1S",
+        "statisticalFunction": "instant"
+    },
+    "maximumtemperature": {
+        "id": "maximumtemperature",
+        "label": "Maximum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT24H",
+        "statisticalFunction": "max"
+    },
+    "ndpr010p1m": {
+        "id": "ndpr010p1m",
+        "label": "Precipitation days 1.0 mm normal",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ws045p1m": {
+        "id": "ws045p1m",
+        "label": "Wind speed, Northeast",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "wd090p1m": {
+        "id": "wd090p1m",
+        "label": "Wind distribution, East",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "ta_10m_dif": {
+        "id": "ta_10m_dif",
+        "label": "Air temperature change",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "diffeb"
+    },
+    "rscc_2": {
+        "id": "rscc_2",
+        "label": "Conductivity",
+        "basePhenomenon": "Road surface condition",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rscif_4": {
+        "id": "rscif_4",
+        "label": "Icefrequency",
+        "basePhenomenon": "Road surface condition",
+        "uom": "Hz",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "fc": {
+        "id": "fc",
+        "label": "Friction",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "po": {
+        "id": "po",
+        "label": "Pressure",
+        "basePhenomenon": "Air pressure",
+        "uom": "hPa",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "n": {
+        "id": "n",
+        "label": "Cloud amount",
+        "basePhenomenon": "Clouds",
+        "uom": "1/8",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "evpp1m": {
+        "id": "evpp1m",
+        "label": "Normal monthly mean vapour pressure",
+        "basePhenomenon": "Humidity",
+        "uom": "hPa",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "vis": {
+        "id": "vis",
+        "label": "Horizontal visibility",
+        "basePhenomenon": "Visibility",
+        "uom": "m",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "trs_10min_dif": {
+        "id": "trs_10min_dif",
+        "label": "Road surface temperature change",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "diffeb"
+    },
+    "ta_24h_max": {
+        "id": "ta_24h_max",
+        "label": "Maximum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT24H",
+        "statisticalFunction": "max"
+    },
+    "ws090p1m": {
+        "id": "ws090p1m",
+        "label": "Wind speed, East",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "wd270p1y": {
+        "id": "wd270p1y",
+        "label": "Wind distribution, West",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "rscal_4": {
+        "id": "rscal_4",
+        "label": "Alert of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rscss_4": {
+        "id": "rscss_4",
+        "label": "Surfacesignal",
+        "basePhenomenon": "Road surface condition",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ta12p1m": {
+        "id": "ta12p1m",
+        "label": "Normal temperature 12 utc",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ta06p1y": {
+        "id": "ta06p1y",
+        "label": "Normal temperature 06 utc",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "wtp": {
+        "id": "wtp",
+        "label": "Modal period",
+        "basePhenomenon": "Sea roll",
+        "uom": "s",
+        "aggregationTimePeriod": "PT1S",
+        "statisticalFunction": "instant"
+    },
+    "ndpr001p1y": {
+        "id": "ndpr001p1y",
+        "label": "Precipitation days 0.1 mm normal",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ws": {
+        "id": "ws",
+        "label": "Wind speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "ms_1h_min": {
+        "id": "ms_1h_min",
+        "label": "Soil minimum humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "m3/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "min"
+    },
+    "ws360p1y": {
+        "id": "ws360p1y",
+        "label": "Wind speed, North",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "trfp_2": {
+        "id": "trfp_2",
+        "label": "Freezing point temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "dewpoint": {
+        "id": "dewpoint",
+        "label": "Dew-point temperature",
+        "basePhenomenon": "Humidity",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "wavehs": {
+        "id": "wavehs",
+        "label": "Wave height",
+        "basePhenomenon": "Sea roll",
+        "uom": "m",
+        "aggregationTimePeriod": "PT1S",
+        "statisticalFunction": "instant"
+    },
+    "ts_1h_avg": {
+        "id": "ts_1h_avg",
+        "label": "Soil stemperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "sawc_2": {
+        "id": "sawc_2",
+        "label": "Salt amount",
+        "basePhenomenon": "Road surface condition",
+        "uom": "g/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "wd045p1y": {
+        "id": "wd045p1y",
+        "label": "Wind distribution, Northeast",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "sawc": {
+        "id": "sawc",
+        "label": "Salt amount",
+        "basePhenomenon": "Road surface condition",
+        "uom": "g/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "tdd": {
+        "id": "tdd",
+        "label": "Dewpoint difference ",
+        "basePhenomenon": "Humidity",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "uvb_u": {
+        "id": "uvb_u",
+        "label": "Ultraviolet irradiance",
+        "basePhenomenon": "UV radiation",
+        "uom": "index",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "tmon": {
+        "id": "tmon",
+        "label": "Monthly mean temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "ta00p1m": {
+        "id": "ta00p1m",
+        "label": "Normal temperature 00 utc",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "wsp1y": {
+        "id": "wsp1y",
+        "label": "Wind speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "windspeedms": {
+        "id": "windspeedms",
+        "label": "Wind speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "rscal3": {
+        "id": "rscal3",
+        "label": "Alert of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ndpr001p1m": {
+        "id": "ndpr001p1m",
+        "label": "Precipitation days 0.1 mm normal",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "trg_3": {
+        "id": "trg_3",
+        "label": "Road ground temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "vis_2": {
+        "id": "vis_2",
+        "label": "Horizontal visibility",
+        "basePhenomenon": "Visibility",
+        "uom": "m",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ws135p1m": {
+        "id": "ws135p1m",
+        "label": "Wind speed, Southeast",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "snd15p1m": {
+        "id": "snd15p1m",
+        "label": "Normal snow depth (15.)",
+        "basePhenomenon": "Snow cover",
+        "uom": "cm",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ws225p1m": {
+        "id": "ws225p1m",
+        "label": "Wind speed, Southwest",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "rh18p1m": {
+        "id": "rh18p1m",
+        "label": "Normal relative humidity 00 utc",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "wd135p1y": {
+        "id": "wd135p1y",
+        "label": "Wind distribution, Southeast",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "ms_1h_avg": {
+        "id": "ms_1h_avg",
+        "label": "Soil relative humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "m3/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "ws225p1y": {
+        "id": "ws225p1y",
+        "label": "Wind speed, Southwest",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "rscss_3": {
+        "id": "rscss_3",
+        "label": "Surfacesignal",
+        "basePhenomenon": "Road surface condition",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "pm25_pt1h_avg": {
+        "id": "pm25_pt1h_avg",
+        "label": "Particulate matter < 2.5 µm",
+        "basePhenomenon": "Ilmanlaatu",
+        "uom": "ug/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "tmin": {
+        "id": "tmin",
+        "label": "Minimum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT24H",
+        "statisticalFunction": "min"
+    },
+    "rh12p1m": {
+        "id": "rh12p1m",
+        "label": "Normal relative humidity 00 utc",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ac_p7d_avg": {
+        "id": "ac_p7d_avg",
+        "label": "Activity concentration",
+        "basePhenomenon": "Radioactivity",
+        "uom": "µBq/m3",
+        "aggregationTimePeriod": "P7D",
+        "statisticalFunction": "avg"
+    },
+    "pri": {
+        "id": "pri",
+        "label": "Precipitation intensity",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm/h",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "pap1m": {
+        "id": "pap1m",
+        "label": "Air pressure normal",
+        "basePhenomenon": "Air pressure",
+        "uom": "hPa",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "trg_2": {
+        "id": "trg_2",
+        "label": "Road ground temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "td": {
+        "id": "td",
+        "label": "Dew-point temperature",
+        "basePhenomenon": "Humidity",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "savc_2": {
+        "id": "savc_2",
+        "label": "Salt concentration",
+        "basePhenomenon": "Road surface condition",
+        "uom": "g/l",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rrmon": {
+        "id": "rrmon",
+        "label": "Monthly precipitation amount",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "sum"
+    },
+    "trs_3": {
+        "id": "trs_3",
+        "label": "Road Surface temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "visibility": {
+        "id": "visibility",
+        "label": "Horizontal visibility",
+        "basePhenomenon": "Visibility",
+        "uom": "m",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "ms": {
+        "id": "ms",
+        "label": "Soil relative humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "m3/m3",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "pa_10m_dif": {
+        "id": "pa_10m_dif",
+        "label": "Pressure tendency",
+        "basePhenomenon": "Air pressure",
+        "uom": "mbar/h",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "wd180p1y": {
+        "id": "wd180p1y",
+        "label": "Wind distribution, South",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "ndtax0p1y": {
+        "id": "ndtax0p1y",
+        "label": "Days with maximum temperature <0C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "co_pt1h_avg": {
+        "id": "co_pt1h_avg",
+        "label": "Carbon monoxide",
+        "basePhenomenon": "Ilmanlaatu",
+        "uom": "ug/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "tap1m": {
+        "id": "tap1m",
+        "label": "Normal air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "wg": {
+        "id": "wg",
+        "label": "Gust speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "max"
+    },
+    "rscss": {
+        "id": "rscss",
+        "label": "Surfacesignal",
+        "basePhenomenon": "Road surface condition",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ws090p1y": {
+        "id": "ws090p1y",
+        "label": "Wind speed, East",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "ws045p1y": {
+        "id": "ws045p1y",
+        "label": "Wind speed, Northeast",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1Y",
+        "statisticalFunction": "avg"
+    },
+    "pra_1h_acc": {
+        "id": "pra_1h_acc",
+        "label": "Precipitation amount",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "acc"
+    },
+    "wsp1m": {
+        "id": "wsp1m",
+        "label": "Wind speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "trs_4": {
+        "id": "trs_4",
+        "label": "Road Surface temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "rscst_2": {
+        "id": "rscst_2",
+        "label": "State of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "winddirection": {
+        "id": "winddirection",
+        "label": "Wind direction",
+        "basePhenomenon": "Wind",
+        "uom": "deg",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "no2_pt1h_avg": {
+        "id": "no2_pt1h_avg",
+        "label": "Nitrogen dioxide",
+        "basePhenomenon": "Ilmanlaatu",
+        "uom": "ug/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "avg"
+    },
+    "wspd": {
+        "id": "wspd",
+        "label": "Wind speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "r_1h": {
+        "id": "r_1h",
+        "label": "Precipitation amount",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "acc"
+    },
+    "dir_1min": {
+        "id": "dir_1min",
+        "label": "Direct solar radiation",
+        "basePhenomenon": "Solar radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "rscst_4": {
+        "id": "rscst_4",
+        "label": "State of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "prclst": {
+        "id": "prclst",
+        "label": "Precipitation/cloudiness",
+        "basePhenomenon": "Weather",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rscc_4": {
+        "id": "rscc_4",
+        "label": "Conductivity",
+        "basePhenomenon": "Road surface condition",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rscst": {
+        "id": "rscst",
+        "label": "State of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "taminp1y": {
+        "id": "taminp1y",
+        "label": "Normal minimum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ws315p1m": {
+        "id": "ws315p1m",
+        "label": "Wind speed, Northwest",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "ws_10min": {
+        "id": "ws_10min",
+        "label": "Wind speed",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "trs_10min_dif_3": {
+        "id": "trs_10min_dif_3",
+        "label": "Road surface temperature change",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "diffeb"
+    },
+    "ndtan10p1y": {
+        "id": "ndtan10p1y",
+        "label": "Days with minimum temperature <-10C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ta00p1y": {
+        "id": "ta00p1y",
+        "label": "Normal temperature 00 utc",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "rscif_3": {
+        "id": "rscif_3",
+        "label": "Icefrequency",
+        "basePhenomenon": "Road surface condition",
+        "uom": "Hz",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ms_1h_max": {
+        "id": "ms_1h_max",
+        "label": "Soil maximum humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "m3/m3",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "max"
+    },
+    "rscal": {
+        "id": "rscal",
+        "label": "Alert of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "globp1y": {
+        "id": "globp1y",
+        "label": "Global radiation",
+        "basePhenomenon": "Solar radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "wd": {
+        "id": "wd",
+        "label": "Wind direction",
+        "basePhenomenon": "Wind",
+        "uom": "deg",
+        "aggregationTimePeriod": "PT10M",
+        "statisticalFunction": "avg"
+    },
+    "wawa": {
+        "id": "wawa",
+        "label": "Present weather (auto)",
+        "basePhenomenon": "Weather",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "rank"
+    },
+    "ndtax0p1m": {
+        "id": "ndtax0p1m",
+        "label": "Days with maximum temperature <0C",
+        "basePhenomenon": "Temperature",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "rswl": {
+        "id": "rswl",
+        "label": "Water layer",
+        "basePhenomenon": "Road surface condition",
+        "uom": "mm",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "n_man": {
+        "id": "n_man",
+        "label": "Cloud amount",
+        "basePhenomenon": "Clouds",
+        "uom": "1/8",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "prst2": {
+        "id": "prst2",
+        "label": "Precipitation state",
+        "basePhenomenon": "Precipitation codes",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ta_24h_min": {
+        "id": "ta_24h_min",
+        "label": "Minimum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT24H",
+        "statisticalFunction": "min"
+    },
+    "ndpr100p1y": {
+        "id": "ndpr100p1y",
+        "label": "Precipitation days 10 mm normal",
+        "basePhenomenon": "Amount of precipitation",
+        "uom": "#",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "ws360p1m": {
+        "id": "ws360p1m",
+        "label": "Wind speed, North",
+        "basePhenomenon": "Wind",
+        "uom": "m/s",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "rhp1y": {
+        "id": "rhp1y",
+        "label": "Normal relative humidity",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "batt": {
+        "id": "batt",
+        "label": "Battery voltage",
+        "basePhenomenon": "Technical",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "wd045p1m": {
+        "id": "wd045p1m",
+        "label": "Wind distribution, Northeast",
+        "basePhenomenon": "Wind",
+        "uom": "%",
+        "aggregationTimePeriod": "P1M",
+        "statisticalFunction": "avg"
+    },
+    "ts_1h_min": {
+        "id": "ts_1h_min",
+        "label": "Soil minimum temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1H",
+        "statisticalFunction": "min"
+    },
+    "rscif_2": {
+        "id": "rscif_2",
+        "label": "Icefrequency",
+        "basePhenomenon": "Road surface condition",
+        "uom": "Hz",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "snd31p1m": {
+        "id": "snd31p1m",
+        "label": "Normal snow depth (ld)",
+        "basePhenomenon": "Snow cover",
+        "uom": "cm",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "rscss_2": {
+        "id": "rscss_2",
+        "label": "Surfacesignal",
+        "basePhenomenon": "Road surface condition",
+        "uom": "V",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "trfp": {
+        "id": "trfp",
+        "label": "Freezing point temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "pressure": {
+        "id": "pressure",
+        "label": "Pressure (msl)",
+        "basePhenomenon": "Air pressure",
+        "uom": "hPa",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "trfp_3": {
+        "id": "trfp_3",
+        "label": "Freezing point temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "trg": {
+        "id": "trg",
+        "label": "Road ground temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "taft": {
+        "id": "taft",
+        "label": "Safety temperature",
+        "basePhenomenon": "Road surface condition",
+        "uom": "degC",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "tap1y": {
+        "id": "tap1y",
+        "label": "Normal air temperature",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "lwout_1min": {
+        "id": "lwout_1min",
+        "label": "Long wave outgoing solar radiation",
+        "basePhenomenon": "UV radiation",
+        "uom": "W/m2",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "avg"
+    },
+    "rh00p1m": {
+        "id": "rh00p1m",
+        "label": "Normal relative humidity 00 utc",
+        "basePhenomenon": "Humidity",
+        "uom": "%",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    },
+    "snow_aws": {
+        "id": "snow_aws",
+        "label": "Snow depth",
+        "basePhenomenon": "Snow cover",
+        "uom": "cm",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "rscst_3": {
+        "id": "rscst_3",
+        "label": "State of the road condition",
+        "basePhenomenon": "Road surface condition",
+        "uom": "",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "savc": {
+        "id": "savc",
+        "label": "Salt concentration",
+        "basePhenomenon": "Road surface condition",
+        "uom": "g/l",
+        "aggregationTimePeriod": "PT1M",
+        "statisticalFunction": "instant"
+    },
+    "ta18p1m": {
+        "id": "ta18p1m",
+        "label": "Normal temperature 18 utc",
+        "basePhenomenon": "Temperature",
+        "uom": "degC",
+        "aggregationTimePeriod": "P30Y",
+        "statisticalFunction": "avg"
+    }
+}

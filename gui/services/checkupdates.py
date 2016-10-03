@@ -47,6 +47,7 @@ class UpdateDialog(QDialog):
 
     @pyqtSlot(object, name='updateInfoRetrieved')
     def _updates_information_retrieved(self, result):
+        self.thread.quit()
         if result['status'] == 'success':
             # Update version info to the dialog
             their_version = result['their_version']
@@ -78,9 +79,11 @@ class CheckUpdatesOnStartup:
 
     @pyqtSlot(name='startupcheck')
     def _updates_information_retrieved(self, result):
+        self.thread.quit()
         if result['status'] == 'success' and result['should_update']:
             updates_dialog = UpdateDialog(self.settings, their_version=result['their_version'])
             updates_dialog.exec()
+
 
 
 class CheckUpdatesWorker(QObject):

@@ -26,7 +26,6 @@ Hyvinkää Hyvinkäänkylä;101130;1302;2829;60.6;24.8;86;Sääasemat;1930
 Hämeenlinna Katinen;101150;1322;2754;61;24.49;87;Sääasemat;2001
 Hämeenlinna Lammi Evo;101189;1438;2713;61.22;25.13;134;Sääasemat;2005
 Hämeenlinna Lammi Pappila;101154;1403;2767;61.05;25.04;125;Sääasemat;1963
-Ilmajoki Seinäjoki lentoasema;137188;;;62.69;22.84;86;Sääasemat;2012
 Ilomantsi Mekrijärvi;101651;3919;2939;62.77;30.98;155;Sääasemat;1999
 Ilomantsi Pötsönvaara;101649;3917;2766;63.14;31.04;235;Sääasemat;1997
 Inari Angeli Lintupuoliselkä;102026;9405;2857;68.9;25.74;285;Sääasemat;2008
@@ -49,7 +48,6 @@ Juuka Niemelä;101609;3802;2791;63.23;29.23;115;Sääasemat;1914
 Juupajoki Hyytiälä;101317;2303;2770;61.85;24.29;153;Sääasemat;1956
 Juva Partala;101418;2622;2736;61.89;27.89;110;Sääasemat;1992
 Jyväskylä lentoasema;101339;2401;2935;62.4;25.67;139;Sääasemat;1945
-Jyväskylä lentoasema AWOS;137208;;;62.4;25.68;138;Sääasemat;1999
 Jämsä Halli lentoasema;101315;2301;2945;61.86;24.8;143;Sääasemat;1964
 Jämsä Halli Lentoasemantie;101338;2324;2946;61.86;24.81;144;Sääasemat;2008
 Kaarina Yltöinen;100934;103;2828;60.39;22.55;6;Sääasemat;1927
@@ -111,10 +109,8 @@ Loviisa Orrengrund;101039;510;2992;60.27;26.44;5;Sääasemat;1974
 Luhanka Judinsalo;101362;2426;2765;61.7;25.51;80;Sääasemat;1990
 Lumparland Långnäs satama;151048;12;2724;60.12;20.3;10;Sääasemat;2012
 Maalahti Strömmingsbådan;101481;3020;2781;62.98;20.74;2;Sääasemat;1997
-Maarianhamina Lotsberget;100929;24;2969;60.09;19.94;57;Sääasemat;2007
 Maarianhamina Länsisatama;151029;26;2997;60.09;19.93;2;Sääasemat;2012
 Mikkeli lentoasema;101398;2602;2947;61.69;27.2;99;Sääasemat;1959
-Mikkeli Lentoasema AWOS;855522;;;61.69;27.21;101;Sääasemat;1959
 Multia Karhila;101536;3317;2927;62.51;24.81;227;Sääasemat;2008
 Muonio Alamuonio;101969;8201;2823;67.96;23.68;236;Sääasemat;1946
 Muonio Laukukero;101982;8307;2820;68.06;24.03;760;Sääasemat;1996
@@ -151,7 +147,6 @@ Rauma Kylmäpihlaja;101061;1018;2761;61.14;21.3;4;Sääasemat;1990
 Rautavaara Ylä-Luosta;101603;3716;2789;63.38;28.66;166;Sääasemat;1976
 Rovaniemi Apukka;101933;7502;2813;66.58;26.01;106;Sääasemat;1939
 Rovaniemi lentoasema;101920;7401;2845;66.56;25.82;193;Sääasemat;1951
-Rovaniemi lentoasema AWOS;137190;;;66.56;25.82;193;Sääasemat;1999
 Rovaniemi rautatieasema;101928;7409;2847;66.5;25.71;85;Sääasemat;1997
 Salla kk Myllytie;101959;7709;2849;66.83;28.67;215;Sääasemat;1999
 Salla Naruska;101966;7804;2745;67.16;29.18;213;Sääasemat;1999
@@ -188,7 +183,6 @@ Vaala Pelso;101800;5502;2714;64.5;26.42;114;Sääasemat;1944
 Vaasa Klemettilä;101485;3024;2957;63.1;21.64;7;Sääasemat;2010
 Vaasa lentoasema;101462;3001;2911;63.06;21.75;6;Sääasemat;1946
 Valtimo kk;101743;4701;2798;63.67;28.83;115;Sääasemat;1969
-Vantaa Helsinki-Vantaa lentoasema AWOS;137189;;;60.32;24.91;40;Sääasemat;1999
 Vantaa Helsinki-Vantaan lentoasema;100968;301;2974;60.33;24.96;51;Sääasemat;1952
 Varkaus Kosulanniemi;101421;2625;2850;62.32;27.91;83;Sääasemat;2007
 Vesanto Sonkari;101555;3502;2710;62.92;26.42;120;Sääasemat;1908

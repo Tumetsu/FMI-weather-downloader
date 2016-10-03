@@ -35,7 +35,7 @@ def describe_fmi_api():
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
 
-            result = fmiapi.get_daily_weather(query, None)
+            result = fmiapi.get_data(query, None)
             assert 'fmi-apikey/{}/wfs?'.format(apikey) in mock_connection.request.call_args[0][1]
             verify_dataframe(result, EXPECTED_DAILY_4_DAYS)
 
@@ -51,7 +51,7 @@ def describe_fmi_api():
             fmiapi.set_apikey(apikey)
 
             with pytest.raises(InvalidApikeyException) as e:
-                fmiapi.get_daily_weather(query, None)
+                fmiapi.get_data(query, None)
             assert_equal('APIKEY', e.value.error_code)
 
         @mock.patch('http.client.HTTPConnection', spec=True)
@@ -65,7 +65,7 @@ def describe_fmi_api():
             fmiapi = FMIApi()
 
             with pytest.raises(InvalidApikeyException) as e:
-                fmiapi.get_daily_weather(query, None)
+                fmiapi.get_data(query, None)
             assert_equal('APIKEY', e.value.error_code)
 
     def describe_data_retrieval():
@@ -86,7 +86,7 @@ def describe_fmi_api():
             fmiapi = FMIApi()
             apikey = '12345-12345'
             fmiapi.set_apikey(apikey)
-            result = fmiapi.get_daily_weather(query, None)
+            result = fmiapi.get_data(query, None)
             verify_dataframe(result, expected_df)
 
         @mock.patch('http.client.HTTPConnection', spec=True)
@@ -98,7 +98,7 @@ def describe_fmi_api():
             fmiapi.set_apikey(apikey)
             query = create_realtime_query(datetime(2012, 1, 13, hour=2, minute=0, second=0, microsecond=0),
                                           datetime(2012, 1, 14, hour=2, minute=0, second=0, microsecond=0))
-            result = fmiapi.get_realtime_weather(query, None)
+            result = fmiapi.get_data(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
         @mock.patch('http.client.HTTPConnection', spec=True)
@@ -111,7 +111,7 @@ def describe_fmi_api():
             query = create_realtime_query(
                 datetime(2012, 1, 1, hour=2, minute=0, second=0, microsecond=0),
                 datetime(2012, 1, 14, hour=2, minute=0, second=0, microsecond=0))
-            result = fmiapi.get_realtime_weather(query, None)
+            result = fmiapi.get_data(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
         @mock.patch('http.client.HTTPConnection', spec=True)
@@ -126,7 +126,7 @@ def describe_fmi_api():
             query = create_realtime_query(
                 datetime(2012, 1, 8, hour=2, minute=0, second=0, microsecond=0),
                 datetime(2012, 1, 16, hour=2, minute=0, second=0, microsecond=0))
-            result = fmiapi.get_realtime_weather(query, None)
+            result = fmiapi.get_data(query, None)
             verify_dataframe(result, EXPECTED_REALTIME_1_DAY)
 
     def describe_exceptions():
@@ -141,7 +141,7 @@ def describe_fmi_api():
             fmiapi.set_apikey(apikey)
 
             with pytest.raises(QueryLimitException) as e:
-                fmiapi.get_daily_weather(query, None)
+                fmiapi.get_data(query, None)
             assert_equal('QUERYLIMIT', e.value.error_code)
             assert_equal('39', e.value.wait_time)
             assert_equal('seconds', e.value.wait_unit)
@@ -158,5 +158,44 @@ def describe_fmi_api():
                 datetime(2008, 1, 14, hour=2, minute=0, second=0, microsecond=0))
 
             with pytest.raises(NoDataException) as e:
-                fmiapi.get_realtime_weather(query, None)
+                fmiapi.get_data(query, None)
             assert_equal('NODATA', e.value.error_code)
+
+    def describe_get_catalogue_of_station():
+
+        @mock.patch('fmiapi.fmicatalogservice.get_station_metadata', spec=True)
+        def should_augment_extra_metadata_to_datasets(get_station_metadata):
+            get_station_metadata.return_value = EXPECTED_LAMMI_CATALOG_METADATA
+            fmiapi = FMIApi()
+            result = fmiapi.get_catalogue_of_station('1234')
+            assert_equal(1, get_station_metadata.call_count)
+
+            for i, record in enumerate(EXPECTED_LAMMI_CATALOG_AUGMENTED_METADATA):
+                assert_equal(result[i]['latitude'], record['latitude'])
+                assert_equal(result[i]['longitude'], record['longitude'])
+                assert_equal(result[i]['link'], record['link'])
+                assert_equal(result[i]['identifier'], record['identifier'])
+                assert_equal(result[i]['name']['fi'], record['name']['fi'])
+                assert_equal(result[i]['name']['en'], record['name']['en'])
+                assert_equal(result[i]['max_hours_range'], record['max_hours_range'])
+                assert_equal(result[i]['storedquery_id'], record['storedquery_id'])
+                assert_equal(result[i]['id'], record['id'])
+                assert_equal(result[i]['request'], record['request'])
+                assert result[i]['starttime'] == record['starttime']
+                assert result[i]['endtime'] == record['endtime']
+
+        @mock.patch('fmiapi.fmicatalogservice.get_station_metadata', spec=True)
+        def should_ignore_datasets_with_no_support(get_station_metadata):
+            get_station_metadata.return_value = [{
+                "latitude": 61.05403,
+                "endtime": None,
+                "starttime": datetime.strptime("2010-01-01T00:00:00Z", '%Y-%m-%dT%H:%M:%SZ'),
+                "longitude": 25.03839,
+                "link": "www.example.com",
+                "identifier": "obs_point nothinghere101154",
+                "title_fi": "Säähavainnot: Hämeenlinna Lammi Pappila",
+            }]
+            fmiapi = FMIApi()
+            result = fmiapi.get_catalogue_of_station('1234')
+            assert_equal(1, get_station_metadata.call_count)
+            assert_equal(0, len(result))

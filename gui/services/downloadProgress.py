@@ -13,7 +13,7 @@ class DownloadProgress(QObject):
     Dialog which is shown during download and parsing of the data. Displays the progress of the task
     of downloading and parsing. Creates a worker thread to do the actual download process in the background.
     """
-    finishedSignal = pyqtSignal(OrderedDict, name="processFinished")
+    finishedSignal = pyqtSignal(OrderedDict, dict, name="processFinished")
 
     def __init__(self, parent):
         super(DownloadProgress, self).__init__(parent)
@@ -31,6 +31,7 @@ class DownloadProgress(QObject):
         self.progressDialog.open()
         self.progressDialog.setValue(0)
 
+        self.request_params = request_params
         self.worker = DownloadWorker(request_params, request_function)
         self.worker.threadUpdateSignal.connect(self._update_progress_bar)
         self.worker.threadExceptionSignal.connect(self._loading_failed)
@@ -83,4 +84,4 @@ class DownloadProgress(QObject):
     def _process_finished(self, result):
         self.result = result
         self.progressDialog.close()
-        self.finishedSignal.emit(self.result)
+        self.finishedSignal.emit(self.result, self.request_params)

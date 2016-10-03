@@ -12,11 +12,11 @@ options = {
         'includes': ["lxml._elementpath", "lxml.etree"],
         'excludes': ['unittest'],
         'include_files': (pytz.__path__[0], # http://stackoverflow.com/questions/10606932/cx-freeze-how-do-i-add-package-files-into-library-zip
-                          'stations.csv',
+                          'data/stations.csv',
                           'translations/',
                           'readme.md',
                           'license',
-                          'appinfo_constants.json',
+                          'data/appinfo_constants.json',
                           'icon.ico')
     }
 }

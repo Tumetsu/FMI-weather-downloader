@@ -1,7 +1,7 @@
-import math
 import datetime
 import copy
 from fmiapi.fmirequest import FMIRequest
+from fmiapi.fmierrors import RequestException
 
 
 class FMIRequestHandler:
@@ -22,12 +22,21 @@ class FMIRequestHandler:
     def _execute_requests(self, requests, progress_callback):
         all_requests = len(requests)
         responses = []
-        count = 0
-        for r in requests:
-            responses.append(self._do_request(r))
-            count += 1
-            if progress_callback is not None:
-                progress_callback(count, all_requests)
+        for i, r in enumerate(requests):
+            try:
+                responses.append(self._do_request(r))
+                if progress_callback is not None:
+                    progress_callback(i, all_requests)
+            except RequestException as e:
+                # If result is 400, hope that the next request in batch will work. Raise other errors normally.
+                # Handles case where beginning of a multipart request won't contain data
+                # FIXME: Could be done in a way where after new lowerlimit is found, a new batch of requests is calculated instead of doing
+                # FIXME: bunch of useless requests.
+                if e.error_code != 400:
+                    raise e
+                if progress_callback is not None:
+                    progress_callback(i, all_requests)
+
         return responses
 
     def _do_request(self, request):

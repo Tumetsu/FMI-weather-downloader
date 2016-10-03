@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'aboutdialog.ui'
+# Form implementation generated from reading ui file 'qtuifiles/aboutdialog.ui'
 #
 # Created by: PyQt5 UI code generator 5.6
 #
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_AboutDialog(object):
     def setupUi(self, AboutDialog):
         AboutDialog.setObjectName("AboutDialog")
-        AboutDialog.resize(400, 170)
+        AboutDialog.resize(400, 190)
         AboutDialog.setModal(True)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(AboutDialog)
         self.verticalLayout_3.setObjectName("verticalLayout_3")

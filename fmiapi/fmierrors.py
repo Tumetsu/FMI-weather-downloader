@@ -44,3 +44,13 @@ class NoDataException(Exception):
 
     def __str__(self):
         return self.message
+
+
+class NoDataSetsException(Exception):
+
+    def __init__(self, fmisid):
+        self.message = "No data sets found for {}".format(fmisid)
+        self.error_code = "NODATASETS"
+
+    def __str__(self):
+        return self.message
