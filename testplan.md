@@ -17,8 +17,8 @@ Testing should be donw in freezed version of app to simulate better end user exp
 * Verify that app's version will be newer than previous release (required for update notifications to work)
 
 ## Download
-* Download daily and realtime data from proper time spans from some stations
-* Download daily and realtime data from time span where the beginning doesn't exist
+* Download daily, realtime, monthly weather data and solar radiation data from proper time spans from some stations
+* Download  daily, realtime, monthly weather data and solar radiation data from time span where the beginning doesn't exist
 * Download daily and realtime data from time span which contains no data and verify that a correct error message is shown
 * Exceed query limit by doing long realtime queries and check that a proper error message is shown
 * Verify that gui shows approriate error messages if invalid dates are set to date fields (red text in the bottom)
