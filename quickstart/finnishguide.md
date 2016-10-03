@@ -6,10 +6,10 @@ description: ""
 {% include JB/setup %}
 
 
-##Mikä on säädata-lataaja?
+## Mikä on säädata-lataaja?
 Suomen Ilmatieteenlaitos tarjoaa säähavaintodataa eri Suomen asemiltaan ilmaiseksi verkossa. Kyseinen avoin data on saatavilla koneluettavassa muodossa, ja siten käyttökelpoista lähinnä ohjelmistokehittäjille. Tämän työkalun avulla Ilmatieteenlaitoksen säähavaintodataa voi kuitenkin ladata ja tallentaa yleisten taulukkolaskentaohjelmien ymmärtämään muotoon ilman ohjelmistokehittäjäosaamista.
 
-##Ohjelman käyttöönotto
+## Ohjelman käyttöönotto
 Asennettuasi ohjelman, ennen sen käyttöönottoa sinun tarvitsee rekisteröityä Ilmatieteenlaitoksen avoimen datan palveluun:
 
  1. Avaa seuraava verkko-osoite internetselaimeesi: https://ilmatieteenlaitos.fi/avoin-data
@@ -30,7 +30,7 @@ Asennettuasi ohjelman, ennen sen käyttöönottoa sinun tarvitsee rekisteröity�
 
 ----------
 
-##Säähavaintojen lataaminen
+## Säähavaintojen lataaminen
 Sovellus tarjoaa mahdollisuuden ladata Ilmatieteenlaitoksen sääasemien mittaamia havaintotietoja eri ilmiöistä. 
 Asemasta riippuen dataa on saatavilla eri ajanjaksoilta ja eri aineistoina.
 
@@ -56,17 +56,17 @@ aloituspäivämäärän jälkeen.
 ----------
 
 
-##Virhetilanteet
+## Virhetilanteet
 Ajoittain jokin saattaa mennä pieleen ja ohjelma esittää virheilmoituksen ja yleensä neuvoja virheen 
 ratkaisemiseksi. Alla kuvaukset yleisimmistä virhetilanteista ja niiden ratkaisuista. 
 
-###Ohjelma ei käynnisty
+### Ohjelma ei käynnisty
 **Syy:**
 Yleisin syy ovat rajoitetut käyttöoikeudet. Mikäli asennusoikeuksiasi on rajoitettu esimerkiksi työkoneellasi, FMIDownloader
 näyttää asentuvan oikein, mutta käynnistyminen ei onnistu. Pyydä järjestelmänvalvojaasi asentamaan FMIDownloader koneellesi tai 
 asenna se kotikoneellesi johon sinulla on täydet käyttöoikeudet.
 
-###Datapyyntö ei onnistunut 
+### Datapyyntö ei onnistunut 
 **Syy:** 
 
 > Todennäköisesti tunnisteavainta ei ole asetettu tai se on virheellinen
@@ -77,7 +77,7 @@ asenna se kotikoneellesi johon sinulla on täydet käyttöoikeudet.
 > Noudata tämän oppaan käyttöönotto-ohjetta ja varmista, että
 > tunnisteavain on oikein  asetettu.
 
-###Määritettyä ajanjaksoa ei löytynyt 
+### Määritettyä ajanjaksoa ei löytynyt 
 **Syy:**  
 
 > Ilmatieteenlaitoksen palvelussa ei ole olemassa dataa haluamallesi
@@ -92,7 +92,7 @@ asenna se kotikoneellesi johon sinulla on täydet käyttöoikeudet.
 > etsittäessä voit kokeilla samaa sekä siirtämällä  aloitus päivämäärää
 > kunnes dataa löytyy.
 
-###Määritettyä sääasemaa ei löydetty 
+### Määritettyä sääasemaa ei löydetty 
 **Syy:**  
 
 > Ilmatieteenlaitoksen palvelusta ei jostain syystä löytynyt tietoja
@@ -109,7 +109,7 @@ asenna se kotikoneellesi johon sinulla on täydet käyttöoikeudet.
 > virheilmoitus kuitenkin esiintyy jokaisen aseman kohdalla, täytyy
 > sinun todennäköisesti  päivittää ohjelma.
 
-###Tuntematon virhe 
+### Tuntematon virhe 
 **Syy:**  
 
 > Todennäköisesti ohjelmakoodissa on jokin virhe.

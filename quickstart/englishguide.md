@@ -6,11 +6,11 @@ description: ""
 {% include JB/setup %}
 
 
-##What is this downloader?
+## What is this downloader?
 Finnish Meteorological Institute (FMI) provides open weather data service. This data is provided in machine readable format and is thus only usable for software developers. With this application it is however possible to get this data and save it into format which is compatible with regular spreadsheet programs, such as Excel without programming knowledge.
 
 
-##Initial setup
+## Initial setup
 After isntalling the application, before using it you have to register into FMI's open data service:
 
  1. Open the following page on your browser: https://ilmatieteenlaitos.fi/avoin-data
@@ -49,13 +49,13 @@ The FMIDownloader provides a way to download observation data from various Finni
 ## Troubleshooting
 Occasionally something might go wrong and the application shows an error message. It is important to read these messages since they usually give you advice on how to proceed. Below are descriptions of the most common error messages you might ecnounter.
 
-###Software won't start
+### Software won't start
 **Reason:**
 Most common reason is limited user privileges. If you are using a work place machine, you might have restricted privileges to install
 and run software. In this case please ask your system administrator to install FMIDownloader to your computer or use it instead on your
 own computer.
 
-###Data request failed 
+### Data request failed 
 **Reason:** 
 
 > Most likely the API-key is not set or it is invalid
@@ -64,7 +64,7 @@ own computer.
 
 > Follow the Initial Setup in this guide to set up the API-key properly.
 
-###Specified date and time could not be found.
+### Specified date and time could not be found.
 **Reason:**  
 
 > Most likely FMI's service don't have data fro the time span you defined. In case you retrieved data from the first year of the available time range of the station, it is likely that there is not data available from beginning of the year. Follow instructions above about downloading data. 
@@ -73,7 +73,7 @@ own computer.
 
 > Check Downloading the daily or real time instructions on this guide. Especially the ATTENTION part.
 
-###Weather station was not found.
+### Weather station was not found.
 **Reason:**  
 
 > FMI's service doesn't have information for this station. There might be a temporary problem in the service or it might have a specific problem with the station you were trying to access. Finally it is always possible that this program has been out-dated and the FMI's service as changed drastically and is incompatible with this application.
@@ -82,7 +82,7 @@ own computer.
 
 > If the error happens only for certain stations, the problem is likely temporary or is station specific. In this case you should wait some time and try again or ask the data directly from FMI. If the error happens on every station on the list, you will likely have to update the FMIDownloader. Check if there is new releases on Downloads page.
 
-###Unknown error
+### Unknown error
 **Reason:**  
 
 > Most likely there is a bug in the software
