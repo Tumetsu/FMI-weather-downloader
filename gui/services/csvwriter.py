@@ -44,6 +44,7 @@ class CsvExport:
                         unit = descriptions[key_lower]
                         writer.writerow([unit['id'], unit['label'], unit['basePhenomenon'], unit['uom'], unit['aggregationTimePeriod'], unit['statisticalFunction']])
 
+            writer.writerow(['time', 'Observation time', 'Observation time', 'Helsinki timezone UTC+2/UTC+3'])
             writer.writerow([])
             writer.writerow([])
             writer.writerow(keys)
