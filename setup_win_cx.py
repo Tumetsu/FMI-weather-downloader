@@ -12,11 +12,10 @@ options = {
         'includes': ["lxml._elementpath", "lxml.etree"],
         'excludes': ['unittest'],
         'include_files': (pytz.__path__[0], # http://stackoverflow.com/questions/10606932/cx-freeze-how-do-i-add-package-files-into-library-zip
-                          'data/stations.csv',
+                          'data/',
                           'translations/',
                           'readme.md',
                           'license',
-                          'data/appinfo_constants.json',
                           'icon.ico')
     }
 }
@@ -29,7 +28,7 @@ executables = [
 ]
 
 setup(name='FMIDownloader',
-      version='0.9',
+      version='0.15.1',
       description='Download Finnish meteorological data',
       options=options,
       executables=executables
