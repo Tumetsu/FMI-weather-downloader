@@ -43,8 +43,8 @@ def describe_fmi_request_handler():
                                    datetime(2011, 1, 23, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone))
 
         expected = [create_daily_query(datetime(2010, 1, 1, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone),
-                                       datetime(2011, 1, 7, hour=23, minute=1, second=0, microsecond=0, tzinfo=timezone)),
-                    create_daily_query(datetime(2011, 1, 8, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone),
+                                       datetime(2011, 1, 8, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone)),
+                    create_daily_query(datetime(2011, 1, 8, hour=0, minute=2, second=0, microsecond=0, tzinfo=timezone),
                                        datetime(2011, 1, 23, hour=0, minute=1, second=0, microsecond=0, tzinfo=timezone))]
 
         expected_calls = [call(expected[0]), call(expected[1])]

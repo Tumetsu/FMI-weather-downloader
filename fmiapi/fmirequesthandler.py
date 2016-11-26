@@ -40,8 +40,16 @@ class FMIRequestHandler:
         i = 0
         while not done:
             request_params = copy.copy(params)
-            request_params["starttime"] += datetime.timedelta(hours=max_timespan)*i
-            request_params["endtime"] = request_params["starttime"] + datetime.timedelta(hours=max_timespan-1)
+            request_params["starttime"] += datetime.timedelta(hours=max_timespan) * i
+            request_params["endtime"] = request_params["starttime"] + datetime.timedelta(hours=max_timespan)
+
+            # This additional minute to starting time is to prevent requests from fetching same time twice in
+            # the splitting point. Otherwise previous request's last time will be fetched as first in the next.
+            # FMI's service recognizes minutes as smallest significate time step so seconds or milliseconds could not
+            # be used.
+            if i > 0:
+                request_params["starttime"] += datetime.timedelta(minutes=1)
+
             requests.append(request_params)
 
             if request_params["endtime"] > params["endtime"]:
