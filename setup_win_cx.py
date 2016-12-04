@@ -29,7 +29,7 @@ executables = [
 ]
 
 setup(name='FMIDownloader',
-      version='0.14.1',
+      version='0.14.2',
       description='Download Finnish meteorological data',
       options=options,
       executables=executables
