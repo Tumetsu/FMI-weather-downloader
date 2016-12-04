@@ -84,7 +84,7 @@ EXPECTED_LAMMI_CATALOG_AUGMENTED_METADATA = [
     {**EXPECTED_LAMMI_CATALOG_METADATA[0], **{
         # Augmented attributes from FMIApi"s supported_queries.json
         "id": "weather",
-        "max_hours_range": 168,
+        "max_hours_range": 167,
         "name": {
             "en": "Weather: real time observations",
             "fi": "Sää: reaaliaikahavainnot"
@@ -95,7 +95,7 @@ EXPECTED_LAMMI_CATALOG_AUGMENTED_METADATA = [
     {**EXPECTED_LAMMI_CATALOG_METADATA[1], **{
         # Augmented attributes from FMIApi"s supported_queries.json
         "id": "monthly",
-        "max_hours_range": 87600,
+        "max_hours_range": 87599,
         "name": {
             "en": "Weather: monthly averages",
             "fi": "Sää: kuukausikeskiarvot"
@@ -106,7 +106,7 @@ EXPECTED_LAMMI_CATALOG_AUGMENTED_METADATA = [
     {**EXPECTED_LAMMI_CATALOG_METADATA[2], **{
         # Augmented attributes from FMIApi"s supported_queries.json
         "id": "daily",
-        "max_hours_range": 8928,
+        "max_hours_range": 8927,
         "name": {
             "en": "Weather: daily observations",
             "fi": "Sää: vuorokausihavainnot"
