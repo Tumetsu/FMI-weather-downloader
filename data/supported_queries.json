@@ -6,7 +6,7 @@
       "en": "Weather: real time observations"
     },
     "request": "getFeature",
-    "max_hours_range": 168,
+    "max_hours_range": 167,
     "storedquery_id": "fmi::observations::weather::multipointcoverage",
     "params": [
       "fmisid",
@@ -21,7 +21,7 @@
       "en": "Weather: daily observations"
     },
     "request": "getFeature",
-    "max_hours_range": 8928,
+    "max_hours_range": 8927,
     "storedquery_id": "fmi::observations::weather::daily::multipointcoverage",
     "params": [
       "fmisid",
@@ -35,7 +35,7 @@
       "en": "Weather: monthly averages"
     },
     "request": "getFeature",
-    "max_hours_range": 87600,
+    "max_hours_range": 87599,
     "storedquery_id": "fmi::observations::weather::monthly::multipointcoverage",
     "params": [
       "fmisid",
@@ -50,7 +50,7 @@
       "en": "Solar radiation observations"
     },
     "request": "getFeature",
-    "max_hours_range": 168,
+    "max_hours_range": 167,
     "storedquery_id": "fmi::observations::radiation::multipointcoverage",
     "params": [
       "fmisid",

@@ -32,6 +32,7 @@ class FMIRequestHandler:
                 # Handles case where beginning of a multipart request won't contain data
                 # FIXME: Could be done in a way where after new lowerlimit is found, a new batch of requests is calculated instead of doing
                 # FIXME: bunch of useless requests.
+                print('Exception on request', e)
                 if e.error_code != 400:
                     raise e
                 if progress_callback is not None:
