@@ -57,5 +57,20 @@
       "starttime",
       "endtime"
     ]
+  },
+  {
+    "id": "airquality",
+    "name": {
+      "fi": "Ilmanlaatu: havainnot tunneittain",
+      "en": "Air quality: hourly observations"
+    },
+    "request": "getFeature",
+    "max_hours_range": 167,
+    "storedquery_id": "fmi::observations::airquality::hourly::multipointcoverage",
+    "params": [
+      "fmisid",
+      "starttime",
+      "endtime"
+    ]
   }
 ]
