@@ -6,3 +6,4 @@ dist/
 .cache
 venv/
 build/
+FMIDownloader_venv/

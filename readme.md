@@ -20,7 +20,7 @@ FMI-Downloader is licensed as GNU GPL 3.0 license as required by Qt/PyQt license
 Install for development
 --------------------
 
-First install `Python 3.5` and `virtualenv` package for it. Then in project root run:
+First install `Python 3.5.3 (32bit)`  and `virtualenv` package for it. Then in project root run:
 ```
   virtualenv venv
   source venv/bin/activate
@@ -28,7 +28,7 @@ First install `Python 3.5` and `virtualenv` package for it. Then in project root
 ```
 
 On Windows, you can package the app to runnable exe with `cx_Freeze` tool by running following command in project root
-after installing [cx_Freeze 5.0 Windows binary wheel](https://github.com/sekrause/cx_Freeze-Wheels):
+after installing cx_freeze 5.0.1 from PIP. 
 
     python setup_win_cx.py build
 The build folder can be transformed into install setup with. [InnoSetup](http://www.jrsoftware.org/isinfo.php) There is a script for it which
