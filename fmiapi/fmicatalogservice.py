@@ -7,10 +7,23 @@ from fmiapi.fmierrors import RequestException, NoDataSetsException
 _NAMESPACES = {"csw": "http://www.opengis.net/cat/csw/2.0.2",
                "gmd": "http://www.isotc211.org/2005/gmd",
                "gco": "http://www.isotc211.org/2005/gco",
-               "gml": "http://www.opengis.net/gml"}
+               "gml": "http://www.opengis.net/gml",
+               "ows": "http://www.opengis.net/ows"}
+_RETRIEVAL_RETRY_COUNT = 3
 
 
-def _retrieve_metadata_by_fmisid(fmisid):
+def _response_was_exception(data):
+    """
+    FMI api sometimes responses with XML exceptions from their internal systems. Try
+    to detect it
+    :return:
+    """
+
+    exception_found = data.find(".//ows:Exception", namespaces=_NAMESPACES)
+    return exception_found is not None
+
+
+def _retrieve_metadata_by_fmisid(fmisid, request_retry=0):
     url = "catalog.fmi.fi"
     headers = {"Content-type": "text/xml"}
     connection = http.client.HTTPConnection(url)
@@ -37,8 +50,17 @@ def _retrieve_metadata_by_fmisid(fmisid):
 
     response = connection.getresponse()
     if response.status == 200:
-        data = response.read()
-        return etree.XML(data)
+        data = etree.XML(response.read())
+
+        if _response_was_exception(data):
+            # Looks like we got an exception. Most likely this is random error on FMI's side, so try
+            # again couple of times before giving up
+            if request_retry < _RETRIEVAL_RETRY_COUNT:
+                return _retrieve_metadata_by_fmisid(fmisid, request_retry=request_retry+1)
+            else:
+                raise RequestException("Error in metadata retrieval for fmisid " + fmisid, 'METADATA_RETRIEVAL')
+
+        return data
     else:
         raise RequestException("Error in metadata retrieval for fmisid " + fmisid, 'METADATA_RETRIEVAL')
 
