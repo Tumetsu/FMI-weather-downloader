@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ows:ExceptionReport xmlns:ows="http://www.opengis.net/ows" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" xsi:schemaLocation="http://www.opengis.net/ows http://schemas.opengis.net/ows/1.0.0/owsExceptionReport.xsd">
+   <ows:Exception exceptionCode="NoApplicableCode">
+      <ows:ExceptionText>Raised exception while searching metadata : org.fao.geonet.csw.common.exceptions.NoApplicableCodeEx: code=NoApplicableCode, locator=null, message=Error when parsing spatial filter (version: 1.1.0):&amp;lt;ogc:Filter xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml"&amp;gt;&amp;#13;\n  &amp;lt;ogc:PropertyIsEqualTo matchCase="true"&amp;gt;&amp;#13;\n    &amp;lt;ogc:PropertyName&amp;gt;AnyText&amp;lt;/ogc:PropertyName&amp;gt;&amp;#13;\n    &amp;lt;ogc:Literal&amp;gt;101154&amp;lt;/ogc:Literal&amp;gt;&amp;#13;\n  &amp;lt;/ogc:PropertyIsEqualTo&amp;gt;&amp;#13;\n&amp;lt;/ogc:Filter&amp;gt;. Error is: java.util.NoSuchElementException: Could not aquire feature:org.geotools.data.DataSourceException: Error Performing SQL query: SELECT "fid", "id", asText("the_geom") FROM "public"."spatialindex"</ows:ExceptionText>
+   </ows:Exception>
+</ows:ExceptionReport>

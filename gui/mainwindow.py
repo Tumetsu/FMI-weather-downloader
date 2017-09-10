@@ -81,10 +81,13 @@ class Mainwindow(QMainWindow):
         :param err:
         :return:
         """
-        if err.error_code == 'NODATASETS':
-            self.show_error_alerts(Messages.no_datasets_found())
-        elif err.error_code == 'METADATA_RETRIEVAL':
-            self.show_error_alerts(Messages.fmicatalogue_error())
+        if hasattr(err, 'error_code'):
+            if err.error_code == 'NODATASETS':
+                self.show_error_alerts(Messages.no_datasets_found())
+            elif err.error_code == 'METADATA_RETRIEVAL':
+                self.show_error_alerts(Messages.fmicatalogue_error())
+            else:
+                self.show_error_alerts(Messages.unknown_error() + str(err))
         else:
             self.show_error_alerts(Messages.unknown_error() + str(err))
 

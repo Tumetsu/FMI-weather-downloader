@@ -2,7 +2,7 @@
 
 [Setup]
 AppName=FMIDownloader
-AppVersion=0.15.2
+AppVersion=0.15.3
 DefaultDirName={pf}\FMIDownloader
 DefaultGroupName=FMIDownloader
 UninstallDisplayIcon={app}\FMIDownloader.exe
