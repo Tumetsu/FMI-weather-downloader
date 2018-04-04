@@ -1,6 +1,6 @@
-# You probably don't need this anymore
-FMI has own web-tool for downloading the weather data: http://ilmatieteenlaitos.fi/havaintojen-lataus#!/ 
-I recommend using that tool if possible.
+# Project deprecated
+FMI has released their own web-tool for downloading the weather data: http://ilmatieteenlaitos.fi/havaintojen-lataus#!/ 
+I recommend using that tool instead of this application.
 
 ## ATTENTION!
 FMI has recently changed their catalogue-service API essentially breaking the 0.15 versions of the downloader. Meanwhile you can still use older 0.14 version to download daily and real time weather observations. Until the downloader is fixed,
