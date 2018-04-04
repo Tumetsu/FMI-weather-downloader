@@ -1,3 +1,7 @@
+# ATTENTION!
+FMI has recently changed their catalogue-service API essentially breaking the 0.15 versions of the downloader. Meanwhile you can still use older 0.14 version to download daily and real time weather observations. Until the downloader is fixed,
+please use [Downloader version 0.14.2](https://github.com/Tumetsu/FMI-weather-downloader/releases/tag/v0.14.2)
+
 Ilmatieteenlaitoksen säädatan lataaja / FMI Weather Downloader [![TravisCI](https://travis-ci.org/Tumetsu/FMI-weather-downloader.svg?branch=master)](https://travis-ci.org/Tumetsu/FMI-weather-downloader)
 ==============================
 
